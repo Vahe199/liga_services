@@ -1,14 +1,16 @@
 import './App.css';
 import HomePage from "./components/homePage/HomePage";
+import MainNavBar from "./components/MainNavBar"
+import ContainerBar from "./components/ContainerBar"
+import FooterBar from './components/FooterBar';
 
 function App() {
   return (
     <div>
-        <HomePage />
-        {/*<Route path="/wew" render={() => <HomePage />} />*/}
-      {/*<Routes>*/}
-      {/*  <Route path={'/homePage'} element={<HomePage />} />*/}
-      {/*</Routes>*/}
+        {/* <HomePage /> */}
+        <MainNavBar/>
+        {/* <ContainerBar /> */}
+        <FooterBar/>
     </div>
   );
 }
