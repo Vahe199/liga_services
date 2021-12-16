@@ -1,10 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
+import HomePage from "./components/homePage/HomePage";
 
 function App() {
   return (
-    <div className="App">
-
+    <div>
+        <HomePage />
+        {/*<Route path="/wew" render={() => <HomePage />} />*/}
+      {/*<Routes>*/}
+      {/*  <Route path={'/homePage'} element={<HomePage />} />*/}
+      {/*</Routes>*/}
     </div>
   );
 }
