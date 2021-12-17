@@ -136,9 +136,15 @@ const MainNavBar = () => {
             <UserSvg/>
           </Box> */}
           <ButtonGroupSvg />
-          <MessageSvg />
-          <NotificationSvg />
-          <UserSvg />
+          <IconButton>
+             <MessageSvg/>
+          </IconButton>
+          <IconButton>
+             <NotificationSvg/>
+          </IconButton>
+          <IconButton>
+             <UserSvg/>
+          </IconButton>
         </Toolbar>
       </Container>
     </AppBar>
