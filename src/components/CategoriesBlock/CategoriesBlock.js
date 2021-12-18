@@ -42,7 +42,7 @@ const CategoriesBlock = () => {
         console.log(items, 'items')
     }, [items])
     return (
-        <Box style={{background: 'rgba(62, 87, 108, 0.3)'}}>
+        <Box style={{background: 'rgba(62, 87, 108, 0.3)', marginBottom: '178px'}}>
             {items.length !== 0 && <ModalCategories setItems={setItems} data={items}/>}
             <Container maxWidth="xl">
                 <Typography pb={'50px'} pt={'150px'} className={classes.aboutTitle}>Категории услуг</Typography>
@@ -57,3 +57,5 @@ const CategoriesBlock = () => {
 }
 
 export default CategoriesBlock;
+
+
