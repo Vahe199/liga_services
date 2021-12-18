@@ -47,7 +47,7 @@ const MainNavBar = () => {
             noWrap
             component="div"
             color="#E20613"
-            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+            // sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
             Лига услуг
           </Typography>
