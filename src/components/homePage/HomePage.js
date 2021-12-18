@@ -5,6 +5,8 @@ import Intro from "./blocks/intro/Intro";
 import PresentHistory from "./blocks/presentHistory/PresentHistory";
 import CategoriesBlock from "./blocks/CategoriesBlock/CategoriesBlock";
 import TrustedExperts from "./blocks/trustedExperts/TrustedExperts";
+import Reviews from "./blocks/reviews/Reviews";
+import Footer from "../UI/common/footer/Footer";
 
 const HomePage = () => {
     return (
@@ -17,8 +19,9 @@ const HomePage = () => {
                 <CategoriesBlock />
             <Container maxWidth="lg">
                 <TrustedExperts />
+                <Reviews />
             </Container>
-
+            <Footer />
         </div>
     )
 }
