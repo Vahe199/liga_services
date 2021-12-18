@@ -11,7 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import {LocationSvg} from "../../assets/svg/header/LocationSvg";
+import {LocationSvg} from "../../../../assets/svg/header/LocationSvg";
 
 const pages = ['Заказать обратный звонок', 'Задать вопрос', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];

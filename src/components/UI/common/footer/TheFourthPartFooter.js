@@ -1,5 +1,5 @@
 import * as React from "react";
-import logo from '../assets/image/logoSmall.png';
+import logo from '../../../../assets/image/logoSmall.png';
 import FooterIconsBar from "./FooterIconsBar";
 import {createStyles, makeStyles} from "@material-ui/core";
 

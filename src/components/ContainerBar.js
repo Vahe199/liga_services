@@ -3,7 +3,7 @@ import {makeStyles} from "@material-ui/core";
 import Grid from '@mui/material/Grid';
 import InputsBar from "./InputsBar";
 import RadioButtonsBar from "./RadioButtonsBar";
-import IconBar from "./IconBar";
+import IconBar from "./UI/common/footer/IconBar";
 
 
 

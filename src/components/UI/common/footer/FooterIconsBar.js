@@ -1,9 +1,9 @@
 import { IconButton } from "@mui/material";
 import * as React from "react";
-import InstaSvg from "./InstaSvg";
-import OkSvg from "./OkSvg";
-import VkSvg from "./VkSvg";
-import YoutubeSvg from "./YoutubeSvg";
+import InstaSvg from "../../../../assets/svg/footer/InstaSvg";
+import OkSvg from "../../../../assets/svg/footer/OkSvg";
+import VkSvg from "../../../../assets/svg/footer/VkSvg";
+import YoutubeSvg from "../../../../assets/svg/footer/YoutubeSvg";
 
 
 const FooterIconsBar = () => {

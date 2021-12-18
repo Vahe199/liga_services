@@ -1,10 +1,10 @@
 import React from 'react';
-import LogoBlock from "../logoBlock/LogoBlock";
+import LogoBlock from "./blocks/logoBlock/LogoBlock";
 import Container from "@mui/material/Container";
-import Intro from "../intro/Intro";
-import PresentHistory from "../presentHistory/PresentHistory";
-import CategoriesBlock from "../CategoriesBlock/CategoriesBlock";
-import TrustedExperts from "../trustedExperts/TrustedExperts";
+import Intro from "./blocks/intro/Intro";
+import PresentHistory from "./blocks/presentHistory/PresentHistory";
+import CategoriesBlock from "./blocks/CategoriesBlock/CategoriesBlock";
+import TrustedExperts from "./blocks/trustedExperts/TrustedExperts";
 
 const HomePage = () => {
     return (

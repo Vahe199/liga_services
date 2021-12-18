@@ -6,7 +6,7 @@ import TheFirstPartFooter from "./TheFirstPartFooter";
 import TheSecondPartFooter from "./TheSecondPartFooter";
 import ThirdPartFooter from "./ThirdPartFooter";
 import TheFourthPartFooter from "./TheFourthPartFooter";
-import Line from "./Line";
+import Line from "../../../Line";
 
 
 const useStyles = makeStyles({

@@ -6,11 +6,11 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
-import {trustedExperts} from "../../utils/data/trustedExperts/TrustedExperts";
+import {trustedExperts} from "../../../../utils/data/trustedExperts/TrustedExperts";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import {GreenArrowSvg} from "../../assets/svg/intro/GreenArrowSvg";
-import {GoToChatSvg} from "../../assets/svg/intro/GoToChatSvg";
+import {GreenArrowSvg} from "../../../../assets/svg/intro/GreenArrowSvg";
+import {GoToChatSvg} from "../../../../assets/svg/intro/GoToChatSvg";
 
 export const useStyles = makeStyles({
     aboutTitle: {

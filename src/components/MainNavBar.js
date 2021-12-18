@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import MessageSvg from "../assets/svg/header/MessageSvg";
 import NotificationSvg from "../assets/svg/header/NotificationSvj";
 import UserSvg from "../assets/svg/header/UserSvg";
-import ButtonGroupSvg from "./ButtonGroupSvg";
+import ButtonGroupSvg from "../assets/svg/footer/ButtonGroupSvg";
 
 
 const pages = ["Products", "Pricing", "Blog"];

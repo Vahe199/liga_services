@@ -4,9 +4,9 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import {Typography} from "@mui/material";
 import {makeStyles} from "@material-ui/core";
-import {categories} from "../../utils/data/categories/Categories";
+import {categories} from "../../../../utils/data/categories/Categories";
 import Button from "@mui/material/Button";
-import ModalCategories from "../UI/modals/ModalCategories";
+import ModalCategories from "../../../UI/modals/ModalCategories";
 
 export const useStyles = makeStyles({
     aboutTitle: {

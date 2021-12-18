@@ -4,10 +4,10 @@ import {Typography} from "@mui/material";
 import {createStyles, makeStyles} from "@material-ui/core";
 import Button from '@mui/material/Button'
 import Box from "@mui/material/Box";
-import {GreenArrowSvg} from "../../assets/svg/intro/GreenArrowSvg";
+import {GreenArrowSvg} from "../../../../assets/svg/intro/GreenArrowSvg";
 import Image from 'material-ui-image'
 import CardMedia from '@mui/material/CardMedia';
-import {GoToChatSvg} from "../../assets/svg/intro/GoToChatSvg";
+import {GoToChatSvg} from "../../../../assets/svg/intro/GoToChatSvg";
 //import vdsjv from '../../assets/image/LogoLarge.png'
 
 
