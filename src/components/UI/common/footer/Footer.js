@@ -10,7 +10,7 @@ const Footer = () => {
   return (
       <Box style={{backgroundColor: '#EBEBEB'}}>
         <Container maxWidth="lg">
-          <Grid container spacing={9}>
+          <Grid pb={'90px'} container spacing={9}>
             <Grid item xs={12} md={6} lg={3}>
               <Typography mb={'20px'} style={{fontSize: '32px', fontWeight: '500'}}>Lorem ipsum</Typography>
               <Typography style={{fontSize: '24px'}}>dolor sit amet
@@ -63,6 +63,7 @@ const Footer = () => {
             </Grid>
           </Grid>
         </Container>
+        <Box style={{backgroundColor: '#5A7287', height: '67px'}}></Box>
       </Box>
   );
 };

@@ -35,7 +35,7 @@ const TrustedExperts = () => {
     const classes = useStyles();
     return (
         <>
-            <MainTitle mb={'75px'}>Наши Провереные Специалисты</MainTitle>
+            <MainTitle mt={'75px'} mb={'75px'}>Наши Провереные Специалисты</MainTitle>
             <Grid container spacing={6} justifyContent="center"
                   alignItems="center" mb={'100px'}>
                 {trustedExperts.map((expert, index) =>

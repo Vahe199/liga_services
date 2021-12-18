@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import {Typography} from "@mui/material";
 import {makeStyles} from "@material-ui/core";
-import {categories} from "../../../../utils/data/categories/Categories";
 import Button from "@mui/material/Button";
 import ModalCategories from "../../../UI/modals/ModalCategories";
+import {categories} from "../../../../utils/data/categories/Categories";
+import MainTitle from "../../../UI/common/titles/MainTitles";
 
 export const useStyles = makeStyles({
     aboutTitle: {
@@ -15,17 +15,17 @@ export const useStyles = makeStyles({
         textAlign: 'center',
     },
     btn: {
-      background: '#E1E3E3',
+        background: '#E1E3E3',
         padding: '15px',
         fontSize: '20px',
         fontWeight: 500,
-        boxShadow: 'rgba(0, 0, 0, 0.2)',
+        boxShadow: '0px 4px 7px #3e576c4d',
         borderRadius: '20px',
         color: '#000',
-        height: '78px',
+        height: '70px',
         //whiteSpace: 'nowrap',
-        width: '350px',
-        margin: '50px 60px',
+        width: '340px',
+        margin: '10px',
     },
     container: {
         display: 'flex',
@@ -42,14 +42,14 @@ const CategoriesBlock = () => {
         console.log(items, 'items')
     }, [items])
     return (
-        <Box style={{background: 'rgba(62, 87, 108, 0.3)', marginBottom: '178px'}}>
+        <Box style={{background: 'rgba(62, 87, 108, 0.3)'}}>
             {items.length !== 0 && <ModalCategories setItems={setItems} data={items}/>}
             <Container maxWidth="xl">
-                <Typography pb={'50px'} pt={'150px'} className={classes.aboutTitle}>Категории услуг</Typography>
+                <MainTitle mb={'75px'} mb={'75px'}>Категории услуг</MainTitle>
                 <Box className={classes.container}>
-                        {categories.map(category =>
-                                <Button onClick={() => setItems(category.subCategories)} sx={{ boxShadow: '3' }} m={5} className={classes.btn}>{category.name}</Button>
-                        )}
+                    {categories.map(category =>
+                        <Button onClick={() => setItems(category.subCategories)} sx={{ boxShadow: '3' }} m={5} className={classes.btn}>{category.name}</Button>
+                    )}
                 </Box>
             </Container>
         </Box>
@@ -57,5 +57,3 @@ const CategoriesBlock = () => {
 }
 
 export default CategoriesBlock;
-
-
