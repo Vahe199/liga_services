@@ -1,8 +1,10 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 const UpperPartRight = () => {
   return (
+    <Box>
         <Typography
         size="40px"
         noWrap
@@ -12,7 +14,7 @@ const UpperPartRight = () => {
     >
         Дата: 15 нояб.(пн) - 30 дек. (чт)
     </Typography>
-
+    </Box>
     
   );
 };
