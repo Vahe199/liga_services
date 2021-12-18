@@ -10,10 +10,10 @@ export const useStyles = makeStyles({
     },
 });
 
-const MainTitle = ({mb, children}) => {
+const MainTitle = ({mb, mt, children}) => {
     const classes = useStyles();
     return (
-        <Typography mb={mb} className={classes.aboutTitle}>{children}</Typography>
+        <Typography mb={mb} mt={mt} className={classes.aboutTitle}>{children}</Typography>
     )
 }
 
