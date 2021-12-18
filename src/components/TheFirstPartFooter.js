@@ -1,12 +1,25 @@
 import * as React from "react";
+import {createStyles, makeStyles} from "@material-ui/core";
+
+
+
+export const useStyles = makeStyles({
+    first: {
+        fontFamily: 'Roboto',
+        fontStyle: 'normal',
+        fontWeight: 500,
+        fontSize: '32px',
+        lineHeight: '37px',
+    },
+});
 
 
 const TheFirstPartFooter = () => {
+    const classes = useStyles();
   return (
          <div>
              <h1>Lorem ipsum</h1>
-             <p>Lorem ipsum
-                dolor sit amet
+             <p className={classes.first}>dolor sit amet
                 consectetur adipiscing 
                 Suspendisse quis 
                 fermentum lectus
@@ -21,3 +34,4 @@ const TheFirstPartFooter = () => {
     
 };
 export default TheFirstPartFooter;
+

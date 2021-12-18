@@ -35,7 +35,7 @@ const Intro = () => {
     const classes = useStyles();
     return (
         <Grid mt={'20px'} mb={'80px'} container spacing={2}>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} >
                 <Typography mb={'20px'} className={classes.title} color={'#445E77'}>ВСЕ СПЕЦИАЛИСТЫ ВАШЕГО ГОРОДА В ОДНОМ МЕСТЕ</Typography>
                 <Button className={classes.btn}  size={'large'} variant="contained" color="success">
                     Оставить задание
