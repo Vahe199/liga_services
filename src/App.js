@@ -6,11 +6,10 @@ import ClientBar from './clients/ClientBar';
 function App() {
   return (
       <BrowserRouter>
-        <Routes>
-            {/* <Route path='/' element={<HomePage />} /> */}
-            {/*<Route path='/nav' element={<Intro />} />*/}
-        </Routes>
-        <ClientBar/>
+        {/* <Routes>
+            <Route path='/' element={<HomePage />} /> 
+        </Routes> */}
+         <ClientBar/>
       </BrowserRouter>
 
   )

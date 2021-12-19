@@ -7,7 +7,7 @@ import MessengerSvg from "./MessengerSvg";
 const Box2 = () => {
     return (
     <Box>
-        <Box style={{fontSize:'28px', marginTop:'28px'}}>
+        <Box style={{fontSize:'28px', marginTop:'28px',display:'flex', justifyContent:'flex-end'}}>
            <Typography
             size="40px"
             noWrap
@@ -18,7 +18,7 @@ const Box2 = () => {
             Место встречи
           </Typography>
         </Box>
-        <Box style={{fontSize:'24px', marginBottom:'44px'}}>
+        <Box style={{fontSize:'24px', marginBottom:'44px',display:'flex', justifyContent:'flex-end'}}>
           <Typography
             size="40px"
             noWrap
@@ -29,7 +29,7 @@ const Box2 = () => {
             Дистанционно
           </Typography>
         </Box>
-        <Box style={{fontSize:'24px'}}>
+        <Box style={{fontSize:'24px',display:'flex', justifyContent:'flex-end'}}>
           <Typography
             size="40px"
             noWrap
@@ -40,7 +40,7 @@ const Box2 = () => {
             Договор
           </Typography>
         </Box> 
-<Box style={{display:'flex', fontSize:'24px',marginBottom:'50px'}}>
+<Box style={{display:'flex', fontSize:'24px',marginBottom:'50px',display:'flex', justifyContent:'flex-end'}}>
             <DownloadSvg/>
           <Typography
             size="40px"
@@ -53,7 +53,7 @@ const Box2 = () => {
           </Typography>
 </Box>
 
-<Box style={{display:'flex', fontSize:'24px', marginBottom:'36px'}}>
+<Box style={{display:'flex', fontSize:'24px', marginBottom:'36px',display:'flex', justifyContent:'flex-end'}}>
             <MessengerSvg/>
           <Typography
             size="40px"
@@ -65,7 +65,7 @@ const Box2 = () => {
             Написать исполнителю
           </Typography>
 </Box>
-    <Box style={{fontSize:'24px'}}>
+    <Box style={{fontSize:'24px',display:'flex', justifyContent:'flex-end'}}>
           <Typography
             size="40px"
             noWrap
