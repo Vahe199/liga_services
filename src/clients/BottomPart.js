@@ -5,7 +5,7 @@ import Box2 from "./Box2";
 
 const BottomPart = () => {
     return (     
-            <Box style={{display:'flex', justifyContent:'space-evenly', alignItems:'center',padding:'130px,140px', lineHeight:'28px'}}>
+            <Box style={{display:'flex', justifyContent:'space-evenly', alignItems:'center', lineHeight:'28px'}}>
                 <Box1/>
                 <Box2/>
             </Box>

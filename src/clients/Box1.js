@@ -3,9 +3,33 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Rating from '@mui/material/Rating';
+import {makeStyles} from "@material-ui/core";
 
+const useStyles = makeStyles({
+  root: {
+    backgroundColor: 'red',
+   "& .MuiButton-root":{
+      backgroundColor: 'red',
+      width: '400px',
+      height: '500px'
+   }
+  },
+  btn:{
+    border:'1px solid #808080',
+    borderRadius: '10px',
+    boxSizing: 'border-box',
+    background: '#4B9A2D',
+    fontSize:'20px',
+    padding:'14px 24px',
+    '&:hover': {
+      background: "darkgreen",
+    }
+  },
+  
+});
 
 const Box1 = () => {
+  const classes = useStyles();
     return (
     <Box>
         <Box style={{fontSize:'28px'}}>
@@ -63,15 +87,17 @@ const Box1 = () => {
             Баллы
           </Typography>
         </Box>
-        <Box>
+        
         <Box>
            <Rating name="no-value" value={null} />
         </Box>
-            <Button style={{background:'#4B9A2D', padding:'14px 24px', fontSize:'20px'}} variant="contained" disableElevation>
+          
+        <Box >
+            <Button className={classes.btn}  variant="contained" disableElevation>
                 Disable elevation
             </Button>
         </Box>
-    </Box>
+   </Box>
 
       )
       
