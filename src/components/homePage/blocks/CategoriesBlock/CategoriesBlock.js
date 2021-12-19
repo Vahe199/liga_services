@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import {Typography} from "@mui/material";
@@ -25,30 +25,49 @@ export const useStyles = makeStyles({
         height: '70px',
         //whiteSpace: 'nowrap',
         width: '340px',
-        margin: '10px',
+        margin: '20px',
+        //position: 'relative',
     },
     container: {
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
         alignItems: 'center',
+        position: 'relative'
     }
 });
 
 const CategoriesBlock = () => {
     const classes = useStyles();
     const [items, setItems] = useState([]);
-    useEffect(() => {
-        console.log(items, 'items')
-    }, [items])
+    const [showModal, setShowModal] = useState(false);
+
+    const openModal = (e, items) => {
+        console.log(items)
+        setShowModal(true);
+        setItems(items)
+    }
+
+    const closeModal = (e) => {
+        console.log(showModal)
+        setShowModal(false);
+    }
+
     return (
         <Box style={{background: 'rgba(62, 87, 108, 0.3)'}}>
-            {items.length !== 0 && <ModalCategories setItems={setItems} data={items}/>}
             <Container maxWidth="xl">
                 <MainTitle mb={'75px'} mb={'75px'}>Категории услуг</MainTitle>
                 <Box className={classes.container}>
                     {categories.map(category =>
-                        <Button onClick={() => setItems(category.subCategories)} sx={{ boxShadow: '3' }} m={5} className={classes.btn}>{category.name}</Button>
+                        <Box>
+                            <Button onMouseEnter={(e) => openModal(e, category.subCategories)} onMouseLeave={(e) => closeModal(e)}  sx={{ boxShadow: '3' }} m={5} className={classes.btn}>{category.name}</Button>
+                            <ModalCategories
+                                setShowModal={setShowModal}
+                                showModal={showModal}
+                                setItems={setItems}
+                                data={items}/>
+                        </Box>
+
                     )}
                 </Box>
             </Container>

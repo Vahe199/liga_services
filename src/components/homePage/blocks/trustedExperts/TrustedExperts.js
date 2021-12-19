@@ -12,7 +12,7 @@ import MainTitle from "../../../UI/common/titles/MainTitles";
 
 export const useStyles = makeStyles({
     card: {
-        borderRadius: '30px',
+        //borderRadius: '30px',
         display: 'flex',
         //height: '648px',
         flexDirection: 'column',
@@ -43,8 +43,8 @@ const TrustedExperts = () => {
                         <Card sx={{
                             ':hover': {
                                 boxShadow: 20
-                            },
-                        }} className={classes.card}>
+                            }
+                        }} className={classes.card} style={{borderRadius: '30px'}}>
                             <Avatar mb={'24px'} style={{height: '108px', width: '108px'}} />
                             <CardContent>
                                 <Typography noWrap mb={'15px'} gutterBottom style={{fontSize: '30px', fontWeight: '500', textAlign: 'center'}} color={'#49942B'}>
