@@ -40,7 +40,7 @@ const Box2 = () => {
             Договор
           </Typography>
         </Box> 
-<Box style={{display:'flex', fontSize:'24px',marginBottom:'50px',display:'flex', justifyContent:'flex-end'}}>
+<Box style={{display:'flex', fontSize:'24px',marginBottom:'50px', justifyContent:'flex-end'}}>
             <DownloadSvg/>
           <Typography
             size="40px"
@@ -53,7 +53,7 @@ const Box2 = () => {
           </Typography>
 </Box>
 
-<Box style={{display:'flex', fontSize:'24px', marginBottom:'36px',display:'flex', justifyContent:'flex-end'}}>
+<Box style={{display:'flex', fontSize:'24px', marginBottom:'36px', justifyContent:'flex-end'}}>
             <MessengerSvg/>
           <Typography
             size="40px"
