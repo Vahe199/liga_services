@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import {Typography} from "@mui/material";
 import {makeStyles} from "@material-ui/core";
 
-export const useStyles = makeStyles({
+const useStyles = makeStyles({
     titleReview: {
         fontSize: '60px',
         fontWeight: 500,
@@ -18,10 +18,13 @@ export const useStyles = makeStyles({
         marginBottom: '33px',
     },
     aboutTitle: {
-      color: '#445E77',
-      fontSize: '40px',
-      textAlign: 'center',
+        color: '#445E77',
+        fontSize: '40px',
+        textAlign: 'center',
     },
+    aboutText:{
+        marginBottom:40,
+    }
 });
 
 const PresentHistory = () => {
@@ -51,8 +54,8 @@ const PresentHistory = () => {
         </Box>
             <Container maxWidth="lg">
                 <Typography mb={'50px'} className={classes.aboutTitle}>О нас</Typography>
-                <Typography  className={classes.aboutText}>Единый центр услуг - это удобный, динамично развивающийся Единый Сервис Красноярского края, который позволяет быстро и безопасно находить надёжных исполнителей для решения любых задач, услуг и поручений! Мы собрали для вас в одно место, опытных, проверенных, специалистов своего дела! Тепер</Typography>
-                <Typography mb={'40px'}>Единый центр услуг - это удобный, динамично развивающийся Единый Сервис Красноярского края, который позволяет быстро и безопасно находить надёжных исполнителей для решения любых задач, услуг и поручений! Мы собрали для вас в одно место, опытных, проверенных, специалистов своего дела! Тепер</Typography>
+                <Typography  className={classes.aboutText}>Единый центр услуг - это удобный, динамично развивающийся Единый Сервис Красноярского края, который позволяет быстро и безопасно находить надёжных исполнителей для решения любых задач, услуг и поручений! Мы собрали для вас в одно место, опытных, проверенных, специалистов своего дела! Тепер
+               <br/><br/> Единый центр услуг - это удобный, динамично развивающийся Единый Сервис Красноярского края, который позволяет быстро и безопасно находить надёжных исполнителей для решения любых задач, услуг и поручений! Мы собрали для вас в одно место, опытных, проверенных, специалистов своего дела! Тепер</Typography>
                 <Typography>Мы ценим ваше время!</Typography>
             </Container>
         </>

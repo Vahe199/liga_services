@@ -1,12 +1,10 @@
 import './App.css';
 import HomePage from "./components/homePage/HomePage";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import ClientBar from './clients/ClientBar';
-import RegistrationPage from "./components/authPages/registrationPage/RegistrationPage";
-import LoginPage from "./components/authPages/loginPage/LoginPage";
+
 
 function App() {
-  return (
+  return (<div style={{overflow:"hidden"}}>
       <BrowserRouter>
         <Routes>
              <Route path='/' element={<HomePage />} />
@@ -18,6 +16,7 @@ function App() {
         </Routes>
         {/*<ClientBar/>*/}
       </BrowserRouter>
+
   )
 }
 
