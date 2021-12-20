@@ -1,10 +1,9 @@
 import './App.css';
 import HomePage from "./components/homePage/HomePage";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import ClientBar from './clients/ClientBar';
 
 function App() {
-  return (
+  return (<div style={{overflow:"hidden"}}>
       <BrowserRouter>
         <Routes>
              <Route path='/' element={<HomePage />} />
@@ -12,7 +11,7 @@ function App() {
         {/*<ClientBar/>*/}
 
       </BrowserRouter>
-
+      </div>
   )
 }
 

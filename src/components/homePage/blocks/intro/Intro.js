@@ -23,12 +23,12 @@ export const useStyles = makeStyles({
     },
     chat: {
         position: 'absolute',
-        bottom: '0',
+        bottom: -60,
         right: '0',
     },
     img:{
-        width:500,
-        height:500
+        width:"100%",
+        height:"100%"
     }
 });
 

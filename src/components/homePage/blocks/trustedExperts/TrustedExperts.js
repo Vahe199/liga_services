@@ -9,7 +9,7 @@ import {trustedExperts} from "../../../../utils/data/trustedExperts/TrustedExper
 import Grid from "@mui/material/Grid";
 import Avatar from "@mui/material/Avatar";
 import MainTitle from "../../../UI/common/titles/MainTitles";
-
+import Rating from '@mui/material/Rating';
 export const useStyles = makeStyles({
     card: {
         //borderRadius: '30px',
@@ -53,7 +53,7 @@ const TrustedExperts = () => {
                                 <Typography noWrap mb={'9px'} style={{fontSize: '18px', textAlign: 'center'}} color={'#808080'} gutterBottom>
                                     Была в сети сегодня в 15:07
                                 </Typography>
-                                {/*<Rating />*/}
+                                <Rating style={{color:"red",marginLeft:"33%"}} name="half-rating-read" defaultValue={4} precision={0.5} readOnly />
                                 <Typography mb={'24px'} style={{fontSize: '20px', fontWeight: '500',textAlign: 'center'}}>
                                     {expert.special}
                                 </Typography>

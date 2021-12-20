@@ -58,15 +58,13 @@ const CategoriesBlock = () => {
             <Container maxWidth="xl">
                 <MainTitle mb={'75px'} mb={'75px'}>Категории услуг</MainTitle>
                 <Box className={classes.container}>
-                    {categories.map(category =>
-                        <Box>
-                            <Button onMouseEnter={(e) => openModal(e, category.subCategories)} onMouseLeave={(e) => closeModal(e)}  sx={{ boxShadow: '3' }} m={5} className={classes.btn}>{category.name}</Button>
-                            <ModalCategories
+                    {categories.map((category,i) =>
+                            <ModalCategories key={i}
                                 setShowModal={setShowModal}
                                 showModal={showModal}
                                 setItems={setItems}
+                                category={category}
                                 data={items}/>
-                        </Box>
 
                     )}
                 </Box>
