@@ -2,7 +2,7 @@ import * as React from "react";
 import Grid from "@mui/material/Grid";
 import {Container, Typography} from "@mui/material";
 import Box from "@mui/material/Box";
-import logo from "../../../../assets/image/logoSmall.png";
+import logo from "../../../../assets/image/LogoFooter.png";
 import FooterIconsBar from "./FooterIconsBar";
 
 
