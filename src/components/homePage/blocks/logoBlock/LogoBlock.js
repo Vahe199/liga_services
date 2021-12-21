@@ -11,8 +11,24 @@ import {useNavigate} from "react-router-dom"
 import {LocationSvg} from "../../../../assets/svg/header/LocationSvg";
 import {useStyles} from "../../../../globalStyles/HomePageStyles";
 import {useState} from "react";
-
-const pages = ['Заказать обратный звонок', 'Задать вопрос', 'Blog'];
+const pages = [
+    {
+        name: 'Заказать обратный звонок',
+        path: 'clientPage'
+    },
+    {
+        name: 'Задать вопрос',
+        path: 'clientPage'
+    },
+    {
+        name: 'Логин',
+        path: 'login'
+    },
+    {
+        name: 'Регистрация',
+        path: 'registration'
+    },
+];
 
 
 
@@ -36,9 +52,8 @@ const LogoBlock = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-    const goNewPage = (page) => {
-        console.log("ttytyty")
-        navigate(page)
+    const goNewPage = (url) => {
+        navigate(url)
     }
 
     return (
@@ -74,8 +89,8 @@ const LogoBlock = () => {
                         }}
                     >
                         {pages.map((page) => (
-                            <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                <Typography textAlign="center">{page}</Typography>
+                            <MenuItem key={page} onClick={() => goNewPage(page.path)}>
+                                <Typography textAlign="center">{page.name}</Typography>
                             </MenuItem>
                         ))}
                     </Menu>

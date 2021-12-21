@@ -39,24 +39,14 @@ export const useStyles = makeStyles({
     }
 });
 
-const CategoriesBlock = () => {
+const CategoriesBlock = ({categoriesRef}) => {
     const classes = useStyles();
     const [items, setItems] = useState([]);
     const [showModal, setShowModal] = useState(false);
 
-    const openModal = (e, items) => {
-        console.log(items)
-        setShowModal(true);
-        setItems(items)
-    }
-
-    const closeModal = (e) => {
-        console.log(showModal)
-        setShowModal(false);
-    }
 
     return (
-        <Box style={{background: 'rgba(62, 87, 108, 0.3)'}}>
+        <Box ref={categoriesRef} style={{background: 'rgba(62, 87, 108, 0.3)'}}>
             <Container maxWidth="xl">
                 <MainTitle mb={'75px'}>Категории услуг</MainTitle>
                 <Box className={classes.container}>

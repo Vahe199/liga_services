@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import LogoBlock from "./blocks/logoBlock/LogoBlock";
 import Container from "@mui/material/Container";
 import Intro from "./blocks/intro/Intro";
@@ -9,14 +9,15 @@ import Reviews from "./blocks/reviews/Reviews";
 import Footer from "../UI/common/footer/Footer";
 
 const HomePage = () => {
+    const categoriesRef = useRef();
     return (
         <div>
             <Container maxWidth="lg">
                 <LogoBlock />
-                <Intro />
+                <Intro categoriesRef={categoriesRef} />
             </Container>
                 <PresentHistory />
-                <CategoriesBlock />
+                <CategoriesBlock categoriesRef={categoriesRef} />
             <Container maxWidth="lg">
                 <TrustedExperts />
                 <Reviews />
