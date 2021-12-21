@@ -11,9 +11,13 @@ export const useStyles = makeStyles({
     modalContainer: {
         backgroundColor: '#E1E3E3',
         borderRadius: '20px',
-        width: '50vw',
+        width: '80vw',
         padding: '20px',
-        marginTop:-15
+        marginTop:-15,
+        columnCount: 3,
+        '@media (max-width: 790px)' : {
+            columnCount: '2'
+        },
     },
     btn: {
         background: '#E1E3E3',
@@ -24,11 +28,12 @@ export const useStyles = makeStyles({
         borderRadius: '20px',
         color: '#000',
         height: '70px',
-        //whiteSpace: 'nowrap',
-        width: '340px',
+        width: '315px',
         margin: '20px',
-        //position: 'relative',
     },
+    boxBtn: {
+        textAlign: 'center',
+    }
 
 });
 
@@ -52,7 +57,7 @@ const ModalCategories = ({setItems, data, setShowModal,category, showModal}) => 
     return (
         <PopupState variant="popper" popupId="demo-popup-popper">
             {(popupState) => (
-                <div  onMouseLeave={handleRemove} onMouseEnter={handleClick}>
+                <div className={classes.boxBtn}  onMouseLeave={handleRemove} onMouseEnter={handleClick}>
                     <Button  sx={{ boxShadow: '3' }} m={5} className={classes.btn}>
                         {category.name}
                     </Button>
@@ -60,7 +65,7 @@ const ModalCategories = ({setItems, data, setShowModal,category, showModal}) => 
                         {({ TransitionProps }) => (
                             <Fade {...TransitionProps} timeout={350}>
                                 <Paper className={classes.modalContainer}>
-                                    {category.subCategories.map((item, i) =>(<Typography key={i} sx={{p: 2}}>{item}</Typography>))}
+                                    {category.subCategories.map((item, i) =>(<Typography style={{padding: '4px', fontWeight: '500'}} key={i} sx={{p: 2}}>{item}</Typography>))}
                                 </Paper>
                             </Fade>
                         )}
