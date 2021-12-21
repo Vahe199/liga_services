@@ -7,6 +7,7 @@ import ClientBar from "./clients/ClientBar";
 import ClientProfilePage from "./components/clientPages/ClientProfilePage";
 import {MainNavBar} from "./components/MainNavBar";
 import React from "react";
+import BlockBar from './websitedevelopment/BlockBar';
 
 
 function App() {
@@ -18,14 +19,11 @@ function App() {
             <Route path='login' element={<LoginPage />} />
             <Route path='clientPage/*' element={<ClientProfilePage />} >
                 <Route path={":page"} element={<p>Our contact</p>}/>
-                {/*<Route path={"team"} element={<p>Our team</p>}/>*/}
             </Route>
-            {/*test*/}
-            {/*<Route path='/' element={<RegistrationPage />} />*/}
-            {/*<Route path='/' element={<LoginPage />} />*/}
         </Routes>
-        {/*<ClientBar/>*/}
       </BrowserRouter>
+      {/* <ClientBar/>
+        <BlockBar /> */}
       </div>
   )
 }
