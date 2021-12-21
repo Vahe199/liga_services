@@ -79,7 +79,7 @@ const LogoBlock = () => {
                 </Box>
                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                     <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
-                        <Typography noWrap={true} margin={2}>
+                        <Typography onClick={() => navigate('/clientPage')} noWrap={true} margin={2}>
                             Заказать обратный звонок
                         </Typography>
                         <Typography noWrap={true} margin={2} onClick={(e)=>console.log(e.target.innerText,"ee")}>
@@ -93,10 +93,10 @@ const LogoBlock = () => {
                         <Typography noWrap={true} margin={2}>
                             Краснодарский Край
                         </Typography>
-                        <Typography noWrap={true} margin={2}>
+                        <Typography onClick={() => navigate('/login')} noWrap={true} margin={2}>
                             Логин
                         </Typography>
-                        <Typography noWrap={true} margin={2}>
+                        <Typography onClick={() => navigate('/registration')} noWrap={true} margin={2}>
                             Регистрация
                         </Typography>
                     </Box>

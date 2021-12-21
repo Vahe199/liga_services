@@ -41,7 +41,6 @@ const ModalCategories = ({setItems, data, setShowModal,category, showModal}) => 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const canBeOpen = open && Boolean(anchorEl);
     const id = canBeOpen ? 'transition-popper' : undefined;
-
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
         setOpen((previousOpen) => !previousOpen);
