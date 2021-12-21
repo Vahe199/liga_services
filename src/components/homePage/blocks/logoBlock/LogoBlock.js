@@ -9,15 +9,18 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import {useNavigate} from "react-router-dom"
 import {LocationSvg} from "../../../../assets/svg/header/LocationSvg";
+import {useStyles} from "../../../../globalStyles/HomePageStyles";
+import {useState} from "react";
 
 const pages = ['Заказать обратный звонок', 'Задать вопрос', 'Blog'];
 
 
 
 const LogoBlock = () => {
-    const navigate = useNavigate()
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const navigate = useNavigate();
+    const classes = useStyles();
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -79,10 +82,10 @@ const LogoBlock = () => {
                 </Box>
                 <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                     <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
-                        <Typography onClick={() => navigate('/clientPage')} noWrap={true} margin={2}>
+                        <Typography className={classes.item} style={{cursor: 'pointer'}} onClick={() => navigate('/clientPage')} noWrap={true} margin={2}>
                             Заказать обратный звонок
                         </Typography>
-                        <Typography noWrap={true} margin={2} onClick={(e)=>console.log(e.target.innerText,"ee")}>
+                        <Typography className={classes.item} noWrap={true} margin={2} onClick={(e)=>console.log(e.target.innerText,"ee")}>
                             Задать вопрос
                         </Typography>
                     </Box>
@@ -90,13 +93,13 @@ const LogoBlock = () => {
                         <IconButton>
                             <LocationSvg />
                         </IconButton>
-                        <Typography noWrap={true} margin={2}>
+                        <Typography className={classes.item} noWrap={true} margin={2}>
                             Краснодарский Край
                         </Typography>
-                        <Typography onClick={() => navigate('/login')} noWrap={true} margin={2}>
+                        <Typography className={classes.item} onClick={() => navigate('/login')} noWrap={true} margin={2}>
                             Логин
                         </Typography>
-                        <Typography onClick={() => navigate('/registration')} noWrap={true} margin={2}>
+                        <Typography className={classes.item} onClick={() => navigate('/registration')} noWrap={true} margin={2}>
                             Регистрация
                         </Typography>
                     </Box>
