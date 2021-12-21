@@ -1,6 +1,9 @@
 import './App.css';
 import HomePage from "./components/homePage/HomePage";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import LoginPage from "./components/authPages/loginPage/LoginPage";
+import RegistrationPage from "./components/authPages/registrationPage/RegistrationPage";
+import ClientBar from "./clients/ClientBar";
 
 
 function App() {
@@ -16,7 +19,7 @@ function App() {
         </Routes>
         {/*<ClientBar/>*/}
       </BrowserRouter>
-
+      </div>
   )
 }
 

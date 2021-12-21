@@ -2,7 +2,7 @@ import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Popper from '@mui/material/Popper';
-import PopupState, { bindToggle, bindPopper } from 'material-ui-popup-state';
+import PopupState from 'material-ui-popup-state';
 import Fade from '@mui/material/Fade';
 import Paper from '@mui/material/Paper';
 import {makeStyles} from "@material-ui/core";
@@ -41,6 +41,7 @@ const ModalCategories = ({setItems, data, setShowModal,category, showModal}) => 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const canBeOpen = open && Boolean(anchorEl);
     const id = canBeOpen ? 'transition-popper' : undefined;
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
         setOpen((previousOpen) => !previousOpen);

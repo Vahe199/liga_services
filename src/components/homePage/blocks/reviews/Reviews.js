@@ -7,6 +7,7 @@ import Avatar from "@mui/material/Avatar";
 import MainTitle from "../../../UI/common/titles/MainTitles";
 import {reviews} from "../../../../utils/data/reviews/Reviiews";
 import Box from "@mui/material/Box";
+import RatingBlock from "../../../UI/common/ratingBlock/RatingBlock";
 
 export const useStyles = makeStyles({
     card: {
@@ -38,11 +39,15 @@ const Reviews = () => {
                             <CardContent>
                                 <Box className={classes.cardContent}>
                                     <Avatar style={{height: '50px', width: '50px'}} />
-                                    <Typography noWrap gutterBottom style={{fontSize: '24px', paddingLeft: '10px'}}>
-                                        {review.name}
-                                    </Typography>
+                                    <Box>
+                                        <Typography noWrap gutterBottom style={{fontSize: '24px', paddingLeft: '10px'}}>
+                                            {review.name}
+                                        </Typography>
+                                        <RatingBlock reviews={60} size={'small'} />
+                                    </Box>
+
                                 </Box>
-                                {/*<Rating />*/}
+
                                 <Typography style={{fontSize: '18px', textAlign: 'left'}}>
                                     Повседневная практика показывает, что укрепление и развитие структуры требуют от нас анализа дальнейших направлений развития. Товарищи! консультация с широким активом способствует подготовки и реализации.
                                 </Typography>
