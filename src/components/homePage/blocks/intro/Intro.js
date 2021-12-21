@@ -34,9 +34,13 @@ export const useStyles = makeStyles({
 });
 
 
-const Intro = () => {
+const Intro = ({categoriesRef}) => {
     const classes = useStyles();
-    const [showModal, setShowModal] = useState(true);
+    const [showModal, setShowModal] = useState(false);
+
+    const scrollToCategories = () => {
+        categoriesRef.current.scrollIntoView()
+    }
     return (
         <Grid mt={'20px'} mb={'80px'} container spacing={2}>
             {showModal && <ModalNewTask
@@ -51,8 +55,10 @@ const Intro = () => {
                 <Typography mb={'10px'} color={'#000'}>Опишите подробно проблему или задачу и мы подберем для вас исполнителя, или</Typography>
                 <Typography mb={'20px'} style={{color: 'grey'}}>Выберите услугу из списка</Typography>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <GreenArrowSvg />
-                    <Typography style={{color: 'grey', paddingLeft: 10}}>Стать исполнителем и начать зарабатывть</Typography>
+                    <span style={{cursor: 'pointer'}} onClick={scrollToCategories}>
+                      <GreenArrowSvg />
+                    </span>
+                    <Typography onClick={scrollToCategories} style={{color: 'grey', paddingLeft: 10, cursor: 'pointer'}}>Стать исполнителем и начать зарабатывть</Typography>
                 </Box>
             </Grid>
             <Grid style={{position: 'relative'}} item xs={12} md={6}>

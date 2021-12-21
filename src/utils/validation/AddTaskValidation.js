@@ -1,24 +1,16 @@
-import {object, string, ref, number} from "yup";
-// service_type: '', service_name: '', address: '', description: '', file
+import {object, string} from "yup";
+
 export const AddTaskValidation = object().shape({
-    name: string()
+    service_type: string().required('Обязательное поле'),
+    service_name: string()
         .required('Обязательное поле')
-        .min(4, 'Слишком короткый')
-        .max(20, 'Слишком длинный'),
-    phone: number()
-        .typeError('Толко цифры')
         .min(3, 'Номер телефона недействителен')
         .max(18, 'Номер телефона недействителен'),
-    email: string()
+    address: string()
         .required('Обязательное поле')
         .min(3, 'Слишком короткый')
-        .max(250, 'Слишком длинный')
-        .email('Это не электронная почта'),
-    password: string()
-        .required('Обязательное поле')
+        .max(250, 'Слишком длинный'),
+    description: string()
         .min(4, 'Слишком короткый')
-        .max(20, 'Слишком длинный'),
-    confirmPassword: string()
-        .required('Обязательное поле')
-        .oneOf([ref("password")], "пароль не совпадает")
+        .max(250, 'Слишком длинный'),
 });

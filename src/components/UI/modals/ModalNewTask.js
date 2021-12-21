@@ -1,15 +1,16 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import HeaderModal from "./blocks/HeaderModal";
-import {AuthValidation} from "../../../utils/validation/AuthValidation";
-import {FormControl, IconButton, InputLabel, Select, TextField} from "@mui/material";
+import {FormControl, Select, TextField} from "@mui/material";
 import {Formik} from "formik";
 import {useStyles} from "../../../globalStyles/ModalStyles";
 import MenuItem from "@mui/material/MenuItem";
 import {DownloadSvg} from "../../../assets/svg/DownloadSvg";
+import {AddTaskValidation} from "../../../utils/validation/AddTaskValidation";
+import {FormHelperText} from "@material-ui/core";
+import ModalForAuth from "./ModalForAuth";
 
 const style = {
     position: 'absolute',
@@ -24,8 +25,7 @@ const style = {
 };
 
 const ModalNewTask = ({showModal, setShowModal}) => {
-    //const [open, setOpen] = React.useState(false);
-    //const handleOpen = () => setOpen(true);
+    const [open, setOpen] = React.useState(false);
     const handleClose = () => setShowModal(false);
     const classes = useStyles();
 
@@ -39,13 +39,15 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                 style={{border: 'none'}}
             >
                 <Box sx={style}>
+                    {open && <ModalForAuth open={open} setOpen={setOpen} />}
                     <Box className={classes.root}>
                         <HeaderModal title={'Оставить новое задание'} close={handleClose} />
                         <Formik
                             initialValues={{ service_type: '', service_name: '', address: '', description: '', file: '' }}
-                            //validationSchema={AuthValidation}
+                            validationSchema={AddTaskValidation}
                             onSubmit={async (values, action) => {
                                 console.log(values, 'values')
+                                setOpen(true)
                                 action.resetForm()
                             }}
                         >
@@ -66,13 +68,13 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                                     onChange={handleChange}
                                                     value={values.service_type}
                                                     name={'service_type'}
+                                                    error={touched.service_type && Boolean(errors.service_type)}
                                                 >
                                                     <MenuItem value={'Ten'}>Ten</MenuItem>
                                                     <MenuItem value={'Twenty'}>Twenty</MenuItem>
                                                     <MenuItem value={'Thirty'}>Thirty</MenuItem>
                                                 </Select>
-                                                {/*error={touched.service_type && Boolean(errors.service_type)}*/}
-                                                {/*helperText={touched.service_type && errors.service_type}*/}
+                                                {touched.service_type && errors.service_type && <FormHelperText style={{color: '#F44336', paddingLeft: '15px'}}>{errors.service_type}</FormHelperText>}
                                             </FormControl>
                                         </Box>
                                         <Box className={classes.boxInput}>
@@ -115,8 +117,8 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                         <Box className={classes.otherDocs}>
                                             <p style={{fontSize: '15px', color: '#000', margin: '5px 0 15px 0'}}>Желаемый срок начала работ</p>
                                             <Box>
-                                                <span className={classes.time}>Сегодня</span>
-                                                <span style={{marginLeft: '20px'}} className={classes.time}>Завтра</span>
+                                                {/*<span className={classes.time}>Сегодня</span>*/}
+                                                {/*<span style={{marginLeft: '20px'}} className={classes.time}>Завтра</span>*/}
                                             </Box>
                                             <Box>
                                                 <input
