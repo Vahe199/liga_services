@@ -5,6 +5,8 @@ import LoginPage from "./components/authPages/loginPage/LoginPage";
 import RegistrationPage from "./components/authPages/registrationPage/RegistrationPage";
 import ClientBar from "./clients/ClientBar";
 import ClientProfilePage from "./components/clientPages/ClientProfilePage";
+import {MainNavBar} from "./components/MainNavBar";
+import React from "react";
 
 
 function App() {
@@ -12,9 +14,12 @@ function App() {
       <BrowserRouter>
         <Routes>
              <Route path='/' element={<HomePage />} />
-             <Route path='/registration' element={<RegistrationPage />} />
-            <Route path='/login' element={<LoginPage />} />
-            <Route path='/clientPage' element={<ClientProfilePage />} />
+             <Route path='registration' element={<RegistrationPage />} />
+            <Route path='login' element={<LoginPage />} />
+            <Route path='clientPage/*' element={<ClientProfilePage />} >
+                <Route path={":page"} element={<p>Our contact</p>}/>
+                {/*<Route path={"team"} element={<p>Our team</p>}/>*/}
+            </Route>
             {/*test*/}
             {/*<Route path='/' element={<RegistrationPage />} />*/}
             {/*<Route path='/' element={<LoginPage />} />*/}
