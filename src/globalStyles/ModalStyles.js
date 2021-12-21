@@ -1,12 +1,14 @@
 import {makeStyles} from "@material-ui/core";
 
-
 export const useStyles = makeStyles({
     root: {
-        display: 'flex',
         //input
+        // '& MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
+        //   width: '100%',
+        // },
         '& .css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
             marginBottom: '10px',
+            width: '100%',
         },
         '& .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root': {
             borderRadius: '10px',
@@ -25,6 +27,7 @@ export const useStyles = makeStyles({
             marginBottom: '10px',
             borderRadius: '10px',
             width: '160px',
+            whiteSpace: 'noWrap',
         },
         '& .css-1e6y48t-MuiButtonBase-root-MuiButton-root:hover': {
             backgroundColor: '#3a4e61',
@@ -33,35 +36,26 @@ export const useStyles = makeStyles({
         '& .css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label': {
             color: '#808080',
             fontSize: '16px',
-        }
-    },
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        '@media (max-width: 1400px)' : {
-            width: '70%'
         },
-        '@media (max-width: 1000px)' : {
-            height: '100vh',
-            width: '100%',
-        }
-    },
-    img: {
-      height: '100vh',
-        '@media (max-width: 1400px)' : {
-            width: '100%'
+        //select
+        '& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
+          padding: '10px',
         },
-        '@media (max-width: 1000px)' : {
-            display: 'none'
-        }
+        //textArea
+        '& .css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root': {
+          borderRadius: '10px',
+          border: '1px solid #808080',
+        },
     },
-    subContainer: {
+    title: {
+        color: '#445E77',
+        fontWeight: '500',
+        fontSize: '25px',
+        margin: 0,
+    },
+    headerBlock: {
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
     },
     boxInput: {
@@ -72,35 +66,36 @@ export const useStyles = makeStyles({
         alignItems: 'center',
         marginBottom: '25px',
     },
-    title: {
-        color: '#445E77',
-        fontWeight: '500',
-        fontSize: '25px',
+    inputText: {
+        fontSize: '15px',
+        textAlign: 'left',
+        width: '100%',
+        marginTop: '15px',
         marginBottom: '0',
     },
-    inputText: {
-      fontSize: '15px',
-      textAlign: 'left',
-      width: '70%',
-      marginTop: '15px',
-      marginBottom: '0',
-    },
     input: {
-        width: '70%',
+        width: '100%',
         height: '16px',
         fontSize: '25px',
     },
     checkbox: {
-      marginTop: '20px',
-      alignSelf: 'flex-start',
-      paddingLeft: '120px',
+        marginTop: '20px',
+        alignSelf: 'flex-start',
+        paddingLeft: '120px',
+    },
+    time: {
+      backgroundColor: 'rgba(0, 0, 0, 0.15)',
+      padding: '12px 42px',
+      borderRadius: '10px',
+      width: '150px',
+        cursor: 'pointer',
     },
     footer: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '25px',
-        width: '70%',
+        marginTop: '10px',
+        width: '100%',
     }
 });

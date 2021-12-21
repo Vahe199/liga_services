@@ -1,9 +1,7 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useState} from 'react';
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import {Typography} from "@mui/material";
 import {makeStyles} from "@material-ui/core";
-import Button from "@mui/material/Button";
 import ModalCategories from "../../../UI/modals/ModalCategories";
 import {categories} from "../../../../utils/data/categories/Categories";
 import MainTitle from "../../../UI/common/titles/MainTitles";
@@ -23,17 +21,21 @@ export const useStyles = makeStyles({
         borderRadius: '20px',
         color: '#000',
         height: '70px',
-        //whiteSpace: 'nowrap',
-        width: '340px',
         margin: '20px',
-        //position: 'relative',
     },
     container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'relative'
+        position: 'relative',
+        columnCount: '4',
+        columnRule: '3px dashed #445E77',
+        '@media (max-width: 1450px)' : {
+            columnCount: '3'
+        },
+        '@media (max-width: 1130px)' : {
+            columnCount: '2'
+        },
+        '@media (max-width: 780px)' : {
+            columnCount: '1'
+        },
     }
 });
 
@@ -56,7 +58,7 @@ const CategoriesBlock = () => {
     return (
         <Box style={{background: 'rgba(62, 87, 108, 0.3)'}}>
             <Container maxWidth="xl">
-                <MainTitle mb={'75px'} mb={'75px'}>Категории услуг</MainTitle>
+                <MainTitle mb={'75px'}>Категории услуг</MainTitle>
                 <Box className={classes.container}>
                     {categories.map((category,i) =>
                             <ModalCategories key={i}
