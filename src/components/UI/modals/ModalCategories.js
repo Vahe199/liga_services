@@ -9,9 +9,9 @@ import {makeStyles} from "@material-ui/core";
 
 export const useStyles = makeStyles({
     modalContainer: {
-        backgroundColor: '#E1E3E3',
-        borderRadius: '20px',
-        width: '80vw',
+        backgroundColor: '#E1E3E3 !important',
+        borderRadius: '20px !important',
+        width: '70vw',
         padding: '20px',
         marginTop:-15,
         columnCount: 3,

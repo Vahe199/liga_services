@@ -7,6 +7,7 @@ import ClientBar from "./clients/ClientBar";
 import ClientProfilePage from "./components/clientPages/ClientProfilePage";
 import {MainNavBar} from "./components/MainNavBar";
 import React from "react";
+import {Anketa} from "./components/clientPages/Anketa";
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
              <Route path='registration' element={<RegistrationPage />} />
             <Route path='login' element={<LoginPage />} />
             <Route path='clientPage/*' element={<ClientProfilePage />} >
-                <Route path={":page"} element={<p>Our contact</p>}/>
+                <Route path={":page?"} element={<Anketa/>}/>
                 {/*<Route path={"team"} element={<p>Our team</p>}/>*/}
             </Route>
             {/*test*/}

@@ -119,6 +119,16 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                             <Box>
                                                 {/*<span className={classes.time}>Сегодня</span>*/}
                                                 {/*<span style={{marginLeft: '20px'}} className={classes.time}>Завтра</span>*/}
+                                                <TextField
+                                                    id="date"
+                                                    label="Birthday"
+                                                    type="date"
+                                                    defaultValue="2017-05-24"
+                                                    sx={{ width: 220 }}
+                                                    InputLabelProps={{
+                                                        shrink: true,
+                                                    }}
+                                                />
                                             </Box>
                                             <Box>
                                                 <input
