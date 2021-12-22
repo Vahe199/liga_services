@@ -26,7 +26,7 @@ export const useStyles = makeStyles({
     container: {
         position: 'relative',
         columnCount: '4',
-        columnRule: '3px dashed #445E77',
+        columnRule: '2px dashed #445E77',
         '@media (max-width: 1450px)' : {
             columnCount: '3'
         },

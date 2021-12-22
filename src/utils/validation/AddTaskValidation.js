@@ -13,4 +13,8 @@ export const AddTaskValidation = object().shape({
     description: string()
         .min(4, 'Слишком короткый')
         .max(250, 'Слишком длинный'),
+    time_from: string()
+        .required('Обязательное поле'),
+    time_to: string()
+        .required('Обязательное поле')
 });
