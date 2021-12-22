@@ -11,6 +11,7 @@ import {useNavigate} from "react-router-dom"
 import {LocationSvg} from "../../../../assets/svg/header/LocationSvg";
 import {useStyles} from "../../../../globalStyles/HomePageStyles";
 import {useState} from "react";
+
 const pages = [
     {
         name: 'Заказать обратный звонок',

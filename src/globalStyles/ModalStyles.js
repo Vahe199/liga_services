@@ -26,7 +26,7 @@ export const useStyles = makeStyles({
             fontWeight: 500,
             marginBottom: '10px',
             borderRadius: '10px',
-            width: '160px',
+            width: '190px',
             whiteSpace: 'noWrap',
         },
         '& .css-1e6y48t-MuiButtonBase-root-MuiButton-root:hover': {
@@ -37,6 +37,9 @@ export const useStyles = makeStyles({
             color: '#808080',
             fontSize: '16px',
         },
+        '& MuiBox-root css-0': {
+            width: '40%',
+        },
         //select
         '& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
           padding: '10px',
@@ -46,6 +49,13 @@ export const useStyles = makeStyles({
           borderRadius: '10px',
           border: '1px solid #808080',
         },
+        //DatePicker
+        '& .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root': {
+            width: '170px',
+            borderRadius: '10px',
+            border: '1px solid #808080',
+            height: '45px',
+        }
     },
     title: {
         color: '#445E77',
@@ -71,7 +81,7 @@ export const useStyles = makeStyles({
         textAlign: 'left',
         width: '100%',
         marginTop: '15px',
-        marginBottom: '0',
+        marginBottom: '4px',
     },
     input: {
         width: '100%',

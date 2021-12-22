@@ -11,9 +11,8 @@ import {DownloadSvg} from "../../../assets/svg/DownloadSvg";
 import {AddTaskValidation} from "../../../utils/validation/AddTaskValidation";
 import {FormHelperText} from "@material-ui/core";
 import ModalForAuth from "./ModalForAuth";
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import DatePicker from '@mui/lab/DatePicker';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import CustomDatePicker from "../common/datePicker/CustomDatePicker";
+
 const style = {
     position: 'absolute',
     top: '50%',
@@ -47,7 +46,7 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                     <Box className={classes.root}>
                         <HeaderModal title={'Оставить новое задание'} close={handleClose} />
                         <Formik
-                            initialValues={{ service_type: '', service_name: '', address: '', description: '', file: '' }}
+                            initialValues={{ service_type: '', service_name: '', address: '', description: '', file: '', time_from: '', time_to: '' }}
                             validationSchema={AddTaskValidation}
                             onSubmit={async (values, action) => {
                                 console.log(values, 'values')
@@ -62,6 +61,7 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                   handleChange,
                                   handleBlur,
                                   handleSubmit,
+                                  setFieldValue
                               }) => (
                                 <form onSubmit={handleSubmit}>
                                     <Box className={classes.subContainer}>
@@ -113,24 +113,25 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                         </Box>
                                         <Box className={classes.otherDocs}>
                                             <p style={{fontSize: '15px', color: '#000', margin: '5px 0 15px 0'}}>Желаемый срок начала работ</p>
-                                            <Box>
-                                                {/*<span className={classes.time}>Сегодня</span>*/}
-                                                {/*<span style={{marginLeft: '20px'}} className={classes.time}>Завтра</span>*/}
-                                                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                                    <DatePicker
-                                                        label="Basic example"
-                                                        value={value}
-                                                        onChange={(newValue) => {
-                                                            setValue(newValue);
-                                                        }}
-                                                        renderInput={(params) => <TextField {...params} />}
+                                            <Box style={{display: 'flex'}}>
+                                                    <CustomDatePicker
+                                                        value={values.time_from}
+                                                        name={'time_from'}
+                                                        fun={setFieldValue}
+                                                        touched={touched.time_from}
+                                                        errors={errors.time_from}
                                                     />
-                                                </LocalizationProvider>
+                                                    <CustomDatePicker
+                                                        value={values.time_to}
+                                                        name={'time_to'}
+                                                        fun={setFieldValue}
+                                                        touched={touched.time_to}
+                                                        errors={errors.time_to}
+                                                    />
                                             </Box>
                                             <Box>
                                                 <input
                                                     color="primary"
-                                                    accept="image/*"
                                                     type="file"
                                                     value={values.file}
                                                     onChange={handleChange}
@@ -141,7 +142,6 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                                      <DownloadSvg />
                                                     <p style={{fontSize: '15px', paddingLeft: '20px', color: '#000'}}>Прикрепить файл</p>
                                                 </label>
-
                                             </Box>
                                         </Box>
                                         <Box className={classes.footer}>
