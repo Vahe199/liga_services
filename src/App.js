@@ -8,7 +8,10 @@ import ClientProfilePage from "./components/clientPages/ClientProfilePage";
 import {MainNavBar} from "./components/MainNavBar";
 import React from "react";
 
-import {Anketa} from "./components/clientPages/Anketa";
+import {Worksheet} from "./components/clientPages/Worksheet/Worksheet";
+import {Backing} from "./components/clientPages/Backing/Backing";
+import ScrollToTop from "./utils/scrollToTop/ScrollToTop";
+import {MyOrders} from "./components/clientPages/MyOrders/MyOrders";
 
 
 
@@ -20,9 +23,9 @@ function App() {
              <Route path='registration' element={<RegistrationPage />} />
             <Route path='login' element={<LoginPage />} />
             <Route path='clientPage/*' element={<ClientProfilePage />} >
-                <Route path={":page?"} element={<Anketa/>}/>
-                {/*<Route path={"team"} element={<p>Our team</p>}/>*/}
-
+                <Route path={"worksheet"} element={<Worksheet/>}/>
+                <Route path={"backing"} element={<Backing />}/>
+                <Route path={"MyOrders"} element={<MyOrders/>}/>
             </Route>
         </Routes>
       </BrowserRouter>

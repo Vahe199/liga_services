@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
@@ -17,7 +16,8 @@ import UserSvg from "../assets/svg/header/UserSvg";
 import NotificationSvg from "../assets/svg/header/NotificationSvj";
 import MessageSvg from "../assets/svg/header/MessageSvg";
 import {useNavigate} from "react-router-dom";
-const pages = ['Мои заказы', 'Анкета', 'Поддержка'];
+
+const pages = [{title:'Мои заказы',path:"MyOrders"}, {title:'Анкета',path:"worksheet"}, {title:'Поддержка',path:"backing"}];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const useNavStyles = makeStyles({
   root:{
@@ -34,7 +34,7 @@ const useNavStyles = makeStyles({
   },
     btn: {
         "&:hover": {
-            background: '#445e77 !important',
+            background: '#6585a5 !important',
         }
     }
 });
@@ -51,9 +51,9 @@ export const MainNavBar = () => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = (e) => {
-    navigate(`/clientPage/${e.target.innerText}`)
-    setAnchorElNav(e.target.innerText);
+  const handleCloseNavMenu = (path) => {
+     navigate(`${path}`)
+     setAnchorElNav(path);
   };
 
   const handleCloseUserMenu = () => {
@@ -104,8 +104,8 @@ export const MainNavBar = () => {
                   }}
               >
                 {pages.map((page) => (
-                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                      <Typography  textAlign="center">{page}</Typography>
+                    <MenuItem key={page.title} onClick={()=>handleCloseNavMenu(page.path)}>
+                      <Typography  textAlign="center">{page.title}</Typography>
                     </MenuItem>
                 ))}
               </Menu>
@@ -121,11 +121,11 @@ export const MainNavBar = () => {
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
                   <Button
-                      key={page}
-                      onClick={handleCloseNavMenu}
-                      sx={{ my: 2, color: anchorElNav === page ? '#445e77':'#000', display: 'block',textTransform: "none" }}
+                      key={page.title}
+                      onClick={()=>handleCloseNavMenu(page.path)}
+                      sx={{ my: 2, color: anchorElNav === page.path ? '#445e77':'#000', display: 'block',textTransform: "none" }}
                   >
-                    {page}
+                    {page.title}
                   </Button>
               ))}
             </Box>
