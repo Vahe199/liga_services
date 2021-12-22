@@ -24,11 +24,6 @@ const useNavStyles = makeStyles({
    "& .MuiAppBar-root":{
      backgroundColor:"#fff"
    },
-    "& .MuiButton-root": {
-      "&:focus": {
-        // color: '#445e77',
-      }
-    }
   },
   img:{
     width:80,
@@ -36,7 +31,12 @@ const useNavStyles = makeStyles({
   },
   text: {
     color:"#000000"
-  }
+  },
+    btn: {
+        "&:hover": {
+            background: '#445e77 !important',
+        }
+    }
 });
 export const MainNavBar = () => {
  const navigate = useNavigate()
@@ -114,9 +114,9 @@ export const MainNavBar = () => {
                 variant="h6"
                 noWrap
                 component="div"
-                sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+                sx={{ flexGrow: 1, color:"#e20613", display: { xs: 'flex', md: 'none' } }}
             >
-              LOGO
+                Лига услуг
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
@@ -129,7 +129,8 @@ export const MainNavBar = () => {
                   </Button>
               ))}
             </Box>
-
+<Button className={classes.btn} sx={{background: "#445E77",textTransform: "none"}}
+    variant="contained">Профиль исполнителя</Button>
             <Box sx={{ flexGrow: 0}}>
               <IconButton>
                 <MessageSvg/>

@@ -11,7 +11,9 @@ import {DownloadSvg} from "../../../assets/svg/DownloadSvg";
 import {AddTaskValidation} from "../../../utils/validation/AddTaskValidation";
 import {FormHelperText} from "@material-ui/core";
 import ModalForAuth from "./ModalForAuth";
-
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DatePicker from '@mui/lab/DatePicker';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
 const style = {
     position: 'absolute',
     top: '50%',
@@ -26,6 +28,8 @@ const style = {
 
 const ModalNewTask = ({showModal, setShowModal}) => {
     const [open, setOpen] = React.useState(false);
+    const [value, setValue] = React.useState(null);
+
     const handleClose = () => setShowModal(false);
     const classes = useStyles();
 
@@ -105,30 +109,23 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                         </Box>
                                         <Box style={{marginBottom: '5px'}} className={classes.boxInput}>
                                             <p className={classes.inputText}>Описание</p>
-                                            <TextField
-                                                multiline
-                                                style={{fontSize: '25px'}}
-                                                rows={4}
-                                                name="description"
-                                                onChange={handleChange}
-                                                value={values.description}
-                                            />
+
                                         </Box>
                                         <Box className={classes.otherDocs}>
                                             <p style={{fontSize: '15px', color: '#000', margin: '5px 0 15px 0'}}>Желаемый срок начала работ</p>
                                             <Box>
                                                 {/*<span className={classes.time}>Сегодня</span>*/}
                                                 {/*<span style={{marginLeft: '20px'}} className={classes.time}>Завтра</span>*/}
-                                                <TextField
-                                                    id="date"
-                                                    label="Birthday"
-                                                    type="date"
-                                                    defaultValue="2017-05-24"
-                                                    sx={{ width: 220 }}
-                                                    InputLabelProps={{
-                                                        shrink: true,
-                                                    }}
-                                                />
+                                                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                                    <DatePicker
+                                                        label="Basic example"
+                                                        value={value}
+                                                        onChange={(newValue) => {
+                                                            setValue(newValue);
+                                                        }}
+                                                        renderInput={(params) => <TextField {...params} />}
+                                                    />
+                                                </LocalizationProvider>
                                             </Box>
                                             <Box>
                                                 <input
