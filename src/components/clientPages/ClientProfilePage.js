@@ -24,7 +24,7 @@ const ClientProfilePage = () => {
             <div  className={classes. container}>
                 <Outlet/>
             </div>
-         <Footer/>
+         {/*<Footer/>*/}
         </div>
     )
 }

@@ -48,6 +48,10 @@ export const useStyles = makeStyles({
         '& .css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root': {
           borderRadius: '10px',
           border: '1px solid #808080',
+            height: '73px',
+        },
+        '& MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input': {
+            height: '100%'
         },
         //DatePicker
         '& .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root': {
@@ -55,6 +59,10 @@ export const useStyles = makeStyles({
             borderRadius: '10px',
             border: '1px solid #808080',
             height: '45px',
+        },
+        //input file
+        '& .MuiBox-root css-0': {
+            width: '40%',
         }
     },
     title: {
@@ -74,7 +82,7 @@ export const useStyles = makeStyles({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: '25px',
+        marginBottom: '18px',
     },
     inputText: {
         fontSize: '15px',

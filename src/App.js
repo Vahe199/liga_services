@@ -3,16 +3,12 @@ import HomePage from "./components/homePage/HomePage";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import LoginPage from "./components/authPages/loginPage/LoginPage";
 import RegistrationPage from "./components/authPages/registrationPage/RegistrationPage";
-import ClientBar from "./clients/ClientBar";
 import ClientProfilePage from "./components/clientPages/ClientProfilePage";
-import {MainNavBar} from "./components/MainNavBar";
 import React from "react";
 
 import {Worksheet} from "./components/clientPages/Worksheet/Worksheet";
 import {Backing} from "./components/clientPages/Backing/Backing";
-import ScrollToTop from "./utils/scrollToTop/ScrollToTop";
 import {MyOrders} from "./components/clientPages/MyOrders/MyOrders";
-
 
 
 function App() {
