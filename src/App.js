@@ -25,8 +25,8 @@ function App() {
             </Route>
         </Routes>
       </BrowserRouter>
-      {/* <ClientBar/>
-        <BlockBar /> */}
+      <ClientBar/>
+        {/* <BlockBar /> */}
       </div>
   )
 }
