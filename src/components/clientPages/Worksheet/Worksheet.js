@@ -10,14 +10,15 @@ import ProfileActions from "./ProfileCard/ProfileActions";
 
 const useAncetaStyles = makeStyles({
     root:{
-        backgroundColor:"#CFCFCF",
+         height:"100%",
+        marginBottom:70,
     }
 })
 
 export const Worksheet = () =>{
     const classes = useAncetaStyles()
     return(
-        <Grid container spacing={2}>
+        <Grid container spacing={2} className={classes.root}>
             <Grid item xs={4}>
                 <ProfileStatus/>
                 <SocialNetworks/>
