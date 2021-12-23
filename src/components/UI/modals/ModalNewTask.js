@@ -32,6 +32,7 @@ const ModalNewTask = ({showModal, setShowModal}) => {
     const handleClose = () => setShowModal(false);
     const classes = useStyles();
 
+
     return (
         <div>
             <Modal
@@ -107,12 +108,22 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                                 helperText={touched.address && errors.address}
                                             />
                                         </Box>
-                                        <Box style={{marginBottom: '5px'}} className={classes.boxInput}>
+                                        <Box style={{marginBottom: '50px'}} className={classes.boxInput}>
                                             <p className={classes.inputText}>Описание</p>
-
+                                            <TextField
+                                                variant={"outlined"}
+                                                multiline
+                                                className={classes.input}
+                                                name="description"
+                                                autoComplete={'off'}
+                                                value={values.description}
+                                                onChange={handleChange}
+                                                error={touched.description && Boolean(errors.description)}
+                                                helperText={touched.description && errors.description}
+                                            />
                                         </Box>
                                         <Box className={classes.otherDocs}>
-                                            <p style={{fontSize: '15px', color: '#000', margin: '5px 0 15px 0'}}>Желаемый срок начала работ</p>
+                                            <p style={{fontSize: '15px', color: '#000', margin: '55px 0 10px 0'}}>Желаемый срок начала работ</p>
                                             <Box style={{display: 'flex'}}>
                                                     <CustomDatePicker
                                                         value={values.time_from}
@@ -136,6 +147,7 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                                     value={values.file}
                                                     onChange={handleChange}
                                                     id="icon-button-file"
+                                                    accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                                                     style={{ display: 'none' }}
                                                 />
                                                 <label style={{display: 'flex', marginTop: '10px', justifyContent: 'flex-start', alignItems: 'center'}} htmlFor="icon-button-file">
