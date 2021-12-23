@@ -10,10 +10,10 @@ const Footer = () => {
   return (
       <Box style={{backgroundColor: '#EBEBEB'}}>
         <Container maxWidth="lg">
-          <Grid pb={'90px'} container spacing={9}>
+          <Grid pb={'50px'} container spacing={9}>
             <Grid item xs={12} md={6} lg={3}>
-              <Typography mb={'20px'} style={{fontSize: '32px', fontWeight: '500'}}>Lorem ipsum</Typography>
-              <Typography style={{fontSize: '24px'}}>dolor sit amet
+              <Typography mb={'10px'} style={{fontSize: '26px', fontWeight: '500'}}>Lorem ipsum</Typography>
+              <Typography style={{fontSize: '18px'}}>dolor sit amet
                 consectetur adipiscing
                 Suspendisse quis
                 fermentum lectus
@@ -25,8 +25,8 @@ const Footer = () => {
               </Typography>
             </Grid>
             <Grid item xs={12} md={6} lg={3}>
-              <Typography mb={'20px'} style={{fontSize: '32px', fontWeight: '500'}}>Lorem ipsum</Typography>
-              <Typography style={{fontSize: '24px'}}>dolor sit amet
+              <Typography mb={'10px'} style={{fontSize: '26px', fontWeight: '500'}}>Lorem ipsum</Typography>
+              <Typography style={{fontSize: '18px'}}>dolor sit amet
                 consectetur adipiscing
                 Suspendisse quis
                 fermentum lectus
@@ -38,8 +38,8 @@ const Footer = () => {
               </Typography>
             </Grid>
             <Grid item xs={12} md={6} lg={3}>
-              <Typography mb={'20px'} style={{fontSize: '32px', fontWeight: '500'}}>Lorem ipsum</Typography>
-              <Typography style={{fontSize: '24px'}}>dolor sit amet
+              <Typography mb={'10px'} style={{fontSize: '26px', fontWeight: '500'}}>Lorem ipsum</Typography>
+              <Typography style={{fontSize: '18px'}}>dolor sit amet
                 consectetur adipiscing
                 Suspendisse quis
                 fermentum lectus
@@ -55,7 +55,7 @@ const Footer = () => {
                 <img src={logo} alt="" />
               </Box>
               <FooterIconsBar/>
-              <Typography style={{fontSize: '24px'}}>dolor sit amet
+              <Typography style={{fontSize: '18px'}}>dolor sit amet
                 consectetur adipiscing
                 Suspendisse quis
                 fermentum lectus
@@ -63,7 +63,7 @@ const Footer = () => {
             </Grid>
           </Grid>
         </Container>
-        <Box style={{backgroundColor: '#5A7287', height: '67px'}}></Box>
+        <Box style={{backgroundColor: '#5A7287', height: '67px'}}/>
       </Box>
   );
 };
