@@ -12,29 +12,29 @@ const OrderBlock = ({order}) => {
     const [reviewField, setShowReviewField] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
     return (
-        <Box style={{borderRadius: '20px', boxShadow: '4px 4px 10px rgba(0, 0, 0, 0.15)',  padding:'30px 30px'}}>
+        <Box >
             <Box style={{display: "flex",justifyContent: "space-evenly",alignItems: "center"}}>
-                <Box style={{width:'50%', color: '#000000'}}>
-                    <Typography style={{fontWeight: '500', fontSize: '20px'}}>
+                <Box style={{width:'50%'}}>
+                    <Typography variant={'h5'}>
                         Категория: Разное
                     </Typography>
                 </Box>
 
                 <Box style={{width:'50%', textAlign:'right'}}>
-                    <Typography>
+                    <Typography variant={'h6'}>
                         Дата: 15 нояб.(пн) - 30 дек. (чт)
                     </Typography>
                 </Box>
 
             </Box>
-            <Divider color={'#808080'} style={{margin: '28px 0'}} />
+            <Divider color={'#808080'} style={{margin: '10px 0'}} />
 
             <Box style={{display: "flex",justifyContent: "space-evenly",alignItems: "center"}}>
                 <Box style={{ width:'50%'}}>
-                    <Typography style={{fontWeight: '500', fontSize: '20px'}}>Создание Сайтов</Typography>
+                    <Typography variant={'h4'}>Создание Сайтов</Typography>
                 </Box>
                 <Box style={{display:'flex', justifyContent:'flex-end', width:'50%'}}>
-                    <Typography style={{fontWeight: '500', fontSize: '20px'}}> Место встречи </Typography>
+                    <Typography variant={'h5'}> Место встречи </Typography>
                 </Box>
             </Box>
 
@@ -43,19 +43,19 @@ const OrderBlock = ({order}) => {
                     <Typography style={{fontSize: '20px'}} color={'#5A7287'}>от 10000 руб.</Typography>
                 </Box>
                 <Box style={{display:'flex', justifyContent:'flex-end', width:'50%'}}>
-                    <Typography> Дистанционно </Typography>
+                    <Typography variant={'h6'}> Дистанционно </Typography>
                 </Box>
             </Box>
 
             <Box style={{display: "flex",justifyContent: "space-between",alignItems: "center", marginBottom: '20px'}}>
                 <Box style={{ fontSize: "24px", color: "#808080",width:'50%'}}>
-                    <Typography>Исполнитель</Typography>
-                    <Typography style={{fontWeight: '500'}}>
+                    <Typography style={{textAlign: 'left', margin: 0}} variant={'h6'}>Исполнитель</Typography>
+                    <Typography variant={'h5'}>
                         {order.status === 'UnResponded' ? 'Нету' : `${order.name} ${order.surName}`}
                     </Typography>
                 </Box>
                 <Box>
-                    <Typography style={{fontWeight: '500', textAlign: 'end'}}> Договор </Typography>
+                    <Typography style={{textAlign: 'right'}} variant={'h5'}> Договор </Typography>
                     <Box>
                         <input
                             color="primary"
@@ -68,7 +68,7 @@ const OrderBlock = ({order}) => {
                         />
                         <label style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center', cursor: 'pointer'}} htmlFor="icon-button-file">
                             <DownLoad2Svg />
-                            <p style={{fontSize: '15px', margin: '0', paddingLeft: '20px', color: '#000'}}>Скачать файл</p>
+                            <Typography variant={'h6'} style={{margin: '0', paddingLeft: '20px'}}>Скачать файл</Typography>
                         </label>
                     </Box>
                 </Box>
@@ -76,8 +76,8 @@ const OrderBlock = ({order}) => {
 
             {order.status === 'history' && <Box style={{display: "flex", justifyContent: "space-evenly", alignItems: "center", marginBottom: '20px'}}>
                 <Box style={{width: '50%'}}>
-                    <Typography style={{color: '#808080'}}>Ваш отзыв</Typography>
-                    <Typography style={{fontWeight: '500'}}>Я довольна</Typography>
+                    <Typography variant={'h6'}>Ваш отзыв</Typography>
+                    <Typography variant={'h5'}>Я довольна</Typography>
                 </Box>
                 <Box style={{width: '50%'}}>
                     {/*<Rating style={{color:"red"}} name="half-rating-read" defaultValue={4} precision={0.5} />*/}
@@ -85,8 +85,8 @@ const OrderBlock = ({order}) => {
             </Box>}
 
             <Box style={{display: "flex",justifyContent: "space-evenly",alignItems: "center"}}>
-                <Box style={{ fontSize: "24px", color: "#808080",width:'50%'}}>
-                    <Typography>Баллы</Typography>
+                <Box style={{width:'50%'}}>
+                    <Typography variant={'h6'}>Баллы</Typography>
                 </Box>
                 <Box style={{ width:'50%'}}>
                     {/*<Rating style={{color:"red"}} name="half-rating-read" defaultValue={4} precision={0.5} />*/}
@@ -101,7 +101,7 @@ const OrderBlock = ({order}) => {
                     <IconButton>
                         <MessengerSvg />
                     </IconButton>
-                    <Typography style={{textAlign: 'end', whiteSpace: 'nowrap'}} color={'#808080'}>
+                    <Typography style={{textAlign: 'end', whiteSpace: 'nowrap'}} variant={'h6'}>
                         Написать исполнителю
                     </Typography>
                 </Box>
@@ -131,7 +131,7 @@ const OrderBlock = ({order}) => {
             </Box>
 
             <Box style={{display: "flex",justifyContent: "flex-end", alignItems: "flex-end"}}>
-                    <Typography onClick={() => setShowInfo(!showInfo)} style={{cursor: 'pointer'}} color={'#808080'}>
+                    <Typography onClick={() => setShowInfo(!showInfo)} style={{cursor: 'pointer'}} variant={'h6'}>
                         {showInfo ? 'Свернуть' : 'Подробнее'}
                     </Typography>
             </Box>
@@ -139,12 +139,12 @@ const OrderBlock = ({order}) => {
             {showInfo && <Box>
                 <Divider color={'#808080'} style={{margin: '20px 0'}}/>
                 <Box style={{}}>
-                    <Typography style={{cursor: 'pointer'}} color={'#808080'}>
+                    <Typography style={{cursor: 'pointer', whiteSpace: 'pre-wrap'}} variant={'h6'}>
                         Единый центр услуг - это удобный, динамично развивающийся Единый Сервис Красноярского края,
                         который позволяет быстро и безопасно находить надёжных исполнителей для решения любых задач,
                         услуг и поручений!
                     </Typography>
-                    <Typography style={{cursor: 'pointer'}} color={'#808080'}>
+                    <Typography style={{cursor: 'pointer'}} variant={'h6'}>
                         Подробнее
                     </Typography>
                 </Box>
