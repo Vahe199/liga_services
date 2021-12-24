@@ -7,10 +7,6 @@ import CategoriesBlock from "./blocks/CategoriesBlock/CategoriesBlock";
 import TrustedExperts from "./blocks/trustedExperts/TrustedExperts";
 import Reviews from "./blocks/reviews/Reviews";
 import Footer from "../UI/common/footer/Footer";
-import AboutOrder from '../executor/AboutOrder';
-import AdditionalFiles from '../executor/AdditionalFiles';
-import ResponseAmount from '../executor/ResponseAmount';
-import Filtr from '../executor/Filtr';
 
 const HomePage = () => {
     const categoriesRef = useRef();
@@ -18,19 +14,15 @@ const HomePage = () => {
         <div>
             <Container maxWidth="lg">
                 <LogoBlock />
-                <AboutOrder />
-                <AdditionalFiles/>
-                <ResponseAmount/> 
-                <Filtr/>
-                {/* <Intro categoriesRef={categoriesRef} />
+                <Intro categoriesRef={categoriesRef} />
             </Container>
                 <PresentHistory />
                 <CategoriesBlock categoriesRef={categoriesRef} />
             <Container maxWidth="lg">
                 <TrustedExperts />
-                <Reviews /> */}
+                <Reviews />
             </Container>
-            {/* <Footer /> */}
+             <Footer />
         </div>
     )
 }
