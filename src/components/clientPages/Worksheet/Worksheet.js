@@ -1,19 +1,34 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {makeStyles} from "@material-ui/core";
-import Container from "@mui/material/Container";
-import {useLocation} from "react-router-dom";
+import {Grid} from "@mui/material";
+import ProfileData from "./InfoCard/ProfileData";
+import PersonalData from "./InfoCard/PersonalData";
+import OrderNotifications from "./InfoCard/OrderNotifications";
+import ProfileStatus from "./ProfileCard/ProfileStatus";
+import SocialNetworks from "./ProfileCard/SocialNetworks";
+import ProfileActions from "./ProfileCard/ProfileActions";
+
 const useAncetaStyles = makeStyles({
     root:{
-        backgroundColor:"#CFCFCF",
+         height:"100%",
+        marginBottom:70,
     }
 })
+
 export const Worksheet = () =>{
     const classes = useAncetaStyles()
     return(
-        <div className={classes.root}>
-            <Container maxWidth={'lg'}>
-                <h1>Worksheet</h1>
-            </Container>
-        </div>
+        <Grid container spacing={2} className={classes.root}>
+            <Grid item xs={4}>
+                <ProfileStatus/>
+                <SocialNetworks/>
+                <ProfileActions/>
+            </Grid>
+            <Grid item xs={8}>
+                <ProfileData/>
+                <PersonalData/>
+                <OrderNotifications/>
+            </Grid>
+        </Grid>
     )
 }

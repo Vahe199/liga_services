@@ -7,24 +7,23 @@ import Footer from "../UI/common/footer/Footer";
 import {makeStyles} from "@material-ui/core";
 const useProfileStyles = makeStyles({
    root:{
-        height:"100vh",
-        overflow:"auto",
+         overflow:"auto",
+          height:"100vh",
     },
     container:{
-         height:"100vh",
-        backgroundColor:"#CFCFCF",
+       backgroundColor:"#e1e3e5",
         paddingTop:78
     }
 })
 const ClientProfilePage = () => {
     const classes = useProfileStyles()
     return (
-        <div className={classes.root}>
+        <div className={classes.root} >
             <MainNavBar/>
             <div  className={classes. container}>
                 <Outlet/>
             </div>
-         {/*<Footer/>*/}
+         <Footer/>
         </div>
     )
 }

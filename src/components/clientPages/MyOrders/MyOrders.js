@@ -15,7 +15,8 @@ import MyOrdersBlock from "./blocks/MyOrdersBlock";
 
 export const useMyOrdersStyles = makeStyles({
     root:{
-        backgroundColor:"#CFCFCF",
+        height:"100%",
+        marginBottom:70,
         paddingTop: '40px',
         '& .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root': {
             width: '170px',
