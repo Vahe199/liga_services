@@ -7,6 +7,16 @@ import CategoriesBlock from "./blocks/CategoriesBlock/CategoriesBlock";
 import TrustedExperts from "./blocks/trustedExperts/TrustedExperts";
 import Reviews from "./blocks/reviews/Reviews";
 import Footer from "../UI/common/footer/Footer";
+import PersonalData from '../executor/PersonalData';
+import DistrictsAndAddresses from '../executor/DistrictsAndAddresses';
+import Portfolio from '../executor/Portfolio';
+import EducationAndCertifications from '../executor/EducationAndCertifications';
+import AboutOrder from '../executor/AboutOrder';
+import AdditionalFiles from '../executor/AdditionalFiles';
+import Filtr from '../executor/Filtr';
+import ResponseAmount from '../executor/ResponseAmount';
+
+
 
 const HomePage = () => {
     const categoriesRef = useRef();
@@ -22,7 +32,15 @@ const HomePage = () => {
                 <TrustedExperts />
                 <Reviews />
             </Container>
-             <Footer />
+             <Footer /> 
+             {/* <AboutOrder/>  */}
+             {/* <AdditionalFiles/> */}
+             {/* <Filtr/> */}
+             {/* <ResponseAmount/> */}
+              {/* <PersonalData/>  */}
+             {/* <DistrictsAndAddresses/> */}
+             {/* <Portfolio/> */}
+             {/* <EducationAndCertifications/> */}
         </div>
     )
 }
