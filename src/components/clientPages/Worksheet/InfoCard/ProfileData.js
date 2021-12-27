@@ -4,14 +4,14 @@ import PenSvg from "../../../../assets/svg/Profile/PenSvg";
 import {useInfoCardStyles} from "./InfoCardStyles";
 
 
-const ProfileData = () => {
+const ProfileData = ({setEdit}) => {
     const classes = useInfoCardStyles()
     return (
         <Box sx={{boxShadow: 2}} className={classes.root}>
             <Box className={classes.titleWrap}>
                 <div style={{display: "flex"}}>
                     <Typography variant={"h6"}>Данные профиля</Typography>
-                    <div onClick={() => console.log("pencil clicked")} style={{cursor: "pointer", marginLeft: 20}}>
+                    <div onClick={() => setEdit(true)} style={{cursor: "pointer", marginLeft: 20}}>
                         <PenSvg/>
                     </div>
                 </div>
