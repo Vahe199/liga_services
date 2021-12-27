@@ -36,10 +36,24 @@ export const useMyOrdersStyles = makeStyles({
             whiteSpace: 'noWrap',
             fontWeight: 400,
         },
+        '& .MuiTypography-body1': {
+            color: '#808080',
+            fontSize: '14px',
+        },
         //button
-        "& .MuiButton-root": {
+        "& .MuiButton-contained": {
             backgroundColor: '#4B9A2D',
             borderRadius: '10px',
+        },
+        "& .MuiButton-outlined": {
+            background: "#445E77",
+            textTransform: "none",
+            color: '#fff',
+            fontWeight: 500,
+            borderRadius: '10px',
+            "&:hover": {
+                background: '#6585a5 !important',
+            }
         },
         //cardItem
         "& .MuiCard-root": {
@@ -55,6 +69,18 @@ export const useMyOrdersStyles = makeStyles({
             height: '45px',
             backgroundColor: '#fff',
         },
+        //input
+        '& .css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
+            marginBottom: '10px',
+            width: '100%',
+        },
+        '& .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root': {
+            borderRadius: '10px',
+            border: '1px solid #808080',
+        },
+        '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
+            height: '10px',
+        },
         //textArea
         '& .css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root': {
             borderRadius: '10px',
@@ -62,11 +88,27 @@ export const useMyOrdersStyles = makeStyles({
             height: '80px',
             width: '100%',
         },
-        '& .css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
-            height: '100%',
-            width: '100%',
+        '& MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input': {
+            height: '100%'
+        },
+        //select
+        '& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
+            padding: '10px',
+        },
+        //radio
+        // '& .MuiTypography-body1': {
+        //     color: '#808080',
+        //     fontSize: '14px',
+        // },
+        //radio
+    },
+    radio: {
+        '&$checked': {
+            color: '#4B9A2D'
         },
     },
+    checked: {},
+
     header: {
         display: 'flex',
         justifyContent: 'space-between',
@@ -85,6 +127,39 @@ export const useMyOrdersStyles = makeStyles({
     boxInput: {
         width: '100%',
         marginBottom: '18px',
+    },
+    boxInput2: {
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: '18px',
+    },
+    inputText: {
+        fontSize: '15px',
+        textAlign: 'left',
+        width: '100%',
+        marginTop: '15px',
+        marginBottom: '4px',
+        color: '#000000',
+    },
+    input: {
+        width: '100%',
+        height: '16px',
+        fontSize: '25px',
+    },
+    checkbox: {
+        marginTop: '20px',
+        alignSelf: 'flex-start',
+        paddingLeft: '120px',
+    },
+    time: {
+        backgroundColor: 'rgba(0, 0, 0, 0.15)',
+        padding: '12px 42px',
+        borderRadius: '10px',
+        width: '150px',
+        cursor: 'pointer',
     },
 })
 export const MyOrders = () => {

@@ -26,9 +26,9 @@ const MyOrdersBlock = ({setShowForm}) => {
                     setBtnSelected(index + 1)
                     setShowForm(false)
                 }} style={{display:'flex'}}>
-                    <Typography color='#000000' style={{fontWeight: btnSelected === index + 1 ? '500' : '400', whiteSpace:'nowrap', fontSize: '18px'}}>
+                    <p style={{fontWeight: btnSelected === index + 1 ? '500' : '400', color: '#000000', margin: 0, whiteSpace:'nowrap', fontSize: '18px'}}>
                         {item}
-                    </Typography>
+                    </p>
                     <IconButton style={btnSelected === index + 1 ? {transform: "rotate(90deg)"} : {transform: "rotate(0deg)"}}>
                         <ArrowSvg/>
                     </IconButton>
