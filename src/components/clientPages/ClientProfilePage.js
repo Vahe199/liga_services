@@ -19,9 +19,9 @@ const ClientProfilePage = () => {
     const classes = useProfileStyles()
     return (
         <div className={classes.root} >
-            <MainNavBar/>
+              <MainNavBar/>
             <div  className={classes. container}>
-                <Outlet/>
+              <Outlet/>
             </div>
          <Footer/>
         </div>
