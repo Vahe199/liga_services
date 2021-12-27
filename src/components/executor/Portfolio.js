@@ -1,9 +1,9 @@
 import React from "react";
-import { Box, ImageList } from "@mui/material";
+import { Box } from "@mui/material";
 import { Divider } from "@mui/material";
 import { ArrowSvg } from "../../assets/svg/AddSvg";
-import { Grid } from '@mui/material';
-import logo from "../../assets/image/Rectangle.jpg";
+import CustomImageList from "../UI/common/customimagelist/CustomImageList";
+import { imageData } from "../../utils/data/imagedata/ImageData";
 
 
 const Portfolio = () => {
@@ -15,34 +15,13 @@ const Portfolio = () => {
       <Divider style={{ border: "1px solid #808080", width: "100%" }} />
 
       <Box style={{display:'flex', alignItems:'center'}}>
-          <p style={{color: '#808080'}}>
+          <p style={{color: '#808080', paddingRight: "20px"}}>
               Фотогрфии
           </p>
-          <ArrowSvg/>
+          <ArrowSvg />
       </Box>
 
-      <Grid container spacing={1} style={{marginBottom:'50px'}}>
-            <Grid item xs={12}  lg={3}>
-                <Box style={{display:'flex', justifyContent:'center', alignItems:'center',background: '#C4C4C4'}}>
-                    <img src={logo} alt="" />
-                </Box>   
-            </Grid>
-            <Grid item xs={12}  lg={3}>
-                <Box style={{display:'flex', justifyContent:'center', alignItems:'center',background: '#C4C4C4'}}>
-                    <img src={logo} alt="" />
-                </Box>   
-            </Grid>
-            <Grid item xs={12}  lg={3}>
-                <Box style={{display:'flex', justifyContent:'center', alignItems:'center',background: '#C4C4C4'}}>
-                    <img src={logo} alt="" />
-                </Box>   
-            </Grid>
-            <Grid item xs={12}  lg={3}>
-                <Box style={{display:'flex', justifyContent:'center', alignItems:'center',background: '#C4C4C4'}}>
-                    <img src={logo} alt="" />
-                </Box>   
-            </Grid>
-          </Grid>
+      <CustomImageList imageData={imageData} />
           <p style={{color: '#808080'}}>
                 Ссылки
           </p>
