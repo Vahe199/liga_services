@@ -63,7 +63,7 @@ export const MyOrders = () => {
         <div className={classes.root}>
             <Container maxWidth={'lg'}>
                 <Grid container spacing={4} >
-                        <Grid  item sm={12} md={4} lg={4}>
+                        <Grid  item sm={12} lg={4}>
                             <Card style={{borderRadius: '20px', marginBottom: '20px'}}>
                                <AddNewOrderBlock />
                             </Card>
@@ -72,7 +72,7 @@ export const MyOrders = () => {
                             </Card>
                         </Grid>
 
-                        <Grid  item sm={12} md={8} lg={8} >
+                        <Grid  item sm={12}  lg={8} >
                             <Box className={classes.header}>
                                 <p style={{fontWeight: '500'}}>Завершенные заказы</p>
                                 <Box className={classes.datePickerBox}>

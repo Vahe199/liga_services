@@ -1,6 +1,6 @@
 import React from "react";
 import {makeStyles} from "@material-ui/core";
-import {Grid} from "@mui/material";
+import {Container, Grid} from "@mui/material";
 import ProfileData from "./InfoCard/ProfileData";
 import PersonalData from "./InfoCard/PersonalData";
 import OrderNotifications from "./InfoCard/OrderNotifications";
@@ -17,18 +17,19 @@ const useAncetaStyles = makeStyles({
 
 export const Worksheet = () =>{
     const classes = useAncetaStyles()
-    return(
-        <Grid container spacing={2} className={classes.root}>
-            <Grid item xs={4}>
+    return( <Container maxWidth={'lg'} className={classes.root}>
+        <Grid container spacing={2}>
+            <Grid item sm={12} lg={4}>
                 <ProfileStatus/>
                 <SocialNetworks/>
                 <ProfileActions/>
             </Grid>
-            <Grid item xs={8}>
+            <Grid item sm={12} lg={8}>
                 <ProfileData/>
                 <PersonalData/>
                 <OrderNotifications/>
             </Grid>
         </Grid>
+        </Container>
     )
 }

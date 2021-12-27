@@ -5,7 +5,7 @@ export const useInfoCardStyles = makeStyles({
         background: '#FFFFFF',
         borderRadius: "20px",
         padding: "26px 30px",
-        margin:20,
+         margin:"20px 0",
         "& .MuiTypography-h6":{
             fontWeight: 500,
             fontSize:18,

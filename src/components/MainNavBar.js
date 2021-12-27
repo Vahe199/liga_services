@@ -11,20 +11,27 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import {makeStyles} from "@material-ui/core";
+import { styled} from '@mui/material/styles';
 import Logo from "../assets/image/logoSmall.png"
 import UserSvg from "../assets/svg/header/UserSvg";
 import NotificationSvg from "../assets/svg/header/NotificationSvj";
 import MessageSvg from "../assets/svg/header/MessageSvg";
 import {useNavigate} from "react-router-dom";
+import {Divider, Drawer, List, ListItem, ListItemText} from "@mui/material";
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 const pages = [{title:'Мои заказы',path:"MyOrders"}, {title:'Анкета',path:"worksheet"}, {title:'Поддержка',path:"backing"}];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const useNavStyles = makeStyles({
-  root:{
-   "& .MuiAppBar-root":{
-     backgroundColor:"#fff"
-   },
-  },
+    root: {
+        "& .MuiAppBar-root": {
+            backgroundColor: "#fff",
+        },
+
+    },
+    "& .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper":{
+        backgroundColor:"#f08000 !important"
+    },
   img:{
     width:80,
     height:78
@@ -36,12 +43,37 @@ const useNavStyles = makeStyles({
         "&:hover": {
             background: '#6585a5 !important',
         }
+    },
+    nav:{
+        height: "80vh !important",
+        width: "300px !important",
+        position: "absolute !important",
+        top: "172 !important",
+        left: "0 !important"
+    },
+    menu: {
+        "& .MuiPaper-root": {
+            height: "100vh",
+            width: "300px",
+            position: "absolute",
+            top:"64px !important",
+            left:"0 !important",
+            borderRadius:" 0 4px 4px 0"
+        }
     }
 });
+const DrawerHeader = styled('div')(({ theme }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+    justifyContent: 'flex-end',
+}));
 export const MainNavBar = () => {
  const navigate = useNavigate()
   const classes = useNavStyles()
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = React.useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -53,7 +85,7 @@ export const MainNavBar = () => {
 
   const handleCloseNavMenu = (path) => {
      navigate(`${path}`)
-     setAnchorElNav(path);
+     setAnchorElNav(false);
   };
 
   const handleCloseUserMenu = () => {
@@ -85,39 +117,70 @@ export const MainNavBar = () => {
               >
                 <MenuIcon />
               </IconButton>
-              <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorElNav}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                  }}
-                  open={Boolean(anchorElNav)}
-                  onClose={handleCloseNavMenu}
-                  sx={{
-                    display: { xs: 'block', md: 'none' },
-                  }}
-              >
-                {pages.map((page) => (
-                    <MenuItem key={page.title} onClick={()=>handleCloseNavMenu(page.path)}>
-                      <Typography  textAlign="center">{page.title}</Typography>
-                    </MenuItem>
-                ))}
-              </Menu>
+                <Drawer
+                    sx={{
+                        width:250,
+                        flexShrink: 0,
+                        '& .MuiDrawer-paper': {
+                            width: 250,
+                            boxSizing: 'border-box',
+                        },
+                    }}
+                    // variant="persistent"
+                    anchor={'left'}
+                    open={Boolean(anchorElNav)}
+                    onClose={handleCloseNavMenu}
+                >
+                    <DrawerHeader>
+                        <Typography
+                            variant="h6"
+                            noWrap
+                            component="div"
+                            sx={{ flexGrow: 1, color:"#e20613",flexDirection:"column", display: { xs: 'flex', md: 'none' } }}
+                        >
+                            <img src={Logo} className={classes.img}/>
+                            Лига услуг
+                        </Typography>
+                        <IconButton onClick={handleCloseNavMenu}>
+                            <ChevronLeftIcon />
+                        </IconButton>
+                    </DrawerHeader>
+                    <Divider />
+                    <List>
+
+                    {pages.map((page) => (
+                        <ListItem  key={page.title} onClick={()=>handleCloseNavMenu(page.path)}>
+                            <ListItemText primary={page.title}/>
+                        </ListItem>
+                    ))}
+                    </List>
+                </Drawer>
+              {/*<Menu*/}
+              {/*    className={classes.menu}*/}
+              {/*    id="menu-appbar"*/}
+              {/*    anchorEl={anchorElNav}*/}
+              {/*    anchorOrigin={{*/}
+              {/*      vertical: 'bottom',*/}
+              {/*      horizontal: 'left',*/}
+              {/*    }}*/}
+              {/*    keepMounted*/}
+              {/*    transformOrigin={{*/}
+              {/*      vertical: 'top',*/}
+              {/*      horizontal: 'left',*/}
+              {/*    }}*/}
+              {/*    open={Boolean(anchorElNav)}*/}
+              {/*    onClose={handleCloseNavMenu}*/}
+              {/*    sx={{*/}
+              {/*      display: { xs: 'block', md: 'none' },*/}
+              {/*    }}*/}
+              {/*>*/}
+              {/*  {pages.map((page) => (*/}
+              {/*      <MenuItem key={page.title} onClick={()=>handleCloseNavMenu(page.path)}>*/}
+              {/*        <Typography  textAlign="center">{page.title}</Typography>*/}
+              {/*      </MenuItem>*/}
+              {/*  ))}*/}
+              {/*</Menu>*/}
             </Box>
-            <Typography
-                variant="h6"
-                noWrap
-                component="div"
-                sx={{ flexGrow: 1, color:"#e20613", display: { xs: 'flex', md: 'none' } }}
-            >
-                Лига услуг
-            </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
                   <Button
