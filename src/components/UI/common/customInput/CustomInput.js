@@ -13,10 +13,11 @@ const CustomInput = ({label,
                       textArea = false,
                       mb = 10,
                       icon = false,
+                      width = '100%',
                       placeholder}) => {
     const classes = useStyles();
     return (
-        <Box style={{marginBottom: mb}} className={classes.boxInput}>
+        <Box style={{marginBottom: mb, width}} className={classes.boxInput}>
             <p className={classes.inputText}>{label}</p>
             <TextField
                 variant={"outlined"}

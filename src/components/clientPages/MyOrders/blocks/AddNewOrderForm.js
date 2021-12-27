@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Grid from "@mui/material/Grid";
 import {FormControl, Select, TextField} from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
@@ -17,9 +17,13 @@ import CustomInput from "../../../UI/common/customInput/CustomInput";
 
 const AddNewOrderForm = () => {
     const classes = useMyOrdersStyles();
+    const [value, setValue] = useState('');
+    useEffect(() => {
+        console.log(value, 'value')
+    }, [value])
     return (
         <Formik
-            initialValues={{ nomination: '', Service_category: '', subCategories: '', description: '', file: '', region: '', address: '', time_from: '', time_to: '', payment_from: '', payment_to: '', place_work: ''}}
+            initialValues={{ nomination: '', Service_category: '', subCategories: '', description: '', file: '', region: '', address: '', time_from: '', time_to: '', payment_from: '', payment_to: '', place_work: value}}
             //validationSchema={AddTaskValidation}
             onSubmit={async (values, action) => {
                 console.log(values, 'values')
@@ -38,15 +42,15 @@ const AddNewOrderForm = () => {
                 <form onSubmit={handleSubmit}>
                     <Grid container spacing={4} >
                         <Grid  item sm={12} lg={6}>
-                            <CustomSelect
-                                name={'nomination'}
-                                label={'Название'}
-                                handleChange={handleChange}
-                                value={values.nomination}
-                                touched={touched.nomination}
-                                error={errors.nomination}
-                                mt={0}
-                            />
+                                <CustomSelect
+                                    name={'nomination'}
+                                    label={'Название'}
+                                    handleChange={handleChange}
+                                    value={values.nomination}
+                                    touched={touched.nomination}
+                                    error={errors.nomination}
+                                    mt={0}
+                                />
                             <CustomSelect
                                 name={'service_name'}
                                 label={'Категория услуг*'}
@@ -112,27 +116,33 @@ const AddNewOrderForm = () => {
                                         defaultValue="remotely"
                                         name="place_work"
                                     >
-                                        <FormControlLabel value="remotely" control={<Radio classes={{root: classes.radio, checked: classes.checked}} size={'small'} onChange={(date) => {
-                                            setFieldValue('place_work', 'remotely')
+                                        <FormControlLabel control={<Radio classes={{root: classes.radio, checked: classes.checked}} size={'small'} onChange={(e) => {
+                                            setValue('remotely')
+                                           setFieldValue('place_work', e.target.value)
                                         }} value="remotely" />} label="Дистанционно" />
-                                        <FormControlLabel value="executor" control={<Radio  onChange={(date) => {
-                                            setFieldValue('place_work', 'executor')
+                                        <FormControlLabel  control={<Radio  onChange={(e) => {
+                                            setValue('executor')
+                                            setFieldValue('place_work', e.target.value)
                                         }} classes={{root: classes.radio, checked: classes.checked}} size={'small'}   value="executor" />} label="У исполнителя" />
-                                        <FormControlLabel value="client" control={<Radio classes={{root: classes.radio, checked: classes.checked}}  size={'small'} onChange={(date) => {
-                                            setFieldValue('place_work', 'client')
+                                        <FormControlLabel  control={<Radio classes={{root: classes.radio, checked: classes.checked}}  size={'small'}
+                                             onChange={(e) => {
+                                                 setValue('client')
+                                            setFieldValue('place_work', e.target.value)
                                         }} value="client" />} label="У клиента" />
                                     </RadioGroup>
                                 </FormControl>
                             </Box>
                             <p style={{marginBottom: '15px'}} className={classes.inputText}>Желаемый срок начала работ</p>
                             <Box>
-                                <CustomDatePicker
-                                    value={values.time_from}
-                                    name={'time_from'}
-                                    fun={setFieldValue}
-                                    touched={touched.time_from}
-                                    errors={errors.time_from}
-                                />
+                                <Box style={{marginBottom: '10px'}}>
+                                    <CustomDatePicker
+                                        value={values.time_from}
+                                        name={'time_from'}
+                                        fun={setFieldValue}
+                                        touched={touched.time_from}
+                                        errors={errors.time_from}
+                                    />
+                                </Box>
                                 <CustomDatePicker
                                     value={values.time_to}
                                     name={'time_to'}

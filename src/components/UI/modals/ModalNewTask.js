@@ -3,15 +3,15 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import HeaderModal from "./blocks/HeaderModal";
-import {FormControl, Select, TextField} from "@mui/material";
 import {Formik} from "formik";
 import {useStyles} from "../../../globalStyles/ModalStyles";
-import MenuItem from "@mui/material/MenuItem";
 import {DownloadSvg} from "../../../assets/svg/DownloadSvg";
 import {AddTaskValidation} from "../../../utils/validation/AddTaskValidation";
-import {FormHelperText} from "@material-ui/core";
 import ModalForAuth from "./ModalForAuth";
 import CustomDatePicker from "../common/datePicker/CustomDatePicker";
+import CustomInput from "../common/customInput/CustomInput";
+import CustomSelect from "../common/customSelect/CustomSelect";
+import CustomInputAddFile from "../common/customInputAddFile/CustomInputAddFile";
 
 const style = {
     position: 'absolute',
@@ -27,7 +27,6 @@ const style = {
 
 const ModalNewTask = ({showModal, setShowModal}) => {
     const [open, setOpen] = React.useState(false);
-    const [value, setValue] = React.useState(null);
 
     const handleClose = () => setShowModal(false);
     const classes = useStyles();
@@ -65,66 +64,50 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                   setFieldValue
                               }) => (
                                 <form onSubmit={handleSubmit}>
-                                    <Box className={classes.subContainer}>
-                                        <Box className={classes.boxInput}>
-                                            <p className={classes.inputText}>Вид услуг*</p>
-                                            <FormControl style={{height: '10px', marginBottom: '10px'}} fullWidth>
-                                                <Select
-                                                    onChange={handleChange}
-                                                    value={values.service_type}
-                                                    name={'service_type'}
-                                                    error={touched.service_type && Boolean(errors.service_type)}
-                                                >
-                                                    <MenuItem value={'Ten'}>Ten</MenuItem>
-                                                    <MenuItem value={'Twenty'}>Twenty</MenuItem>
-                                                    <MenuItem value={'Thirty'}>Thirty</MenuItem>
-                                                </Select>
-                                                {touched.service_type && errors.service_type && <FormHelperText style={{color: '#F44336', paddingLeft: '15px'}}>{errors.service_type}</FormHelperText>}
-                                            </FormControl>
-                                        </Box>
-                                        <Box className={classes.boxInput}>
-                                            <p className={classes.inputText}>Название услуг*</p>
-                                            <TextField
-                                                variant={"outlined"}
-                                                className={classes.input}
-                                                name="service_name"
-                                                autoComplete={'off'}
-                                                value={values.service_name}
-                                                onChange={handleChange}
-                                                error={touched.service_name && Boolean(errors.service_name)}
-                                                helperText={touched.service_name && errors.service_name}
+                                    <Box>
+                                        <Box style={{marginBottom: '30px'}}>
+                                            <CustomSelect
+                                                name={'service_type'}
+                                                label={'Вид услуг'}
+                                                handleChange={handleChange}
+                                                value={values.service_type}
+                                                touched={touched.service_type}
+                                                error={errors.service_type}
+                                                mt={0}
                                             />
                                         </Box>
-                                        <Box className={classes.boxInput}>
-                                            <p className={classes.inputText}>Укажите адрес*</p>
-                                            <TextField
-                                                variant={"outlined"}
-                                                className={classes.input}
-                                                name="address"
-                                                autoComplete={'off'}
-                                                value={values.address}
-                                                onChange={handleChange}
-                                                error={touched.address && Boolean(errors.address)}
-                                                helperText={touched.address && errors.address}
-                                            />
-                                        </Box>
-                                        <Box style={{marginBottom: '50px'}} className={classes.boxInput}>
-                                            <p className={classes.inputText}>Описание</p>
-                                            <TextField
-                                                variant={"outlined"}
-                                                multiline
-                                                className={classes.input}
-                                                name="description"
-                                                autoComplete={'off'}
-                                                value={values.description}
-                                                onChange={handleChange}
-                                                error={touched.description && Boolean(errors.description)}
-                                                helperText={touched.description && errors.description}
-                                            />
-                                        </Box>
+                                        <CustomInput
+                                            label={'Название услуг*'}
+                                            name={'service_name'}
+                                            value={values.service_name}
+                                            handleChange={handleChange}
+                                            touched={touched.service_name}
+                                            error={errors.service_name}
+                                            mb={25}
+                                        />
+                                        <CustomInput
+                                            label={'Укажите адрес*'}
+                                            name={'service_name'}
+                                            value={values.address}
+                                            handleChange={handleChange}
+                                            touched={touched.address}
+                                            error={errors.address}
+                                            mb={25}
+                                        />
+                                        <CustomInput
+                                            label={'Описание'}
+                                            name={'description'}
+                                            value={values.description}
+                                            handleChange={handleChange}
+                                            touched={touched.description}
+                                            error={errors.description}
+                                            textArea={true}
+                                            mb={25}
+                                        />
                                         <Box className={classes.otherDocs}>
                                             <p style={{fontSize: '15px', color: '#000', margin: '55px 0 10px 0'}}>Желаемый срок начала работ</p>
                                             <Box style={{display: 'flex'}}>
+                                                <Box style={{paddingRight: '10px'}}>
                                                     <CustomDatePicker
                                                         value={values.time_from}
                                                         name={'time_from'}
@@ -132,6 +115,7 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                                         touched={touched.time_from}
                                                         errors={errors.time_from}
                                                     />
+                                                </Box>
                                                     <CustomDatePicker
                                                         value={values.time_to}
                                                         name={'time_to'}
@@ -140,21 +124,13 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                                         errors={errors.time_to}
                                                     />
                                             </Box>
-                                            <Box>
-                                                <input
-                                                    color="primary"
-                                                    type="file"
-                                                    value={values.file}
-                                                    onChange={handleChange}
-                                                    id="icon-button-file"
-                                                    accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                                                    style={{ display: 'none' }}
-                                                />
-                                                <label style={{display: 'flex', marginTop: '10px', justifyContent: 'flex-start', alignItems: 'center'}} htmlFor="icon-button-file">
-                                                     <DownloadSvg />
-                                                    <p style={{fontSize: '15px', paddingLeft: '20px', color: '#000'}}>Прикрепить файл</p>
-                                                </label>
-                                            </Box>
+                                            <CustomInputAddFile
+                                                name={'file'}
+                                                value={values.file}
+                                                handleChange={handleChange}
+                                                label={'Прикрепить файл'}
+                                                svg={<DownloadSvg />}
+                                            />
                                         </Box>
                                         <Box className={classes.footer}>
                                             <Button onClick={handleSubmit}>Оформить заказ</Button>

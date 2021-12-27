@@ -7,6 +7,7 @@ import {Formik} from "formik";
 import Button from "@mui/material/Button";
 import {useStyles} from "../../../globalStyles/AuthStyles";
 import {LoginValidation} from "../../../utils/validation/LoginValidation";
+import CustomInput from "../../UI/common/customInput/CustomInput";
 
 
 const LoginPage = () => {
@@ -36,32 +37,25 @@ const LoginPage = () => {
                       }) => (
                         <form onSubmit={handleSubmit}>
                             <Box className={classes.subContainer}>
-                                <Box className={classes.boxInput}>
-                                    <p className={classes.inputText}>Email*</p>
-                                    <TextField
-                                        variant={"outlined"}
-                                        className={classes.input}
-                                        name="email"
-                                        autoComplete={'off'}
-                                        value={values.email}
-                                        onChange={handleChange}
-                                        error={touched.email && Boolean(errors.email)}
-                                        helperText={touched.email && errors.email}
-                                    />
-                                </Box>
-                                <Box className={classes.boxInput}>
-                                    <p className={classes.inputText}>Пароль*</p>
-                                    <TextField
-                                        variant={"outlined"}
-                                        className={classes.input}
-                                        name="password"
-                                        autoComplete={'off'}
-                                        value={values.password}
-                                        onChange={handleChange}
-                                        error={touched.password && Boolean(errors.password)}
-                                        helperText={touched.password && errors.password}
-                                    />
-                                </Box>
+                                <CustomInput
+                                    label={'Email*'}
+                                    width={'70%'}
+                                    name={'email'}
+                                    value={values.email}
+                                    handleChange={handleChange}
+                                    touched={touched.email}
+                                    error={errors.email}
+                                    mb={25}
+                                />
+                                <CustomInput
+                                    label={'Пароль*'}
+                                    width={'70%'}
+                                    name={'password'}
+                                    value={values.password}
+                                    handleChange={handleChange}
+                                    touched={touched.password}
+                                    error={errors.password}
+                                />
                                 <FormControlLabel
                                     onChange={handleChange}
                                     value={values.remember}
