@@ -16,7 +16,6 @@ const EditProfileData = ({setEdit}) => {
                     </div>
                 </div>
                 <Button
-                    color="success"
                     onClick={() => setEdit(false)}
                     type="submit"
                     style={{ textTransform: "none" }}
@@ -52,11 +51,10 @@ const EditProfileData = ({setEdit}) => {
                         justifyContent="flex-start"
                         alignItems="flex-start"
                     >
-                    <Button className={classes.btn} sx={{background: "#5A7287",width:140, textTransform: "none"}}
-                            variant="contained">Отправить код</Button>
+                    <Button
+                            variant="outlined">Отправить код</Button>
                     <TextField placeholder={"Код"} sx={{width:140, margin:"0px 15px"}}/>
-                    <Button variant="contained" color="success"
-                            sx={{textTransform: "none",width:140,height:30}}>Подтвердить</Button>
+                    <Button variant="contained" color="success">Подтвердить</Button>
                     </Stack>
                 </Box>
             </Stack>

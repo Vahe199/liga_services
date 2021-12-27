@@ -1,19 +1,16 @@
-
 import React, {useState} from "react";
 import {makeStyles} from "@material-ui/core";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import Box from "@mui/material/Box";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import DatePicker from "@mui/lab/DatePicker";
-import {TextField, Typography} from "@mui/material";
+import {Typography} from "@mui/material";
 import OrderBlock from "./blocks/OrderBlock";
 import {OrdersData} from "../../../utils/data/orders/OrdersData";
 import AddNewOrderBlock from "./blocks/AddNewOrderBlock";
 import MyOrdersBlock from "./blocks/MyOrdersBlock";
 import AddNewOrderForm from "./blocks/AddNewOrderForm";
+import CustomDatePicker from "../../UI/common/datePicker/CustomDatePicker";
 
 export const useMyOrdersStyles = makeStyles({
     root:{
@@ -164,7 +161,7 @@ export const useMyOrdersStyles = makeStyles({
 })
 export const MyOrders = () => {
     const classes = useMyOrdersStyles()
-    const [valueTime, setValueTime] = useState('');
+    const [valueTime, setValueTime] = useState(new Date());
     const [showForm, setShowForm] = useState(false);
     return(
         <div className={classes.root}>
@@ -184,19 +181,7 @@ export const MyOrders = () => {
                             <Box className={classes.header}>
                                 <Typography variant={'h4'}>Завершенные заказы</Typography>
                                 <Box className={classes.datePickerBox}>
-                                    <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                        <DatePicker
-                                            value={valueTime}
-                                            onChange={(date) => {
-                                                setValueTime(date)
-                                            }}
-                                            hintText="Choose Date"
-                                            autoComplete={'off'}
-                                            renderInput={(params) => <TextField
-                                                placeholder="Placeholder"
-                                                {...params} />}
-                                        />
-                                    </LocalizationProvider>
+                                    <CustomDatePicker value={valueTime} fun={(val)=>setValueTime(val)}/>
                                 </Box>
 
                             </Box>

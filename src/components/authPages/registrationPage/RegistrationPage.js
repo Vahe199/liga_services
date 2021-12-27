@@ -6,6 +6,7 @@ import { Formik } from "formik";
 import Button from "@mui/material/Button";
 import {useStyles} from "../../../globalStyles/AuthStyles";
 import {AuthValidation} from "../../../utils/validation/AuthValidation";
+import CustomInput from "../../UI/common/customInput/CustomInput";
 
 
 const RegistrationPage = () => {
@@ -35,71 +36,56 @@ const RegistrationPage = () => {
                       }) => (
                         <form onSubmit={handleSubmit}>
                             <Box className={classes.subContainer}>
-                                <Box className={classes.boxInput}>
-                                    <p className={classes.inputText}>Имя*</p>
-                                    <TextField
-                                        variant={"outlined"}
-                                        className={classes.input}
-                                        name="name"
-                                        autoComplete={'off'}
-                                        value={values.name}
-                                        onChange={handleChange}
-                                        error={touched.name && Boolean(errors.name)}
-                                        helperText={touched.name && errors.name}
-                                    />
-                                </Box>
-                                <Box className={classes.boxInput}>
-                                    <p className={classes.inputText}>Телефон</p>
-                                    <TextField
-                                        variant={"outlined"}
-                                        className={classes.input}
-                                        name="phone"
-                                        autoComplete={'off'}
-                                        value={values.phone}
-                                        onChange={handleChange}
-                                        error={touched.phone && Boolean(errors.phone)}
-                                        helperText={touched.phone && errors.phone}
-                                    />
-                                </Box>
-                                <Box className={classes.boxInput}>
-                                    <p className={classes.inputText}>Email*</p>
-                                    <TextField
-                                        variant={"outlined"}
-                                        className={classes.input}
-                                        name="email"
-                                        autoComplete={'off'}
-                                        value={values.email}
-                                        onChange={handleChange}
-                                        error={touched.email && Boolean(errors.email)}
-                                        helperText={touched.email && errors.email}
-                                    />
-                                </Box>
-                                <Box className={classes.boxInput}>
-                                    <p className={classes.inputText}>Пароль*</p>
-                                    <TextField
-                                        variant={"outlined"}
-                                        className={classes.input}
-                                        name="password"
-                                        autoComplete={'off'}
-                                        value={values.password}
-                                        onChange={handleChange}
-                                        error={touched.password && Boolean(errors.password)}
-                                        helperText={touched.password && errors.password}
-                                    />
-                                </Box>
-                                <Box className={classes.boxInput}>
-                                    <p className={classes.inputText}>Подтвердить пароль*</p>
-                                    <TextField
-                                        variant={"outlined"}
-                                        name="confirmPassword"
-                                        className={classes.input}
-                                        autoComplete={'off'}
-                                        value={values.confirmPassword}
-                                        onChange={handleChange}
-                                        error={touched.confirmPassword && Boolean(errors.confirmPassword)}
-                                        helperText={touched.confirmPassword && errors.confirmPassword}
-                                    />
-                                </Box>
+                                <CustomInput
+                                    label={'Имя*'}
+                                    width={'70%'}
+                                    name={'name'}
+                                    value={values.name}
+                                    handleChange={handleChange}
+                                    touched={touched.name}
+                                    error={errors.name}
+                                    mb={25}
+                                />
+                                <CustomInput
+                                    label={'Телефон'}
+                                    width={'70%'}
+                                    name={'phone'}
+                                    value={values.phone}
+                                    handleChange={handleChange}
+                                    touched={touched.phone}
+                                    error={errors.phone}
+                                    mb={25}
+                                />
+                                <CustomInput
+                                    label={'Email*'}
+                                    width={'70%'}
+                                    name={'email'}
+                                    value={values.email}
+                                    handleChange={handleChange}
+                                    touched={touched.email}
+                                    error={errors.email}
+                                    mb={25}
+                                />
+                                <CustomInput
+                                    label={'Пароль*'}
+                                    width={'70%'}
+                                    name={'password'}
+                                    value={values.password}
+                                    handleChange={handleChange}
+                                    touched={touched.password}
+                                    error={errors.password}
+                                    mb={25}
+                                />
+                                <CustomInput
+                                    label={'Подтвердить пароль*'}
+                                    width={'70%'}
+                                    name={'confirmPassword'}
+                                    value={values.confirmPassword}
+                                    handleChange={handleChange}
+                                    touched={touched.confirmPassword}
+                                    error={errors.confirmPassword}
+                                    mb={25}
+                                />
                                  <Box className={classes.footer}>
                                     <Button className={classes.btn} onClick={handleSubmit}>Регистрация</Button>
                                     <Typography style={{fontSize: '15px', textAlign: 'center'}} color={'#4B9A2D'}>Для завершения регистрации, вам на почту выслана ссылка, пройдите по ссылке</Typography>

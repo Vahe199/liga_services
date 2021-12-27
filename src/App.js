@@ -5,11 +5,9 @@ import LoginPage from "./components/authPages/loginPage/LoginPage";
 import RegistrationPage from "./components/authPages/registrationPage/RegistrationPage";
 import ClientProfilePage from "./components/clientPages/ClientProfilePage";
 import React from "react";
-
 import {Worksheet} from "./components/clientPages/Worksheet/Worksheet";
 import {Backing} from "./components/clientPages/Backing/Backing";
 import {MyOrders} from "./components/clientPages/MyOrders/MyOrders";
-import ClientBar from "./clients/ClientBar";
 
 
 function App() {
