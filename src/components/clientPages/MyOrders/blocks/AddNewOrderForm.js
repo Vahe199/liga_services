@@ -22,7 +22,12 @@ const AddNewOrderForm = () => {
     }, [value])
     return (
         <Formik
-            initialValues={{ nomination: '', Service_category: '', subCategories: '', description: '', file: '', region: '', address: '', time_from: '', time_to: '', payment_from: '', payment_to: '', place_work: value}}
+            initialValues={{
+                nomination: '', Service_category: '',
+                subCategories: '', description: '',
+                file: '', region: '', address: '', time_from: '',
+                time_to: '', payment_from: '', payment_to: '', place_work: value
+            }}
             validationSchema={AddNewOrderValidation}
             onSubmit={async (values, action) => {
                 console.log(values, 'values')
@@ -147,7 +152,7 @@ const AddNewOrderForm = () => {
                                     <CustomDatePicker
                                         value={values.time_from}
                                         name={'time_from'}
-                                        fun={setFieldValue}
+                                        fun={(val)=>setFieldValue('time_from',val)}
                                         touched={touched.time_from}
                                         errors={errors.time_from}
                                     />
@@ -155,7 +160,7 @@ const AddNewOrderForm = () => {
                                 <CustomDatePicker
                                     value={values.time_to}
                                     name={'time_to'}
-                                    fun={setFieldValue}
+                                    fun={(val)=>setFieldValue('time_to',val)}
                                     touched={touched.time_to}
                                     errors={errors.time_to}
                                 />
