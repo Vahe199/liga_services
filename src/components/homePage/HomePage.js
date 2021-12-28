@@ -32,8 +32,8 @@ const HomePage = () => {
                 <Reviews />
             </Container>
              <Footer />
-      {/*<AboutOrder/>*/}
-      {/* <AdditionalFiles/> 
+      {/* <AboutOrder/> */}
+       {/* <AdditionalFiles/> 
       <Filtr/>
       <ResponseAmount/> 
       <PersonalData/>   
