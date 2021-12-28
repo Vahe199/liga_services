@@ -1,12 +1,14 @@
 import React from "react";
 import { Box } from "@mui/material";
 import { Divider } from "@mui/material";
+import CustomImageList from "../UI/common/customimagelist/CustomImageList";
+import { imageData } from "../../utils/data/imagedata/ImageData";
 
 
 
 const EducationAndCertifications = () => {
   return (
-    <Box style={{boxShadow: " 4px 4px 10px rgba(0, 0, 0, 0.15)",borderRadius: "20px",padding: "20px 50px",width: "40%"}}>
+    <Box style={{boxShadow: " 4px 4px 10px rgba(0, 0, 0, 0.15)",borderRadius: "20px",padding: "20px 50px",width: "50%"}}>
       <p style={{ fontSize: "24px", fontWeight: 500, whiteSpace: "nowrap" }}>
             Образование и сертификаты
       </p>
@@ -20,9 +22,8 @@ const EducationAndCertifications = () => {
       <p style={{color: '#808080'}}>
             Сертификаты
       </p>
-      <p>
-            г. Москва, Любанский проезд, подъезд 3 квартира 42
-      </p>
+
+      <CustomImageList imageData={imageData} />
 
     </Box>
   );
