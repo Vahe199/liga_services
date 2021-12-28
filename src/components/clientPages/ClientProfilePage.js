@@ -28,9 +28,6 @@ const useProfileStyles = makeStyles({
             '& .MuiInput-root': {
              border: 'none'
             },
-             '& .Mui-error': {
-                 border: '2px green solid'
-             },
     },
     container:{
        backgroundColor:"#e1e3e5",
