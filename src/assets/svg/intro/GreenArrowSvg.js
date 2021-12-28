@@ -13,6 +13,7 @@ export const GreenArrowSvg = () => {
                     <rect width="41" height="38" fill="white"/>
                 </clipPath>
             </defs>
+
         </svg>
     )
 }
