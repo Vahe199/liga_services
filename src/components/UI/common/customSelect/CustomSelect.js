@@ -1,9 +1,11 @@
 import React from 'react';
 import {FormControl, Select} from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
-import {FormHelperText} from "@material-ui/core";
+import {FormHelperText, makeStyles} from "@material-ui/core";
 import Box from "@mui/material/Box";
-import {useStyles} from "../../../../globalStyles/ModalStyles";
+import {useStyles} from "../customInput/CustomInput";
+
+
 
 const CustomSelect = ({label, handleChange, value, name, touched, error, mt}) => {
     const classes = useStyles();

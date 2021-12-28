@@ -7,6 +7,7 @@ export const useStyles = makeStyles({
         //input
         '& .css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
             marginBottom: '10px',
+            width: '100%',
         },
         '& .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root': {
             borderRadius: '10px',
@@ -33,7 +34,19 @@ export const useStyles = makeStyles({
         '& .css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label': {
             color: '#808080',
             fontSize: '16px',
-        }
+        },
+        "& .MuiButton-outlined": {
+            background: "#445E77",
+            textTransform: "none",
+            color: '#fff',
+            fontWeight: 500,
+            borderRadius: '10px',
+            width: '160px',
+            marginBottom: '10px',
+            "&:hover": {
+                background: '#6585a5 !important',
+            }
+        },
     },
     container: {
         display: 'flex',
@@ -100,7 +113,7 @@ export const useStyles = makeStyles({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '25px',
+        //marginTop: '25px',
         width: '70%',
     }
 });

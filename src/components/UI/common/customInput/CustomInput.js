@@ -14,7 +14,7 @@ export const useStyles = makeStyles({
         marginBottom: '18px',
             '& .MuiOutlinedInput-root': {
                 '& fieldset': {
-                    borderColor: '#808080',
+                    borderColor: 'blue',
                     borderRadius: '10px',
                     //width: '100%',
                 },
@@ -24,6 +24,18 @@ export const useStyles = makeStyles({
                 '&.Mui-focused fieldset': {
                     borderColor: 'gray',
                 },
+                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                    border: "1px solid #808080",
+                    borderRadius: '10px',
+                },
+                "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                    border: "1px solid #808080",
+                    borderRadius: '10px',
+                },
+                //focus
+                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                    border: "1px solid blue",
+                }
         },
         //input
         // '& MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
@@ -116,7 +128,7 @@ const CustomInput = ({label,
                       touched,
                       error,
                       textArea = false,
-                      mb = 20,
+                      mb = 10,
                       icon = false,
                       width = '100%',
                       placeholder}) => {

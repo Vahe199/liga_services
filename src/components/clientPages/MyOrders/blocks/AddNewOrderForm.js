@@ -140,8 +140,8 @@ const AddNewOrderForm = () => {
                                 </FormControl>
                             </Box>
                             <p style={{marginBottom: '15px'}} className={classes.inputText}>Желаемый срок начала работ</p>
-                            <Box>
-                                <Box style={{marginBottom: '10px'}}>
+                            <Box style={{marginBottom: '20px', width: '60%'}}>
+                                <Box style={{marginBottom: '20px'}}>
                                     <CustomDatePicker
                                         value={values.time_from}
                                         name={'time_from'}
@@ -167,7 +167,7 @@ const AddNewOrderForm = () => {
                                 error={errors.payment_from}
                                 icon={true}
                                 placeholder={'От'}
-                                width={'50%'}
+                                width={'60%'}
                             />
                             <CustomInput
                                 name={'payment_to'}
@@ -177,7 +177,7 @@ const AddNewOrderForm = () => {
                                 error={errors.payment_to}
                                 icon={true}
                                 placeholder={'До'}
-                                width={'50%'}
+                                width={'60%'}
                             />
                         </Grid>
                     </Grid>

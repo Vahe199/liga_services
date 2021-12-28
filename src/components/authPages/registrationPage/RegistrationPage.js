@@ -44,7 +44,7 @@ const RegistrationPage = () => {
                                     handleChange={handleChange}
                                     touched={touched.name}
                                     error={errors.name}
-                                    mb={25}
+                                    mb={0}
                                 />
                                 <CustomInput
                                     label={'Телефон'}
@@ -54,7 +54,7 @@ const RegistrationPage = () => {
                                     handleChange={handleChange}
                                     touched={touched.phone}
                                     error={errors.phone}
-                                    mb={25}
+                                    mb={0}
                                 />
                                 <CustomInput
                                     label={'Email*'}
@@ -64,7 +64,7 @@ const RegistrationPage = () => {
                                     handleChange={handleChange}
                                     touched={touched.email}
                                     error={errors.email}
-                                    mb={25}
+                                    mb={0}
                                 />
                                 <CustomInput
                                     label={'Пароль*'}
@@ -74,7 +74,7 @@ const RegistrationPage = () => {
                                     handleChange={handleChange}
                                     touched={touched.password}
                                     error={errors.password}
-                                    mb={25}
+                                    mb={0}
                                 />
                                 <CustomInput
                                     label={'Подтвердить пароль*'}
@@ -84,10 +84,10 @@ const RegistrationPage = () => {
                                     handleChange={handleChange}
                                     touched={touched.confirmPassword}
                                     error={errors.confirmPassword}
-                                    mb={25}
+                                    mb={0}
                                 />
                                  <Box className={classes.footer}>
-                                    <Button className={classes.btn} onClick={handleSubmit}>Регистрация</Button>
+                                    <Button variant={'outlined'} onClick={handleSubmit}>Регистрация</Button>
                                     <Typography style={{fontSize: '15px', textAlign: 'center'}} color={'#4B9A2D'}>Для завершения регистрации, вам на почту выслана ссылка, пройдите по ссылке</Typography>
                                 </Box>
                             </Box>

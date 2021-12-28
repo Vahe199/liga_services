@@ -21,17 +21,6 @@ export const useStyles = makeStyles({
             height: '10px',
         },
         //button
-        '& .css-1e6y48t-MuiButtonBase-root-MuiButton-root': {
-            backgroundColor: '#445E77',
-            fontSize: '15px',
-            color: '#FAFAFA',
-            padding: '7px 24px',
-            fontWeight: 500,
-            marginBottom: '10px',
-            borderRadius: '10px',
-            width: '190px',
-            whiteSpace: 'noWrap',
-        },
         '& .css-1e6y48t-MuiButtonBase-root-MuiButton-root:hover': {
             backgroundColor: '#3a4e61',
         },
@@ -60,14 +49,27 @@ export const useStyles = makeStyles({
         '& .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root': {
             width: '170px',
             borderRadius: '10px',
-            border: '1px solid #808080',
+            //border: '1px solid #808080',
             height: '45px',
         },
         //input file
         '& .MuiBox-root css-0': {
             width: '40%',
-        }
+        },
+        "& .MuiButton-outlined": {
+            background: "#445E77",
+            textTransform: "none",
+            color: '#fff',
+            fontWeight: 500,
+            borderRadius: '10px',
+            width: '160px',
+            marginBottom: '10px',
+            "&:hover": {
+                background: '#6585a5 !important',
+            }
+        },
     },
+
     title: {
         color: '#445E77',
         fontWeight: '500',
