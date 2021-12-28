@@ -8,6 +8,9 @@ import LargeLogo from "../../../../assets/image/LogoLarge.png"
 import {GreenArrowSvg} from "../../../../assets/svg/intro/GreenArrowSvg";
 import {GoToChatSvg} from "../../../../assets/svg/intro/GoToChatSvg";
 import ModalNewTask from "../../../UI/modals/ModalNewTask";
+import Skeleton from '@mui/material/Skeleton';
+
+
 
 
 export const useStyles = makeStyles({
@@ -30,7 +33,8 @@ export const useStyles = makeStyles({
     img:{
         width:"100%",
         height:"100%"
-    }
+    },
+       
 });
 
 
@@ -64,7 +68,9 @@ const Intro = ({categoriesRef}) => {
             <Grid style={{position: 'relative'}} item xs={12} md={6}>
                 <img src={LargeLogo} alt={"logo"} className={classes.img}/>
                 <Box className={classes.chat}>
+               
                     <GoToChatSvg />
+
                 </Box>
             </Grid>
         </Grid>
