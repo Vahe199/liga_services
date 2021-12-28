@@ -17,9 +17,6 @@ import {AddNewOrderValidation} from "../../../../utils/validation/AddNewOrderVal
 const AddNewOrderForm = () => {
     const classes = useMyOrdersStyles();
     const [value, setValue] = useState('');
-    useEffect(() => {
-        console.log(value, 'value')
-    }, [value])
     return (
         <Formik
             initialValues={{
@@ -57,7 +54,7 @@ const AddNewOrderForm = () => {
                                     mt={0}
                                 />
                             </Box>
-                            <Box style={{marginBottom: '25px'}}>
+                            <Box style={{marginBottom: '40px'}}>
                                 <CustomSelect
                                     name={'Service_category'}
                                     label={'Категория услуг*'}
@@ -74,7 +71,6 @@ const AddNewOrderForm = () => {
                                 handleChange={handleChange}
                                 touched={touched.subCategories}
                                 error={errors.subCategories}
-                                mb={25}
                             />
                             <CustomInput
                                 label={'Описание'}
@@ -84,9 +80,8 @@ const AddNewOrderForm = () => {
                                 touched={touched.description}
                                 error={errors.description}
                                 textArea={true}
-                                mb={25}
                             />
-                            <Box style={{marginTop: '60px'}}>
+                            <Box>
                                 <CustomInputAddFile
                                     name={'file'}
                                     value={values.file}
@@ -103,7 +98,6 @@ const AddNewOrderForm = () => {
                                     handleChange={handleChange}
                                     touched={touched.region}
                                     error={errors.region}
-                                    mb={25}
                                 />
                                 <CustomInput
                                     label={'Адрес'}
@@ -112,11 +106,10 @@ const AddNewOrderForm = () => {
                                     handleChange={handleChange}
                                     touched={touched.address}
                                     error={errors.address}
-                                    mb={25}
                                 />
                             </Box>}
 
-                            <Box style={{marginTop: value ? '50px' : '10px'}}>
+                            <Box style={{marginTop: value === 'client' ? '10px' : '10px'}}>
                                 <Button onClick={handleSubmit} variant={'outlined'}>Профиль исполнителя</Button>
                             </Box>
 
@@ -174,7 +167,7 @@ const AddNewOrderForm = () => {
                                 error={errors.payment_from}
                                 icon={true}
                                 placeholder={'От'}
-                                mb={25}
+                                width={'50%'}
                             />
                             <CustomInput
                                 name={'payment_to'}
@@ -184,6 +177,7 @@ const AddNewOrderForm = () => {
                                 error={errors.payment_to}
                                 icon={true}
                                 placeholder={'До'}
+                                width={'50%'}
                             />
                         </Grid>
                     </Grid>

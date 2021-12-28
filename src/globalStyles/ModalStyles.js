@@ -6,6 +6,9 @@ export const useStyles = makeStyles({
         // '& MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
         //   width: '100%',
         // },
+        '& ..css-1sbn0x8-MuiInputBase-root-MuiOutlinedInput-root': {
+                border: '2px solid green',
+        },
         '& .css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
             marginBottom: '10px',
             width: '100%',

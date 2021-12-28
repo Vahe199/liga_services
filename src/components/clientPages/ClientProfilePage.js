@@ -8,6 +8,7 @@ const useProfileStyles = makeStyles({
    root:{
          overflow:"auto",
           height:"100vh",
+
        "& .MuiButton-contained": {
            backgroundColor: '#4B9A2D',
            borderRadius: '10px',
@@ -25,9 +26,6 @@ const useProfileStyles = makeStyles({
                background: '#6585a5 !important',
            }
        },
-            '& .MuiInput-root': {
-             border: 'none'
-            },
     },
     container:{
        backgroundColor:"#e1e3e5",
