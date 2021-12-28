@@ -19,9 +19,6 @@ import MessageSvg from "../assets/svg/header/MessageSvg";
 import {useNavigate} from "react-router-dom";
 import {Divider, Drawer, List, ListItem, ListItemText} from "@mui/material";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-
-const pages = [{title:'Мои заказы',path:"MyOrders"}, {title:'Анкета',path:"worksheet"}, {title:'Поддержка',path:"backing"}];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 const useNavStyles = makeStyles({
     root: {
         "& .MuiAppBar-root": {
@@ -73,8 +70,11 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export const MainNavBar = () => {
  const navigate = useNavigate()
   const classes = useNavStyles()
+    const pages = [{title:'Мои заказы',path:"MyOrders"}, {title:'Анкета',path:"worksheet"}, {title:'Поддержка',path:"backing"}];
+    const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
   const [anchorElNav, setAnchorElNav] = React.useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [active, setActive] = React.useState("Мои заказы");
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -86,6 +86,7 @@ export const MainNavBar = () => {
   const handleCloseNavMenu = (path) => {
      navigate(`${path}`)
      setAnchorElNav(false);
+      setActive(path)
   };
 
   const handleCloseUserMenu = () => {
@@ -186,7 +187,7 @@ export const MainNavBar = () => {
                   <Button
                       key={page.title}
                       onClick={()=>handleCloseNavMenu(page.path)}
-                      sx={{ my: 2, color: anchorElNav === page.path ? '#445e77':'#000', display: 'block',textTransform: "none" }}
+                      sx={{ my: 2, color: active === page.path ? '#445e77':'#000', display: 'block',textTransform: "none" }}
                   >
                     {page.title}
                   </Button>

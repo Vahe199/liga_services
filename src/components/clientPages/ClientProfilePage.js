@@ -11,6 +11,7 @@ const useProfileStyles = makeStyles({
        "& .MuiButton-contained": {
            backgroundColor: '#4B9A2D',
            borderRadius: '10px',
+           textTransform: "none",
            color: '#fff',
            fontWeight: 500,
        },

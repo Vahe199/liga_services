@@ -38,5 +38,10 @@ export const useEditCardStyles = makeStyles({
             background: '#445E77 !important',
         }
     },
-
+    input: {
+        '&::placeholder': {
+            textOverflow: 'ellipsis !important',
+            textAlign: "center"
+        }
+    }
 })
