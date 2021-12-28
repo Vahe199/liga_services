@@ -1,5 +1,5 @@
 import React from 'react';
-import {MainNavBar} from "../MainNavBar";
+import {MainNavBar} from "../UI/common/headers/MainNavBar";
 import {Outlet} from "react-router-dom";
 import Footer from "../UI/common/footer/Footer";
 import {makeStyles} from "@material-ui/core";
@@ -27,9 +27,6 @@ const useProfileStyles = makeStyles({
             '& .MuiInput-root': {
              border: 'none'
             },
-             '& .Mui-error': {
-                 border: '2px green solid'
-             },
     },
     container:{
        backgroundColor:"#e1e3e5",

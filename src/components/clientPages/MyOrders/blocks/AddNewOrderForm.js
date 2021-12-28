@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import Grid from "@mui/material/Grid";
-import {FormControl, Select, TextField} from "@mui/material";
-import MenuItem from "@mui/material/MenuItem";
-import {FormControlLabel, FormHelperText, FormLabel, Radio, RadioGroup} from "@material-ui/core";
+import {FormControl} from "@mui/material";
+import {FormControlLabel, FormLabel, Radio, RadioGroup} from "@material-ui/core";
 import Box from "@mui/material/Box";
-import {AddTaskValidation} from "../../../../utils/validation/AddTaskValidation";
 import CustomDatePicker from "../../../UI/common/datePicker/CustomDatePicker";
 import {DownloadSvg} from "../../../../assets/svg/DownloadSvg";
 import Button from "@mui/material/Button";
@@ -13,6 +11,7 @@ import {useMyOrdersStyles} from "../MyOrders";
 import CustomSelect from "../../../UI/common/customSelect/CustomSelect";
 import CustomInputAddFile from "../../../UI/common/customInputAddFile/CustomInputAddFile";
 import CustomInput from "../../../UI/common/customInput/CustomInput";
+import {AddNewOrderValidation} from "../../../../utils/validation/AddNewOrderValidation";
 
 
 const AddNewOrderForm = () => {
@@ -24,7 +23,7 @@ const AddNewOrderForm = () => {
     return (
         <Formik
             initialValues={{ nomination: '', Service_category: '', subCategories: '', description: '', file: '', region: '', address: '', time_from: '', time_to: '', payment_from: '', payment_to: '', place_work: value}}
-            //validationSchema={AddTaskValidation}
+            validationSchema={AddNewOrderValidation}
             onSubmit={async (values, action) => {
                 console.log(values, 'values')
                 action.resetForm()
@@ -42,6 +41,7 @@ const AddNewOrderForm = () => {
                 <form onSubmit={handleSubmit}>
                     <Grid container spacing={4} >
                         <Grid  item sm={12} lg={6}>
+                            <Box style={{marginBottom: '25px'}}>
                                 <CustomSelect
                                     name={'nomination'}
                                     label={'Название'}
@@ -51,14 +51,17 @@ const AddNewOrderForm = () => {
                                     error={errors.nomination}
                                     mt={0}
                                 />
-                            <CustomSelect
-                                name={'service_name'}
-                                label={'Категория услуг*'}
-                                handleChange={handleChange}
-                                value={values.service_name}
-                                touched={touched.service_name}
-                                error={errors.service_name}
-                            />
+                            </Box>
+                            <Box style={{marginBottom: '25px'}}>
+                                <CustomSelect
+                                    name={'Service_category'}
+                                    label={'Категория услуг*'}
+                                    handleChange={handleChange}
+                                    value={values.Service_category}
+                                    touched={touched.Service_category}
+                                    error={errors.Service_category}
+                                />
+                            </Box>
                             <CustomInput
                                 label={'Подкатегория*'}
                                 name={'subCategories'}
@@ -66,6 +69,7 @@ const AddNewOrderForm = () => {
                                 handleChange={handleChange}
                                 touched={touched.subCategories}
                                 error={errors.subCategories}
+                                mb={25}
                             />
                             <CustomInput
                                 label={'Описание'}
@@ -75,6 +79,7 @@ const AddNewOrderForm = () => {
                                 touched={touched.description}
                                 error={errors.description}
                                 textArea={true}
+                                mb={25}
                             />
                             <Box style={{marginTop: '60px'}}>
                                 <CustomInputAddFile
@@ -85,24 +90,28 @@ const AddNewOrderForm = () => {
                                     svg={<DownloadSvg />}
                                 />
                             </Box>
-                            <CustomInput
-                                label={'Регион'}
-                                name={'region'}
-                                value={values.region}
-                                handleChange={handleChange}
-                                touched={touched.region}
-                                error={errors.region}
-                            />
-                            <CustomInput
-                                label={'Адрес'}
-                                name={'address'}
-                                value={values.address}
-                                handleChange={handleChange}
-                                touched={touched.address}
-                                error={errors.address}
-                                mb={10}
-                            />
-                            <Box style={{marginTop: '35px'}}>
+                            {value === 'client' && <Box>
+                                <CustomInput
+                                    label={'Регион'}
+                                    name={'region'}
+                                    value={values.region}
+                                    handleChange={handleChange}
+                                    touched={touched.region}
+                                    error={errors.region}
+                                    mb={25}
+                                />
+                                <CustomInput
+                                    label={'Адрес'}
+                                    name={'address'}
+                                    value={values.address}
+                                    handleChange={handleChange}
+                                    touched={touched.address}
+                                    error={errors.address}
+                                    mb={25}
+                                />
+                            </Box>}
+
+                            <Box style={{marginTop: value ? '50px' : '10px'}}>
                                 <Button onClick={handleSubmit} variant={'outlined'}>Профиль исполнителя</Button>
                             </Box>
 
@@ -160,6 +169,7 @@ const AddNewOrderForm = () => {
                                 error={errors.payment_from}
                                 icon={true}
                                 placeholder={'От'}
+                                mb={25}
                             />
                             <CustomInput
                                 name={'payment_to'}

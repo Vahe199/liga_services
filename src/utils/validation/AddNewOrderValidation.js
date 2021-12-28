@@ -1,6 +1,5 @@
-import {number, object, string} from "yup";
-//, , place_work: value
-export const AddNewOrder = object().shape({
+import {boolean, number, object, string} from "yup";
+export const AddNewOrderValidation = object().shape({
     nomination: string().required('Обязательное поле'),
     Service_category: string().required('Обязательное поле'),
     subCategories: string()
@@ -23,13 +22,15 @@ export const AddNewOrder = object().shape({
     time_to: string()
         .required('Обязательное поле'),
     payment_from: number()
+        .required('Обязательное поле')
         .typeError('Толко цифры')
         .min(3, 'Номер телефона недействителен')
         .max(18, 'Номер телефона недействителен'),
     payment_to: number()
+        .required('Обязательное поле')
         .typeError('Толко цифры')
         .min(3, 'Номер телефона недействителен')
         .max(18, 'Номер телефона недействителен'),
-    // place_work: boolean()
-    //     .required().oneOf([0 , 1], 'Selecting the gender field is required'),
+    place_work: boolean()
+        .required().oneOf([0 , 1], 'Обязательное поле'),
 });
