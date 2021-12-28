@@ -21,7 +21,7 @@ const HomePage = () => {
   const categoriesRef = useRef();
   return (
     <div>
-      {/* <Container maxWidth="lg">
+      <Container maxWidth="lg">
                 <LogoBlock />
                 <Intro categoriesRef={categoriesRef} />
             </Container>
@@ -31,8 +31,8 @@ const HomePage = () => {
                 <TrustedExperts />
                 <Reviews />
             </Container>
-             <Footer />  */}
-      <AboutOrder/>
+             <Footer />
+      {/*<AboutOrder/>*/}
       {/* <AdditionalFiles/> 
       <Filtr/>
       <ResponseAmount/> 

@@ -193,8 +193,8 @@ export const MainNavBar = () => {
                   </Button>
               ))}
             </Box>
-<Button className={classes.btn} sx={{background: "#445E77",textTransform: "none"}}
-    variant="contained">Профиль исполнителя</Button>
+<Button
+    variant="outlined">Профиль исполнителя</Button>
             <Box sx={{ flexGrow: 0}}>
               <IconButton>
                 <MessageSvg/>
