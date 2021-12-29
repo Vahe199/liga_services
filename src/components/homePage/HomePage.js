@@ -31,7 +31,7 @@ const HomePage = () => {
                 <TrustedExperts />
                 <Reviews />
             </Container>
-             <Footer />
+             <Footer /> 
       {/* <AboutOrder/> */}
        {/* <AdditionalFiles/> 
       <Filtr/>
