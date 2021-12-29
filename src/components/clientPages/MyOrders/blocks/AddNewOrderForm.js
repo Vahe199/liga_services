@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Grid from "@mui/material/Grid";
-import {FormControl} from "@mui/material";
-import {FormControlLabel, FormLabel, Radio, RadioGroup} from "@material-ui/core";
+import {FormControl, FormControlLabel, FormLabel, RadioGroup} from "@mui/material";
 import Box from "@mui/material/Box";
 import CustomDatePicker from "../../../UI/common/datePicker/CustomDatePicker";
 import {DownloadSvg} from "../../../../assets/svg/DownloadSvg";
@@ -12,14 +11,12 @@ import CustomSelect from "../../../UI/common/customSelect/CustomSelect";
 import CustomInputAddFile from "../../../UI/common/customInputAddFile/CustomInputAddFile";
 import CustomInput from "../../../UI/common/customInput/CustomInput";
 import {AddNewOrderValidation} from "../../../../utils/validation/AddNewOrderValidation";
+import {Radio} from "@mui/icons-material";
 
 
 const AddNewOrderForm = () => {
     const classes = useMyOrdersStyles();
     const [value, setValue] = useState('');
-    useEffect(() => {
-        console.log(value, 'value')
-    }, [value])
     return (
         <Formik
             initialValues={{
@@ -57,7 +54,7 @@ const AddNewOrderForm = () => {
                                     mt={0}
                                 />
                             </Box>
-                            <Box style={{marginBottom: '25px'}}>
+                            <Box style={{marginBottom: '40px'}}>
                                 <CustomSelect
                                     name={'Service_category'}
                                     label={'Категория услуг*'}
@@ -74,7 +71,6 @@ const AddNewOrderForm = () => {
                                 handleChange={handleChange}
                                 touched={touched.subCategories}
                                 error={errors.subCategories}
-                                mb={25}
                             />
                             <CustomInput
                                 label={'Описание'}
@@ -84,9 +80,8 @@ const AddNewOrderForm = () => {
                                 touched={touched.description}
                                 error={errors.description}
                                 textArea={true}
-                                mb={25}
                             />
-                            <Box style={{marginTop: '60px'}}>
+                            <Box>
                                 <CustomInputAddFile
                                     name={'file'}
                                     value={values.file}
@@ -103,7 +98,6 @@ const AddNewOrderForm = () => {
                                     handleChange={handleChange}
                                     touched={touched.region}
                                     error={errors.region}
-                                    mb={25}
                                 />
                                 <CustomInput
                                     label={'Адрес'}
@@ -112,11 +106,10 @@ const AddNewOrderForm = () => {
                                     handleChange={handleChange}
                                     touched={touched.address}
                                     error={errors.address}
-                                    mb={25}
                                 />
                             </Box>}
 
-                            <Box style={{marginTop: value ? '50px' : '10px'}}>
+                            <Box style={{marginTop: value === 'client' ? '10px' : '10px'}}>
                                 <Button onClick={handleSubmit} variant={'outlined'}>Профиль исполнителя</Button>
                             </Box>
 
@@ -147,8 +140,8 @@ const AddNewOrderForm = () => {
                                 </FormControl>
                             </Box>
                             <p style={{marginBottom: '15px'}} className={classes.inputText}>Желаемый срок начала работ</p>
-                            <Box>
-                                <Box style={{marginBottom: '10px'}}>
+                            <Box style={{marginBottom: '20px', width: '60%'}}>
+                                <Box style={{marginBottom: '20px'}}>
                                     <CustomDatePicker
                                         value={values.time_from}
                                         name={'time_from'}
@@ -174,7 +167,7 @@ const AddNewOrderForm = () => {
                                 error={errors.payment_from}
                                 icon={true}
                                 placeholder={'От'}
-                                mb={25}
+                                width={'60%'}
                             />
                             <CustomInput
                                 name={'payment_to'}
@@ -184,6 +177,7 @@ const AddNewOrderForm = () => {
                                 error={errors.payment_to}
                                 icon={true}
                                 placeholder={'До'}
+                                width={'60%'}
                             />
                         </Grid>
                     </Grid>

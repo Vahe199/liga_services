@@ -65,7 +65,7 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                               }) => (
                                 <form onSubmit={handleSubmit}>
                                     <Box>
-                                        <Box style={{marginBottom: '30px'}}>
+                                        <Box style={{marginBottom: '40px'}}>
                                             <CustomSelect
                                                 name={'service_type'}
                                                 label={'Вид услуг'}
@@ -83,7 +83,6 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                             handleChange={handleChange}
                                             touched={touched.service_name}
                                             error={errors.service_name}
-                                            mb={25}
                                         />
                                         <CustomInput
                                             label={'Укажите адрес*'}
@@ -92,7 +91,6 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                             handleChange={handleChange}
                                             touched={touched.address}
                                             error={errors.address}
-                                            mb={25}
                                         />
                                         <CustomInput
                                             label={'Описание'}
@@ -102,10 +100,9 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                             touched={touched.description}
                                             error={errors.description}
                                             textArea={true}
-                                            mb={25}
                                         />
-                                        <Box className={classes.otherDocs}>
-                                            <p style={{fontSize: '15px', color: '#000', margin: '55px 0 10px 0'}}>Желаемый срок начала работ</p>
+                                        <Box>
+                                            <p style={{fontSize: '15px', color: '#000', margin: '0 0 10px 0'}}>Желаемый срок начала работ</p>
                                             <Box style={{display: 'flex'}}>
                                                 <Box style={{paddingRight: '10px'}}>
                                                     <CustomDatePicker
@@ -133,7 +130,7 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                             />
                                         </Box>
                                         <Box className={classes.footer}>
-                                            <Button onClick={handleSubmit}>Оформить заказ</Button>
+                                            <Button variant={'outlined'} onClick={handleSubmit}>Оформить заказ</Button>
                                         </Box>
                                     </Box>
                                 </form>

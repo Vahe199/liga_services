@@ -1,11 +1,11 @@
 import React from "react";
-import { Box, Button, Stack } from "@mui/material";
+import { Box, Button, Stack, Switch, TextareaAutosize } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import CustomImageList from "../UI/common/customimagelist/CustomImageList";
 import { imageData } from "../../utils/data/imagedata/ImageData";
 import { TextField } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
-import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
+import CustomDatePicker from "../UI/common/datePicker/CustomDatePicker";
 
 const AboutOrder = () => {
   return (
@@ -80,32 +80,28 @@ const AboutOrder = () => {
         }}
       />
 
-    <Stack
+      <Stack
         direction="row"
         divider={<Divider orientation="vertical" flexItem />}
-        spacing={4}
+        spacing={25}
         justifyContent="center"
         alignItems="center"
       >
         <Box>
           <p style={{ fontSize: "18px" }}>Стоимость услуги</p>
           <Box>
-            <Box>
+            <Box style={{ display: "flex" }}>
               <TextField
+                style={{ paddingRight: "20px" }}
                 variant={"outlined"}
                 InputProps={{
                   endAdornment: (
-                    <InputAdornment
-                      style={{ borderRadius: "10px" }}
-                      position="start"
-                    >
-                      {"Руб."}
-                    </InputAdornment>
+                    <InputAdornment position="start">{"Руб."}</InputAdornment>
                   ),
                 }}
-                autoComplete={"off"}
-                rows={2}
-                maxRows={4}
+                sx={{
+                  input: { height: 10, borderRadius: 20, width: 150 },
+                }}
               />
 
               <TextField
@@ -120,33 +116,44 @@ const AboutOrder = () => {
                     </InputAdornment>
                   ),
                 }}
-                autoComplete={"off"}
-                rows={2}
-                maxRows={4}
+                sx={{
+                  input: { height: 10, borderRadius: 20, width: 150 },
+                }}
               />
+            </Box>
+
+            <Box
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <p style={{ fontSize: "18px" }}>Указать точную стоимость</p>
+              <Switch />
             </Box>
           </Box>
         </Box>
+
         <Box>
           <p style={{ fontSize: "18px" }}>Предлогать свои даты</p>
-          {/* <Box>
-          <DesktopDatePicker
-              label="Date desktop"
-              inputFormat="MM/dd/yyyy"            
-              renderInput={(params) => <TextField {...params} />}
-          />
-
-          <DesktopDatePicker
-              label="Date desktop"
-              inputFormat="MM/dd/yyyy"
-              renderInput={(params) => <TextField {...params} />}
-          />
-          </Box> */}
+          <Box style={{ display: "flex" }}>
+            <Box style={{ paddingRight: "20px" }}>
+              <CustomDatePicker />
+            </Box>
+            <CustomDatePicker />
+          </Box>
         </Box>
       </Stack>
-      
-
-      {/* <Box
+      <p style={{ fontSize: "18px" }}>Предложение заказчику </p>
+      <TextareaAutosize
+        aria-label="minimum height"
+        minRows={8}
+        placeholder="Пример предложения
+          Здравствуйте Елена, у меня 5+ лет опыта работы. Работаю с такими языками программирования как Phyton, JavaScript, Laravel и т.д. Люблю своё дело...."
+        style={{ width: "100%", marginBottom: "35px" }}
+      />
+      <Box
         style={{
           display: "flex",
           justifyContent: "center",
@@ -154,10 +161,10 @@ const AboutOrder = () => {
           marginBottom: "40px",
         }}
       >
-        <Button variant="contained" color="success">
-          Откликнуться
+        <Button variant="contained" color="success" style={{padding:'16px 100px', fontSize: '24px'}}>
+          Отправить
         </Button>
-      </Box> */}
+      </Box>
     </Box>
   );
 };

@@ -45,7 +45,6 @@ const LoginPage = () => {
                                     handleChange={handleChange}
                                     touched={touched.email}
                                     error={errors.email}
-                                    mb={25}
                                 />
                                 <CustomInput
                                     label={'Пароль*'}
@@ -65,7 +64,7 @@ const LoginPage = () => {
                                     labelPlacement="end"
                                 />
                                 <Box className={classes.footer}>
-                                    <Button className={classes.btn} onClick={handleSubmit}>Вход</Button>
+                                    <Button variant={'outlined'}  onClick={handleSubmit}>Вход</Button>
                                     <Typography style={{fontSize: '15px', textAlign: 'center'}} color={'#fff'}>Для завершения регистрации, вам на почту выслана ссылка, пройдите по ссылке</Typography>
                                 </Box>
                             </Box>

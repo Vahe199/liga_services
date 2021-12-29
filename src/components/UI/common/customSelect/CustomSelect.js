@@ -1,14 +1,65 @@
 import React from 'react';
-import {FormControl, Select} from "@mui/material";
+import {FormControl, FormHelperText, Select} from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
-import {FormHelperText} from "@material-ui/core";
+import { makeStyles} from "@material-ui/core";
 import Box from "@mui/material/Box";
-import {useStyles} from "../../../../globalStyles/ModalStyles";
+
+export const useStyles = makeStyles({
+    root: {
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: '18px',
+        '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+                borderColor: 'blue',
+                borderRadius: '10px',
+                //width: '100%',
+            },
+            '&:hover fieldset': {
+                borderColor: 'blue',
+            },
+            '&.Mui-focused fieldset': {
+                borderColor: 'gray',
+            },
+            "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                border: "1px solid #808080",
+                borderRadius: '10px',
+            },
+            "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                border: "1px solid #808080",
+                borderRadius: '10px',
+            },
+            //focus
+            "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                border: "1px solid blue",
+            }
+        },
+    },
+    boxInput: {
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: '18px',
+    },
+    inputText: {
+        fontSize: '15px',
+        textAlign: 'left',
+        width: '100%',
+        margin: 0,
+    },
+});
+
+
 
 const CustomSelect = ({label, handleChange, value, name, touched, error, mt}) => {
     const classes = useStyles();
     return (
-        <Box className={classes.boxInput}>
+        <Box className={classes.root}>
             <p style={{marginTop: mt}} className={classes.inputText}>{label}</p>
             <FormControl style={{height: '10px', marginBottom: '10px'}} fullWidth>
                 <Select

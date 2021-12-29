@@ -71,33 +71,22 @@ export const useMyOrdersStyles = makeStyles({
             marginBottom: '10px',
             width: '100%',
         },
-        '& .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root': {
-            borderRadius: '10px',
-            border: '1px solid #808080',
-        },
+        // '& .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root': {
+        //     borderRadius: '10px',
+        //     border: '1px solid #808080',
+        // },
         '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
             height: '10px',
         },
-        //textArea
-        '& .css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root': {
-            borderRadius: '10px',
-            border: '1px solid #808080',
-            height: '80px',
-            width: '100%',
-        },
-        '& MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input': {
-            height: '100%'
-        },
+
         //select
         '& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
             padding: '10px',
         },
-        //radio
-        // '& .MuiTypography-body1': {
-        //     color: '#808080',
-        //     fontSize: '14px',
-        // },
-        //radio
+        //from
+        "& .MuiOutlinedInput-input": {
+            color: "#000",
+        },
     },
     radio: {
         '&$checked': {
