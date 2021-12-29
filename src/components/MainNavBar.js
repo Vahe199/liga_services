@@ -6,6 +6,8 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
@@ -17,7 +19,7 @@ import UserSvg from "../assets/svg/header/UserSvg";
 import NotificationSvg from "../assets/svg/header/NotificationSvj";
 import MessageSvg from "../assets/svg/header/MessageSvg";
 import {useNavigate} from "react-router-dom";
-import {Divider, Drawer, List, ListItem, ListItemText} from "@mui/material";
+import {Divider, Drawer, List, ListItem, ListItemText, Stack} from "@mui/material";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 const useNavStyles = makeStyles({
     root: {
@@ -195,42 +197,61 @@ export const MainNavBar = () => {
             </Box>
 <Button
     variant="outlined">Профиль исполнителя</Button>
-            <Box sx={{ flexGrow: 0}}>
+              <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
+                  <IconButton>
+                  <UserSvg/>
+                  </IconButton>
+                  <IconButton
+                      onClick={handleOpenUserMenu}
+                      style={anchorElUser ? {transform: "rotate(0deg)"} : {transform: "rotate(180deg)"}}
+                  >
+                      <ExpandLessIcon/>
+                  </IconButton>
+                  <Menu
+                      sx={{ mt: '45px' }}
+                      id="menu-appbar"
+                      anchorEl={anchorElUser}
+                      anchorOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right',
+                      }}
+                      keepMounted
+                      transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right',
+                      }}
+                      open={Boolean(anchorElUser)}
+                      onClose={handleCloseUserMenu}
+                  >
+                      <Stack
+                          direction={{ xs: 'column', sm: 'column' }}
+                          // spacing={{ xs: 1, sm: 2, md: 4 }}
+                      >
+                          <Typography  sx={{color:"#000",ml:2}}>Имя ivanova</Typography>
+                          <IconButton>
+                              <MessageSvg/>
+                          </IconButton>
+                          <IconButton>
+                              <NotificationSvg/>
+                          </IconButton>
+                      </Stack>
+                  </Menu>
+              </Box>
+
+            <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' },alignItems:"center" }}>
               <IconButton>
                 <MessageSvg/>
               </IconButton>
-              <IconButton sx={{marginRight:2}}>
+              <IconButton>
                 <NotificationSvg/>
               </IconButton>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+
+                <IconButton>
                   {/*<Avatar  src="/broken-image.jpg" />*/}
                   <UserSvg/>
-                  <Typography  sx={{color:"#000",ml:2}}>Имя</Typography>
+
                 </IconButton>
-              </Tooltip>
-              <Menu
-                  sx={{ mt: '45px' }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-              >
-                {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                      <Typography  textAlign="center">{setting}</Typography>
-                    </MenuItem>
-                ))}
-              </Menu>
+                <Typography  sx={{color:"#000",ml:2}}>Имя</Typography>
             </Box>
           </Toolbar>
         </Container>
