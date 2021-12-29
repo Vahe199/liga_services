@@ -24,5 +24,11 @@ export const useInfoCardStyles = makeStyles({
     },
     title:{fontWeight: "500 !important",
         fontSize: '18px !important',
-        marginBottom:'10px !important'}
+        marginBottom:'10px !important'},
+    orderSubBlockSpaceBetween: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+
 })

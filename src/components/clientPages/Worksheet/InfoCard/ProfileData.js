@@ -2,12 +2,13 @@ import * as React from "react";
 import {Avatar, Box, IconButton, Typography} from "@mui/material";
 import PenSvg from "../../../../assets/svg/Profile/PenSvg";
 import {useInfoCardStyles} from "./InfoCardStyles";
+import Card from "@mui/material/Card";
 
 
 const ProfileData = ({setEdit}) => {
     const classes = useInfoCardStyles()
     return (
-        <Box sx={{boxShadow: 2}} className={classes.root}>
+        <Card sx={{boxShadow: 2}} className={classes.root}>
             <Box className={classes.titleWrap}>
                 <div style={{display: "flex"}}>
                     <Typography variant={"h6"}>Данные профиля</Typography>
@@ -34,7 +35,7 @@ const ProfileData = ({setEdit}) => {
                 Номер телефона
             </Typography>
             <Typography >+7 999 999 9999 </Typography>
-        </Box>
+        </Card>
     );
 };
 export default ProfileData;

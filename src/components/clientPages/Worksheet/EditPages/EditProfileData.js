@@ -3,13 +3,14 @@ import {Avatar, Box, Button, Stack, TextField, Typography} from "@mui/material";
 import {useEditCardStyles} from "./EditCardStyles";
 import {FileSVG} from "../../../../assets/svg/Profile/FileSVG";
 import {useState} from "react";
+import Card from "@mui/material/Card";
 
 
 const EditProfileData = ({setEdit}) => {
     const [save, setSave] = useState(false)
     const classes = useEditCardStyles()
     return (
-        <Box sx={{boxShadow: 2}} className={classes.root}>
+        <Card sx={{boxShadow: 2}} className={classes.root}>
             <Box className={classes.titleWrap}>
                 <div style={{display: "flex"}}>
                     <Typography variant={"h6"}>Действия профиля</Typography>
@@ -62,7 +63,7 @@ const EditProfileData = ({setEdit}) => {
                     </Stack>
                 </Box>
             </Stack>
-        </Box>
+        </Card>
     );
 };
 export default EditProfileData;

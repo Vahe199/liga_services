@@ -42,7 +42,7 @@ const AddNewOrderForm = () => {
                 <form onSubmit={handleSubmit}>
                     <Grid container spacing={4} >
                         <Grid  item sm={12} lg={6}>
-                            <Box style={{marginBottom: '25px'}}>
+                            <Box style={{marginBottom: '50px'}}>
                                 <CustomSelect
                                     name={'nomination'}
                                     label={'Название'}
@@ -122,15 +122,16 @@ const AddNewOrderForm = () => {
                                         defaultValue="remotely"
                                         name="place_work"
                                     >
-                                        <FormControlLabel control={<Radio classes={{root: classes.radio, checked: classes.checked}} size={'small'} onChange={(e) => {
+                                        <FormControlLabel control={<Radio classes={{root: classes.radio, checked: classes.checked}}
+                                              style={{color: '#4B9A2D'}} size={'small'} onChange={(e) => {
                                             setValue('remotely')
                                            setFieldValue('place_work', e.target.value)
                                         }} value="remotely" />} label="Дистанционно" />
                                         <FormControlLabel  control={<Radio  onChange={(e) => {
                                             setValue('executor')
                                             setFieldValue('place_work', e.target.value)
-                                        }} classes={{root: classes.radio, checked: classes.checked}} size={'small'}   value="executor" />} label="У исполнителя" />
-                                        <FormControlLabel  control={<Radio classes={{root: classes.radio, checked: classes.checked}}  size={'small'}
+                                        }} classes={{root: classes.radio, checked: classes.checked}} style={{color: '#4B9A2D'}} size={'small'}   value="executor" />} label="У исполнителя" />
+                                        <FormControlLabel  control={<Radio classes={{root: classes.radio, checked: classes.checked}} style={{color: '#4B9A2D'}}  size={'small'}
                                              onChange={(e) => {
                                                  setValue('client')
                                             setFieldValue('place_work', e.target.value)

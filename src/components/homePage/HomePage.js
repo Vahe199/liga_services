@@ -15,7 +15,7 @@ import AboutOrder from "../executor/AboutOrder";
 import AdditionalFiles from "../executor/AdditionalFiles";
 import Filtr from "../executor/Filtr";
 import ResponseAmount from "../executor/ResponseAmount";
-import CustomerReviews from "../executor/CustomerReviews";
+import CustomerReviews from "../CustomerReviews";
 
 const HomePage = () => {
   const categoriesRef = useRef();

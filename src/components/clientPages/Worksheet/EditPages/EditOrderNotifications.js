@@ -2,6 +2,7 @@ import * as React from "react";
 import {Box, FormControlLabel, Radio, RadioGroup, Stack, Typography} from "@mui/material";
 import {useEditCardStyles} from "./EditCardStyles";
 import CustomDatePicker from "../../../UI/common/datePicker/CustomDatePicker";
+import Card from "@mui/material/Card";
 
 const radio = {
     color: "#4B9A2D",
@@ -13,7 +14,7 @@ const EditOrderNotifications = () => {
     const classes =useEditCardStyles()
     const [value, setValue] = React.useState('На почту и по СМС');
     return (
-        <Box sx={{ boxShadow: 2 }} className={classes.root}>
+        <Card sx={{ boxShadow: 2 }} className={classes.root}>
                 <Typography className={classes.title}>
                     Увидомления по заказам
                 </Typography>
@@ -36,7 +37,7 @@ const EditOrderNotifications = () => {
 
             </RadioGroup>
 
-        </Box>
+        </Card>
     )
 };
 export default EditOrderNotifications;
