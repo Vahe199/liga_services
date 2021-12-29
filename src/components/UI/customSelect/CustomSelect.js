@@ -14,7 +14,7 @@ export const useStyles = makeStyles({
         marginBottom: '18px',
         '& .MuiOutlinedInput-root': {
             '& fieldset': {
-                borderColor: 'blue',
+                border: "1px solid #808080",
                 borderRadius: '10px',
                 //width: '100%',
             },

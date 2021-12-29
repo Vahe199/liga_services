@@ -3,14 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import {ThemeProvider} from '@mui/material/styles';
 import {theme} from "./utils/Theme";
+import {Provider} from "react-redux";
+import store from "./store/Store";
 
 ReactDOM.render(
   <React.StrictMode>
-      <ThemeProvider theme={theme}>
-          <App />
-      </ThemeProvider>
+      <Provider store={store}>
+          <ThemeProvider theme={theme}>
+              <App />
+          </ThemeProvider>
+      </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

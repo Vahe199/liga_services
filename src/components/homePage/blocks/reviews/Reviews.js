@@ -4,10 +4,10 @@ import {makeStyles} from "@material-ui/core";
 import CardContent from '@mui/material/CardContent';
 import Grid from "@mui/material/Grid";
 import Avatar from "@mui/material/Avatar";
-import MainTitle from "../../../UI/common/titles/MainTitles";
+import MainTitle from "../../../UI/titles/MainTitles";
 import {reviews} from "../../../../utils/data/reviews/Reviiews";
 import Box from "@mui/material/Box";
-import RatingBlock from "../../../UI/common/ratingBlock/RatingBlock";
+import RatingBlock from "../../../UI/ratingBlock/RatingBlock";
 import Paper from "@mui/material/Paper";
 
 export const useStyles = makeStyles({

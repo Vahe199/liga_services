@@ -1,7 +1,7 @@
 import React from 'react';
-import {MainNavBar} from "../MainNavBar";
+import {MainNavBar} from "../UI/headers/MainNavBar";
 import {Outlet} from "react-router-dom";
-import Footer from "../UI/common/footer/Footer";
+import Footer from "../UI/footer/Footer";
 import {makeStyles} from "@material-ui/core";
 
 const useProfileStyles = makeStyles({

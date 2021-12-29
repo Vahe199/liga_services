@@ -1,11 +1,11 @@
 import React from "react";
 import { Box, Button, Stack, Switch, TextareaAutosize } from "@mui/material";
 import Divider from "@mui/material/Divider";
-import CustomImageList from "../UI/common/customimagelist/CustomImageList";
+import CustomImageList from "../UI/customimagelist/CustomImageList";
 import { imageData } from "../../utils/data/imagedata/ImageData";
 import { TextField } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
-import CustomDatePicker from "../UI/common/datePicker/CustomDatePicker";
+import CustomDatePicker from "../UI/datePicker/CustomDatePicker";
 
 const AboutOrder = () => {
   return (
