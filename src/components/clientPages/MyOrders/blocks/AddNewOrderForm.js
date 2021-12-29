@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Grid from "@mui/material/Grid";
-import {FormControl} from "@mui/material";
-import {FormControlLabel, FormLabel, Radio, RadioGroup} from "@material-ui/core";
+import {FormControl, FormControlLabel, Radio, FormLabel, RadioGroup} from "@mui/material";
 import Box from "@mui/material/Box";
 import CustomDatePicker from "../../../UI/common/datePicker/CustomDatePicker";
 import {DownloadSvg} from "../../../../assets/svg/DownloadSvg";
