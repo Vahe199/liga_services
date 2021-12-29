@@ -5,7 +5,6 @@ export const useProfileCardStyles = makeStyles({
         background: '#FFFFFF',
         borderRadius: "20px",
         padding: "26px 30px",
-        margin:20,
         "& .MuiTypography-h6":{
             fontWeight: 500,
             fontSize:17,
@@ -31,5 +30,10 @@ export const useProfileCardStyles = makeStyles({
         "&:hover":{
             fontWeight:700
         }
-    }
+    },
+    orderSubBlockSpaceBetween: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
 })

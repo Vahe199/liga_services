@@ -1,15 +1,25 @@
 import * as React from "react";
 import { Typography ,Box} from "@mui/material";
 import {useInfoCardStyles} from "./InfoCardStyles";
+import Card from "@mui/material/Card";
+import {FileSVG} from "../../../../assets/svg/Profile/FileSVG";
+import PenSvg from "../../../../assets/svg/Profile/PenSvg";
 
 
-const PersonalData = () => {
+const PersonalData = ({setEditPersonallyData}) => {
     const classes =useInfoCardStyles()
     return (
-        <Box sx={{ boxShadow: 2 }} className={classes.root}>
+        <Card sx={{ boxShadow: 2 }} className={classes.root}>
+            <Box style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
                 <Typography className={classes.title}>
                     Личные данные
                 </Typography>
+                <div onClick={() => {
+                    setEditPersonallyData(true)
+                }} style={{cursor: "pointer", padding: '0 0 7px 20px'}}>
+                    <PenSvg />
+                </div>
+            </Box>
             <Box style={{background:"#808080", height:2}}/>
                 <Typography variant={"h5"}>
                     Пол
@@ -24,7 +34,7 @@ const PersonalData = () => {
                   17/08/1990
               </Typography>
 
-        </Box>
+        </Card>
     )
 };
 export default PersonalData;

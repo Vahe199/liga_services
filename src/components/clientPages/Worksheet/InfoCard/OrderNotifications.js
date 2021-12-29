@@ -1,15 +1,20 @@
 import * as React from "react";
-import { Typography, Box } from "@mui/material";
+import {Typography, Box, IconButton} from "@mui/material";
 import {useInfoCardStyles} from "./InfoCardStyles";
+import Card from "@mui/material/Card";
+import PenSvg from "../../../../assets/svg/Profile/PenSvg";
 
 
 const OrderNotifications = () => {
     const classes =useInfoCardStyles()
     return (
-        <Box sx={{ boxShadow: 2 }} className={classes.root}>
-            <Typography variant={"h6"}>
-                    Увидомления по заказам
-                </Typography>
+        <Card sx={{ boxShadow: 2 }} className={classes.root}>
+            <Box className={classes.orderSubBlockSpaceBetween}>
+                <Typography variant={"h6"}>Привязанные соцсети</Typography>
+                <IconButton>
+                    <PenSvg />
+                </IconButton>
+            </Box>
             <Box style={{background:"#808080", height:2}}/>
                <Typography variant={"h5"}>
                    Способ получения увидомления
@@ -17,7 +22,7 @@ const OrderNotifications = () => {
                <Typography>
                    На почту и по СМС
                </Typography>
-        </Box>
+        </Card>
     )
 };
 export default OrderNotifications;

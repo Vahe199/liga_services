@@ -16,7 +16,7 @@ export const useMyOrdersStyles = makeStyles({
     root:{
         height:"100%",
         marginBottom:70,
-        paddingTop: '40px',
+        //paddingTop: '40px',
         "& .MuiTypography-h4":{
             fontWeight: 500,
             fontSize:20,
@@ -37,6 +37,7 @@ export const useMyOrdersStyles = makeStyles({
             color: '#808080',
             fontSize: '14px',
         },
+
         //button
         "& .MuiButton-contained": {
             backgroundColor: '#4B9A2D',
@@ -55,9 +56,12 @@ export const useMyOrdersStyles = makeStyles({
         //cardItem
         "& .MuiCard-root": {
             borderRadius: '20px',
-            marginBottom: '20px',
+            margin: '20px',
             boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.15)",
             padding: '30px',
+            '@media (max-width: 450px)' : {
+                margin: '20px 0',
+            },
         },
         '& .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root': {
             width: '170px',
@@ -71,10 +75,6 @@ export const useMyOrdersStyles = makeStyles({
             marginBottom: '10px',
             width: '100%',
         },
-        // '& .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root': {
-        //     borderRadius: '10px',
-        //     border: '1px solid #808080',
-        // },
         '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
             height: '10px',
         },
@@ -101,6 +101,7 @@ export const useMyOrdersStyles = makeStyles({
         alignItems: 'center',
         padding: '0 5px',
         marginBottom: '5px',
+        flexWrap: 'wrap',
     },
     datePickerBox: {
         display: 'flex',
@@ -147,16 +148,53 @@ export const useMyOrdersStyles = makeStyles({
         width: '150px',
         cursor: 'pointer',
     },
+    orderSubBlockSpaceBetween: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        marginBottom: '10px',
+    },
+    orderSubBlockSpaceAround: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        marginBottom: '10px',
+    },
+    wrapBox: {
+        '@media (max-width: 450px)' : {
+            width: '100%',
+            marginBottom: '20px',
+        },
+    },
+    wrapRight: {
+        textAlign: 'right',
+        '@media (max-width: 450px)' : {
+            textAlign: 'left',
+        },
+    },
+    btnDanger: {
+        background: "#E54C51",
+        color: '#fff',
+        borderRadius: '10px',
+        cursor: 'pointer',
+        padding: '4px 12px',
+        fontSize: '0.875rem',
+        lineHeight: '1.75',
+        letterSpacing: '0.02857em',
+        fontWeight: '600',
+        "&:hover": {
+            background: '#965A3E !important',
+        }
+    }
 })
 export const MyOrders = () => {
     const classes = useMyOrdersStyles()
     const [valueTime, setValueTime] = useState(new Date());
     const [showForm, setShowForm] = useState(false);
     return(
-        <div className={classes.root}>
-            <Container maxWidth={'lg'}>
-                <Grid container spacing={4} >
-                    <Grid  item xs={12} sm={12} md={4} lg={4}>
+            <Container className={classes.root} maxWidth={'lg'}>
+                <Grid container spacing={1} >
+                    <Grid  item  sm={12}  lg={4}>
                         <Card>
                             <AddNewOrderBlock setShowForm={setShowForm} />
                         </Card>
@@ -184,6 +222,5 @@ export const MyOrders = () => {
                     </Grid>
                 </Grid>
             </Container>
-        </div>
     )
 }

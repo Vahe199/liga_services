@@ -3,11 +3,12 @@ import {Avatar, Box, TextField, Typography} from "@mui/material";
 import VK from "../../../../assets/image/VK.png"
 import Instagram from "../../../../assets/image/Instagram.png"
 import {useEditCardStyles} from "./EditCardStyles";
+import Card from "@mui/material/Card";
 
 const EditSocialNetworks = () => {
     const classes = useEditCardStyles()
     return (
-        <Box sx={{boxShadow: 2}} className={classes.root}>
+        <Card sx={{boxShadow: 2}} className={classes.root}>
 
                     <Typography variant={"h6"}>Привязанные соцсети</Typography>
             <Box style={{background:"#808080", height:2, marginBottom: "10px"}}/>
@@ -19,7 +20,7 @@ const EditSocialNetworks = () => {
                 <Avatar src={Instagram} style={{marginRight: 25}} variant="rounded"/>
                 <TextField placeholder={"привязать"}/>
             </Box>
-   </Box>
+   </Card>
     );
 };
 export default EditSocialNetworks;

@@ -1,6 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import {OnlineSvg} from "../../../../assets/svg/Profile/OnlineSvg";
 
 
 
@@ -21,10 +22,7 @@ const BlockBar = () => {
                             <Typography style={{paddingLeft:'15px', color:'#000000', fontSize:'24px'}}>Елена</Typography>
                         </Box>
                         <Box style={{paddingLeft:'12px'}}>
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="8" cy="8" r="8" fill="#4B9A2D"/>
-                                <path d="M5 8L7.33333 10L12 6" stroke="white" stroke-linecap="round"/>
-                            </svg>
+                            <OnlineSvg />
                         </Box>
                     </Box>
 

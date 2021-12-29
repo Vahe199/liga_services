@@ -4,12 +4,14 @@ import PenSvg from "../../../../assets/svg/Profile/PenSvg";
 import {useProfileCardStyles} from "./ProfileCardStyles";
 import SuccessSVG from "../../../../assets/svg/Profile/SuccessSVG";
 import InfoSVG from "../../../../assets/svg/Profile/InfoSVG";
+import Card from "@mui/material/Card";
+import Rating from "@mui/material/Rating";
 
 
 const ProfileStatus = () => {
     const classes = useProfileCardStyles()
     return (
-        <Box sx={{boxShadow: 2}} className={classes.root}>
+        <Card sx={{boxShadow: 2}} className={classes.root}>
 
                     <Typography variant={"h6"}>Статус профиля</Typography>
             <Box style={{background:"#808080", height:2, marginBottom: "10px"}}/>
@@ -20,7 +22,11 @@ const ProfileStatus = () => {
                         <Typography variant={"h6"}>Елена</Typography>
                         <InfoSVG size={8} color={"#4B9A2D"} margin={"-5px 0 0 5px"}/>
                     </div>
-                    <Typography variant={"h5"} style={{margin: 0}}>в сети</Typography>
+                    <Box style={{display: "flex", alignItems: "center", justifyContent: 'center'}}>
+                        <Rating style={{color: "#FFF066"}} size={'small'} name="half-rating-read" defaultValue={4}
+                                readOnly precision={0.5}/>
+                        <Typography variant={'h5'}>(3 отзывов)</Typography>
+                    </Box>
                 </Box>
             </Box>
             <Typography variant={"h5"}
@@ -38,7 +44,7 @@ const ProfileStatus = () => {
                 Профиль не подтвержден
             </Typography>
             <Typography variant="caption" style={{fontStyle:"italic", color:"#808080"}}>В лиге с12 марта 2019</Typography>
-        </Box>
+        </Card>
     );
 };
 export default ProfileStatus;
