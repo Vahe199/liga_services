@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Box } from "@mui/system";
 import {Button, Typography} from "@mui/material";
 import {Divider, makeStyles} from "@material-ui/core";
+import Box from "@mui/material/Box";
 
 
 

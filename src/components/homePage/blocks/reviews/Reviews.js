@@ -1,6 +1,6 @@
 import React from 'react';
 import {Typography} from "@mui/material";
-import {makeStyles, Paper} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core";
 import CardContent from '@mui/material/CardContent';
 import Grid from "@mui/material/Grid";
 import Avatar from "@mui/material/Avatar";
@@ -8,6 +8,7 @@ import MainTitle from "../../../UI/common/titles/MainTitles";
 import {reviews} from "../../../../utils/data/reviews/Reviiews";
 import Box from "@mui/material/Box";
 import RatingBlock from "../../../UI/common/ratingBlock/RatingBlock";
+import Paper from "@mui/material/Paper";
 
 export const useStyles = makeStyles({
     card: {

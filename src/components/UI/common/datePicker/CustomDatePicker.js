@@ -7,7 +7,6 @@ import {CalendarSVG} from "../../../../assets/svg/CalendarSVG";
 import Calendar from "../../../../assets/image/Calendar.png"
 import {makeStyles} from "@material-ui/core";
 import Box from "@mui/material/Box";
-const color = "#c44242";
 
 export const useStyles = makeStyles({
     root: {
