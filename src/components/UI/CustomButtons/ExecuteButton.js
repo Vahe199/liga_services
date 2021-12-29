@@ -1,5 +1,5 @@
 import React from "react";
-import { GreenArrowSvg } from "../../../../assets/svg/intro/GreenArrowSvg";
+import { GreenArrowSvg } from "../../../assets/svg/intro/GreenArrowSvg";
 import {makeStyles} from "@material-ui/core";
 
 

@@ -6,7 +6,7 @@ import { Formik } from "formik";
 import Button from "@mui/material/Button";
 import {useStyles} from "../../../globalStyles/AuthStyles";
 import {AuthValidation} from "../../../utils/validation/AuthValidation";
-import CustomInput from "../../UI/common/customInput/CustomInput";
+import CustomInput from "../../UI/customInput/CustomInput";
 
 
 const RegistrationPage = () => {

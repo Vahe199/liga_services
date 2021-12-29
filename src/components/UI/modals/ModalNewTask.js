@@ -8,10 +8,10 @@ import {useStyles} from "../../../globalStyles/ModalStyles";
 import {DownloadSvg} from "../../../assets/svg/DownloadSvg";
 import {AddTaskValidation} from "../../../utils/validation/AddTaskValidation";
 import ModalForAuth from "./ModalForAuth";
-import CustomDatePicker from "../common/datePicker/CustomDatePicker";
-import CustomInput from "../common/customInput/CustomInput";
-import CustomSelect from "../common/customSelect/CustomSelect";
-import CustomInputAddFile from "../common/customInputAddFile/CustomInputAddFile";
+import CustomDatePicker from "../datePicker/CustomDatePicker";
+import CustomInput from "../customInput/CustomInput";
+import CustomSelect from "../customSelect/CustomSelect";
+import CustomInputAddFile from "../customInputAddFile/CustomInputAddFile";
 
 const style = {
     position: 'absolute',

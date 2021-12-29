@@ -14,10 +14,10 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import {makeStyles} from "@material-ui/core";
 import { styled} from '@mui/material/styles';
-import Logo from "../assets/image/logoSmall.png"
-import UserSvg from "../assets/svg/header/UserSvg";
-import NotificationSvg from "../assets/svg/header/NotificationSvj";
-import MessageSvg from "../assets/svg/header/MessageSvg";
+import Logo from "../../../assets/image/logoSmall.png"
+import UserSvg from "../../../assets/svg/header/UserSvg";
+import NotificationSvg from "../../../assets/svg/header/NotificationSvj";
+import MessageSvg from "../../../assets/svg/header/MessageSvg";
 import {useNavigate} from "react-router-dom";
 import {Divider, Drawer, List, ListItem, ListItemText, Stack} from "@mui/material";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -101,9 +101,10 @@ export const MainNavBar = () => {
           <Toolbar disableGutters>
             <Typography
                 variant="h6"
+                onClick={() => navigate('/')}
                 noWrap
                 component="div"
-                sx={{ mr: 2, display: { xs: 'none', md: 'flex' },color:"#e20613",alignItems:"center"}}
+                sx={{ mr: 2, cursor: 'pointer', display: { xs: 'none', md: 'flex' },color:"#e20613",alignItems:"center"}}
             >
               <img src={Logo} className={classes.img}/>
               Лига услуг

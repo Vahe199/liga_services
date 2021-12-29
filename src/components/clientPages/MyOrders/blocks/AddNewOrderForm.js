@@ -2,14 +2,14 @@ import React, {useEffect, useState} from 'react';
 import Grid from "@mui/material/Grid";
 import {FormControl, FormControlLabel, Radio, FormLabel, RadioGroup} from "@mui/material";
 import Box from "@mui/material/Box";
-import CustomDatePicker from "../../../UI/common/datePicker/CustomDatePicker";
+import CustomDatePicker from "../../../UI/datePicker/CustomDatePicker";
 import {DownloadSvg} from "../../../../assets/svg/DownloadSvg";
 import Button from "@mui/material/Button";
 import {Formik} from "formik";
 import {useMyOrdersStyles} from "../MyOrders";
-import CustomSelect from "../../../UI/common/customSelect/CustomSelect";
-import CustomInputAddFile from "../../../UI/common/customInputAddFile/CustomInputAddFile";
-import CustomInput from "../../../UI/common/customInput/CustomInput";
+import CustomSelect from "../../../UI/customSelect/CustomSelect";
+import CustomInputAddFile from "../../../UI/customInputAddFile/CustomInputAddFile";
+import CustomInput from "../../../UI/customInput/CustomInput";
 import {AddNewOrderValidation} from "../../../../utils/validation/AddNewOrderValidation";
 
 

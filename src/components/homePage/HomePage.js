@@ -6,7 +6,7 @@ import PresentHistory from "./blocks/presentHistory/PresentHistory";
 import CategoriesBlock from "./blocks/CategoriesBlock/CategoriesBlock";
 import TrustedExperts from "./blocks/trustedExperts/TrustedExperts";
 import Reviews from "./blocks/reviews/Reviews";
-import Footer from "../UI/common/footer/Footer";
+import Footer from "../UI/footer/Footer";
 import PersonalData from "../executor/PersonalData";
 import DistrictsAndAddresses from "../executor/DistrictsAndAddresses";
 import Portfolio from "../executor/Portfolio";

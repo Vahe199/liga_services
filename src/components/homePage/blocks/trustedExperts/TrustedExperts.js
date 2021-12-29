@@ -8,9 +8,9 @@ import Button from '@mui/material/Button';
 import {trustedExperts} from "../../../../utils/data/trustedExperts/TrustedExperts";
 import Grid from "@mui/material/Grid";
 import Avatar from "@mui/material/Avatar";
-import MainTitle from "../../../UI/common/titles/MainTitles";
+import MainTitle from "../../../UI/titles/MainTitles";
 import Rating from '@mui/material/Rating';
-import RatingBlock from "../../../UI/common/ratingBlock/RatingBlock";
+import RatingBlock from "../../../UI/ratingBlock/RatingBlock";
 export const useStyles = makeStyles({
     card: {
         //borderRadius: '30px',

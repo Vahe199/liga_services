@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import {makeStyles} from "@material-ui/core";
 import ModalCategories from "../../../UI/modals/ModalCategories";
 import {categories} from "../../../../utils/data/categories/Categories";
-import MainTitle from "../../../UI/common/titles/MainTitles";
+import MainTitle from "../../../UI/titles/MainTitles";
 
 export const useStyles = makeStyles({
     aboutTitle: {

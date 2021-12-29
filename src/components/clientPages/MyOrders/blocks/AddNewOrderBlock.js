@@ -1,8 +1,7 @@
 import * as React from "react";
 import {Button, Typography} from "@mui/material";
-import {Divider, makeStyles} from "@material-ui/core";
 import Box from "@mui/material/Box";
-
+import Divider from "@mui/material/Divider";
 
 
 const AddNewOrderBlock = ({setShowForm}) => {

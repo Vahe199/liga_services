@@ -8,7 +8,7 @@ import LargeLogo from "../../../../assets/image/LogoLarge.png";
 import { GreenArrowSvg } from "../../../../assets/svg/intro/GreenArrowSvg";
 import { GoToChatSvg } from "../../../../assets/svg/intro/GoToChatSvg";
 import ModalNewTask from "../../../UI/modals/ModalNewTask";
-import ExecuteButton from "../../../UI/common/CustomButtons/ExecuteButton";
+import ExecuteButton from "../../../UI/CustomButtons/ExecuteButton";
 
 export const useStyles = makeStyles({
   title: {

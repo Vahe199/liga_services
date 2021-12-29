@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
 import { Divider } from "@mui/material";
-import CustomImageList from "../UI/common/customimagelist/CustomImageList";
+import CustomImageList from "../UI/customimagelist/CustomImageList";
 import { imageData } from "../../utils/data/imagedata/ImageData";
 
 

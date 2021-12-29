@@ -10,7 +10,7 @@ import {OrdersData} from "../../../utils/data/orders/OrdersData";
 import AddNewOrderBlock from "./blocks/AddNewOrderBlock";
 import MyOrdersBlock from "./blocks/MyOrdersBlock";
 import AddNewOrderForm from "./blocks/AddNewOrderForm";
-import CustomDatePicker from "../../UI/common/datePicker/CustomDatePicker";
+import CustomDatePicker from "../../UI/datePicker/CustomDatePicker";
 
 export const useMyOrdersStyles = makeStyles({
     root:{
@@ -99,8 +99,7 @@ export const useMyOrdersStyles = makeStyles({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '0 5px',
-        marginBottom: '5px',
+        margin: '20px 20px 0 20px',
         flexWrap: 'wrap',
     },
     datePickerBox: {
