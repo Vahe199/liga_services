@@ -12,6 +12,7 @@ import EditPersonalData from "./EditPages/EditPersonalData";
 import EditSocialNetworks from "./EditPages/EditSocialNetworks";
 import EditOrderNotifications from "./EditPages/EditOrderNotifications";
 import CustomerReviews from "../../CustomerReviews";
+import ModalPersonalData from "../../UI/modals/ModalPersonalData";
 
 const useAncetaStyles = makeStyles({
     root:{
@@ -32,32 +33,25 @@ export const Worksheet = () =>{
 
     const [edit, setEdit] = useState(false)
     const [editPersonallyData, setEditPersonallyData] = useState(false);
+    const [editSocialNetwork, setEditSocialNetwork] = useState(false);
+    const [notificationsOrder, setNotificationOrders] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     return( <Container maxWidth={'lg'} className={classes.root}>
+            <ModalPersonalData showModal={showModal} setShowModal={setShowModal}/>
         <Grid container spacing={1}>
             <Grid item sm={12} lg={4}>
-                <ProfileStatus/>
-                <SocialNetworks/>
-                <OrderNotifications />
+                <ProfileStatus setShowModal={setShowModal}/>
+                <SocialNetworks setEditSocialNetwork={setEditSocialNetwork} editSocialNetwork={editSocialNetwork}/>
+                <OrderNotifications notificationsOrder={notificationsOrder} setNotificationOrders={setNotificationOrders} />
                 <ProfileActions/>
             </Grid>
             <Grid item sm={12} lg={8}>
-                {/*{edit ?*/}
-                {/*    <div>*/}
-                {/*        <EditProfileData setEdit={setEdit}/>*/}
-                {/*        <EditPersonalData/>*/}
-                {/*        <EditSocialNetworks/>*/}
-                {/*        <EditOrderNotifications/>*/}
-                {/*    </div>*/}
-                {/*    : <div>*/}
-                {/*        <ProfileData setEdit={setEdit}/>*/}
-                {/*        <PersonalData/>*/}
-                {/*        <OrderNotifications/>*/}
-                {/*    </div>}*/}
                 {editPersonallyData ? <EditPersonalData setEditPersonallyData={setEditPersonallyData}
                     />
                    : <PersonalData setEditPersonallyData={setEditPersonallyData}/>}
-                {/*<EditProfileData />*/}
-                {/*<EditSocialNetworks />*/}
+                {/*modal*/}
+                <EditProfileData />
+
                 <CustomerReviews />
             </Grid>
         </Grid>

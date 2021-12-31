@@ -14,6 +14,12 @@ export const useProfileCardStyles = makeStyles({
             fontSize: 14,
             display:"flex",
             margin:10
+        },
+        "& .MuiTypography-h4":{
+            color: "#808080",
+            fontSize: 14,
+            display:"flex",
+            margin: 0
         }
     },
     titleWrap:{

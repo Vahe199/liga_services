@@ -72,7 +72,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export const MainNavBar = () => {
  const navigate = useNavigate()
   const classes = useNavStyles()
-    const pages = [{title:'Мои заказы',path:"MyOrders"}, {title:'Анкета',path:"worksheet"}, {title:'Поддержка',path:"backing"}];
+    const pages = [{title:'Мои заказы',path:"MyOrders"}, {title:'Анкета',path:"worksheet"}, {title:'Поддержка',path:"support"}];
     const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
   const [anchorElNav, setAnchorElNav] = React.useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);

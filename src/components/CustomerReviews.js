@@ -8,10 +8,11 @@ const useStyles = makeStyles({
     root: {
         "& .MuiCard-root": {
             borderRadius: '20px',
-            marginBottom: '20px',
             boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.15)",
             padding: '30px',
             margin: '20px',
+            paddingBottom: '20px',
+            height: 'auto',
         },
         "& .MuiTypography-h3":{
             fontWeight: 500,
@@ -47,7 +48,7 @@ const CustomerReviews = () => {
         Отзывы клиентов
       </Typography>
       {review.map((item, index) => (
-        <Box key={index}>
+        <Box style={{marginBottom: '20px'}} key={index}>
           <Divider style={{ border: "1px solid #808080", margin: '10px 0', width: "100%" }} />
           <Box style={{ display: "flex", alignItems: "center", marginBottom: '20px' }}>
             <Avatar

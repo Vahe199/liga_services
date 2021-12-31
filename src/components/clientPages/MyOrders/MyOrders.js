@@ -15,7 +15,7 @@ import CustomDatePicker from "../../UI/datePicker/CustomDatePicker";
 export const useMyOrdersStyles = makeStyles({
     root:{
         height:"100%",
-        marginBottom:70,
+        marginBottom: 70,
         //paddingTop: '40px',
         "& .MuiTypography-h4":{
             fontWeight: 500,
@@ -101,6 +101,7 @@ export const useMyOrdersStyles = makeStyles({
         alignItems: 'center',
         margin: '20px 20px 0 20px',
         flexWrap: 'wrap',
+        margin: '20px',
     },
     datePickerBox: {
         display: 'flex',
@@ -184,7 +185,20 @@ export const useMyOrdersStyles = makeStyles({
         "&:hover": {
             background: '#965A3E !important',
         }
-    }
+    },
+    containerSupport: {
+      padding: '0 200px',
+      margin: '70px 0 500px 0',
+        '@media (max-width: 950px)' : {
+            padding: '0',
+        },
+    },
+    subContainerSupport: {
+      padding: '0 100px',
+        '@media (max-width: 1100px)' : {
+            padding: '0'
+        },
+    },
 })
 export const MyOrders = () => {
     const classes = useMyOrdersStyles()

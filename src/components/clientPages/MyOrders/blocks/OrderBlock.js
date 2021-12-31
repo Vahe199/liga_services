@@ -187,7 +187,7 @@ const OrderBlock = ({order}) => {
                                     <Typography variant={'h4'}>от 1000 руб. до 1800 руб.</Typography>
                                 </Box>
                             </Box>
-                            <Box style={{display: 'flex', flexWrap: 'wrap'}}>
+                            <Box style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
                                 <Box style={{paddingRight: '50px'}}>
                                     <span style={{paddingRight: '10px'}}>
                                         <Button color="success" variant={'contained'}>Выбрать</Button>

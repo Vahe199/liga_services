@@ -9,6 +9,23 @@ export const useStyles = makeStyles({
         '& ..css-1sbn0x8-MuiInputBase-root-MuiOutlinedInput-root': {
                 border: '2px solid green',
         },
+        //texts
+        "& .MuiTypography-h4":{
+            fontWeight: 500,
+            fontSize:20,
+            whiteSpace: 'noWrap',
+        },
+        "& .MuiTypography-h5":{
+            fontWeight: 500,
+            fontSize: 14,
+            whiteSpace: 'noWrap',
+        },
+        "& .MuiTypography-h6":{
+            color: "#808080",
+            fontSize: 14,
+            whiteSpace: 'noWrap',
+            fontWeight: 400,
+        },
         '& .css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
             marginBottom: '10px',
             width: '100%',
@@ -20,9 +37,22 @@ export const useStyles = makeStyles({
         '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
             height: '10px',
         },
-        //button
-        '& .css-1e6y48t-MuiButtonBase-root-MuiButton-root:hover': {
-            backgroundColor: '#3a4e61',
+        "& .MuiButton-contained": {
+            backgroundColor: '#4B9A2D',
+            borderRadius: '10px',
+            textTransform: "none",
+            color: '#fff',
+            fontWeight: 500,
+        },
+        "& .MuiButton-outlined": {
+            background: "#445E77",
+            textTransform: "none",
+            color: '#fff',
+            fontWeight: 500,
+            borderRadius: '10px',
+            "&:hover": {
+                background: '#6585a5 !important',
+            }
         },
         //checkbox
         '& .css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label': {
@@ -56,20 +86,12 @@ export const useStyles = makeStyles({
         '& .MuiBox-root css-0': {
             width: '40%',
         },
-        "& .MuiButton-outlined": {
-            background: "#445E77",
-            textTransform: "none",
-            color: '#fff',
-            fontWeight: 500,
-            borderRadius: '10px',
-            width: '160px',
-            marginBottom: '10px',
-            "&:hover": {
-                background: '#6585a5 !important',
-            }
-        },
     },
-
+    titleWrap: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
     title: {
         color: '#445E77',
         fontWeight: '500',
@@ -97,7 +119,7 @@ export const useStyles = makeStyles({
         marginBottom: '4px',
     },
     input: {
-        width: '100%',
+        width: '160px',
         height: '16px',
         fontSize: '25px',
     },
@@ -120,5 +142,18 @@ export const useStyles = makeStyles({
         alignItems: 'center',
         marginTop: '10px',
         width: '100%',
-    }
+    },
+    btnBlock: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    defaultBlock: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        '@media (max-width: 790px)' : {
+            alignItems: 'flex-start',
+            flexDirection: 'column',
+        },
+    },
 });

@@ -8,6 +8,7 @@ const useProfileStyles = makeStyles({
    root:{
          overflow:"auto",
           height:"100vh",
+         backgroundColor: '#e1e3e5',
 
        "& .MuiButton-contained": {
            backgroundColor: '#4B9A2D',

@@ -6,7 +6,7 @@ import RegistrationPage from "./components/authPages/registrationPage/Registrati
 import ClientProfilePage from "./components/clientPages/ClientProfilePage";
 import React from "react";
 import {Worksheet} from "./components/clientPages/Worksheet/Worksheet";
-import {Backing} from "./components/clientPages/Backing/Backing";
+import Support, {Backing} from "./components/clientPages/Support/Support";
 import {MyOrders} from "./components/clientPages/MyOrders/MyOrders";
 
 
@@ -18,9 +18,9 @@ function App() {
              <Route path='registration' element={<RegistrationPage />} />
             <Route path='login' element={<LoginPage />} />
             <Route path='clientPage/*' element={<ClientProfilePage />} >
-                <Route path={"worksheet"} element={<Worksheet/>}/>
-                <Route path={"backing"} element={<Backing />}/>
-                <Route path={"MyOrders"} element={<MyOrders/>}/>
+                <Route path={"worksheet"} element={<Worksheet />}/>
+                <Route path={"support"} element={<Support />}/>
+                <Route path={"MyOrders"} element={<MyOrders />}/>
             </Route>
         </Routes>
       </BrowserRouter>
