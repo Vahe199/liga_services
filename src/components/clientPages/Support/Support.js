@@ -1,20 +1,11 @@
 import React from "react";
-import {makeStyles} from "@material-ui/core";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import {useMyOrdersStyles} from "../MyOrders/MyOrders";
 import {Divider, Typography} from "@mui/material";
-import CustomInput from "../../UI/common/customInput/CustomInput";
-// const useSupportStyles = makeStyles({
-//     root:{
-//         marginBottom: 70,
-//         height: '100%',
-//     },
-//     container: {
-//
-//     },
-// })
+import CustomInput from "../../UI/customInput/CustomInput";
+
 const Support = () =>{
     const classes = useMyOrdersStyles();
     return(
