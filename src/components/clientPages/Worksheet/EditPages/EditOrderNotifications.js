@@ -1,7 +1,6 @@
 import * as React from "react";
-import {Box, FormControlLabel, Radio, RadioGroup, Stack, Typography} from "@mui/material";
+import {Box, FormControlLabel, Radio, RadioGroup, Typography} from "@mui/material";
 import {useEditCardStyles} from "./EditCardStyles";
-import CustomDatePicker from "../../../UI/datePicker/CustomDatePicker";
 import Card from "@mui/material/Card";
 
 const radio = {

@@ -1,10 +1,10 @@
 import * as React from "react";
-import {Box, FormControlLabel, IconButton, Radio, RadioGroup, Stack, Typography} from "@mui/material";
+import {useState} from "react";
+import {Box, FormControlLabel, Radio, RadioGroup, Stack, Typography} from "@mui/material";
 import {useEditCardStyles} from "./EditCardStyles";
 import CustomDatePicker from "../../../UI/datePicker/CustomDatePicker";
 import Card from "@mui/material/Card";
 import {FileSVG} from "../../../../assets/svg/Profile/FileSVG";
-import {useState} from "react";
 
 
 const EditPersonalData = ({setEditPersonallyData}) => {

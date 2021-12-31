@@ -1,8 +1,6 @@
 import * as React from "react";
-import {Avatar, Box, Typography} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 import {useProfileCardStyles} from "./ProfileCardStyles";
-import VK from "../../../../assets/image/VK.png"
-import Instagram from "../../../../assets/image/Instagram.png"
 import Card from "@mui/material/Card";
 
 const ProfileActions = () => {

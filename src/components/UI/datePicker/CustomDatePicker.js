@@ -3,12 +3,7 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import DatePicker from "@mui/lab/DatePicker";
 import {IconButton, InputAdornment, TextField} from "@mui/material";
-<<<<<<< HEAD:src/components/UI/datePicker/CustomDatePicker.js
-import {CalendarSVG} from "../../../assets/svg/CalendarSVG";
-import Calendar from "../../../assets/image/Calendar.png"
-=======
-import Calendar from '../../../../assets/image/Calendar.png';
->>>>>>> 01.01.2022:src/components/UI/common/datePicker/CustomDatePicker.js
+import Calendar from '../../../assets/image/Calendar.png';
 import {makeStyles} from "@material-ui/core";
 import Box from "@mui/material/Box";
 
@@ -52,35 +47,6 @@ const CustomDatePicker = ({value, name, fun, touched, errors}) => {
     const classes = useStyles();
     return (
         <Box className={classes.root}>
-<<<<<<< HEAD:src/components/UI/datePicker/CustomDatePicker.js
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DatePicker
-                value={value}
-                name={name}
-                open={open}
-                classes={{
-                    root: classes.root,
-                    checked: classes.checked,
-                }}
-                onChange={(date) => {
-                    setOpen(!open)
-                    fun(date)
-                }}
-
-                autoComplete={'off'}
-                renderInput={(params) => <TextField
-                    error={touched && Boolean(errors)}
-                    helperText={touched && errors}
-                    {...params}
-                    InputProps={{
-                        endAdornment: (
-                            <InputAdornment position="end">
-                                <IconButton onClick={(e) => setOpen(!open)} >
-                                  <img src={Calendar} height={20} width={20}/>
-                                </IconButton>
-                            </InputAdornment>
-                        ),
-=======
             <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <DatePicker
                     value={value}
@@ -93,7 +59,6 @@ const CustomDatePicker = ({value, name, fun, touched, errors}) => {
                     onChange={(date) => {
                         setOpen(!open)
                         fun(date)
->>>>>>> 01.01.2022:src/components/UI/common/datePicker/CustomDatePicker.js
                     }}
 
                     autoComplete={'off'}

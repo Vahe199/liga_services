@@ -1,8 +1,7 @@
 import * as React from "react";
-import { Typography ,Box} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 import {useInfoCardStyles} from "./InfoCardStyles";
 import Card from "@mui/material/Card";
-import {FileSVG} from "../../../../assets/svg/Profile/FileSVG";
 import PenSvg from "../../../../assets/svg/Profile/PenSvg";
 
 
