@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import {Avatar, Box, IconButton, Typography} from "@mui/material";
 import PenSvg from "../../../../assets/svg/Profile/PenSvg";
 import {useProfileCardStyles} from "./ProfileCardStyles";
@@ -8,15 +8,22 @@ import Card from "@mui/material/Card";
 import Rating from "@mui/material/Rating";
 
 
-const ProfileStatus = () => {
+const ProfileStatus = ({setShowModal}) => {
     const classes = useProfileCardStyles()
     return (
         <Card sx={{boxShadow: 2}} className={classes.root}>
+            <Box className={classes.orderSubBlockSpaceBetween}>
+                <Typography variant={"h6"}>Статус профиля</Typography>
+                <IconButton onClick={() => setShowModal(true)}>
+                    <PenSvg />
+                </IconButton>
+            </Box>
 
-                    <Typography variant={"h6"}>Статус профиля</Typography>
+
             <Box style={{background:"#808080", height:2, marginBottom: "10px"}}/>
             <Box style={{display: "flex", alignItems: "center"}}>
-                <Avatar style={{marginRight: 25}}/>
+                    <Avatar style={{marginRight: 10, width: '50px', height: '50px'}}/>
+
                 <Box>
                     <div  style={{display: "flex", alignItems: "center"}}>
                         <Typography variant={"h6"}>Елена</Typography>
@@ -25,7 +32,7 @@ const ProfileStatus = () => {
                     <Box style={{display: "flex", alignItems: "center", justifyContent: 'center'}}>
                         <Rating style={{color: "#FFF066"}} size={'small'} name="half-rating-read" defaultValue={4}
                                 readOnly precision={0.5}/>
-                        <Typography variant={'h5'}>(3 отзывов)</Typography>
+                        <Typography variant={'h4'}>(3 отзывов)</Typography>
                     </Box>
                 </Box>
             </Box>

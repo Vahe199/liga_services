@@ -12,6 +12,7 @@ export const useStyles = makeStyles({
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: '18px',
+<<<<<<< HEAD:src/components/UI/customInput/CustomInput.js
             '& .MuiOutlinedInput-root': {
                 '& fieldset': {
                     border: "1px solid #808080",
@@ -36,6 +37,32 @@ export const useStyles = makeStyles({
                 "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
                     border: "1px solid #808080",
                 }
+=======
+        '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+                border: "1px solid #808080",
+                borderRadius: '10px',
+                //width: '100%',
+            },
+            '&:hover fieldset': {
+                border: "1px solid blue",
+            },
+            '&.Mui-focused fieldset': {
+                borderColor: 'gray',
+            },
+            "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                border: "1px solid #808080",
+                borderRadius: '10px',
+            },
+            "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                border: "1px solid #808080",
+                borderRadius: '10px',
+            },
+            //focus
+            "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                border: "1px solid #808080",
+            }
+>>>>>>> 01.01.2022:src/components/UI/common/customInput/CustomInput.js
         },
         //input
         // '& MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
@@ -122,16 +149,16 @@ export const useStyles = makeStyles({
 
 
 const CustomInput = ({label,
-                      name,
-                      value,
-                      handleChange,
-                      touched,
-                      error,
-                      textArea = false,
-                      mb = 10,
-                      icon = false,
-                      width = '100%',
-                      placeholder}) => {
+                         name,
+                         value,
+                         handleChange,
+                         touched,
+                         error,
+                         textArea = false,
+                         mb = 10,
+                         icon = false,
+                         width = '100%',
+                         placeholder}) => {
     const classes = useStyles();
     return (
         <Box style={{marginBottom: mb, width}} className={classes.root}>
