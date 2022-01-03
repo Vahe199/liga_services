@@ -8,7 +8,7 @@ import TrustedExperts from "./blocks/trustedExperts/TrustedExperts";
 import Reviews from "./blocks/reviews/Reviews";
 import Footer from "../UI/footer/Footer";
 import PersonalData from "../executor/PersonalData";
-import DistrictsAndAddresses from "../executor/DistrictsAndAddresses";
+import DistrictsAndAddresses from "../clientPages/Worksheet/DistrictsAndAddresses";
 import Portfolio from "../executor/Portfolio";
 import EducationAndCertifications from "../executor/EducationAndCertifications";
 import AboutOrder from "../executor/AboutOrder";

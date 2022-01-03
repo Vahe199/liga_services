@@ -6,38 +6,10 @@ import {makeStyles} from "@material-ui/core";
 
 export const useStyles = makeStyles({
     root: {
-        width: '100%',
+        //width: '100%',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
         marginBottom: '18px',
-// <<<<<<< HEAD:src/components/UI/customInput/CustomInput.js
-//             '& .MuiOutlinedInput-root': {
-//                 '& fieldset': {
-//                     border: "1px solid #808080",
-//                     borderRadius: '10px',
-//                     //width: '100%',
-//                 },
-//                 '&:hover fieldset': {
-//                     border: "1px solid blue",
-//                 },
-//                 '&.Mui-focused fieldset': {
-//                     borderColor: 'gray',
-//                 },
-//                 "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-//                     border: "1px solid #808080",
-//                     borderRadius: '10px',
-//                 },
-//                 "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-//                     border: "1px solid #808080",
-//                     borderRadius: '10px',
-//                 },
-//                 //focus
-//                 "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-//                     border: "1px solid #808080",
-//                 }
-// =======
         '& .MuiOutlinedInput-root': {
             '& fieldset': {
                 border: "1px solid #808080",
@@ -94,7 +66,7 @@ const CustomInput = ({label,
                          placeholder}) => {
     const classes = useStyles();
     return (
-        <Box style={{marginBottom: mb, width}} className={classes.root}>
+        <Box style={{marginBottom: mb, width, display: 'flex', alignItems: 'flex-start'}} className={classes.root}>
             <p className={classes.inputText}>{label}</p>
             <TextField
                 variant={"outlined"}
@@ -106,6 +78,7 @@ const CustomInput = ({label,
                 name={name}
                 autoComplete={'off'}
                 value={value}
+                style={{width: '100%'}}
                 onChange={handleChange}
                 rows={textArea ? 2 : 0}
                 error={touched && Boolean(error)}
