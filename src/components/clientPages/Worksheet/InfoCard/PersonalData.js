@@ -3,10 +3,12 @@ import {Box, Typography} from "@mui/material";
 import {useInfoCardStyles} from "./InfoCardStyles";
 import Card from "@mui/material/Card";
 import PenSvg from "../../../../assets/svg/Profile/PenSvg";
+import {useSelector} from "react-redux";
 
 
 const PersonalData = ({setEditPersonallyData}) => {
-    const classes =useInfoCardStyles()
+    const classes = useInfoCardStyles();
+    const {status} = useSelector(state => state.auth)
     return (
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
             <Box style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
@@ -23,15 +25,28 @@ const PersonalData = ({setEditPersonallyData}) => {
                 <Typography variant={"h5"}>
                     Пол
                 </Typography>
-            <Typography>
+            <Typography variant={'h6'}>
                     Женский
             </Typography>
             <Typography variant={"h5"}>
                     Дата рождения
             </Typography>
-              <Typography>
+              <Typography variant={'h6'}>
                   17/08/1990
               </Typography>
+            {status === 'executor' && <Box>
+                <Typography style={{marginBottom: '10px'}} variant={"h5"}>
+                    Обо мне
+                </Typography>
+                <Typography>
+                    Равным образом новая модель организационной деятельности играет важную роль в формировании систем
+                    массового участия. Товарищи! рамки и место обучения кадров требуют определения и уточнения
+                    соответствующий условий активизации. Равным образом сложившаяся структура организации представляет
+                    собой интересный эксперимент проверки позиций, занимаемых участниками в отношении.
+                    Равным образом сложившаяся структура организации представляет собой интересный эксперимент проверки
+                    позиций, занимаемых участниками в отношении.
+                </Typography>
+            </Box>}
 
         </Card>
     )
