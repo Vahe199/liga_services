@@ -21,7 +21,7 @@ const LoginPage = () => {
                 <p className={classes.title}>Вход</p>
                 <Formik
                     initialValues={{ email: '', password: '', remember: false }}
-                    //validationSchema={LoginValidation}
+                    validationSchema={LoginValidation}
                     onSubmit={(values, action) => {
                         console.log(values, 'values')
                         action.resetForm()
@@ -57,11 +57,10 @@ const LoginPage = () => {
                                     error={errors.password}
                                 />
                                 <FormControlLabel
-                                    onChange={handleChange}
-                                    value={values.remember}
-                                    name={'remember'}
                                     className={classes.checkbox}
-                                    control={<Checkbox />}
+                                    control={<Checkbox onChange={handleChange}
+                                                       checked={values.remember}
+                                                       name={'remember'}  />}
                                     label="Запомнить"
                                     labelPlacement="end"
                                 />

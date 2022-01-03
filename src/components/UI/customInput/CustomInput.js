@@ -103,13 +103,11 @@ const CustomInput = ({label,
                 InputProps={icon && {
                     endAdornment: <InputAdornment position="start">{'Руб.'}</InputAdornment>,
                 }}
-                //className={classes.inputBase}
                 name={name}
                 autoComplete={'off'}
                 value={value}
                 onChange={handleChange}
-                rows={2}
-                maxRows={4}
+                rows={textArea ? 2 : 0}
                 error={touched && Boolean(error)}
                 helperText={touched && error}
             />

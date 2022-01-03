@@ -86,7 +86,7 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                         />
                                         <CustomInput
                                             label={'Укажите адрес*'}
-                                            name={'service_name'}
+                                            name={'address'}
                                             value={values.address}
                                             handleChange={handleChange}
                                             touched={touched.address}
@@ -107,8 +107,8 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                                 <Box style={{paddingRight: '10px'}}>
                                                     <CustomDatePicker
                                                         value={values.time_from}
+                                                        fun={(val)=>setFieldValue('time_from',val)}
                                                         name={'time_from'}
-                                                        fun={setFieldValue}
                                                         touched={touched.time_from}
                                                         errors={errors.time_from}
                                                     />
@@ -116,7 +116,7 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                                     <CustomDatePicker
                                                         value={values.time_to}
                                                         name={'time_to'}
-                                                        fun={setFieldValue}
+                                                        fun={(val)=>setFieldValue('time_to',val)}
                                                         touched={touched.time_to}
                                                         errors={errors.time_to}
                                                     />

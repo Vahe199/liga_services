@@ -46,7 +46,6 @@ export const Worksheet = () =>{
                    : <PersonalData setEditPersonallyData={setEditPersonallyData}/>}
                 {/*modal*/}
                 <EditProfileData />
-
                 <CustomerReviews />
             </Grid>
         </Grid>

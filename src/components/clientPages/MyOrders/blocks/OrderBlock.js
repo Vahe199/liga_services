@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Box from "@mui/material/Box";
 import {Button, Divider, IconButton, TextField, Typography} from "@mui/material";
 import Rating from "@mui/material/Rating";
@@ -7,6 +7,7 @@ import {useMyOrdersStyles} from "../MyOrders";
 import MessengerSvg from "../../../../assets/svg/MessengerSvg";
 import Avatar from "@mui/material/Avatar";
 import {OnlineSvg} from "../../../../assets/svg/Profile/OnlineSvg";
+import {useSelector} from "react-redux";
 
 
 const OrderBlock = ({order}) => {
@@ -98,12 +99,11 @@ const OrderBlock = ({order}) => {
                                             maxRows={4}
                                         />
                                     </Box>}
-                                    <Button color="success" onClick={() => setShowReviewField(!reviewField)} variant="contained"
-                                            color="success">
+                                    <Button color="success" onClick={() => setShowReviewField(!reviewField)} variant="contained">
                                         Оставить отзыв
                                     </Button>
                                 </Box>}
-                                {order.status === 'onWorked' && <Button color="success" variant="contained" color="success">
+                                {order.status === 'onWorked' && <Button color="success" variant="contained">
                                     Завершить работу
                                 </Button>}
 
@@ -192,7 +192,7 @@ const OrderBlock = ({order}) => {
                                     <span style={{paddingRight: '10px'}}>
                                         <Button color="success" variant={'contained'}>Выбрать</Button>
                                     </span>
-                                    <button className={classes.btnDanger}>Отказатся</button>
+                                    <Button style={{backgroundColor: '#E54C51'}} variant={'contained'}>Отказатся</Button>
                                 </Box>
                                 <Box>
                                     <Box style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>

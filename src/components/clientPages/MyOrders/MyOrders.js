@@ -101,7 +101,6 @@ export const useMyOrdersStyles = makeStyles({
         alignItems: 'center',
         margin: '20px 20px 0 20px',
         flexWrap: 'wrap',
-        margin: '20px',
     },
     datePickerBox: {
         display: 'flex',
