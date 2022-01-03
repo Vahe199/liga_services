@@ -8,7 +8,6 @@ import LargeLogo from "../../../../assets/image/LogoLarge.png";
 import { GreenArrowSvg } from "../../../../assets/svg/intro/GreenArrowSvg";
 import { GoToChatSvg } from "../../../../assets/svg/intro/GoToChatSvg";
 import ModalNewTask from "../../../UI/modals/ModalNewTask";
-import ExecuteButton from "../../../UI/CustomButtons/ExecuteButton";
 
 export const useStyles = makeStyles({
   title: {
@@ -31,82 +30,6 @@ export const useStyles = makeStyles({
     width: "100%",
     height: "100%",
   },
-//   pulse: {
-//     background: "transparent",
-//     borderRadius: "50%",
-//     height: 30,
-//     width: 30,
-//     boxShadow: "0 0 0 0 rgba(0, 0, 0, 0)",
-//     transform: "scale(1)",
-//     animation: "$pulse 1s infinite",
-//     animationDuration:'3s'
-//   },
-//   "@keyframes pulse": {
-//     "0%": {
-//       transform: "scale(1)",
-//       boxShadow: "0 0 0 0 rgba(0, 0, 0, 0.7)",
-//     },
-//     "75%": {
-//       transform: "scale(1)",
-//       boxShadow: "0 0 0 15px #4A972C",
-//     },
-//     "100%": {
-//       transform: "scale(1)",
-//       boxShadow: "0 0 0 0 rgba(0, 0, 0, 0)",
-//     },
-//   },
-
-//   pulse1: {
-//     background: "transparent",
-//     borderRadius: "50%",
-//     height: 30,
-//     width: 30,
-//     boxShadow: "0 0 0 0 rgba(0, 0, 0, 0)",
-//     transform: "scale(1)",
-//     animation: "$pulse 2s infinite",
-//     animationDuration:'2s'
-//   },
-
-//   "@keyframes pulse1": {
-//     "0%": {
-//       transform: "scale(1)",
-//       boxShadow: "0 0 0 0 rgba(0, 0, 0, 0.7)",
-//     },
-//     "75%": {
-//       transform: "scale(1)",
-//       boxShadow: "0 0 0 15px rgba(0, 0, 0, 0.7)",
-//     },
-//     "100%": {
-//       transform: "scale(1)",
-//       boxShadow: "0 0 0 0 rgba(0, 0, 0, 0)",
-//     },
-//   },
-
-//   pulse2: {
-//     background: "transparent",
-//     borderRadius: "50%",
-//     height: 30,
-//     width: 30,
-//     boxShadow: "0 0 0 0 rgba(0, 0, 0, 0)",
-//     transform: "scale(1)",
-//     animation: "$pulse 3s infinite",
-//     animationDuration:'1s'
-//   },
-
-//   "@keyframes pulse2": {
-//     "0%": {
-//       transform: "scale(1)",
-//       boxShadow: "0 0 0 0 #4A972C",
-//     },
-//     "75%": {
-//       transform: "scale(1)",
-//       boxShadow: "0 0 0 15px rgba(0, 0, 0, 0)",
-//     },
-//     "100%": {
-//       transform: "scale(1)",
-//       boxShadow: "0 0 0 0 rgba(0, 0, 0, 0)",
-//     },
-//   },
 
 
 pulse: {
@@ -227,7 +150,6 @@ const Intro = ({ categoriesRef }) => {
               </Box>
             </Box>
           </Box>
-          {/* <ExecuteButton/> */}
           <Typography
             onClick={scrollToCategories}
             style={{ color: "grey", paddingLeft: 20, cursor: "pointer" }}

@@ -16,7 +16,7 @@ import DistrictsAndAddresses from "./DistrictsAndAddresses";
 const useAncetaStyles = makeStyles({
     root:{
          height:"100%",
-        marginBottom:70,
+         marginBottom:70,
         "& .MuiCard-root": {
             borderRadius: '20px',
             marginBottom: '20px',
