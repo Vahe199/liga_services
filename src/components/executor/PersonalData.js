@@ -1,22 +1,25 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, FormControlLabel, RadioGroup, Stack } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { Radio } from "@mui/material";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
 import TextField from "@mui/material/TextField";
+import CustomDatePicker from "../UI/datePicker/CustomDatePicker";
+import CustomInput from "../UI/customInput/CustomInput";
 
 
 
 
-
+ 
 const PersonalData = () => {
   const [selectedValue, setSelectedValue] = React.useState('a');
 
   const handleChange = (event) => {
   setSelectedValue(event.target.value);
   };
+  const [value, setValue] = React.useState('Женский');
   return (
     <Box
       style={{
@@ -32,34 +35,40 @@ const PersonalData = () => {
       <Divider style={{ border: "1px solid #808080", width: "100%" }} />
       <p style={{ color: "#808080", fontSize: "18px" }}>Пол</p>
 
-      <Box style={{ display: "flex", marginBottom: "25px" }}>
-      <Radio
-        checked={selectedValue === 'a'}
-        onChange={handleChange}
-        value="a"
-        name="radio-buttons"
-        inputProps={{ 'aria-label': 'A' }}
-      />
-        <p style={{fontWeight: 500}}>Женский</p>
-        <Radio
-        checked={selectedValue === 'b'}
-        onChange={handleChange}
-        value="b"
-        name="radio-buttons"
-        inputProps={{ 'aria-label': 'B' }}
-      />
-        <p style={{fontWeight: 500}}>Мужской</p>
+      <Box className="a1" style={{ display: "flex",flexWrap:'wrap', marginBottom: "25px" }}>
+      <RadioGroup
+                aria-label="gender"
+                name="controlled-radio-buttons-group"
+                value={value}
+                onChange={(e)=>setValue(e.target.value)}
+            >
+                <Stack
+                    direction={{xs: 'column', sm: 'row'}}
+                >
+                <FormControlLabel value="Женский" control={<Radio size={"small"} sx={{
+                    color: "#4B9A2D",
+                    '&.Mui-checked': {
+                        color: "#4B9A2D",
+                    },
+                }}/>} label="Женский" />
+                <FormControlLabel value="Мужской" control={<Radio size={"small"} sx={{
+                    color:"#4B9A2D",
+                    '&.Mui-checked': {
+                        color: "#4B9A2D",
+                    },
+                }}/>} label="Мужской" />
+                </Stack>
+            </RadioGroup>
       </Box>
       <p style={{ color: "#808080", fontSize: "18px" }}>Дата рождения</p>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <DatePicker renderInput={(params) => <TextField {...params} />} />
-      </LocalizationProvider>
+      <CustomDatePicker />
       <p style={{ color: "#808080", fontSize: "18px" }}>Обо мне</p>
       <TextField
-        style={{ width: "100%" }}
+        style={{ width: "100%", borderRadius:'10px' }}
         id="outlined-multiline-static"
         rows={4}
       />
+      <CustomInput textArea={true} />
     </Box>
   );
 };

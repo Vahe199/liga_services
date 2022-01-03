@@ -14,7 +14,7 @@ import ModalPersonalData from "../../UI/modals/ModalPersonalData";
 const useAncetaStyles = makeStyles({
     root:{
          height:"100%",
-        marginBottom:70,
+         marginBottom:70,
         "& .MuiCard-root": {
             borderRadius: '20px',
             marginBottom: '20px',
