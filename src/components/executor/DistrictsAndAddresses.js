@@ -2,6 +2,7 @@ import React from "react";
 import { Box } from "@mui/material";
 import Divider from "@mui/material/Divider";
 
+
 const DistrictsAndAddresses = () => {
   return (
     <Box
@@ -13,18 +14,12 @@ const DistrictsAndAddresses = () => {
       }}
     >
       <p style={{ fontSize: "24px", fontWeight: 500, whiteSpace: "nowrap" }}>
-        Районы и адреса
+           Районы и адреса
       </p>
       <Divider style={{ border: "1px solid #808080", width: "100%" }} />
-      <p style={{ color: "#808080", fontSize: "24px" }}>Регион</p>
-      <p style={{ fontSize: "24px", fontWeight:'500px', marginBottom:'45px' }}>Москва</p>
+      <p style={{ color: "#808080", fontSize: "18px" }}>Регион</p>
 
-      <p style={{ color: "#808080", fontSize: "24px" }}>Адреса</p>
-      <p style={{ fontSize: "24px", fontWeight:'500px', marginBottom:'45px' }}>г. Москва, Любанский проезд, подъезд 3 квартира 42</p>
-    
-      <p style={{ color: "#808080", fontSize: "24px" }}>Районы выезда к клиентам</p>
-      <p style={{ fontSize: "24px", fontWeight:'500px' }}>Бабушкинский, Восточное Измайлово,  Замоскворечье.....</p>
-    
+      
     </Box>
   );
 };
