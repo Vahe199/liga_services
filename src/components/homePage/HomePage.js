@@ -23,7 +23,7 @@ const HomePage = () => {
   const categoriesRef = useRef();
   return (
     <div>
-      {/* <Container maxWidth="lg">
+       <Container maxWidth="lg">
                 <LogoBlock />
                 <Intro categoriesRef={categoriesRef} />
             </Container>
@@ -33,14 +33,14 @@ const HomePage = () => {
                 <TrustedExperts />
                 <Reviews />
             </Container>
-             <Footer />  */}
+             <Footer />
       {/* <AboutOrder/>
-       <AdditionalFiles/> 
+       <AdditionalFiles/>
       <Filtr/>
       <ResponseAmount/>  */}
       {/* <PersonalData/>    */}
       {/* <DistrictsAndAddresses/>  */}
-      <Portfolio/>
+      {/*<Portfolio/>*/}
       {/* <EducationAndCertifications /> */}
       {/* <CustomerReviews/> */}
       {/* <ModalVolet/> */}

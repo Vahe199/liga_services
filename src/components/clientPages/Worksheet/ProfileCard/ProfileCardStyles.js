@@ -34,7 +34,7 @@ export const useProfileCardStyles = makeStyles({
     textBtn:{
         cursor:"pointer",
         "&:hover":{
-            fontWeight:700
+            fontWeight:600
         }
     },
     orderSubBlockSpaceBetween: {
@@ -42,4 +42,5 @@ export const useProfileCardStyles = makeStyles({
         justifyContent: 'space-between',
         alignItems: 'center',
     },
+
 })
