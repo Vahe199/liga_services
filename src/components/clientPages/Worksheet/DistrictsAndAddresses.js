@@ -5,6 +5,10 @@ import Card from "@mui/material/Card";
 import {useInfoCardStyles} from "./InfoCard/InfoCardStyles";
 import PenSvg from "../../../assets/svg/Profile/PenSvg";
 import {FileSVG} from "../../../assets/svg/Profile/FileSVG";
+import EditButton from "../../UI/CustomButtons/EditButton";
+import CustomSelect from "../../UI/selects/CustomSelect";
+import CustomInput from "../../UI/customInput/CustomInput";
+import SelectWithCheckbox from "../../UI/selects/SelectWithCheckbox";
 
 const DistrictsAndAddresses = ({editAddress, setEditAddress}) => {
     const classes = useInfoCardStyles();
@@ -14,26 +18,31 @@ const DistrictsAndAddresses = ({editAddress, setEditAddress}) => {
                 <Typography className={classes.title}>
                     Районы и адреса
                 </Typography>
-                {editAddress ? <Box style={{cursor: "pointer", padding: '0 0 7px 20px'}} onClick={() => setEditAddress(false)}>
-                        <FileSVG color={'#808080'} />
-                    </Box> :
-                    <Box style={{cursor: "pointer", padding: '0 0 7px 20px'}} onClick={() => setEditAddress(true)}>
-                        <PenSvg />
-                    </Box>}
+                <EditButton condition={editAddress} fun={setEditAddress} />
             </Box>
             <Divider style={{ border: "1px solid #808080", width: "100%" }} />
             <Typography variant={"h5"}>
                 Регион
             </Typography>
-            <Typography variant={'h6'}>
-                Москва
-            </Typography>
+            {editAddress ? <Typography variant={'h6'}>
+                    Москва
+                </Typography> :
+                <Box style={{width: '200px', marginBottom: '40px'}}>
+                    <CustomSelect />
+                </Box>}
 
             <Typography variant={"h5"} >Адреса</Typography>
-            <Typography variant={'h6'}>г. Москва, Любанский проезд, подъезд 3 квартира 42</Typography>
+            {editAddress ? <Typography variant={'h6'}>г. Москва, Любанский проезд, подъезд 3 квартира 42</Typography> :
+                <Box style={{width: '70%'}}>
+                    <CustomInput />
+                </Box>}
 
             <Typography variant={"h5"}>Районы выезда к клиентам</Typography>
-            <Typography variant={'h6'}>Бабушкинский, Восточное Измайлово, Замоскворечье.....</Typography>
+            {editAddress ? <Typography variant={'h6'}>Бабушкинский, Восточное Измайлово, Замоскворечье.....</Typography> :
+                <Box style={{width: '200px', marginBottom: '40px'}}>
+                    <SelectWithCheckbox />
+                </Box>
+            }
 
         </Card>
     );
