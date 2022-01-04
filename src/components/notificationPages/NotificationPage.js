@@ -1,7 +1,7 @@
 import React from "react";
 // import Card from "@mui/material/Card";
 import { Box } from "@mui/system";
-import {Divider, makeStyles, Typography} from "@material-ui/core";
+import {Divider, makeStyles} from "@material-ui/core";
 import { DataNotification } from "../../utils/DataNotification";
 
 
@@ -36,9 +36,10 @@ const NotificationPage = (props) => {
 
         {DataNotification.map((item, index)=>
             <p style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
-                <h6>{item.name}</h6>  <h5>{item.data}</h5> 
-                <Divider style={{width:'100%', border: '1px solid #808080'}}/>
-            </p>    
+                <h6>{item.name}</h6>  <h5 style={{color:'#616161'}}>{item.data}</h5> 
+                {/* <Divider style={{width:'100%', border: '1px solid #808080'}}/>  */}
+            </p>  
+           
         )}
         
 
