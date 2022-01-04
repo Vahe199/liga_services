@@ -15,7 +15,10 @@ export const useInfoCardStyles = makeStyles({
             fontSize:18,
             color: "#808080",
             marginTop: 15
-        }
+        },
+        '& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
+            padding: '10px',
+        },
     },
     titleWrap:{
         display: "flex",
