@@ -7,7 +7,7 @@ import {DownloadSvg} from "../../../../assets/svg/DownloadSvg";
 import Button from "@mui/material/Button";
 import {Formik} from "formik";
 import {useMyOrdersStyles} from "../MyOrders";
-import CustomSelect from "../../../UI/customSelect/CustomSelect";
+import CustomSelect from "../../../UI/selects/CustomSelect";
 import CustomInputAddFile from "../../../UI/customInputAddFile/CustomInputAddFile";
 import CustomInput from "../../../UI/customInput/CustomInput";
 import {AddNewOrderValidation} from "../../../../utils/validation/AddNewOrderValidation";

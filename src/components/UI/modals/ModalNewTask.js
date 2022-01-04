@@ -10,7 +10,7 @@ import {AddTaskValidation} from "../../../utils/validation/AddTaskValidation";
 import ModalForAuth from "./ModalForAuth";
 import CustomDatePicker from "../datePicker/CustomDatePicker";
 import CustomInput from "../customInput/CustomInput";
-import CustomSelect from "../customSelect/CustomSelect";
+import CustomSelect from "../selects/CustomSelect";
 import CustomInputAddFile from "../customInputAddFile/CustomInputAddFile";
 
 const style = {

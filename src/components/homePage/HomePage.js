@@ -25,6 +25,7 @@ const HomePage = () => {
   return (
     <div>
       <Container maxWidth="lg">
+
                 <LogoBlock />
                 <Intro categoriesRef={categoriesRef} />
             </Container>
