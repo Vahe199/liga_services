@@ -20,6 +20,7 @@ import {Divider, Drawer, List, ListItem, ListItemText, Stack} from "@mui/materia
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import {useDispatch, useSelector} from "react-redux";
 import {changeStatus} from "../../../store/reducers/AuthReducer";
+import NotificationPage from '../../notificationPages/NotificationPage';
 
 const useNavStyles = makeStyles({
     root: {
@@ -92,18 +93,19 @@ export const MainNavBar = () => {
     const changePage = () => {
         if(status === 'client'){
             dispatch(changeStatus('executor'))
-        }else{
+        }else {
             dispatch(changeStatus('client'))
         }
-
     }
+
+ 
     useEffect(() => {
         console.log(status, 'status')
     }, [status])
  const navigate = useNavigate()
   const classes = useNavStyles()
   const pages = status === 'client' ? [{title:'Мои заказы',path:"MyOrders"}, {title:'Анкета',path:"worksheet"}, {title:'Поддержка',path:"support"}] :
-      [{title:'Баланс',path:"support"}, {title:'Заказы',path:"MyOrders"}, {title:'Анкета',path:"worksheet"}, {title:'Поддержка',path:"support"}];
+  [{title:'Баланс',path:"support"}, {title:'Заказы',path:"MyOrders"}, {title:'Анкета',path:"worksheet"}, {title:'Поддержка',path:"support"}];
   const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
   const [anchorElNav, setAnchorElNav] = React.useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -253,7 +255,8 @@ export const MainNavBar = () => {
               <IconButton>
                 <MessageSvg/>
               </IconButton>
-              <IconButton>
+              
+              <IconButton onClick={() => navigate('notification')}>
                 <NotificationSvg/>
               </IconButton>
 

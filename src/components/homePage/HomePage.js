@@ -17,13 +17,14 @@ import Filtr from "../executor/Filtr";
 import ResponseAmount from "../executor/ResponseAmount";
 import CustomerReviews from "../CustomerReviews";
 import ModalVolet from "../UI/modals/ModalVolet";
+import EducationAndCertificatesEdit from "../executor/EducationAndCertificatesEdit";
 
 
 const HomePage = () => {
   const categoriesRef = useRef();
   return (
     <div>
-      {/* <Container maxWidth="lg">
+      <Container maxWidth="lg">
                 <LogoBlock />
                 <Intro categoriesRef={categoriesRef} />
             </Container>
@@ -33,17 +34,18 @@ const HomePage = () => {
                 <TrustedExperts />
                 <Reviews />
             </Container>
-             <Footer />  */}
+             <Footer /> 
       {/* <AboutOrder/>
        <AdditionalFiles/> 
       <Filtr/>
       <ResponseAmount/>  */}
       {/* <PersonalData/>    */}
       {/* <DistrictsAndAddresses/>  */}
-      <Portfolio/>
+      {/* <Portfolio/> */}
       {/* <EducationAndCertifications /> */}
       {/* <CustomerReviews/> */}
       {/* <ModalVolet/> */}
+      {/* <EducationAndCertificatesEdit/> */}
     </div>
   );
 };
