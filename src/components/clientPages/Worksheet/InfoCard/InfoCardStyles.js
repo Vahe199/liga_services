@@ -27,7 +27,7 @@ export const useInfoCardStyles = makeStyles({
         "& .MuiTypography-h3":{
             fontSize: 14,
             color: "#808080",
-            margin: '10px 0',
+            margin: '5px 0 10px 0',
         },
         '& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
             padding: '10px',

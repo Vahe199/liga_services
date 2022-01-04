@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -9,24 +9,52 @@ import {Avatar, Stack, TextField} from "@mui/material";
 import {useEditCardStyles} from "../../clientPages/Worksheet/EditPages/EditCardStyles";
 import {useStyles} from "../../../globalStyles/ModalStyles";
 import Divider from "@mui/material/Divider";
+import {CloseSvg} from "../../../assets/svg/CloseSvg";
 
 const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 'auto',
+    width: '500px',
     bgcolor: 'background.paper',
     borderRadius: '10px',
+    border:"none",
+    outline:"none",
     boxShadow: 24,
     p: 3,
 };
 
 const ModalPersonalData = ({showModal, setShowModal}) => {
+    const classes = useStyles();
+    const [showTimer, setShowTimer] = useState(true);
+    const [currentCount, setCurrentCount] = useState(null);
     const handleOpen = () => setShowModal(true);
     const handleClose = () => setShowModal(false);
-    const classes = useStyles();
+    const timer = () => setCurrentCount(currentCount - 1);
 
+    useEffect(
+        () => {
+            if (currentCount <= 0) {
+                setShowTimer(true)
+                return;
+            }
+            if( currentCount == 1) {
+                setShowTimer(false)
+            }
+            const id = setInterval(timer, 1000);
+            return () => clearInterval(id);
+        }, [currentCount]);
+    const sendAgain = (newPas) =>{
+        if(newPas){
+            setShowTimer(false)
+            setCurrentCount(180)
+        }else {
+            console.log(newPas,"new");
+            setShowTimer(false)
+            setCurrentCount(180)
+        }
+    }
     return (
         <div>
             <Modal
@@ -35,47 +63,41 @@ const ModalPersonalData = ({showModal, setShowModal}) => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Box sx={{ ...style }}>
                     <Box className={classes.root}>
                         <Box className={classes.titleWrap}>
-                            <Box style={{display: "flex", justifyContent: 'center', alignItems: 'center'}}>
-                                <Typography variant={"h5"}>Действия профиля</Typography>
-                                <Box onClick={() => {
-                                }} style={{cursor: "pointer", margin: '0 10px'}}>
-                                    <FileSVG color={"#808080"}/>
-                                </Box>
+                            <Box style={{display: "flex", justifyContent: 'flex-end', width:"70%"}}>
+                                <Typography variant={"h5"}
+                                >Подтвердите телефонный номер</Typography>
                             </Box>
-                            <Typography style={{color: "#DF040A", fontSize: "14px", textAlign: 'right'}}>
-                                *Телефон не подтвержден
-                            </Typography>
+                            <Box onClick={handleClose}
+                                 style={{cursor: "pointer"}}>
+                                <CloseSvg size={15}/>
+                            </Box>
                         </Box>
-                        <Divider color={'#808080'} style={{ height: 1, marginBottom: "10px"}}/>
+                        <Divider color={'#808080'} style={{ height: 1, margin: "10px 0px"}}/>
                         <Box>
-                            <Box style={{marginBottom: '20px'}}>
-                                <Typography variant={"h6"} >
-                                    Электронная почта
-                                </Typography>
-                                <Typography variant={"h5"}>
-                                    example@gmail.com
-                                </Typography>
-                            </Box>
                             <Box className={classes.defaultBlock}>
-                                <Box style={{marginBottom: '20px', paddingRight: '20px'}}>
-                                    <Typography variant={"h6"}>
-                                        Номер телефона
-                                    </Typography>
-                                    <Typography variant={"h5"}>+7 999 999 9999 </Typography>
-                                </Box>
+                                <TextField placeholder={"+7 (888) 888-88-88"}
+                                           variant="standard"
+                                           margin={"normal"}
+                                           sx={{width: 320}}/>
                                 <Stack direction={{ xs: 'column', sm: 'row' }}
                                        alignItems={'space-around'}
-                                       spacing={{ xs: 1, sm: 2, md: 5 }}>
-                                    <Button sx={{ width: 140}}
-                                            variant="outlined">Отправить код</Button>
-                                    <TextField placeholder={"Код"}  InputProps={{
+                                       spacing={{ xs: 1, sm: 2, md: 5}}>
+
+
+                                    <TextField placeholder={"Код"} type="password" InputProps={{
                                         classes: { input: classes.input}
                                     }}
                                                sx={{width: 140}}/>
-                                    <Button onClick={() => setShowModal(false)} variant="contained" sx={{width: 140, marginBottom: '20px'}} color="success">Подтвердить</Button>
+                                    {showTimer ?  <Button sx={{ width: 140}}
+                                                          onClick={()=>sendAgain(true)}
+                                                          variant="outlined">Отправить код</Button>:
+                                        <Typography
+                                            style={{width:140,fontSize:10}}>Отправить пароль еще раз через
+                                            {' ' +Math.floor(currentCount / 60)+ ' ' + 'мин' + ' ' + ('0' + Math.floor(currentCount % 60)).slice(-2) + ' ' + 'сек'}
+                                        </Typography>}
                                 </Stack>
                             </Box>
                         </Box>
