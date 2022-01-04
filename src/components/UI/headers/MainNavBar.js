@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useEffect} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,13 +7,10 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
 import {makeStyles} from "@material-ui/core";
-import { styled} from '@mui/material/styles';
+import {styled} from '@mui/material/styles';
 import Logo from "../../../assets/image/logoSmall.png"
 import UserSvg from "../../../assets/svg/header/UserSvg";
 import NotificationSvg from "../../../assets/svg/header/NotificationSvj";
@@ -21,10 +18,30 @@ import MessageSvg from "../../../assets/svg/header/MessageSvg";
 import {useNavigate} from "react-router-dom";
 import {Divider, Drawer, List, ListItem, ListItemText, Stack} from "@mui/material";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import {useDispatch, useSelector} from "react-redux";
+import {changeStatus} from "../../../store/reducers/AuthReducer";
+
 const useNavStyles = makeStyles({
     root: {
         "& .MuiAppBar-root": {
             backgroundColor: "#fff",
+        },
+        "& .MuiButton-contained": {
+            backgroundColor: '#4B9A2D',
+            borderRadius: '10px',
+            textTransform: "none",
+            color: '#fff',
+            fontWeight: 500,
+        },
+        "& .MuiButton-outlined": {
+            background: "#445E77",
+            textTransform: "none",
+            color: '#fff',
+            fontWeight: 500,
+            borderRadius: '10px',
+            "&:hover": {
+                background: '#6585a5 !important',
+            }
         },
 
     },
@@ -36,7 +53,7 @@ const useNavStyles = makeStyles({
     height:78
   },
   text: {
-    color:"#000000"
+    color: "#000000"
   },
     btn: {
         "&:hover": {
@@ -70,10 +87,24 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 export const MainNavBar = () => {
+    const {status} = useSelector(state => state.auth);
+    const dispatch = useDispatch();
+    const changePage = () => {
+        if(status === 'client'){
+            dispatch(changeStatus('executor'))
+        }else{
+            dispatch(changeStatus('client'))
+        }
+
+    }
+    useEffect(() => {
+        console.log(status, 'status')
+    }, [status])
  const navigate = useNavigate()
   const classes = useNavStyles()
-    const pages = [{title:'Мои заказы',path:"MyOrders"}, {title:'Анкета',path:"worksheet"}, {title:'Поддержка',path:"support"}];
-    const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+  const pages = status === 'client' ? [{title:'Мои заказы',path:"MyOrders"}, {title:'Анкета',path:"worksheet"}, {title:'Поддержка',path:"support"}] :
+      [{title:'Баланс',path:"support"}, {title:'Заказы',path:"MyOrders"}, {title:'Анкета',path:"worksheet"}, {title:'Поддержка',path:"support"}];
+  const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
   const [anchorElNav, setAnchorElNav] = React.useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [active, setActive] = React.useState("Мои заказы");
@@ -94,6 +125,8 @@ export const MainNavBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+
 
   return (<div className={classes.root}>
       <AppBar sx={{ boxShadow: 3}}>
@@ -153,54 +186,31 @@ export const MainNavBar = () => {
                     <List>
 
                     {pages.map((page) => (
-                        <ListItem  key={page.title} onClick={()=>handleCloseNavMenu(page.path)}>
+                        <ListItem  key={page.title} onClick={() => handleCloseNavMenu(page.path)}>
                             <ListItemText primary={page.title}/>
                         </ListItem>
                     ))}
                     </List>
                 </Drawer>
-              {/*<Menu*/}
-              {/*    className={classes.menu}*/}
-              {/*    id="menu-appbar"*/}
-              {/*    anchorEl={anchorElNav}*/}
-              {/*    anchorOrigin={{*/}
-              {/*      vertical: 'bottom',*/}
-              {/*      horizontal: 'left',*/}
-              {/*    }}*/}
-              {/*    keepMounted*/}
-              {/*    transformOrigin={{*/}
-              {/*      vertical: 'top',*/}
-              {/*      horizontal: 'left',*/}
-              {/*    }}*/}
-              {/*    open={Boolean(anchorElNav)}*/}
-              {/*    onClose={handleCloseNavMenu}*/}
-              {/*    sx={{*/}
-              {/*      display: { xs: 'block', md: 'none' },*/}
-              {/*    }}*/}
-              {/*>*/}
-              {/*  {pages.map((page) => (*/}
-              {/*      <MenuItem key={page.title} onClick={()=>handleCloseNavMenu(page.path)}>*/}
-              {/*        <Typography  textAlign="center">{page.title}</Typography>*/}
-              {/*      </MenuItem>*/}
-              {/*  ))}*/}
-              {/*</Menu>*/}
             </Box>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
                   <Button
                       key={page.title}
-                      onClick={()=>handleCloseNavMenu(page.path)}
+                      onClick={() => handleCloseNavMenu(page.path)}
                       sx={{ my: 2, color: active === page.path ? '#445e77':'#000', display: 'block',textTransform: "none" }}
                   >
                     {page.title}
                   </Button>
               ))}
             </Box>
-<Button
-    variant="outlined">Профиль исполнителя</Button>
+              {status === 'client' ? <Button onClick={changePage}
+                       variant="outlined">Профиль исполнителя</Button> :
+                  <Button color='success' onClick={changePage}
+                          variant="contained">Профиль заказчика</Button>}
               <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
                   <IconButton>
-                  <UserSvg/>
+                    <UserSvg/>
                   </IconButton>
                   <IconButton
                       onClick={handleOpenUserMenu}

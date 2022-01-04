@@ -1,14 +1,17 @@
 import * as React from "react";
 import {useState} from "react";
-import {Box, FormControlLabel, Radio, RadioGroup, Stack, Typography} from "@mui/material";
+import {Box, FormControlLabel, Radio, RadioGroup, Stack, TextField, Typography} from "@mui/material";
 import {useEditCardStyles} from "./EditCardStyles";
 import CustomDatePicker from "../../../UI/datePicker/CustomDatePicker";
 import Card from "@mui/material/Card";
 import {FileSVG} from "../../../../assets/svg/Profile/FileSVG";
+import {useSelector} from "react-redux";
+import CustomInput from "../../../UI/customInput/CustomInput";
 
 
 const EditPersonalData = ({setEditPersonallyData}) => {
     const classes =useEditCardStyles()
+    const {status} = useSelector(state => state.auth);
     const [value, setValue] = React.useState('Женский');
     const [data, setData] = React.useState(new Date());
     const [save, setSave] = useState(false);
@@ -60,6 +63,17 @@ const EditPersonalData = ({setEditPersonallyData}) => {
             <Box style={{width: '200px'}}>
                 <CustomDatePicker value={data} fun={(val)=>setData(val)}/>
             </Box>
+            {status === 'executor' && <Box>
+                <Typography mb={1} variant={"h5"}>
+                    Обо мне
+                </Typography>
+                <Box style={{}}>
+                    <CustomInput textArea={true}
+                                 placeholder={'Обо мне'}
+                                 width={'100%'}
+                        />
+                </Box>
+            </Box>}
 
 
         </Card>

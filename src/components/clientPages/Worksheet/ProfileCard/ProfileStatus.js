@@ -7,11 +7,15 @@ import InfoSVG from "../../../../assets/svg/Profile/InfoSVG";
 import Card from "@mui/material/Card";
 import Rating from "@mui/material/Rating";
 import {AddAvatar} from "../../../UI/modals/Avatar/AddAvatar";
+import {useSelector} from "react-redux";
+import ProgressLine from "../../../UI/progressLine/ProgressLine";
 
 
 const ProfileStatus = ({setShowModal}) => {
-    const classes = useProfileCardStyles()
+    const classes = useProfileCardStyles();
+    const {status} = useSelector(state => state.auth);
     const [avatarPreview, setAvatarPreview] = useState();
+
     return (
         <Card sx={{boxShadow: 2}} className={classes.root}>
             <Box className={classes.orderSubBlockSpaceBetween}>
@@ -53,6 +57,7 @@ const ProfileStatus = ({setShowModal}) => {
                 <InfoSVG/>
                 Профиль не подтвержден
             </Typography>
+            {status === 'executor' && <ProgressLine persent={67}/>}
             <Typography variant="caption" style={{fontStyle:"italic", color:"#808080"}}>В лиге с12 марта 2019</Typography>
         </Card>
     );

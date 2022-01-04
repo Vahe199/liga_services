@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import {makeStyles} from "@material-ui/core";
 import {Container, Grid} from "@mui/material";
 import PersonalData from "./InfoCard/PersonalData";
 import OrderNotifications from "./InfoCard/OrderNotifications";
@@ -10,11 +9,14 @@ import EditProfileData from "./EditPages/EditProfileData";
 import EditPersonalData from "./EditPages/EditPersonalData";
 import CustomerReviews from "../../CustomerReviews";
 import ModalPersonalData from "../../UI/modals/ModalPersonalData";
+import {makeStyles} from "@material-ui/core";
+import {useSelector} from "react-redux";
+import DistrictsAndAddresses from "./DistrictsAndAddresses";
 
 const useAncetaStyles = makeStyles({
     root:{
          height:"100%",
-        marginBottom:70,
+         marginBottom:70,
         "& .MuiCard-root": {
             borderRadius: '20px',
             marginBottom: '20px',
@@ -27,10 +29,13 @@ const useAncetaStyles = makeStyles({
 
 export const Worksheet = () =>{
     const classes = useAncetaStyles()
+    const {status} = useSelector(state => state.auth)
     const [editPersonallyData, setEditPersonallyData] = useState(false);
     const [editSocialNetwork, setEditSocialNetwork] = useState(false);
     const [notificationsOrder, setNotificationOrders] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [editAddress, setEditAddress] = useState(false);
+
     return( <Container maxWidth={'lg'} className={classes.root}>
             <ModalPersonalData showModal={showModal} setShowModal={setShowModal}/>
         <Grid container spacing={1}>
@@ -44,8 +49,10 @@ export const Worksheet = () =>{
                 {editPersonallyData ? <EditPersonalData setEditPersonallyData={setEditPersonallyData}
                     />
                    : <PersonalData setEditPersonallyData={setEditPersonallyData}/>}
-                {/*modal*/}
-                <EditProfileData />
+                {status === 'executor' && <DistrictsAndAddresses
+                    editAddress={editAddress}
+                    setEditAddress={setEditAddress}
+                />}
                 <CustomerReviews />
             </Grid>
         </Grid>

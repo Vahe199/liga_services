@@ -15,7 +15,7 @@ export const useStyles = makeStyles({
         },
         '& .MuiOutlinedInput-root': {
             '& fieldset': {
-                borderColor: 'blue',
+                borderColor: '#808080',
                 borderRadius: '10px',
                 //width: '100%',
                 backgroundColor: 'transparent',
