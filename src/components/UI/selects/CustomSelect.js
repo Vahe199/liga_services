@@ -1,8 +1,9 @@
 import React from 'react';
 import {FormControl, FormHelperText, Select} from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
-import { makeStyles} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core";
 import Box from "@mui/material/Box";
+import OutlinedInput from '@mui/material/OutlinedInput';
 
 export const useStyles = makeStyles({
     root: {
@@ -56,7 +57,7 @@ export const useStyles = makeStyles({
 
 
 
-const CustomSelect = ({label, handleChange, value, name, touched, error, mt}) => {
+const CustomSelect = ({label, handleChange, placeholder, value, name, touched, error, mt}) => {
     const classes = useStyles();
     return (
         <Box className={classes.root}>
@@ -67,7 +68,9 @@ const CustomSelect = ({label, handleChange, value, name, touched, error, mt}) =>
                     value={value}
                     name={name}
                     error={touched && Boolean(error)}
+                    defaultValue={placeholder}
                 >
+                    <MenuItem disabled value={placeholder}>{placeholder}</MenuItem>
                     <MenuItem value={'Ten'}>Ten</MenuItem>
                     <MenuItem value={'Twenty'}>Twenty</MenuItem>
                     <MenuItem value={'Thirty'}>Thirty</MenuItem>

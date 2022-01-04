@@ -34,10 +34,8 @@ export const useStyles = makeStyles({
             "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
                 border: "1px solid #808080",
             },
-            '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
-                height: '10px',
-            },
-            '& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
+            '& .MuiOutlinedInput-input': {
+                //height: '30px',
                 padding: '10px',
             },
         },

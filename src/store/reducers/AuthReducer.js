@@ -4,7 +4,7 @@ const authSlice = createSlice({
     name: "auth",
     initialState: {
         auth: false,
-        status: 'client',
+        status: 'executor',
     },
     reducers: {
         changeStatus: (state, action) => {

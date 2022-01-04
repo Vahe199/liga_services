@@ -5,8 +5,8 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import {makeStyles} from "@mui/styles";
+import {Select} from "@mui/material";
 
 const useStyles = makeStyles( ({
     root: {
@@ -77,13 +77,7 @@ const useStyles = makeStyles( ({
     }
 }));
 
-const SelectWithCheckbox = () => {
-    const options = [
-        "Бабушкинский",
-        "Измайлово",
-        "Замоскворечье",
-        "Бабушкинский",
-    ];
+const SelectWithCheckbox = ({options}) => {
     const classes = useStyles();
     const [selected, setSelected] = useState([]);
     const isAllSelected =

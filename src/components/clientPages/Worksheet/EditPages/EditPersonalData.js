@@ -67,12 +67,7 @@ const EditPersonalData = ({setEditPersonallyData}) => {
                 <Typography mb={1} variant={"h5"}>
                     Обо мне
                 </Typography>
-                <Box style={{}}>
-                    <CustomInput textArea={true}
-                                 placeholder={'Обо мне'}
-                                 width={'100%'}
-                        />
-                </Box>
+                <CustomInput placeholder={'Обо мне'}/>
             </Box>}
 
 

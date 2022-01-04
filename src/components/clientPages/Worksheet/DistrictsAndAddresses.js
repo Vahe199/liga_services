@@ -9,6 +9,7 @@ import EditButton from "../../UI/CustomButtons/EditButton";
 import CustomSelect from "../../UI/selects/CustomSelect";
 import CustomInput from "../../UI/customInput/CustomInput";
 import SelectWithCheckbox from "../../UI/selects/SelectWithCheckbox";
+import {options} from "../../../utils/data/selectWithCheckbox/DataSelectWithCheckbox";
 
 const DistrictsAndAddresses = ({editAddress, setEditAddress}) => {
     const classes = useInfoCardStyles();
@@ -24,7 +25,7 @@ const DistrictsAndAddresses = ({editAddress, setEditAddress}) => {
             <Typography variant={"h5"}>
                 Регион
             </Typography>
-            {editAddress ? <Typography variant={'h6'}>
+            {!editAddress ? <Typography variant={'h6'}>
                     Москва
                 </Typography> :
                 <Box style={{width: '200px', marginBottom: '40px'}}>
@@ -32,15 +33,15 @@ const DistrictsAndAddresses = ({editAddress, setEditAddress}) => {
                 </Box>}
 
             <Typography variant={"h5"} >Адреса</Typography>
-            {editAddress ? <Typography variant={'h6'}>г. Москва, Любанский проезд, подъезд 3 квартира 42</Typography> :
+            {!editAddress ? <Typography variant={'h6'}>г. Москва, Любанский проезд, подъезд 3 квартира 42</Typography> :
                 <Box style={{width: '70%'}}>
                     <CustomInput />
                 </Box>}
 
             <Typography variant={"h5"}>Районы выезда к клиентам</Typography>
-            {editAddress ? <Typography variant={'h6'}>Бабушкинский, Восточное Измайлово, Замоскворечье.....</Typography> :
+            {!editAddress ? <Typography variant={'h6'}>Бабушкинский, Восточное Измайлово, Замоскворечье.....</Typography> :
                 <Box style={{width: '200px', marginBottom: '40px'}}>
-                    <SelectWithCheckbox />
+                    <SelectWithCheckbox options={options} />
                 </Box>
             }
 
