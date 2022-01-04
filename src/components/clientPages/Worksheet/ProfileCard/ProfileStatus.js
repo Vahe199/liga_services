@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Avatar, Box, IconButton, Typography} from "@mui/material";
 import PenSvg from "../../../../assets/svg/Profile/PenSvg";
 import {useProfileCardStyles} from "./ProfileCardStyles";
@@ -6,10 +6,12 @@ import SuccessSVG from "../../../../assets/svg/Profile/SuccessSVG";
 import InfoSVG from "../../../../assets/svg/Profile/InfoSVG";
 import Card from "@mui/material/Card";
 import Rating from "@mui/material/Rating";
+import {AddAvatar} from "../../../UI/modals/Avatar/AddAvatar";
 
 
 const ProfileStatus = ({setShowModal}) => {
     const classes = useProfileCardStyles()
+    const [avatarPreview, setAvatarPreview] = useState();
     return (
         <Card sx={{boxShadow: 2}} className={classes.root}>
             <Box className={classes.orderSubBlockSpaceBetween}>
@@ -22,7 +24,8 @@ const ProfileStatus = ({setShowModal}) => {
 
             <Box style={{background:"#808080", height:2, marginBottom: "10px"}}/>
             <Box style={{display: "flex", alignItems: "center"}}>
-                    <Avatar style={{marginRight: 10, width: '50px', height: '50px'}}/>
+                    {/*<Avatar style={{marginRight: 10, width: '50px', height: '50px'}}/>*/}
+                <AddAvatar avatarPreview={avatarPreview} setAvatarPreview={setAvatarPreview}/>
 
                 <Box>
                     <div  style={{display: "flex", alignItems: "center"}}>
