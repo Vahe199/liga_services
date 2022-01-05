@@ -46,7 +46,7 @@ const ProfileStatus = ({setShowModal}) => {
                 <SuccessSVG/>
                 Эл. почта подтверждена
             </Typography>
-            <LightTooltip title="Нажмите, чтобы изменить картинку" placement="bottom-start" arrow>
+            <LightTooltip title="Нажмите, чтобы подтвердить номер телефона" placement="bottom-start" arrow>
             <Typography variant={"h5"} component="div" className={classes.textBtn}
                         onClick={() => setShowModal(true)}>
                 <InfoSVG/>

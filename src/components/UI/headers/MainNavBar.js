@@ -98,18 +98,17 @@ export const MainNavBar = () => {
         }
     }
 
- 
+
     useEffect(() => {
         console.log(status, 'status')
     }, [status])
  const navigate = useNavigate()
   const classes = useNavStyles()
-  const pages = status === 'client' ? [{title:'Мои заказы',path:"MyOrders"}, {title:'Анкета',path:"worksheet"}, {title:'Поддержка',path:"support"}] :
-  [{title:'Баланс',path:"support"}, {title:'Заказы',path:"MyOrders"}, {title:'Анкета',path:"worksheet"}, {title:'Поддержка',path:"support"}];
-  const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+  const pages = status === 'client' ? [{title:'Мои заказы',path:"MyOrders"}, {title:'Анкета',path:"/clientPage"}, {title:'Поддержка',path:"support"}] :
+  [{title:'Баланс',path:"support"}, {title:'Заказы',path:"MyOrders"}, {title:'Анкета',path:"/clientPage"}, {title:'Поддержка',path:"support"}];
   const [anchorElNav, setAnchorElNav] = React.useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [active, setActive] = React.useState("Мои заказы");
+  const [active, setActive] = React.useState("/clientPage");
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -135,11 +134,18 @@ export const MainNavBar = () => {
         <Container maxWidth="lg">
           <Toolbar disableGutters>
             <Typography
-                variant="h6"
+                variant={"h4"}
                 onClick={() => navigate('/')}
                 noWrap
                 component="div"
-                sx={{ mr: 2, cursor: 'pointer', display: { xs: 'none', md: 'flex' },color:"#e20613",alignItems:"center"}}
+                sx={{
+                    mr: 2,
+                    cursor: 'pointer',
+                    fontSize: 18,
+                    display: {xs: 'none', md: 'flex'},
+                    color: "#e20613",
+                    alignItems: "center"
+                }}
             >
               <img src={Logo} className={classes.img}/>
               Лига услуг
@@ -255,7 +261,7 @@ export const MainNavBar = () => {
               <IconButton>
                 <MessageSvg/>
               </IconButton>
-              
+
               <IconButton onClick={() => navigate('notification')}>
                 <NotificationSvg/>
               </IconButton>

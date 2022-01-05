@@ -9,7 +9,7 @@ const useAvatarStyles = makeStyles({
         backgroundColor:"#C4C4C4 !important",
         width:"64px !important",
         height:"64px !important",
-         marginRight:44,
+
         borderRadius:"50% !important",
         "&:hover": {
             backgroundColor: "#D6D9DC !important",
@@ -19,13 +19,14 @@ const useAvatarStyles = makeStyles({
             backgroundColor: "#ADB3B8",
         },
     },
-    fileInputAvatar:{
-        // width:68,
-        // height:68,
-        // marginRight:44,
-        borderRadius:"50% !important",
+    fileInputAvatar: {
+        width: "64px !important",
+        height: "64px !important",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: "50% !important",
         "&:hover": {
-            backgroundColor: "#4b9a2d1c",
+             backgroundColor: "#4b9a2d1c",
             boxShadow: "none",
         },
         "&:active": {
