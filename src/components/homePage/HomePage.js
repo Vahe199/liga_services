@@ -25,7 +25,6 @@ const HomePage = () => {
   return (
     <div>
       <Container maxWidth="lg">
-
                 <LogoBlock />
                 <Intro categoriesRef={categoriesRef} />
             </Container>
@@ -35,9 +34,9 @@ const HomePage = () => {
                 <TrustedExperts />
                 <Reviews />
             </Container>
-             <Footer /> 
+             <Footer />
       {/* <AboutOrder/>
-       <AdditionalFiles/> 
+       <AdditionalFiles/>
       <Filtr/>
       <ResponseAmount/>  */}
       {/* <PersonalData/>    */}
