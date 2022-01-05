@@ -36,7 +36,7 @@ export const useStyles = makeStyles({
             },
             '& .MuiOutlinedInput-input': {
                 //height: '30px',
-                padding: '10px',
+               // padding: '10px',
             },
         },
     },
