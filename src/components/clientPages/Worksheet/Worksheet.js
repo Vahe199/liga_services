@@ -5,7 +5,6 @@ import OrderNotifications from "./InfoCard/OrderNotifications";
 import ProfileStatus from "./ProfileCard/ProfileStatus";
 import SocialNetworks from "./ProfileCard/SocialNetworks";
 import ProfileActions from "./ProfileCard/ProfileActions";
-import EditProfileData from "./EditPages/EditProfileData";
 import EditPersonalData from "./EditPages/EditPersonalData";
 import CustomerReviews from "../../CustomerReviews";
 import ModalPersonalData from "../../UI/modals/ModalPersonalData";
@@ -14,13 +13,12 @@ import {useSelector} from "react-redux";
 import DistrictsAndAddresses from "./DistrictsAndAddresses";
 import AboutOrder from "../../executor/AboutOrder";
 import AdditionalFiles from "../../executor/AdditionalFiles";
-import EducationAndCertifications from "../../executor/EducationAndCertifications";
 import Filtr from "../../executor/Filtr";
-import Portfolio from "../../executor/Portfolio";
 import ResponseAmount from "../../executor/ResponseAmount";
 import Box from "@mui/material/Box";
 import ExperienceBlock from "./ExperienceBlock";
-import EducationAndCertificatesEdit from "../../executor/EducationAndCertificatesEdit";
+import Portfolio from "./Portfolio";
+import EducationBlock from "./EducationBlock";
 
 const useAncetaStyles = makeStyles({
     root:{
@@ -45,6 +43,9 @@ export const Worksheet = () =>{
     const [showModal, setShowModal] = useState(false);
     const [editAddress, setEditAddress] = useState(false);
     const [editExperienceBlock, setEditExperienceBlock] = useState(false);
+    const [editPortfolio, setEditPortfolio] = useState(false);
+    const [editEducationBlock, setEditEducationBlock] = useState(false);
+
 
     return( <Container maxWidth={'lg'} className={classes.root}>
             <ModalPersonalData showModal={showModal} setShowModal={setShowModal}/>
@@ -66,17 +67,11 @@ export const Worksheet = () =>{
                         setEditAddress={setEditAddress}
                     />
                     <ExperienceBlock editExperienceBlock={editExperienceBlock} setEditExperienceBlock={setEditExperienceBlock} />
+                    <Portfolio editPortfolio={editPortfolio} setEditPortfolio={setEditPortfolio} />
+                    <EducationBlock editEducationBlock={editEducationBlock} setEditEducationBlock={setEditEducationBlock} />
                 </Box>
                 }
                 <CustomerReviews />
-                {/*<AboutOrder />*/}
-                {/*<AdditionalFiles />*/}
-                {/*<EducationAndCertifications />*/}
-                {/*<EducationAndCertificatesEdit />*/}
-                {/*<Filtr />*/}
-                {/*<PersonalData />*/}
-                {/*<Portfolio />*/}
-                {/*<ResponseAmount />*/}
             </Grid>
         </Grid>
         </Container>

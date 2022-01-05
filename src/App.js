@@ -9,6 +9,7 @@ import {Worksheet} from "./components/clientPages/Worksheet/Worksheet";
 import Support, {Backing} from "./components/clientPages/Support/Support";
 import {MyOrders} from "./components/clientPages/MyOrders/MyOrders";
 import NotificationPage from './components/notificationPages/NotificationPage';
+import OrdersPage from "./components/clientPages/ordersPage/OrdersPage'";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
                 <Route path='notification' element={<NotificationPage />} />
                 <Route path={"support"} element={<Support />}/>
                 <Route path={"MyOrders"} element={<MyOrders />}/>
+                <Route path={"Orders"} element={<OrdersPage />}/>
             </Route>
         </Routes>
       </BrowserRouter>

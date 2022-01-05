@@ -9,15 +9,12 @@ import Reviews from "./blocks/reviews/Reviews";
 import Footer from "../UI/footer/Footer";
 import PersonalData from "../executor/PersonalData";
 import DistrictsAndAddresses from "../clientPages/Worksheet/DistrictsAndAddresses";
-import Portfolio from "../executor/Portfolio";
-import EducationAndCertifications from "../executor/EducationAndCertifications";
 import AboutOrder from "../executor/AboutOrder";
 import AdditionalFiles from "../executor/AdditionalFiles";
 import Filtr from "../executor/Filtr";
 import ResponseAmount from "../executor/ResponseAmount";
 import CustomerReviews from "../CustomerReviews";
 import ModalVolet from "../UI/modals/ModalVolet";
-import EducationAndCertificatesEdit from "../executor/EducationAndCertificatesEdit";
 
 
 const HomePage = () => {
@@ -41,11 +38,8 @@ const HomePage = () => {
       <ResponseAmount/>  */}
       {/* <PersonalData/>    */}
       {/* <DistrictsAndAddresses/>  */}
-      {/* <Portfolio/> */}
-      {/* <EducationAndCertifications /> */}
       {/* <CustomerReviews/> */}
       {/* <ModalVolet/> */}
-      {/* <EducationAndCertificatesEdit/> */}
     </div>
   );
 };

@@ -10,18 +10,16 @@ import CustomSelect from "../../UI/selects/CustomSelect";
 import CustomInput from "../../UI/customInput/CustomInput";
 import SelectWithCheckbox from "../../UI/selects/SelectWithCheckbox";
 import {options} from "../../../utils/data/selectWithCheckbox/DataSelectWithCheckbox";
+import CardTitle from "../../UI/titles/CardTitle";
 
 const DistrictsAndAddresses = ({editAddress, setEditAddress}) => {
     const classes = useInfoCardStyles();
     return (
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
-            <Box style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
-                <Typography className={classes.title}>
-                    Районы и адреса
-                </Typography>
-                <EditButton condition={editAddress} fun={setEditAddress} />
-            </Box>
-            <Divider style={{ border: "1px solid #808080", width: "100%" }} />
+            <CardTitle fun={setEditAddress}
+                       condition={editAddress}
+                       title={'Районы и адреса'}
+                />
             <Typography variant={"h5"}>
                 Регион
             </Typography>
