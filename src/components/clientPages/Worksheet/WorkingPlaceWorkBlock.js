@@ -12,7 +12,7 @@ import CustomDatePicker from "../../UI/datePicker/CustomDatePicker";
 import CustomInputAddFile from "../../UI/customInputAddFile/CustomInputAddFile";
 import {DownloadSvg} from "../../../assets/svg/DownloadSvg";
 
-const WorkingPlaceWorkBlock = ({condition}) => {
+const WorkingPlaceWorkBlock = ({condition, setValueTime, valueTime}) => {
     const classes = useInfoCardStyles();
     return (
         <Box>
@@ -45,19 +45,46 @@ const WorkingPlaceWorkBlock = ({condition}) => {
                                 <Box>
                                     {values.workPlace.map((work, index) =>
                                         <Box>
-                                            <CustomInput
-                                                name={`workPlace[${index}].place`}
-                                                value={work.place}
-                                                handleChange={handleChange}
-                                            />
-                                            <CustomInput
-                                                name={`workPlace[${index}].date`}
-                                                value={work.date}
-                                                handleChange={handleChange}
-                                            />
+                                            {!condition ?
+                                                <Box style={{display: 'flex'}}>
+                                                    <Typography style={{marginRight: '40px'}} variant={'h6'}>
+                                                        Фриланс работа, с дома
+                                                    </Typography>
+                                                    <Typography style={{marginRight: '10px'}} variant={"h3"}>
+                                                        От
+                                                    </Typography>
+                                                    <Typography style={{marginRight: '10px'}} variant={"h6"}>
+                                                        10/10/2008
+                                                    </Typography>
+                                                    <Typography style={{marginRight: '10px'}} variant={"h3"}>
+                                                        До
+                                                    </Typography>
+                                                    <Typography style={{marginRight: '10px'}} variant={"h6"}>
+                                                        Сейчас
+                                                    </Typography>
+                                                </Box>
+                                                :
+                                                <Box style={{marginBottom: '20px'}}>
+                                                    <Box style={{display: 'flex', flexWrap: 'wrap'}}>
+                                                        <Box className={classes.singleInput}>
+                                                            <CustomInput placeholder={'Место работы'}
+                                                                         name={`workPlace[${index}].place`}
+                                                                         value={work.place}
+                                                                         handleChange={handleChange}
+                                                            />
+                                                        </Box>
+                                                        <Box style={{width: '350px'}}>
+                                                            <RangeDatePicker
+                                                                value={valueTime}
+                                                                fun={(val) => setValueTime(val)}
+                                                         />
+
+                                                        </Box>
+                                                    </Box>
+                                                    <AddButton fun={() => push({place: '', date: ''})} />
+                                                </Box>}
                                         </Box>
                                     )}
-                                    <Button onClick={() => push({place: '', date: ''})}>add</Button>
                                 </Box>
                             )}
                         </FieldArray>
