@@ -20,6 +20,7 @@ import Portfolio from "../../executor/Portfolio";
 import ResponseAmount from "../../executor/ResponseAmount";
 import Box from "@mui/material/Box";
 import ExperienceBlock from "./ExperienceBlock";
+import EducationAndCertificatesEdit from "../../executor/EducationAndCertificatesEdit";
 
 const useAncetaStyles = makeStyles({
     root:{
@@ -71,6 +72,7 @@ export const Worksheet = () =>{
                 {/*<AboutOrder />*/}
                 {/*<AdditionalFiles />*/}
                 {/*<EducationAndCertifications />*/}
+                {/*<EducationAndCertificatesEdit />*/}
                 {/*<Filtr />*/}
                 {/*<PersonalData />*/}
                 {/*<Portfolio />*/}
