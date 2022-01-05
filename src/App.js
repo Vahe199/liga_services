@@ -12,6 +12,7 @@ import NotificationPage from './components/notificationPages/NotificationPage';
 
 
 function App() {
+
   return (<div style={{overflow:"hidden"}}>
       <BrowserRouter>
         <Routes>

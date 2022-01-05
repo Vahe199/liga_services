@@ -9,6 +9,7 @@ import Rating from "@mui/material/Rating";
 import {AddAvatar} from "../../../UI/modals/Avatar/AddAvatar";
 import {useSelector} from "react-redux";
 import ProgressLine from "../../../UI/progressLine/ProgressLine";
+import {LightTooltip} from "../../../../globalStyles/LightTooltip";
 
 
 const ProfileStatus = ({setShowModal}) => {
@@ -20,9 +21,6 @@ const ProfileStatus = ({setShowModal}) => {
         <Card sx={{boxShadow: 2}} className={classes.root}>
             <Box className={classes.orderSubBlockSpaceBetween}>
                 <Typography variant={"h6"}>Статус профиля</Typography>
-                <IconButton onClick={() => setShowModal(true)}>
-                    <PenSvg />
-                </IconButton>
             </Box>
 
 
@@ -48,12 +46,14 @@ const ProfileStatus = ({setShowModal}) => {
                 <SuccessSVG/>
                 Эл. почта подтверждена
             </Typography>
-
-            <Typography variant={"h5"} component="div">
+            <LightTooltip title="Нажмите, чтобы изменить картинку" placement="bottom-start" arrow>
+            <Typography variant={"h5"} component="div" className={classes.textBtn}
+                        onClick={() => setShowModal(true)}>
                 <InfoSVG/>
                 Номер не подтвержден
             </Typography>
-            <Typography variant={"h5"} component="div">
+            </LightTooltip>
+            <Typography variant={"h5"} component="div" >
                 <InfoSVG/>
                 Профиль не подтвержден
             </Typography>

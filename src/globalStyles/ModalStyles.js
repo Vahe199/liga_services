@@ -6,7 +6,7 @@ export const useStyles = makeStyles({
         // '& MuiFormControl-root MuiTextField-root css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
         //   width: '100%',
         // },
-        '& ..css-1sbn0x8-MuiInputBase-root-MuiOutlinedInput-root': {
+        '& .css-1sbn0x8-MuiInputBase-root-MuiOutlinedInput-root': {
                 border: '2px solid green',
         },
         //texts
@@ -17,7 +17,7 @@ export const useStyles = makeStyles({
         },
         "& .MuiTypography-h5":{
             fontWeight: 500,
-            fontSize: 14,
+            fontSize: 16,
             whiteSpace: 'noWrap',
         },
         "& .MuiTypography-h6":{
@@ -90,7 +90,7 @@ export const useStyles = makeStyles({
     titleWrap: {
         display: "flex",
         justifyContent: "space-between",
-        alignItems: "center",
+        alignItems: "center"
     },
     title: {
         color: '#445E77',
@@ -120,8 +120,12 @@ export const useStyles = makeStyles({
     },
     input: {
         width: '160px',
-        height: '16px',
+        height: '1px !important',
         fontSize: '25px',
+        '&::placeholder': {
+            textOverflow: 'ellipsis !important',
+            textAlign: "center"
+        }
     },
     checkbox: {
         marginTop: '20px',
@@ -149,11 +153,16 @@ export const useStyles = makeStyles({
     },
     defaultBlock: {
         display: 'flex',
+        flexDirection:"column",
         justifyContent: 'space-between',
         alignItems: 'center',
         '@media (max-width: 790px)' : {
             alignItems: 'flex-start',
             flexDirection: 'column',
         },
+    },
+    inputFilled:{
+        width:320,
+         height:35
     },
 });
