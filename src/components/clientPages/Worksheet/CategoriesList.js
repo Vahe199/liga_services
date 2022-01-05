@@ -22,7 +22,7 @@ const
             </Box>
         </Box> :
         <Box>
-            <Box style={{width: '40%', marginBottom: '40px'}}>
+            <Box style={{marginBottom: '40px'}} className={classes.singleInput}>
                 <CustomSelect handleChange={handleChange} placeholder={placeholder} mt={20} />
             </Box>
             <Box style={{display: 'flex', flexWrap: 'wrap'}}>

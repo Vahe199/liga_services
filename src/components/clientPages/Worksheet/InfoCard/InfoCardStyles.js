@@ -32,6 +32,9 @@ export const useInfoCardStyles = makeStyles({
         '& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
             padding: '10px',
         },
+        '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
+            height: '10px',
+        },
     },
     titleWrap:{
         display: "flex",
@@ -58,5 +61,13 @@ export const useInfoCardStyles = makeStyles({
         fontSize: '15px',
         cursor: 'pointer',
     },
+    singleInput: {
+        width: '40%',
+        margin: '0 40px 0px 0',
+        "@media (max-width: 800px)": {
+            width: '100%',
+            margin: '0 0 20px 0',
+        },
+    }
 
 })
