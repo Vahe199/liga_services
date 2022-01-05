@@ -14,8 +14,24 @@ export const useInfoCardStyles = makeStyles({
         "& .MuiTypography-h5":{
             fontSize:18,
             color: "#808080",
-            marginTop: 15
-        }
+            margin: '10px 0',
+        },
+        "& .MuiTypography-h4":{
+            fontSize: 16,
+            color: "#000",
+            margin: '0',
+            whiteSpace: 'wrap',
+            fontWeight: 'normal',
+            padding: '2px'
+        },
+        "& .MuiTypography-h3":{
+            fontSize: 14,
+            color: "#808080",
+            margin: '10px 0',
+        },
+        '& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
+            padding: '10px',
+        },
     },
     titleWrap:{
         display: "flex",
@@ -29,6 +45,18 @@ export const useInfoCardStyles = makeStyles({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+    },
+    categoriesBackGround: {
+        backgroundColor: '#EBEBEB',
+        margin: '0 10px 10px 0',
+        padding: '5px',
+        display: 'flex',
+        alignItems: 'center',
+    },
+    delBtn: {
+      padding: '0 0 4px 4px',
+        fontSize: '15px',
+        cursor: 'pointer',
     },
 
 })

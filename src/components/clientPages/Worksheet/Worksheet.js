@@ -12,6 +12,14 @@ import ModalPersonalData from "../../UI/modals/ModalPersonalData";
 import {makeStyles} from "@material-ui/core";
 import {useSelector} from "react-redux";
 import DistrictsAndAddresses from "./DistrictsAndAddresses";
+import AboutOrder from "../../executor/AboutOrder";
+import AdditionalFiles from "../../executor/AdditionalFiles";
+import EducationAndCertifications from "../../executor/EducationAndCertifications";
+import Filtr from "../../executor/Filtr";
+import Portfolio from "../../executor/Portfolio";
+import ResponseAmount from "../../executor/ResponseAmount";
+import Box from "@mui/material/Box";
+import ExperienceBlock from "./ExperienceBlock";
 
 const useAncetaStyles = makeStyles({
     root:{
@@ -35,6 +43,7 @@ export const Worksheet = () =>{
     const [notificationsOrder, setNotificationOrders] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [editAddress, setEditAddress] = useState(false);
+    const [editExperienceBlock, setEditExperienceBlock] = useState(false);
 
     return( <Container maxWidth={'lg'} className={classes.root}>
             <ModalPersonalData showModal={showModal} setShowModal={setShowModal}/>
@@ -49,11 +58,23 @@ export const Worksheet = () =>{
                 {editPersonallyData ? <EditPersonalData setEditPersonallyData={setEditPersonallyData}
                     />
                    : <PersonalData setEditPersonallyData={setEditPersonallyData}/>}
-                {status === 'executor' && <DistrictsAndAddresses
-                    editAddress={editAddress}
-                    setEditAddress={setEditAddress}
-                />}
+                {status === 'executor' &&
+                <Box>
+                    <DistrictsAndAddresses
+                        editAddress={editAddress}
+                        setEditAddress={setEditAddress}
+                    />
+                    <ExperienceBlock editExperienceBlock={editExperienceBlock} setEditExperienceBlock={setEditExperienceBlock} />
+                </Box>
+                }
                 <CustomerReviews />
+                {/*<AboutOrder />*/}
+                {/*<AdditionalFiles />*/}
+                {/*<EducationAndCertifications />*/}
+                {/*<Filtr />*/}
+                {/*<PersonalData />*/}
+                {/*<Portfolio />*/}
+                {/*<ResponseAmount />*/}
             </Grid>
         </Grid>
         </Container>

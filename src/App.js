@@ -8,24 +8,27 @@ import React from "react";
 import {Worksheet} from "./components/clientPages/Worksheet/Worksheet";
 import Support, {Backing} from "./components/clientPages/Support/Support";
 import {MyOrders} from "./components/clientPages/MyOrders/MyOrders";
+import NotificationPage from './components/notificationPages/NotificationPage';
 
 
 function App() {
-    return (<div style={{overflow: "hidden"}}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path='/' element={<HomePage/>}/>
-                    <Route path='registration' element={<RegistrationPage/>}/>
-                    <Route path='login' element={<LoginPage/>}/>
-                    <Route path='clientPage/*' element={<ClientProfilePage/>}>
-                        <Route path={"worksheet"} element={<Worksheet/>}/>
-                        <Route path={"support"} element={<Support/>}/>
-                        <Route path={"MyOrders"} element={<MyOrders/>}/>
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-        </div>
-    )
+
+  return (<div style={{overflow:"hidden"}}>
+      <BrowserRouter>
+        <Routes>
+             <Route path='/' element={<HomePage />} />
+             <Route path='registration' element={<RegistrationPage />} />
+            <Route path='login' element={<LoginPage />} />
+            <Route path='clientPage/*' element={<ClientProfilePage />} >
+                <Route index element={<Worksheet />}/>
+                <Route path='notification' element={<NotificationPage />} />
+                <Route path={"support"} element={<Support />}/>
+                <Route path={"MyOrders"} element={<MyOrders />}/>
+            </Route>
+        </Routes>
+      </BrowserRouter>
+      </div>
+  )
 }
 
 export default App;

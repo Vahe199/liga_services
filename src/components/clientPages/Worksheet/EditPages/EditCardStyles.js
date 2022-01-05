@@ -16,12 +16,9 @@ export const useEditCardStyles = makeStyles({
             color: "#808080",
             marginTop: 15
         },
-        "& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input":{
-            height:"0px !important"
+        '& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
+            padding: '10px',
         },
-        "& .MuiRadio-root":{
-
-        }
     },
     titleWrap:{
         display: "flex",

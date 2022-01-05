@@ -33,7 +33,11 @@ export const useStyles = makeStyles({
             //focus
             "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
                 border: "1px solid #808080",
-            }
+            },
+            '& .MuiOutlinedInput-input': {
+                //height: '30px',
+                padding: '10px',
+            },
         },
     },
     boxInput: {
