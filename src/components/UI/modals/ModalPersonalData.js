@@ -16,7 +16,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: '500px',
+    // width: '500px',
     bgcolor: 'background.paper',
     borderRadius: '10px',
     border:"none",
@@ -63,10 +63,10 @@ const ModalPersonalData = ({showModal, setShowModal}) => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={{ ...style }}>
+                <Box sx={{ ...style ,width:{xs: 270, sm: 400, md: 500}}}>
                     <Box className={classes.root}>
                         <Box className={classes.titleWrap}>
-                            <Box style={{display: "flex", justifyContent: 'flex-end', width:"70%"}}>
+                            <Box style={{display: "flex", justifyContent: 'flex-end', width:{xs:"89%", sm: "70%", md:"70%"}}}>
                                 <Typography variant={"h5"}
                                 >Подтвердите телефонный номер</Typography>
                             </Box>
@@ -81,7 +81,7 @@ const ModalPersonalData = ({showModal, setShowModal}) => {
                                 <TextField placeholder={"+7 (888) 888-88-88"}
                                            variant="standard"
                                            margin={"normal"}
-                                           sx={{width: 320}}/>
+                                           sx={{width:{xs: 140, sm: 290, md: 320}}}/>
                                 <Stack direction={{ xs: 'column', sm: 'row' }}
                                        alignItems={'space-around'}
                                        spacing={{ xs: 1, sm: 2, md: 5}}>
