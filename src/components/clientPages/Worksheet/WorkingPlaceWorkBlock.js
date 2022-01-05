@@ -3,70 +3,65 @@ import {Box, Typography} from "@mui/material";
 import CustomInput from "../../UI/customInput/CustomInput";
 import RangeDatePicker from "../../UI/datePicker/RangeDatePicker";
 import AddButton from "../../UI/CustomButtons/AddButton";
-import * as PropTypes from "prop-types";
-import {FieldArray, Form} from "formik";
+import {FieldArray, Form, Formik} from "formik";
 import {useInfoCardStyles} from "./InfoCard/InfoCardStyles";
 import Button from "@mui/material/Button";
+import {AddTaskValidation} from "../../../utils/validation/AddTaskValidation";
+import CustomSelect from "../../UI/selects/CustomSelect";
+import CustomDatePicker from "../../UI/datePicker/CustomDatePicker";
+import CustomInputAddFile from "../../UI/customInputAddFile/CustomInputAddFile";
+import {DownloadSvg} from "../../../assets/svg/DownloadSvg";
 
-function Formik(props) {
-    return null;
-}
-
-Formik.propTypes = {
-    onSubmit: PropTypes.func,
-    initialValues: PropTypes.shape({workPlace: PropTypes.any}),
-    children: PropTypes.func
-};
 const WorkingPlaceWorkBlock = ({condition}) => {
     const classes = useInfoCardStyles();
-    const initialValues = {
-        workPlace: [
-            {
-                place: '',
-                date: '',
-            },
-        ],
-    };
     return (
         <Box>
             <Typography variant={"h5"}>
                 Опыт работы
             </Typography>
             <Formik
-                initialValues={initialValues}
-                onSubmit={async (values) => {
-                    console.log(values)
+                initialValues={{
+                    workPlace: [
+                        {
+                            place: '',
+                            date: '',
+                        },
+                    ],
+                }}
+                onSubmit={async (values, action) => {
+                    console.log(values, 'values')
+                    action.resetForm()
                 }}
             >
-                {({ values, handleChange }) => (
-                    <Form>
-                        <FieldArray name="friends">
-                            {({ insert, remove, push }) => (
-                                <div>
-                                    {values.workPlace.length > 0 &&
-                                    values.workPlace.map((work, index) => (
-                                        <Box style={{marginBottom: '20px'}}>
-                                            <Box style={{display: 'flex', flexWrap: 'wrap'}}>
-                                                <Box className={classes.singleInput}>
-                                                    <CustomInput
-                                                        name={`workPlace.${index}.place`}
-                                                        handleChange={handleChange}
-                                                        value={`workPlace.${index}.place`}
-                                                        placeholder={'Место работы'} />
-                                                </Box>
-                                                {/*<Box style={{width: '350px'}}>*/}
-                                                {/*    <RangeDatePicker   />*/}
-                                                {/*</Box>*/}
-                                            </Box>
-                                            <AddButton />
-                                            <Button onClick={() => push({ name: '', email: '' })}>dvsv</Button>
+                {({
+                      values,
+                      handleChange,
+                      handleSubmit,
+                      setFieldValue
+                  }) => (
+                    <form onSubmit={handleSubmit}>
+                        <FieldArray name={'workPlace'}>
+                            {({push, remove}) => (
+                                <Box>
+                                    {values.workPlace.map((work, index) =>
+                                        <Box>
+                                            <CustomInput
+                                                name={`workPlace[${index}].place`}
+                                                value={work.place}
+                                                handleChange={handleChange}
+                                            />
+                                            <CustomInput
+                                                name={`workPlace[${index}].date`}
+                                                value={work.date}
+                                                handleChange={handleChange}
+                                            />
                                         </Box>
-                                    ))}
-                                </div>
+                                    )}
+                                    <Button onClick={() => push({place: '', date: ''})}>add</Button>
+                                </Box>
                             )}
                         </FieldArray>
-                        <button type="submit">Invite</button>
-                    </Form>
+                    </form>
                 )}
             </Formik>
         </Box>
