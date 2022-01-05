@@ -19,6 +19,9 @@ export const useStyles = makeStyles({
             fontWeight: 500,
             fontSize: 16,
             whiteSpace: 'noWrap',
+            '@media (max-width: 600px)' : {
+                fontSize:12
+            },
         },
         "& .MuiTypography-h6":{
             color: "#808080",
@@ -156,10 +159,6 @@ export const useStyles = makeStyles({
         flexDirection:"column",
         justifyContent: 'space-between',
         alignItems: 'center',
-        '@media (max-width: 790px)' : {
-            alignItems: 'flex-start',
-            flexDirection: 'column',
-        },
     },
     inputFilled:{
         width:320,
