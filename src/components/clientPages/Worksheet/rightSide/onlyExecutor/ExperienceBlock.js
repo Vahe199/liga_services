@@ -1,13 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {useInfoCardStyles} from "./InfoCard/InfoCardStyles";
+import {useInfoCardStyles} from "../../../../../globalStyles/InfoCardStyles";
 import Card from "@mui/material/Card";
-import {Box, Typography} from "@mui/material";
-import EditButton from "../../UI/CustomButtons/EditButton";
-import Divider from "@mui/material/Divider";
-import {categories} from "../../../utils/data/categories/Categories";
-import CategoriesList from "./CategoriesList";
-import WorkingPlaceWorkBlock from "./WorkingPlaceWorkBlock";
-import CardTitle from "../../UI/titles/CardTitle";
+import {categories} from "../../../../../utils/data/categories/Categories";
+import CategoriesList from "./blocks/CategoriesList";
+import WorkingPlaceWorkBlock from "./blocks/WorkingPlaceWorkBlock";
+import CardTitle from "../../../../UI/titles/CardTitle";
 
 const ExperienceBlock = ({editExperienceBlock, setEditExperienceBlock}) => {
     const classes = useInfoCardStyles();

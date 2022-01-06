@@ -1,9 +1,8 @@
 import React from 'react';
 import {Box, Typography} from "@mui/material";
-import {categories} from "../../../utils/data/categories/Categories";
-import CustomSelect from "../../UI/selects/CustomSelect";
-import {DelBtnSvg} from "../../../assets/svg/Profile/DelBtnSvg";
-import {useInfoCardStyles} from "./InfoCard/InfoCardStyles";
+import CustomSelect from "../../../../../UI/selects/CustomSelect";
+import {DelBtnSvg} from "../../../../../../assets/svg/Profile/DelBtnSvg";
+import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
 
 const
     CategoriesList = ({condition, label, handleChange, arr, fun, placeholder}) => {
