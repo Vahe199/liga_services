@@ -6,7 +6,7 @@ import Modal from '@mui/material/Modal';
 import InfoSVG from "../../../assets/svg/Profile/InfoSVG";
 import {FileSVG} from "../../../assets/svg/Profile/FileSVG";
 import {Avatar, Stack, TextField} from "@mui/material";
-import {useEditCardStyles} from "../../clientPages/Worksheet/EditPages/EditCardStyles";
+import {useEditCardStyles} from "../../clientPages/Worksheet/styles/EditCardStyles";
 import {useStyles} from "../../../globalStyles/ModalStyles";
 import Divider from "@mui/material/Divider";
 import {CloseSvg} from "../../../assets/svg/CloseSvg";

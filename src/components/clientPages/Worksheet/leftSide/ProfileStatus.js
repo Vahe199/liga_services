@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import {Avatar, Box, IconButton, Typography} from "@mui/material";
-import PenSvg from "../../../../assets/svg/Profile/PenSvg";
-import {useProfileCardStyles} from "./ProfileCardStyles";
+import {Box, Typography} from "@mui/material";
+import {useProfileCardStyles} from "../../../../globalStyles/ProfileCardStyles";
 import SuccessSVG from "../../../../assets/svg/Profile/SuccessSVG";
 import InfoSVG from "../../../../assets/svg/Profile/InfoSVG";
 import Card from "@mui/material/Card";

@@ -5,9 +5,44 @@ import Card from "@mui/material/Card";
 import {useMyOrdersStyles} from "../MyOrders/MyOrders";
 import {Divider, Typography} from "@mui/material";
 import CustomInput from "../../UI/customInput/CustomInput";
+import {makeStyles} from "@material-ui/core";
+
+const useStyles = makeStyles({
+    root:{
+        height:"100vh",
+        paddingTop: '90px',
+        marginBottom: '70px',
+        backgroundColor: '#e1e3e5',
+        "& .MuiCard-root": {
+            borderRadius: '20px',
+            marginBottom: '20px',
+            boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.15)",
+            padding: '30px',
+            margin: '20px',
+        },
+        "& .MuiTypography-h4":{
+            fontWeight: 500,
+            fontSize:20,
+            whiteSpace: 'noWrap',
+        },
+    },
+    containerSupport: {
+        padding: '0 200px',
+        margin: '70px 0 500px 0',
+        '@media (max-width: 950px)' : {
+            padding: '0',
+        },
+    },
+    subContainerSupport: {
+        padding: '0 100px',
+        '@media (max-width: 1100px)' : {
+            padding: '0'
+        },
+    },
+})
 
 const Support = () =>{
-    const classes = useMyOrdersStyles();
+    const classes = useStyles();
     return(
         <div className={classes.root}>
             <Container maxWidth={'lg'}>

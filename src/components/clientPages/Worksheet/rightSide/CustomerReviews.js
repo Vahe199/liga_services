@@ -1,6 +1,6 @@
 import React from "react";
 import {Avatar, Box, Card, Divider, Rating, Typography} from "@mui/material";
-import { review } from "../utils/data/review2/Review2";
+import { review } from "../../../../utils/data/review2/Review2";
 import {makeStyles} from "@mui/styles";
 
 

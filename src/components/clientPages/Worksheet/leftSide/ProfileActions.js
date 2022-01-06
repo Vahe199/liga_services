@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Box, Typography} from "@mui/material";
-import {useProfileCardStyles} from "./ProfileCardStyles";
+import {useProfileCardStyles} from "../../../../globalStyles/ProfileCardStyles";
 import Card from "@mui/material/Card";
 
 const ProfileActions = () => {

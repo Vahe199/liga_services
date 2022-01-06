@@ -1,17 +1,14 @@
 import React from 'react';
-import {useInfoCardStyles} from "./InfoCard/InfoCardStyles";
+import {useInfoCardStyles} from "../../../../../globalStyles/InfoCardStyles";
 import Card from "@mui/material/Card";
-import CardTitle from "../../UI/titles/CardTitle";
+import CardTitle from "../../../../UI/titles/CardTitle";
 import {Box, Typography} from "@mui/material";
-import CustomImageList from "../../UI/customimagelist/CustomImageList";
-import {imageData} from "../../../utils/data/imagedata/ImageData";
-import {DownloadSvg} from "../../../assets/svg/DownloadSvg";
-import CustomInputAddFile from "../../UI/customInputAddFile/CustomInputAddFile";
-import AddButton from "../../UI/CustomButtons/AddButton";
-import CustomSelect from "../../UI/selects/CustomSelect";
+import CustomImageList from "../../../../UI/customimagelist/CustomImageList";
+import {imageData} from "../../../../../utils/data/imagedata/ImageData";
+import CustomInputAddFile from "../../../../UI/customInputAddFile/CustomInputAddFile";
+import AddButton from "../../../../UI/CustomButtons/AddButton";
 import {FieldArray, Formik} from "formik";
-import CustomInput from "../../UI/customInput/CustomInput";
-import RangeDatePicker from "../../UI/datePicker/RangeDatePicker";
+import CustomInput from "../../../../UI/customInput/CustomInput";
 
 const Portfolio = ({editPortfolio, setEditPortfolio}) => {
     const classes = useInfoCardStyles();

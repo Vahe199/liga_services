@@ -1,16 +1,10 @@
 import React from 'react';
 import {Box, Typography} from "@mui/material";
-import CustomInput from "../../UI/customInput/CustomInput";
-import RangeDatePicker from "../../UI/datePicker/RangeDatePicker";
-import AddButton from "../../UI/CustomButtons/AddButton";
-import {FieldArray, Form, Formik} from "formik";
-import {useInfoCardStyles} from "./InfoCard/InfoCardStyles";
-import Button from "@mui/material/Button";
-import {AddTaskValidation} from "../../../utils/validation/AddTaskValidation";
-import CustomSelect from "../../UI/selects/CustomSelect";
-import CustomDatePicker from "../../UI/datePicker/CustomDatePicker";
-import CustomInputAddFile from "../../UI/customInputAddFile/CustomInputAddFile";
-import {DownloadSvg} from "../../../assets/svg/DownloadSvg";
+import CustomInput from "../../../../../UI/customInput/CustomInput";
+import RangeDatePicker from "../../../../../UI/datePicker/RangeDatePicker";
+import AddButton from "../../../../../UI/CustomButtons/AddButton";
+import {FieldArray, Formik} from "formik";
+import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
 
 const WorkingPlaceWorkBlock = ({condition, setValueTime, valueTime}) => {
     const classes = useInfoCardStyles();
@@ -46,7 +40,7 @@ const WorkingPlaceWorkBlock = ({condition, setValueTime, valueTime}) => {
                                     {values.workPlace.map((work, index) =>
                                         <Box>
                                             {!condition ?
-                                                <Box style={{display: 'flex'}}>
+                                                <Box style={{display: 'flex', flexWrap: 'wrap'}}>
                                                     <Typography style={{marginRight: '40px'}} variant={'h6'}>
                                                         Фриланс работа, с дома
                                                     </Typography>
