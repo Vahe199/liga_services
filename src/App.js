@@ -14,6 +14,7 @@ import {Worksheet} from "./components/clientPages/Worksheet/Worksheet";
 import Support from "./components/clientPages/Support/Support";
 import {MyOrders} from "./components/clientPages/MyOrders/MyOrders";
 import OrdersPage from "./components/clientPages/ordersPage/OrdersPage'";
+import ChatPage from "./components/chatPage/ChatPage";
 
 
 function App() {
@@ -28,15 +29,19 @@ function App() {
 
         <Routes>
              <Route path='/' element={<HomePage />} />
+            {/*AuthPages*/}
              <Route path='registration' element={<RegistrationPage />} />
             <Route path='login' element={<LoginPage />} />
+            {/*NavBar*/}
             <Route path='workSheet' element={<Worksheet />}/>
-            <Route path='notification' element={<NotificationPage />} />
             <Route path={"support"} element={<Support />}/>
             <Route path={"MyOrders"} element={<MyOrders />}/>
             <Route path={"Orders"} element={<OrdersPage />}/>
+            {/*NavBarTabs*/}
+            <Route path='notification' element={<NotificationPage />} />
+            <Route path={'chat'} element={<ChatPage />} />
         </Routes>
-          <Footer />
+        <Footer />
       </div>
   )
 }

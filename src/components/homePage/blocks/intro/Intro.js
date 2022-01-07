@@ -8,6 +8,7 @@ import LargeLogo from "../../../../assets/image/LogoLarge.png";
 import { GreenArrowSvg } from "../../../../assets/svg/intro/GreenArrowSvg";
 import { GoToChatSvg } from "../../../../assets/svg/intro/GoToChatSvg";
 import ModalNewTask from "../../../UI/modals/ModalNewTask";
+import {useNavigate} from "react-router-dom";
 
 export const useStyles = makeStyles({
   title: {
@@ -25,6 +26,7 @@ export const useStyles = makeStyles({
     position: "absolute",
     bottom: -60,
     right: "0",
+    cursor: 'pointer',
   },
   img: {
     width: "100%",
@@ -113,6 +115,7 @@ pulse: {
 const Intro = ({ categoriesRef }) => {
   const classes = useStyles();
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   const scrollToCategories = () => {
     categoriesRef.current.scrollIntoView();
@@ -160,7 +163,7 @@ const Intro = ({ categoriesRef }) => {
       </Grid>
       <Grid style={{ position: "relative" }} item xs={12} md={6}>
         <img src={LargeLogo} alt={"logo"} className={classes.img} />
-        <Box className={classes.chat}>
+        <Box onClick={() => navigate('chat')} className={classes.chat}>
           <GoToChatSvg />
         </Box>
       </Grid>
