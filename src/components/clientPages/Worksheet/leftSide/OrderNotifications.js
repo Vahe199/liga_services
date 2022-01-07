@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Typography, Box, IconButton, FormControlLabel, Radio, RadioGroup} from "@mui/material";
-import {useInfoCardStyles} from "./InfoCardStyles";
+import {useInfoCardStyles} from "../../../../globalStyles/InfoCardStyles";
 import Card from "@mui/material/Card";
 import PenSvg from "../../../../assets/svg/Profile/PenSvg";
 import {FileSVG} from "../../../../assets/svg/Profile/FileSVG";

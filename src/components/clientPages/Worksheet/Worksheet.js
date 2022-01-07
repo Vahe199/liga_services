@@ -1,31 +1,27 @@
 import React, {useState} from "react";
 import {Container, Grid} from "@mui/material";
-import PersonalData from "./InfoCard/PersonalData";
-import OrderNotifications from "./InfoCard/OrderNotifications";
-import ProfileStatus from "./ProfileCard/ProfileStatus";
-import SocialNetworks from "./ProfileCard/SocialNetworks";
-import ProfileActions from "./ProfileCard/ProfileActions";
-import EditProfileData from "./EditPages/EditProfileData";
-import EditPersonalData from "./EditPages/EditPersonalData";
-import CustomerReviews from "../../CustomerReviews";
+import PersonalData from "./rightSide/PersonalData";
+import OrderNotifications from "./leftSide/OrderNotifications";
+import ProfileStatus from "./leftSide/ProfileStatus";
+import SocialNetworks from "./leftSide/SocialNetworks";
+import ProfileActions from "./leftSide/ProfileActions";
+import EditPersonalData from "./rightSide/EditPersonalData";
+import CustomerReviews from "./rightSide/CustomerReviews";
 import ModalPersonalData from "../../UI/modals/ModalPersonalData";
 import {makeStyles} from "@material-ui/core";
 import {useSelector} from "react-redux";
-import DistrictsAndAddresses from "./DistrictsAndAddresses";
-import AboutOrder from "../../executor/AboutOrder";
-import AdditionalFiles from "../../executor/AdditionalFiles";
-import EducationAndCertifications from "../../executor/EducationAndCertifications";
-import Filtr from "../../executor/Filtr";
-import Portfolio from "../../executor/Portfolio";
-import ResponseAmount from "../../executor/ResponseAmount";
+import DistrictsAndAddresses from "./rightSide/onlyExecutor/DistrictsAndAddresses";
 import Box from "@mui/material/Box";
-import ExperienceBlock from "./ExperienceBlock";
-import EducationAndCertificatesEdit from "../../executor/EducationAndCertificatesEdit";
+import ExperienceBlock from "./rightSide/onlyExecutor/ExperienceBlock";
+import Portfolio from "./rightSide/onlyExecutor/Portfolio";
+import EducationBlock from "./rightSide/onlyExecutor/EducationBlock";
 
 const useAncetaStyles = makeStyles({
     root:{
-         height:"100%",
-         marginBottom:70,
+        height:"100%",
+        paddingTop: '90px',
+        marginBottom: '70px',
+        backgroundColor: '#e1e3e5',
         "& .MuiCard-root": {
             borderRadius: '20px',
             marginBottom: '20px',
@@ -45,40 +41,40 @@ export const Worksheet = () =>{
     const [showModal, setShowModal] = useState(false);
     const [editAddress, setEditAddress] = useState(false);
     const [editExperienceBlock, setEditExperienceBlock] = useState(false);
+    const [editPortfolio, setEditPortfolio] = useState(false);
+    const [editEducationBlock, setEditEducationBlock] = useState(false);
 
-    return( <Container maxWidth={'lg'} className={classes.root}>
-            <ModalPersonalData showModal={showModal} setShowModal={setShowModal}/>
-        <Grid container spacing={1}>
-            <Grid item sm={12} lg={4}>
-                <ProfileStatus setShowModal={setShowModal}/>
-                <SocialNetworks setEditSocialNetwork={setEditSocialNetwork} editSocialNetwork={editSocialNetwork}/>
-                <OrderNotifications notificationsOrder={notificationsOrder} setNotificationOrders={setNotificationOrders} />
-                <ProfileActions/>
+
+    return(
+        <Box className={classes.root}>
+            <Container maxWidth={'lg'}>
+                <ModalPersonalData showModal={showModal} setShowModal={setShowModal}/>
+            <Grid container spacing={1}>
+                <Grid item sm={12} lg={4}>
+                    <ProfileStatus setShowModal={setShowModal}/>
+                    <SocialNetworks setEditSocialNetwork={setEditSocialNetwork} editSocialNetwork={editSocialNetwork}/>
+                    <OrderNotifications notificationsOrder={notificationsOrder} setNotificationOrders={setNotificationOrders} />
+                    <ProfileActions/>
+                </Grid>
+                <Grid item sm={12} lg={8}>
+                    {editPersonallyData ? <EditPersonalData setEditPersonallyData={setEditPersonallyData}
+                        />
+                       : <PersonalData setEditPersonallyData={setEditPersonallyData}/>}
+                    {status === 'executor' &&
+                    <Box>
+                        <DistrictsAndAddresses
+                            editAddress={editAddress}
+                            setEditAddress={setEditAddress}
+                        />
+                        <ExperienceBlock editExperienceBlock={editExperienceBlock} setEditExperienceBlock={setEditExperienceBlock} />
+                        <Portfolio editPortfolio={editPortfolio} setEditPortfolio={setEditPortfolio} />
+                        <EducationBlock editEducationBlock={editEducationBlock} setEditEducationBlock={setEditEducationBlock} />
+                    </Box>
+                    }
+                    <CustomerReviews />
+                </Grid>
             </Grid>
-            <Grid item sm={12} lg={8}>
-                {editPersonallyData ? <EditPersonalData setEditPersonallyData={setEditPersonallyData}
-                    />
-                   : <PersonalData setEditPersonallyData={setEditPersonallyData}/>}
-                {status === 'executor' &&
-                <Box>
-                    <DistrictsAndAddresses
-                        editAddress={editAddress}
-                        setEditAddress={setEditAddress}
-                    />
-                    <ExperienceBlock editExperienceBlock={editExperienceBlock} setEditExperienceBlock={setEditExperienceBlock} />
-                </Box>
-                }
-                <CustomerReviews />
-                {/*<AboutOrder />*/}
-                {/*<AdditionalFiles />*/}
-                {/*<EducationAndCertifications />*/}
-                {/*<EducationAndCertificatesEdit />*/}
-                {/*<Filtr />*/}
-                {/*<PersonalData />*/}
-                {/*<Portfolio />*/}
-                {/*<ResponseAmount />*/}
-            </Grid>
-        </Grid>
-        </Container>
+            </Container>
+        </Box>
     )
 }

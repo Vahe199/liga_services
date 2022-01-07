@@ -7,10 +7,11 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import {useNavigate} from "react-router-dom"
-import {LocationSvg} from "../../../../assets/svg/header/LocationSvg";
-import {useStyles} from "../../../../globalStyles/HomePageStyles";
-import {useState} from "react";
+import {useLocation, useNavigate} from "react-router-dom"
+import {LocationSvg} from "../../../assets/svg/header/LocationSvg";
+import {useStyles} from "../../../globalStyles/HomePageStyles";
+import {useEffect, useState} from "react";
+import Container from "@mui/material/Container";
 
 const pages = [
     {
@@ -39,6 +40,7 @@ const LogoBlock = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
+
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
@@ -58,6 +60,7 @@ const LogoBlock = () => {
     }
 
     return (
+        <Container maxWidth={'lg'}>
         <AppBar style={{ margin: 0 }} elevation={0} color={'transparent'} position="static">
             <Toolbar style={{display: 'flex', justifyContent: 'space-between'}} disableGutters>
                 <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -122,6 +125,7 @@ const LogoBlock = () => {
                 </Box>
             </Toolbar>
         </AppBar>
+        </Container>
     );
 };
 export default LogoBlock;

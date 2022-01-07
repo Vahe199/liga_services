@@ -26,16 +26,17 @@ export const useStyles = makeStyles({
     },
     btnText: {
         color: '#808080',
+        cursor: 'pointer',
     },
 
 })
 
-const AddButton = () => {
+const AddButton = ({fun}) => {
     const classes = useStyles();
     return (
         <Box className={classes.container}>
-          <Box className={classes.btn}>+</Box>
-          <Typography className={classes.btnText}>Добавить</Typography>
+          <Box onClick={fun} className={classes.btn}>+</Box>
+          <Typography onClick={fun} className={classes.btnText}>Добавить</Typography>
         </Box>
     )
 }

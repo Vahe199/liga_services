@@ -93,8 +93,10 @@ export const MainNavBar = () => {
     const changePage = () => {
         if(status === 'client'){
             dispatch(changeStatus('executor'))
+            navigate('/', { replace: true })
         }else {
             dispatch(changeStatus('client'))
+            navigate('/', { replace: true })
         }
     }
 
@@ -104,11 +106,18 @@ export const MainNavBar = () => {
     }, [status])
  const navigate = useNavigate()
   const classes = useNavStyles()
-  const pages = status === 'client' ? [{title:'Мои заказы',path:"MyOrders"}, {title:'Анкета',path:"/clientPage"}, {title:'Поддержка',path:"support"}] :
-  [{title:'Баланс',path:"support"}, {title:'Заказы',path:"MyOrders"}, {title:'Анкета',path:"/clientPage"}, {title:'Поддержка',path:"support"}];
+  const pages = status === 'client' ? [
+          {title:'Мои заказы',path:"MyOrders"},
+          {title: 'Анкета', path: "workSheet"},
+          {title:'Поддержка', path: "support"}] :
+  [
+      {title:'Баланс',path:"support"},
+      {title: 'Заказы', path: "Orders"},
+      {title:'Анкета',path:"workSheet"},
+      {title:'Поддержка',path:"support"}];
   const [anchorElNav, setAnchorElNav] = React.useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [active, setActive] = React.useState("/clientPage");
+  const [active, setActive] = React.useState("/");
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);

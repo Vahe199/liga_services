@@ -1,32 +1,20 @@
-import React, { useRef } from "react";
-import LogoBlock from "./blocks/logoBlock/LogoBlock";
+import React, {useRef} from "react";
 import Container from "@mui/material/Container";
 import Intro from "./blocks/intro/Intro";
 import PresentHistory from "./blocks/presentHistory/PresentHistory";
 import CategoriesBlock from "./blocks/CategoriesBlock/CategoriesBlock";
 import TrustedExperts from "./blocks/trustedExperts/TrustedExperts";
 import Reviews from "./blocks/reviews/Reviews";
-import Footer from "../UI/footer/Footer";
-import PersonalData from "../executor/PersonalData";
-import DistrictsAndAddresses from "../clientPages/Worksheet/DistrictsAndAddresses";
-import Portfolio from "../executor/Portfolio";
-import EducationAndCertifications from "../executor/EducationAndCertifications";
-import AboutOrder from "../executor/AboutOrder";
-import AdditionalFiles from "../executor/AdditionalFiles";
-import Filtr from "../executor/Filtr";
-import ResponseAmount from "../executor/ResponseAmount";
-import CustomerReviews from "../CustomerReviews";
-import ModalVolet from "../UI/modals/ModalVolet";
-import EducationAndCertificatesEdit from "../executor/EducationAndCertificatesEdit";
+import {useSelector} from "react-redux";
 
 
 const HomePage = () => {
   const categoriesRef = useRef();
+  const {auth} = useSelector(state => state.auth);
   return (
-    <div>
+    <div style={{marginTop: auth ? '90px': '0'}}>
       <Container maxWidth="lg">
-                <LogoBlock />
-                <Intro categoriesRef={categoriesRef} />
+            <Intro categoriesRef={categoriesRef} />
             </Container>
                 <PresentHistory />
                 <CategoriesBlock categoriesRef={categoriesRef} />
@@ -34,18 +22,6 @@ const HomePage = () => {
                 <TrustedExperts />
                 <Reviews />
             </Container>
-             <Footer />
-      {/* <AboutOrder/>
-       <AdditionalFiles/>
-      <Filtr/>
-      <ResponseAmount/>  */}
-      {/* <PersonalData/>    */}
-      {/* <DistrictsAndAddresses/>  */}
-      {/* <Portfolio/> */}
-      {/* <EducationAndCertifications /> */}
-      {/* <CustomerReviews/> */}
-      {/* <ModalVolet/> */}
-      {/* <EducationAndCertificatesEdit/> */}
     </div>
   );
 };

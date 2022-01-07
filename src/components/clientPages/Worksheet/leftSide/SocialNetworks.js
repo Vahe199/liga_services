@@ -1,6 +1,6 @@
 import * as React from "react";
 import {Avatar, Box, IconButton, Typography} from "@mui/material";
-import {useProfileCardStyles} from "./ProfileCardStyles";
+import {useProfileCardStyles} from "../../../../globalStyles/ProfileCardStyles";
 import VK from "../../../../assets/image/VK.png"
 import Instagram from "../../../../assets/image/Instagram.png"
 import Card from "@mui/material/Card";

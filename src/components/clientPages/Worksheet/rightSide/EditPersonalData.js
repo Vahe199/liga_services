@@ -1,7 +1,7 @@
 import * as React from "react";
 import {useState} from "react";
-import {Box, FormControlLabel, Radio, RadioGroup, Stack, TextField, Typography} from "@mui/material";
-import {useEditCardStyles} from "./EditCardStyles";
+import {Box, FormControlLabel, Radio, RadioGroup, Stack, Typography} from "@mui/material";
+import {useEditCardStyles} from "../styles/EditCardStyles";
 import CustomDatePicker from "../../../UI/datePicker/CustomDatePicker";
 import Card from "@mui/material/Card";
 import {FileSVG} from "../../../../assets/svg/Profile/FileSVG";

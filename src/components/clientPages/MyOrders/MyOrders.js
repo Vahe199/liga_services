@@ -14,8 +14,10 @@ import CustomDatePicker from "../../UI/datePicker/CustomDatePicker";
 
 export const useMyOrdersStyles = makeStyles({
     root:{
-        height:"100%",
-        marginBottom: 70,
+        height: "100%",
+        paddingTop: '70px',
+        backgroundColor: '#e1e3e5',
+        marginBottom: '70px',
         //paddingTop: '40px',
         "& .MuiTypography-h4":{
             fontWeight: 500,
@@ -204,7 +206,8 @@ export const MyOrders = () => {
     const [valueTime, setValueTime] = useState(new Date());
     const [showForm, setShowForm] = useState(false);
     return(
-            <Container className={classes.root} maxWidth={'lg'}>
+        <Box className={classes.root}>
+            <Container maxWidth={'lg'}>
                 <Grid container spacing={1} >
                     <Grid  item  sm={12}  lg={4}>
                         <Card>
@@ -234,5 +237,6 @@ export const MyOrders = () => {
                     </Grid>
                 </Grid>
             </Container>
+        </Box>
     )
 }
