@@ -17,7 +17,7 @@ const CategoriesList = ({arr, handleChange, placeholder, remove}) => {
             <Box style={{display: 'flex', flexWrap: 'wrap'}}>
                 {arr.length > 1 ? arr.map((item, index) => (
 
-                    item.item !== '' ? <Box onClick={() => console.log(item)} key={item.index} className={classes.categoriesBackGround}>
+                    item.item !== '' ? <Box key={item.index} className={classes.categoriesBackGround}>
                         <Typography variant={'h4'}>{item.item}</Typography>
                         <Box onClick={() => remove(index)} className={classes.delBtn}>
                             <DelBtnSvg/>
