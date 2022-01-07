@@ -9,6 +9,10 @@ import {Box, Typography} from "@mui/material";
 import CategoriesListEdit from "./blocks/CategoriesList";
 import ExperienceShowList from "./blocks/ExperienceShowList";
 import CategoriesList from "./blocks/CategoriesList";
+import EditButton from "../../../../UI/CustomButtons/EditButton";
+import Divider from "@mui/material/Divider";
+import {FileSVG} from "../../../../../assets/svg/Profile/FileSVG";
+import PenSvg from "../../../../../assets/svg/Profile/PenSvg";
 
 const ExperienceBlock = ({editExperienceBlock, setEditExperienceBlock}) => {
     const classes = useInfoCardStyles();
@@ -66,11 +70,21 @@ const ExperienceBlock = ({editExperienceBlock, setEditExperienceBlock}) => {
                       setFieldValue
                   }) => (
                     <form onSubmit={handleSubmit}>
-                        <CardTitle title={'Специальность и опыт'}
-                                   condition={editExperienceBlock}
-                                   editFun={setEditExperienceBlock}
-                                   handleSubmit={handleSubmit}
-                        />
+                        <Box style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
+                            <Typography className={classes.title}>
+                                Специальность и опыт
+                            </Typography>
+
+                            {editExperienceBlock ? <Box style={{cursor: "pointer", padding: '0 0 7px 20px'}}
+                                                        onClick={() => setEditExperienceBlock(false)}>
+                                    <FileSVG color={'#808080'}/>
+                                </Box> :
+                                <Box style={{cursor: "pointer", padding: '0 0 7px 20px'}}
+                                     onClick={() => setEditExperienceBlock(true)}>
+                                    <PenSvg/>
+                                </Box>}
+                        </Box>
+                        <Divider style={{ border: "1px solid #808080", width: "100%" }} />
                         {!editExperienceBlock ? <Box>
                         <Typography onClick={handleSubmit} variant={'h5'}>
                             Категории услуг

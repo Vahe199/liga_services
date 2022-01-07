@@ -13,7 +13,7 @@ import Footer from "./components/UI/footer/Footer";
 import {Worksheet} from "./components/clientPages/Worksheet/Worksheet";
 import Support from "./components/clientPages/Support/Support";
 import {MyOrders} from "./components/clientPages/MyOrders/MyOrders";
-import OrdersPage from "./components/clientPages/ordersPage/OrdersPage'";
+import OrdersPage from "./components/clientPages/ordersPage/OrdersPage";
 import ChatPage from "./components/chatPage/ChatPage";
 
 
