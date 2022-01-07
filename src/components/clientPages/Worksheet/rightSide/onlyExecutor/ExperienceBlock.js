@@ -43,14 +43,10 @@ const ExperienceBlock = ({editExperienceBlock, setEditExperienceBlock}) => {
             <Formik
                 initialValues={{
                     categories: [
-                        {
-                            item: ''
-                        }
+
                     ],
                     subCategories: [
-                        {
-                            item: ''
-                        }
+
                     ],
                     workPlace: [
                         {
@@ -61,7 +57,6 @@ const ExperienceBlock = ({editExperienceBlock, setEditExperienceBlock}) => {
                 }}
                 onSubmit={async (values, action) => {
                     console.log(values, 'values')
-                    action.resetForm()
                 }}
             >
                 {({
@@ -73,10 +68,11 @@ const ExperienceBlock = ({editExperienceBlock, setEditExperienceBlock}) => {
                     <form onSubmit={handleSubmit}>
                         <CardTitle title={'Специальность и опыт'}
                                    condition={editExperienceBlock}
-                                   fun={setEditExperienceBlock}
+                                   editFun={setEditExperienceBlock}
+                                   handleSubmit={handleSubmit}
                         />
                         {!editExperienceBlock ? <Box>
-                        <Typography variant={'h5'}>
+                        <Typography onClick={handleSubmit} variant={'h5'}>
                             Категории услуг
                         </Typography>
                             <ExperienceShowList arr={values.categories} />
@@ -113,20 +109,6 @@ const ExperienceBlock = ({editExperienceBlock, setEditExperienceBlock}) => {
                     </form>
                 )}
             </Formik>
-
-            {/*<CategoriesList  fun={deleteItem}*/}
-            {/*                 condition={editExperienceBlock}*/}
-            {/*                 arr={data}*/}
-            {/*                 handleChange={handleChange}*/}
-            {/*                 placeholder={'Выбрать категории'}*/}
-            {/*                 label={'Выбрать категории'} />*/}
-
-            {/*<CategoriesList fun={deleteItem}*/}
-            {/*                condition={editExperienceBlock}*/}
-            {/*                arr={data}*/}
-            {/*                handleChange={handleChange}*/}
-            {/*                placeholder={'Выбрать подкатегории'}*/}
-            {/*                label={'Подкатегории услуг'} />*/}
 
             <WorkingPlaceWorkBlock valueTime={valueTime} setValueTime={setValueTime} condition={editExperienceBlock} />
 
