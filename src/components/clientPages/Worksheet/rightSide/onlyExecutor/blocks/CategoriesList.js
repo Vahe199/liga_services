@@ -1,38 +1,30 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Box, Typography} from "@mui/material";
 import CustomSelect from "../../../../../UI/selects/CustomSelect";
 import {DelBtnSvg} from "../../../../../../assets/svg/Profile/DelBtnSvg";
 import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
 
-const
-    CategoriesList = ({condition, label, handleChange, arr, fun, placeholder}) => {
+const CategoriesList = ({arr, handleChange, placeholder, remove}) => {
     const classes = useInfoCardStyles();
     return (
-        !condition ? <Box>
-            <Typography variant={'h5'}>
-                {label}
-            </Typography>
-            <Box style={{display: 'flex', flexWrap: 'wrap'}}>
-                {arr.map((item, index) =>
-                    <Box key={item.id} className={classes.categoriesBackGround}>
-                        <Typography variant={'h4'}>{`${item.name} `}</Typography>
-                    </Box>
-                )}
-            </Box>
-        </Box> :
         <Box>
             <Box style={{marginBottom: '40px'}} className={classes.singleInput}>
-                <CustomSelect handleChange={handleChange} placeholder={placeholder} mt={20} />
+                <CustomSelect handleChange={handleChange}
+                              placeholder={placeholder} mt={20}/>
             </Box>
+
+
             <Box style={{display: 'flex', flexWrap: 'wrap'}}>
-                {arr.map((item, index) =>
-                    <Box key={item.id} className={classes.categoriesBackGround}>
-                        <Typography variant={'h4'}>{`${item.name} `}</Typography>
-                        <Box onClick={() => fun(item.id)} className={classes.delBtn}>
-                            <DelBtnSvg />
+                {arr.length > 1 ? arr.map((item, index) => (
+
+                    item.item !== '' ? <Box onClick={() => console.log(item)} key={item.index} className={classes.categoriesBackGround}>
+                        <Typography variant={'h4'}>{item.item}</Typography>
+                        <Box onClick={() => remove(index)} className={classes.delBtn}>
+                            <DelBtnSvg/>
                         </Box>
-                    </Box>
-                )}
+                    </Box> : ''
+                    )
+                ): ""}
             </Box>
         </Box>
     )

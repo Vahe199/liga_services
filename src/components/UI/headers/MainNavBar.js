@@ -267,7 +267,7 @@ export const MainNavBar = () => {
               </Box>
 
             <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' },alignItems:"center" }}>
-              <IconButton>
+              <IconButton onClick={() => navigate('chat')}>
                 <MessageSvg/>
               </IconButton>
 
