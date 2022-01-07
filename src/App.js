@@ -8,7 +8,9 @@ import React from "react";
 import {Worksheet} from "./components/clientPages/Worksheet/Worksheet";
 import Support, {Backing} from "./components/clientPages/Support/Support";
 import {MyOrders} from "./components/clientPages/MyOrders/MyOrders";
-import NotificationPage from './components/notificationPages/NotificationPage';
+import OrdersPage from "./components/clientPages/ordersPage/OrdersPage";
+import ChatPage from "./components/chatPage/ChatPage";
+
 
 
 function App() {
@@ -17,16 +19,19 @@ function App() {
       <BrowserRouter>
         <Routes>
              <Route path='/' element={<HomePage />} />
+            {/*AuthPages*/}
              <Route path='registration' element={<RegistrationPage />} />
             <Route path='login' element={<LoginPage />} />
-            <Route path='clientPage/*' element={<ClientProfilePage />} >
-                <Route index element={<Worksheet />}/>
-                <Route path='notification' element={<NotificationPage />} />
-                <Route path={"support"} element={<Support />}/>
-                <Route path={"MyOrders"} element={<MyOrders />}/>
-            </Route>
+            {/*NavBar*/}
+            <Route path='workSheet' element={<Worksheet />}/>
+            <Route path={"support"} element={<Support />}/>
+            <Route path={"MyOrders"} element={<MyOrders />}/>
+            <Route path={"Orders"} element={<OrdersPage />}/>
+            {/*NavBarTabs*/}
+            <Route path='notification' element={<NotificationPage />} />
+            <Route path={'chat'} element={<ChatPage />} />
         </Routes>
-      </BrowserRouter>
+        <Footer />
       </div>
   )
 }

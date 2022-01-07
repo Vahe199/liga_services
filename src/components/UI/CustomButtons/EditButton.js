@@ -1,14 +1,26 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Box} from "@mui/material";
 import {FileSVG} from "../../../assets/svg/Profile/FileSVG";
 import PenSvg from "../../../assets/svg/Profile/PenSvg";
 
-const EditButton = ({condition, fun}) => {
+const EditButton = ({condition, editFun, handleSubmit}) => {
+
+    useEffect(() => {
+        console.log(condition)
+    }, [condition])
+
+    const submit = () => {
+        if(condition){
+            handleSubmit()
+        }
+        editFun(!condition)
+    }
+
     return (
-        condition ? <Box style={{cursor: "pointer", padding: '0 0 7px 20px'}} onClick={() => fun(false)}>
+        condition ? <Box style={{cursor: "pointer", padding: '0 0 7px 20px'}} onClick={submit}>
                 <FileSVG color={'#808080'} />
             </Box> :
-            <Box style={{cursor: "pointer", padding: '0 0 7px 20px'}} onClick={() => fun(true)}>
+            <Box style={{cursor: "pointer", padding: '0 0 7px 20px'}} onClick={submit}>
                 <PenSvg />
             </Box>
     )

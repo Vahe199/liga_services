@@ -1,27 +1,22 @@
 import React from "react";
 import { Box } from "@mui/material";
 import Divider from "@mui/material/Divider";
-import { SelectSvg } from "../../assets/svg/SelectSvg";
-import { DeleteSvg } from "../../assets/svg/DeleteSvg";
+import { SelectSvg } from "../../../../assets/svg/SelectSvg";
+import { DeleteSvg } from "../../../../assets/svg/DeleteSvg";
 import { Button } from "@mui/material";
 import { InputLabel } from "@mui/material";
 import { Select } from "@mui/material";
 import { FormControl } from "@mui/material";
 import { MenuItem } from "@mui/material";
 import {TextField} from "@mui/material";
+import Card from "@mui/material/Card";
+import {useOrderStyles} from "../../../../globalStyles/OrderStyles";
 
 
-const Filtr = () => {
+const FilterOrders = () => {
+    const classes = useOrderStyles();
   return (
-    <Box
-      style={{
-        boxShadow: " 4px 4px 10px rgba(0, 0, 0, 0.15)",
-        borderRadius: "20px",
-        padding: "20px 50px",
-        width: "40%",
-        background: "#E1E3E3",
-      }}
-    >
+    <Card sx={{ boxShadow: 2 }} className={classes.root}>
       <Box
         style={{
           display: "flex",
@@ -195,8 +190,8 @@ const Filtr = () => {
         <TextField id="outlined-basic" label="До" variant="outlined" style={{borderRadius: '10px',border: '1px solid #C4C4C4'}} />
       </Box>
 
-      </Box>
+      </Card>
   );
 };
 
-export default Filtr;
+export default FilterOrders;

@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     },
 })
 
-const CardTitle = ({title, condition, fun}) => {
+const CardTitle = ({title, condition, editFun, handleSubmit}) => {
     const classes = useStyles();
     return (
         <>
@@ -20,7 +20,7 @@ const CardTitle = ({title, condition, fun}) => {
             <Typography className={classes.title}>
                 {title}
             </Typography>
-            <EditButton condition={condition} fun={fun} />
+            <EditButton condition={condition} editFun={editFun} handleSubmit={handleSubmit} />
         </Box>
         <Divider style={{ border: "1px solid #808080", width: "100%" }} />
         </>
