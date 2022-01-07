@@ -1,32 +1,22 @@
 import './App.css';
 import HomePage from "./components/homePage/HomePage";
-import {Route, Routes, useLocation} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import LoginPage from "./components/authPages/loginPage/LoginPage";
 import RegistrationPage from "./components/authPages/registrationPage/RegistrationPage";
+import ClientProfilePage from "./components/clientPages/ClientProfilePage";
 import React from "react";
-import NotificationPage from './components/notificationPages/NotificationPage';
-import LogoBlock from "./components/UI/headers/LogoBlock";
-import Container from "@mui/material/Container";
-import {MainNavBar} from "./components/UI/headers/MainNavBar";
-import {useSelector} from "react-redux";
-import Footer from "./components/UI/footer/Footer";
 import {Worksheet} from "./components/clientPages/Worksheet/Worksheet";
-import Support from "./components/clientPages/Support/Support";
+import Support, {Backing} from "./components/clientPages/Support/Support";
 import {MyOrders} from "./components/clientPages/MyOrders/MyOrders";
 import OrdersPage from "./components/clientPages/ordersPage/OrdersPage";
 import ChatPage from "./components/chatPage/ChatPage";
 
 
-function App() {
-    const location = useLocation();
-    const {auth} = useSelector(state => state.auth);
 
+function App() {
 
   return (<div style={{overflow:"hidden"}}>
-          {location.pathname === '/login' || location.pathname === '/registration' ?'' : <Container maxWidth={'xl'}>
-              {auth ? <MainNavBar /> : <LogoBlock/>}
-          </Container>}
-
+      <BrowserRouter>
         <Routes>
              <Route path='/' element={<HomePage />} />
             {/*AuthPages*/}
