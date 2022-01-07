@@ -111,7 +111,7 @@ export const MainNavBar = () => {
           {title: 'Анкета', path: "workSheet"},
           {title:'Поддержка', path: "support"}] :
   [
-      {title:'Баланс',path:"support"},
+      {title:'Баланс',path:"Balans"},
       {title: 'Заказы', path: "Orders"},
       {title:'Анкета',path:"workSheet"},
       {title:'Поддержка',path:"support"}];
