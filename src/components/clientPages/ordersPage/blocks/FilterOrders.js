@@ -1,194 +1,148 @@
-import React from "react";
-import { Box } from "@mui/material";
+import React, {useState} from "react";
+import {Box, Button, FormControl, FormControlLabel, Radio, RadioGroup, Typography} from "@mui/material";
 import Divider from "@mui/material/Divider";
-import { SelectSvg } from "../../../../assets/svg/SelectSvg";
-import { DeleteSvg } from "../../../../assets/svg/DeleteSvg";
-import { Button } from "@mui/material";
-import { InputLabel } from "@mui/material";
-import { Select } from "@mui/material";
-import { FormControl } from "@mui/material";
-import { MenuItem } from "@mui/material";
-import {TextField} from "@mui/material";
+import {SelectSvg} from "../../../../assets/svg/SelectSvg";
+import {DeleteSvg} from "../../../../assets/svg/DeleteSvg";
 import Card from "@mui/material/Card";
 import {useOrderStyles} from "../../../../globalStyles/OrderStyles";
+import {FieldArray, Formik} from "formik";
+import CustomSelect from "../../../UI/selects/CustomSelect";
+import CustomInput from "../../../UI/customInput/CustomInput";
 
 
-const FilterOrders = () => {
+const FilterOrders = ({setShowFilterBlock, showFilterBlock}) => {
     const classes = useOrderStyles();
+    const [showservicesBlock, setShowServicesBlock] = useState(true);
+    const [value, setValue] = useState('')
   return (
     <Card sx={{ boxShadow: 2 }} className={classes.root}>
-      <Box
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <p style={{ fontSize: "24px", fontWeight: 500 }}>Фильтр</p>
-        <p style={{ fontSize: "24px", fontWeight: 500, color: "#5A7287" }}>
+      <Box className={classes.orderSubBlockSpaceBetween}>
+        <Typography variant={'h1'}>Фильтр</Typography>
+        <Typography onClick={() => setShowFilterBlock(!showFilterBlock)} style={{cursor: 'pointer'}} variant={'h3'}>
           Свернуть
-        </p>
+        </Typography>
       </Box>
-      <Divider style={{ border: "1px solid #808080", width: "100%" }} />
-
-      <Box
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <p style={{ fontWeight: 500, fontSize: "22px" }}>Услуги</p>
-        <SelectSvg />
-      </Box>
-
-      <Box style={{ display: "flex", alignItems: "center" }}>
-        <p style={{ fontWeight: 500, fontSize: "18px", paddingRight: "20px", whiteSpace:'nowrap' }}>
-          Создание сайтов
-        </p>
-        <DeleteSvg />
-      </Box>
-
-      <Box style={{ display: "flex", alignItems: "center" }}>
-        <p style={{ fontWeight: 500, fontSize: "18px", paddingRight: "20px", whiteSpace:'nowrap' }}>
-          IT-оутсорсинг
-        </p>
-        <DeleteSvg />
-      </Box>
-
-      <Box style={{ display: "flex", alignItems: "center" }}>
-        <p style={{ fontWeight: 500, fontSize: "18px", paddingRight: "20px", whiteSpace:'nowrap' }}>
-          Разработка моб приложений
-        </p>
-        <DeleteSvg />
-      </Box>
-
-      <Box style={{ display: "flex", alignItems: "center" }}>
-        <p style={{ fontWeight: 500, fontSize: "18px", paddingRight: "20px", whiteSpace:'nowrap' }}>
-          Верстка сайтов
-        </p>
-        <DeleteSvg />
-      </Box>
-
-      <Box style={{ display: "flex", alignItems: "center" }}>
-        <p style={{ fontWeight: 500, fontSize: "18px", paddingRight: "20px", whiteSpace:'nowrap' }}>
-          Мобильная версия сайта
-        </p>
-        <DeleteSvg />
-      </Box>
-
-      <Box style={{ display: "flex", alignItems: "center" }}>
-        <p style={{ fontWeight: 500, fontSize: "18px", paddingRight: "20px", whiteSpace:'nowrap' }}>
-          Разработка веб-приложений
-        </p>
-        <DeleteSvg />
-      </Box>
-
-      <Box style={{ display: "flex", alignItems: "center" }}>
-        <p style={{ fontWeight: 500, fontSize: "18px", paddingRight: "20px", whiteSpace:'nowrap' }}>
-          Разработка СРМ
-        </p>
-        <DeleteSvg />
-      </Box>
-
-      <Box style={{ display: "flex", alignItems: "center" }}>
-        <p style={{ fontWeight: 500, fontSize: "18px", paddingRight: "20px", whiteSpace:'nowrap' }}>
-          Разработка игр
-        </p>
-        <DeleteSvg />
-      </Box>
-
-      <Box
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <Button
-          style={{
-            background: "#EBEBEB",
-            color: "#000000",
-            boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.2)",
-            borderRadius: "10px",
-            padding: "15px 40px",
-            fontSize: "18px",
-            whiteSpace:'nowrap'
-          }}
-          variant="contained"
-          disableElevation
-        >
-          Как в анкете
-        </Button>
-        <Button
-          style={{
-            background: "#EBEBEB",
-            color: "#000000",
-            boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.2)",
-            borderRadius: "10px",
-            padding: "15px 45px",
-            fontSize: "18px",
-            whiteSpace:'nowrap'
-          }}
-          variant="contained"
-          disableElevation
-        >
-          Добавить
-        </Button>
-      </Box>
-
-      <p style={{ fontSize: "24px", fontWeight: 500 }}>Регион</p>
-
-        <FormControl
-          fullWidth
-          style={{
-            background: "#EBEBEB",
-            borderRadius: "10px",
-            border: "1px solid #C4C4C4",
-            whiteSpace:'nowrap'
-          }}
-        >
-          <InputLabel id="demo-simple-select-label" style={{whiteSpace:'nowrap'}}>
-            Москва и область
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            label="Москва и область"
-          >
-            <MenuItem></MenuItem>
-          </Select>
-        </FormControl>
-
-        <p style={{ fontSize: "24px", fontWeight: 500, whiteSpace:'nowrap' }}>Место встречи</p>
-
-        <Box style={{paddingLeft:'25px'}}>
-            <p style={{fontSize:'18px', whiteSpace:'nowrap'}}>
-                У специалиста
-            </p>
-            <p style={{fontSize:'18px', whiteSpace:'nowrap'}}>
-                У клиента
-            </p>
-            <p style={{fontSize:'18px'}}>
-                Дистанционно 
-            </p>
-        </Box>
-        <p style={{ fontSize: "24px", fontWeight: 500, whiteSpace:'nowrap' }}>Где искать</p>
-        <Button variant="contained" disableElevation style={{width:'100%',background: '#EBEBEB',borderRadius: '10px', boxShadow: '4px 4px 10px rgba(0, 0, 0, 0.2)', color:'#000000', padding:'15px'}}>
-            Добавить
-        </Button>
-        <p style={{ fontSize: "24px", fontWeight: 500, whiteSpace:'nowrap' }}>Ставка, руб. за усл.</p>
-        
-        <Box
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <TextField id="outlined-basic" label="От" variant="outlined" style={{borderRadius: '10px',border: '1px solid #C4C4C4'}} />
-        <TextField id="outlined-basic" label="До" variant="outlined" style={{borderRadius: '10px',border: '1px solid #C4C4C4'}} />
-      </Box>
+      <Divider style={{marginBottom: '20px'}} color={'#808080'} />
+        {showFilterBlock && <Box>
+            <Formik
+                initialValues={{
+                    services: [
+                        {item: 'Создание сайтов'},
+                        {item: 'Создание сайтов'},
+                        {item: 'Создание сайтов'},
+                        {item: 'Создание сайтов'}
+                    ],
+                    region: '', place_work: value, payment_from: '', payment_to: ''
+                }}
+                onSubmit={async (values, action) => {
+                    console.log(values, 'values')
+                }}
+            >
+                {({
+                      values,
+                      handleChange,
+                      handleSubmit,
+                      setFieldValue
+                  }) => (
+                    <form onSubmit={handleSubmit}>
+                        <Box style={{marginBottom: '20px'}} className={classes.orderSubBlockSpaceBetween}>
+                            <Typography variant={'h2'}>Услуги</Typography>
+                            <Box onClick={() => setShowServicesBlock(!showservicesBlock)} style={{transform: showservicesBlock ? "rotate(180deg)" : "rotate(0deg)", cursor: 'pointer'}}>
+                                <SelectSvg/>
+                            </Box>
+                        </Box>
+                        {showservicesBlock && <FieldArray name={'services'}>
+                            {({push, remove}) => (
+                                <Box>
+                                    {values.services.map((item, index) => (
+                                            item.item !== '' ? <Box style={{marginBottom: '10px'}} key={item.index}
+                                                                    className={classes.orderSubBlockSpaceBetween}>
+                                                <Typography style={{paddingRight: '5px'}}
+                                                            variant={'h4'}>{item.item}</Typography>
+                                                <Box style={{cursor: 'pointer'}} onClick={() => remove(index)}>
+                                                    <DeleteSvg/>
+                                                </Box>
+                                            </Box> : ''
+                                        )
+                                    )}
+                                    <Box className={classes.orderSubBlockSpaceBetween}>
+                                        <Button variant={'contained'}>
+                                            Как в анкете
+                                        </Button>
+                                        <Button variant={'contained'}>
+                                            Добавить
+                                        </Button>
+                                    </Box>
+                                </Box>
+                            )}
+                        </FieldArray>}
+                        <Box style={{margin: '10px 0 40px 0'}}>
+                            <Typography style={{marginBottom: '10px'}} variant={'h2'}>Регион</Typography>
+                            <CustomSelect
+                                name={'region'}
+                                handleChange={handleChange}
+                                value={values.region}
+                                mt={0}
+                            />
+                        </Box>
+                        <Box style={{margin: '80px 0 40px 0'}}>
+                            <Typography style={{marginBottom: '10px'}} variant={'h2'}>Место встречи</Typography>
+                            <FormControl component="fieldset">
+                                <RadioGroup
+                                    aria-label="gender"
+                                    defaultValue="remotely"
+                                    name="place_work"
+                                >
+                                    <FormControlLabel control={<Radio classes={{root: classes.radio, checked: classes.checked}}
+                                                                      style={{color: '#4B9A2D'}} size={'small'} onChange={(e) => {
+                                        setValue('remotely')
+                                        setFieldValue('place_work', e.target.value)
+                                    }} value="remotely" />} label="Дистанционно" />
+                                    <FormControlLabel  control={<Radio  onChange={(e) => {
+                                        setValue('executor')
+                                        setFieldValue('place_work', e.target.value)
+                                    }} classes={{root: classes.radio, checked: classes.checked}} style={{color: '#4B9A2D'}} size={'small'}   value="executor" />} label="У исполнителя" />
+                                    <FormControlLabel  control={<Radio classes={{root: classes.radio, checked: classes.checked}} style={{color: '#4B9A2D'}}  size={'small'}
+                                                                       onChange={(e) => {
+                                                                           setValue('client')
+                                                                           setFieldValue('place_work', e.target.value)
+                                                                       }} value="client" />} label="У клиента" />
+                                </RadioGroup>
+                            </FormControl>
+                        </Box>
+                        <Box style={{margin: '10px 0 40px 0'}}>
+                            <Typography style={{marginBottom: '10px'}} variant={'h2'}>Где искать</Typography>
+                            <Button style={{width: '100%'}} variant="contained">
+                                Добавить
+                            </Button>
+                        </Box>
+                        <Box style={{margin: '10px 0 40px 0'}}>
+                            <Typography style={{marginBottom: '10px'}} variant={'h2'}>Ставка, руб. за усл.</Typography>
+                            <Box className={classes.orderSubBlockSpaceBetween}>
+                                <Box style={{width: '90%'}}>
+                                    <CustomInput
+                                        name={'payment_from'}
+                                        width={'90%'}
+                                        value={values.payment_from}
+                                        handleChange={handleChange}
+                                        placeholder={'От'}
+                                    />
+                                </Box>
+                                <Box style={{width: '90%'}}>
+                                    <CustomInput
+                                        name={'payment_to'}
+                                        width={'90%'}
+                                        value={values.payment_to}
+                                        handleChange={handleChange}
+                                        placeholder={'До'}
+                                    />
+                                </Box>
+                            </Box>
+                        </Box>
+                    </form>
+                )}
+            </Formik>
+        </Box>}
 
       </Card>
   );
