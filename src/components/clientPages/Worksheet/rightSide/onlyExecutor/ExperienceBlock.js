@@ -70,7 +70,8 @@ const ExperienceBlock = ({editExperienceBlock, setEditExperienceBlock}) => {
                       setFieldValue
                   }) => (
                     <form onSubmit={handleSubmit}>
-                        <Box style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
+                        <Box
+                            x style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
                             <Typography className={classes.title}>
                                 Специальность и опыт
                             </Typography>
