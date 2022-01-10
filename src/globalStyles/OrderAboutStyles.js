@@ -16,35 +16,40 @@ export const useOrderAboutStyles = makeStyles({
         "& .MuiTypography-h1":{
             fontWeight: 500,
             fontSize: 24,
+            display: 'flex',
         },
         "& .MuiTypography-h2":{
             fontSize: 22,
             fontWeight: 500,
-            //color: "#808080",
-            //margin: '10px 0',
+            display: 'flex',
         },
         "& .MuiTypography-h3":{
             fontSize: 24,
-            color: "#5A7287"
+            color: "#5A7287",
+            //display: 'flex',
         },
         "& .MuiTypography-h4":{
             fontSize: 20,
+            //display: 'flex',
         },
         "& .MuiTypography-h5":{
             fontSize: 18,
             color: '#808080',
+            display: 'flex',
         },
         "& .MuiButton-contained": {
-            backgroundColor: '#EBEBEB',
-            borderRadius: '10px',
+            backgroundColor: '#4B9A2D',
+            borderRadius: '5px',
             textTransform: "none",
-            color: '#000',
-            height: '50px',
-            margin: '10px 0',
-            "&:hover": {
-                background: '#D9DADC !important',
-            }
+            color: '#fff',
+            fontWeight: 500,
+            '&:hover fieldset': {
+                backgroundColor: '#478F2A',
+            },
         },
+        "& .MuiSwitch-track": {
+            backgroundColor: '#4B9A2D'
+        }
     },
     radio: {
         '&$checked': {
@@ -67,13 +72,13 @@ export const useOrderAboutStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        width: '30%',
+        //width: '30%',
         '@media (max-width: 800px)' : {
             width: '100%',
         },
     },
     inLineBlock2: {
-        width: '50%',
+        width: '70%',
         '@media (max-width: 800px)' : {
             width: '100%',
         },

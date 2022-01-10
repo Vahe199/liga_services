@@ -8,11 +8,11 @@ import {DeleteSvg} from "../../../../assets/svg/DeleteSvg";
 import {useNavigate} from "react-router-dom";
 
 
-const OrderExecutorBlock = ({order, index, deleteOrder}) => {
+const OrderExecutorBlock = ({order, index, deleteOrder, setShowModal}) => {
     const classes = useOrderStyles();
     const navigate = useNavigate();
     return (
-        <Box onClick={() => navigate(`/orderAboutPage/${order.id}`)}>
+        <Box onClick={() => navigate(`/orderAboutPage/${order.id}`, {state: order})}>
             <Box className={classes.orderSubBlockSpaceBetween}>
                 <Box style={{display: 'flex', alignItems: 'center'}}>
                     <Box style={{paddingRight: '5px'}}>

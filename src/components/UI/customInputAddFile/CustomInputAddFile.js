@@ -17,7 +17,7 @@ const CustomInputAddFile = ({value, handleChange, name, svg, label}) => {
             />
             <label style={{display: 'flex', marginTop: '10px', justifyContent: 'flex-start', alignItems: 'center'}} htmlFor="icon-button-file">
                 {svg}
-                <p style={{fontSize: '15px', paddingLeft: '20px', color: '#000'}}>{label}</p>
+                <p style={{fontSize: '15px', margin: 0, paddingLeft: '20px', color: '#000'}}>{label}</p>
             </label>
         </Box>
     )
