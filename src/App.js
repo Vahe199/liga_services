@@ -15,6 +15,8 @@ import Support from "./components/clientPages/Support/Support";
 import {MyOrders} from "./components/clientPages/MyOrders/MyOrders";
 import OrdersPage from "./components/clientPages/ordersPage/OrdersPage";
 import ChatPage from "./components/chatPage/ChatPage";
+import AboutOrder from "./components/executor/AboutOrder";
+import OrderAboutPage from "./components/clientPages/orderAboutPage/OrderAboutPage";
 
 
 function App() {
@@ -37,6 +39,7 @@ function App() {
                 <Route path={"support"} element={<Support />}/>
                 <Route path={"MyOrders"} element={<MyOrders />}/>
                 <Route path={"Orders"} element={<OrdersPage />}/>
+                <Route path={'orderAboutPage/:id'} element={<OrderAboutPage />} />
                 {/*NavBarTabs*/}
                 <Route path='notification' element={<NotificationPage />} />
                 <Route path={'chat'} element={<ChatPage />} />
