@@ -15,7 +15,7 @@ const FilterOrders = ({setShowFilterBlock, showFilterBlock}) => {
     const [showservicesBlock, setShowServicesBlock] = useState(true);
     const [value, setValue] = useState('')
   return (
-    <Card sx={{ boxShadow: 2 }} className={classes.root}>
+    <Card sx={{ boxShadow: 2, backgroundColor: '#E1E3E3' }}>
       <Box className={classes.orderSubBlockSpaceBetween}>
         <Typography variant={'h1'}>Фильтр</Typography>
         <Typography onClick={() => setShowFilterBlock(!showFilterBlock)} style={{cursor: 'pointer'}} variant={'h3'}>

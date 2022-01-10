@@ -1,6 +1,6 @@
 import {makeStyles} from "@material-ui/core";
 
-export const useOrderStyles = makeStyles({
+export const useOrderAboutStyles = makeStyles({
     root:{
         //height:"100%",
         paddingTop: '90px',
@@ -73,10 +73,10 @@ export const useOrderStyles = makeStyles({
         },
     },
     inLineBlock2: {
-      width: '50%',
-      '@media (max-width: 800px)' : {
-        width: '100%',
-      },
+        width: '50%',
+        '@media (max-width: 800px)' : {
+            width: '100%',
+        },
     },
     inLineStyle: {
         textAlign: 'right',
