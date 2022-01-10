@@ -1,13 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {Container, Grid} from "@mui/material";
 import FilterOrders from "./blocks/FilterOrders";
-import ResponseAmount from "../../executor/ResponseAmount";
 import {useOrderStyles} from "../../../globalStyles/OrderStyles";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import {OrderExecutor} from "../../../utils/data/orders/OrderExecutor";
-import {OrdersData} from "../../../utils/data/orders/OrdersData";
-import OrderBlock from "../MyOrders/blocks/OrderBlock";
 import OrderExecutorBlock from "./blocks/OrderExecutorBlock";
 
 

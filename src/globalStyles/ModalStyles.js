@@ -124,6 +124,10 @@ export const useStyles = makeStyles({
             textAlign: "center"
         }
     },
+    inputIcon: {
+      display: 'flex',
+        alignItems: 'center',
+    },
     checkbox: {
         marginTop: '20px',
         alignSelf: 'flex-start',
