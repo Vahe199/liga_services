@@ -13,8 +13,10 @@ import Footer from "./components/UI/footer/Footer";
 import {Worksheet} from "./components/clientPages/Worksheet/Worksheet";
 import Support from "./components/clientPages/Support/Support";
 import {MyOrders} from "./components/clientPages/MyOrders/MyOrders";
-import OrdersPage from "./components/clientPages/ordersPage/OrdersPage'";
+import OrdersPage from "./components/clientPages/ordersPage/OrdersPage";
 import ChatPage from "./components/chatPage/ChatPage";
+import AboutOrder from "./components/executor/AboutOrder";
+import OrderAboutPage from "./components/clientPages/orderAboutPage/OrderAboutPage";
 
 
 function App() {
@@ -22,28 +24,29 @@ function App() {
     const {auth} = useSelector(state => state.auth);
 
 
-  return (<div style={{overflow:"hidden"}}>
-          {location.pathname === '/login' || location.pathname === '/registration' ?'' : <Container maxWidth={'xl'}>
-              {auth ? <MainNavBar /> : <LogoBlock/>}
-          </Container>}
+    return (<div style={{overflow:"hidden"}}>
+            {location.pathname === '/login' || location.pathname === '/registration' ?'' : <Container maxWidth={'xl'}>
+                {auth ? <MainNavBar /> : <LogoBlock/>}
+            </Container>}
 
-        <Routes>
-             <Route path='/' element={<HomePage />} />
-            {/*AuthPages*/}
-             <Route path='registration' element={<RegistrationPage />} />
-            <Route path='login' element={<LoginPage />} />
-            {/*NavBar*/}
-            <Route path='workSheet' element={<Worksheet />}/>
-            <Route path={"support"} element={<Support />}/>
-            <Route path={"MyOrders"} element={<MyOrders />}/>
-            <Route path={"Orders"} element={<OrdersPage />}/>
-            {/*NavBarTabs*/}
-            <Route path='notification' element={<NotificationPage />} />
-            <Route path={'chat'} element={<ChatPage />} />
-        </Routes>
-        <Footer />
-      </div>
-  )
+            <Routes>
+                <Route path='/' element={<HomePage />} />
+                {/*AuthPages*/}
+                <Route path='registration' element={<RegistrationPage />} />
+                <Route path='login' element={<LoginPage />} />
+                {/*NavBar*/}
+                <Route path='workSheet' element={<Worksheet />}/>
+                <Route path={"support"} element={<Support />}/>
+                <Route path={"MyOrders"} element={<MyOrders />}/>
+                <Route path={"Orders"} element={<OrdersPage />}/>
+                <Route path={'orderAboutPage/:id'} element={<OrderAboutPage />} />
+                {/*NavBarTabs*/}
+                <Route path='notification' element={<NotificationPage />} />
+                <Route path={'chat'} element={<ChatPage />} />
+            </Routes>
+            <Footer />
+        </div>
+    )
 }
 
 export default App;
