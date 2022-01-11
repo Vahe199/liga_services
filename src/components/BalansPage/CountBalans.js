@@ -5,7 +5,7 @@ import Card from "@mui/material/Card";
 import {useMyOrdersStyles} from "../MyOrders/MyOrders";
 import {Divider, Typography} from "@mui/material";
 import CustomInput from "../../UI/customInput/CustomInput";
-import {Button, makeStyles} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core";
 
 const useStyles = makeStyles({
     root:{
@@ -25,18 +25,6 @@ const useStyles = makeStyles({
             fontSize:20,
             whiteSpace: 'noWrap',
         },
-        "& .MuiButton-outlined": {
-            background: "#445E77",
-            textTransform: "none",
-            color: '#fff',
-            fontWeight: 500,
-            borderRadius: '10px',
-            width: '160px',
-            marginBottom: '10px',
-            "&:hover": {
-                background: '#6585a5 !important',
-            }
-        },
     },
     containerSupport: {
         padding: '0 200px',
@@ -53,7 +41,7 @@ const useStyles = makeStyles({
     },
 })
 
-const Support = () =>{
+const CountBalans = () =>{
     const classes = useStyles();
     return(
         <div className={classes.root}>
@@ -63,15 +51,9 @@ const Support = () =>{
                         <Typography style={{textAlign: 'center'}} variant={'h4'}>Служба поддержки</Typography>
                         <Divider color={'#808080'} style={{margin: '20px 0 40px 0'}} />
                         <Box className={classes.subContainerSupport}>
-                        <Box style={{marginBottom:'30px'}}>
-                            <CustomInput placeholder={'Email'}/>
-                        </Box>    
-                            <CustomInput textArea={true} placeholder={'Сообщение'}/>
+                            <CustomInput />
+                            <CustomInput textArea={true} />
                         </Box>
-                        <Box style={{display:'flex', justifyContent:'center', paddingTop:'15px'}}>
-                            <Button variant={'outlined'}>Отправить</Button>
-                        </Box>
-                       
                     </Card>
                 </Box>
             </Container>
@@ -79,4 +61,4 @@ const Support = () =>{
     )
 }
 
-export default Support;
+export default CountBalans;
