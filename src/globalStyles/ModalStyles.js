@@ -23,23 +23,42 @@ export const useStyles = makeStyles({
             whiteSpace: 'noWrap',
             fontWeight: 400,
         },
-        '& .css-1u3bzj6-MuiFormControl-root-MuiTextField-root': {
-            marginBottom: '10px',
-            width: '100%',
-        },
-        '& .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root': {
-            borderRadius: '10px',
-            border: '1px solid #808080',
-        },
         '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
             height: '10px',
         },
-        "& .MuiButton-contained": {
-            backgroundColor: '#4B9A2D',
+        '& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
+            padding: '10px',
+        },
+        '& MuiFormControl-root-MuiTextField-root': {
+            marginBottom: '10px',
+            width: '100%',
+        },
+        '& MuiInputBase-root-MuiOutlinedInput-root': {
             borderRadius: '10px',
+            border: '1px solid #808080',
+        },
+        '& MuiInputBase-input-MuiOutlinedInput-input': {
+            height: '10px',
+        },
+        '& MuiButtonBase-root-MuiButton-root': {
+            backgroundColor: '#445E77',
+            fontSize: '15px',
+            color: '#FAFAFA',
+            padding: '7px 24px',
+            fontWeight: 500,
+            marginBottom: '10px',
+            borderRadius: '10px',
+            //width: '160px',
+        },
+        "& .MuiButton-contained": {
+            background: "#445E77",
             textTransform: "none",
             color: '#fff',
             fontWeight: 500,
+            borderRadius: '10px',
+            "&:hover": {
+                background: '#6585a5 !important',
+            }
         },
         "& .MuiButton-outlined": {
             background: "#445E77",
@@ -52,7 +71,7 @@ export const useStyles = makeStyles({
             }
         },
         //checkbox
-        '& .css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label': {
+        '& MuiFormControlLabel-root .MuiFormControlLabel-label': {
             color: '#808080',
             fontSize: '16px',
         },
@@ -60,11 +79,11 @@ export const useStyles = makeStyles({
             width: '40%',
         },
         //select
-        '& .css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
+        '& MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input': {
           padding: '10px',
         },
         //textArea
-        '& .css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root': {
+        '& .MuiInputBase-root-MuiOutlinedInput-root': {
           borderRadius: '10px',
           border: '1px solid #808080',
             height: '73px',

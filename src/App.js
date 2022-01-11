@@ -16,6 +16,7 @@ import {MyOrders} from "./components/clientPages/MyOrders/MyOrders";
 import OrdersPage from "./components/clientPages/ordersPage/OrdersPage";
 import ChatPage from "./components/chatPage/ChatPage";
 import OrderAboutPage from "./components/clientPages/orderAboutPage/OrderAboutPage";
+import BalancePage from "./components/clientPages/balancePage/BalancePage";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
                 <Route path='workSheet' element={<Worksheet />}/>
                 <Route path={"support"} element={<Support />}/>
                 <Route path={"MyOrders"} element={<MyOrders />}/>
+                <Route path={"Balance"} element={<BalancePage />}/>
                 <Route path={"Orders"} element={<OrdersPage />}/>
                 <Route path={'orderAboutPage/:id'} element={<OrderAboutPage />} />
                 {/*NavBarTabs*/}

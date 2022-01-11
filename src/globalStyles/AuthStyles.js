@@ -17,7 +17,7 @@ export const useStyles = makeStyles({
             height: '10px',
         },
         //button
-        '& .css-1e6y48t-MuiButtonBase-root-MuiButton-root': {
+        '& MuiButtonBase-root-MuiButton-root': {
             backgroundColor: '#445E77',
             fontSize: '15px',
             color: '#FAFAFA',
@@ -27,7 +27,7 @@ export const useStyles = makeStyles({
             borderRadius: '10px',
             width: '160px',
         },
-        '& .css-1e6y48t-MuiButtonBase-root-MuiButton-root:hover': {
+        '& MuiButtonBase-root-MuiButton-root:hover': {
             backgroundColor: '#3a4e61',
         },
         //checkbox

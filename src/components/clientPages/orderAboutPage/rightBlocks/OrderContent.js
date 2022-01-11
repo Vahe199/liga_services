@@ -1,11 +1,6 @@
 import React, {useState} from 'react';
 import Box from "@mui/material/Box";
-import {Divider, Typography} from "@mui/material";
-import Avatar from "@mui/material/Avatar";
-import {OnlineSvg} from "../../../../assets/svg/Profile/OnlineSvg";
-import {useOrderStyles} from "../../../../globalStyles/OrderStyles";
-import {DeleteSvg} from "../../../../assets/svg/DeleteSvg";
-import {useNavigate} from "react-router-dom";
+import {Typography} from "@mui/material";
 import {useOrderAboutStyles} from "../../../../globalStyles/OrderAboutStyles";
 import Card from "@mui/material/Card";
 import CustomDivider from "../../../UI/customDivider/CustomDivider";

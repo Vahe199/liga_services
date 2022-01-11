@@ -18,7 +18,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    //width: 400,
     bgcolor: 'background.paper',
     boxShadow: 24,
     borderRadius: '10px',
@@ -41,7 +41,7 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                 aria-describedby="modal-modal-description"
                 style={{border: 'none'}}
             >
-                <Box sx={style}>
+                <Box sx={{ ...style ,width:{xs: 270, md: 400}}}>
                     {open && <ModalForAuth open={open} setOpen={setOpen} />}
                     <Box className={classes.root}>
                         <HeaderModal title={'Оставить новое задание'} close={handleClose} />
@@ -65,7 +65,7 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                               }) => (
                                 <form onSubmit={handleSubmit}>
                                     <Box>
-                                        <Box style={{marginBottom: '40px'}}>
+                                        <Box style={{marginBottom: '50px'}}>
                                             <CustomSelect
                                                 name={'service_type'}
                                                 label={'Вид услуг'}

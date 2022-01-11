@@ -105,4 +105,11 @@ export const useOrderAboutStyles = makeStyles({
             textAlign: 'left',
         },
     },
+    greyBall: {
+        backgroundColor: '#C4C4C4',
+        borderRadius: '50%',
+        width: '7px',
+        height: '7px',
+        margin: '0 5px',
+    }
 })

@@ -12,7 +12,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    //width: 400,
     bgcolor: 'background.paper',
     boxShadow: 24,
     borderRadius: '10px',
@@ -33,7 +33,7 @@ const ModalNewTask = ({open, setOpen}) => {
                 aria-describedby="modal-modal-description"
                 style={{border: 'none'}}
             >
-                <Box sx={style}>
+                <Box sx={{ ...style ,width:{xs: 270, md: 400}}}>
                     <Box className={classes.root}>
                         <Box>
                             <Box style={{display: 'flex', justifyContent: 'flex-end'}}>
