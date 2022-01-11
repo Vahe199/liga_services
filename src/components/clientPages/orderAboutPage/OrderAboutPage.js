@@ -1,11 +1,8 @@
-import React, {useEffect, useState} from "react";
-import {Container, Grid, Typography} from "@mui/material";
-import ModalPersonalData from "../../UI/modals/ModalPersonalData";
+import React, {useState} from "react";
+import {Container, Grid} from "@mui/material";
 import Box from "@mui/material/Box";
 import {useOrderAboutStyles} from "../../../globalStyles/OrderAboutStyles";
 import {useLocation, useParams} from "react-router-dom";
-import PersonalData from "../Worksheet/rightSide/PersonalData";
-import ProfileStatus from "../Worksheet/leftSide/ProfileStatus";
 import ProfileShow from "./leftBlocks/ProfileShow";
 import AdditionalFiles from "./leftBlocks/AdditionalFiles";
 import ResponseAmount from "./leftBlocks/ResponseAmount";

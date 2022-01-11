@@ -1,20 +1,14 @@
 import React, {useState} from "react";
 import {Avatar, Box, Typography} from "@mui/material";
-import {useProfileCardStyles} from "../../../../globalStyles/ProfileCardStyles";
 import SuccessSVG from "../../../../assets/svg/Profile/SuccessSVG";
 import InfoSVG from "../../../../assets/svg/Profile/InfoSVG";
 import Card from "@mui/material/Card";
-import Rating from "@mui/material/Rating";
-import {AddAvatar} from "../../../UI/modals/Avatar/AddAvatar";
 import {useSelector} from "react-redux";
-import ProgressLine from "../../../UI/progressLine/ProgressLine";
-import {LightTooltip} from "../../../../globalStyles/LightTooltip";
 import {useOrderAboutStyles} from "../../../../globalStyles/OrderAboutStyles";
-import Divider from "@mui/material/Divider";
 import CustomDivider from "../../../UI/customDivider/CustomDivider";
 
 
-const ProfileShow = ({setShowModal}) => {
+const ProfileShow = () => {
     const classes = useOrderAboutStyles();
     const {status} = useSelector(state => state.auth);
     const [avatarPreview, setAvatarPreview] = useState();

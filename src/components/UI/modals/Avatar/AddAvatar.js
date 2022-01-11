@@ -41,7 +41,7 @@ export const AddAvatar = ({avatarPreview, setAvatarPreview}) => {
     const classes = useAvatarStyles()
     return(
         <>
-            <div style={{ width: "27%" }}>
+            <div style={{ paddingRight: '10px' }}>
                 <input
                     name={"photo"}
                     accept="image/*"

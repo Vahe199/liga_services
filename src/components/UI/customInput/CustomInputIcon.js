@@ -57,6 +57,7 @@ const CustomInputIcon = ({label,
                          icon = false,
                          mb = 10,
                          width = '100%',
+                         iconRight = false,
                          placeholder}) => {
     const classes = useStyles();
     return (
@@ -66,6 +67,7 @@ const CustomInputIcon = ({label,
                 placeholder={placeholder}
                 InputProps={{
                     endAdornment: <InputAdornment position="start">{icon}</InputAdornment>,
+                    startAdornment: <InputAdornment position="start">{iconRight}</InputAdornment>,
                 }}
                 className={classes.root}
                 name={name}

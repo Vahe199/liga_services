@@ -33,10 +33,10 @@ const ProfileStatus = ({setShowModal}) => {
                         <Typography variant={"h6"}>Елена</Typography>
                         <InfoSVG size={8} color={"#4B9A2D"} margin={"-5px 0 0 5px"}/>
                     </div>
-                    <Box style={{display: "flex", alignItems: "center", justifyContent: 'center'}}>
+                    <Box style={{display: "flex", alignItems: "center", flexWrap: 'wrap'}}>
                         <Rating style={{color: "#FFF066"}} size={'small'} name="half-rating-read" defaultValue={4}
                                 readOnly precision={0.5}/>
-                        <Typography variant={'h4'}>(3 отзывов)</Typography>
+                        <Typography style={{whiteSpace: 'nowrap'}} variant={'h4'}>(3 отзывов)</Typography>
                     </Box>
                 </Box>
             </Box>

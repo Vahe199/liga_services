@@ -1,5 +1,5 @@
 import React from 'react';
-import WalletSvg from "../WalletSvg";
+import WalletSvg from "../../../../assets/svg/WalletSvg";
 import Box from "@mui/material/Box";
 import {useStyles} from "../../../../globalStyles/ModalStyles";
 

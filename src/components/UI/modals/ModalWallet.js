@@ -8,7 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
-import WalletSvg from "./WalletSvg";
+import WalletSvg from "../../../assets/svg/WalletSvg";
 import {FormControlLabel, Radio, RadioGroup, Stack} from "@mui/material";
 import {useStyles} from "../../../globalStyles/ModalStyles";
 import CustomDivider from "../customDivider/CustomDivider";
@@ -26,7 +26,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  //width: 400,
   bgcolor: "background.paper",
   boxShadow: 24,
   p: 4,
@@ -34,12 +34,9 @@ const style = {
 
 const ModalWallet = ({showModal, setShowModal}) => {
 
-    const [selectedValue, setSelectedValue] = React.useState('a');
     const [value, setValue] = React.useState('a');
 
-    const handleChange = (event) => {
-        setSelectedValue(event.target.value);
-    };
+
 
   const handleClose = () => setShowModal(false);
   const classes = useStyles()
@@ -51,7 +48,7 @@ const ModalWallet = ({showModal, setShowModal}) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box style={{borderRadius:'10px'}} sx={style}>
+        <Box style={{borderRadius:'10px'}} sx={{ ...style ,width:{xs: 270, sm: 400, md: 500}}}>
             <Box style={{textAlign: 'end'}}>
                 <IconButton onClick={handleClose}>
                     <CloseSvg />
