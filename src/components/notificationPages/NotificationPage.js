@@ -1,21 +1,20 @@
 import React from "react";
-// import Card from "@mui/material/Card";
-import { Box } from "@mui/system";
-import {
-  Card,
-  Container,
-  Divider,
-  IconButton,
-  makeStyles,
-  Typography,
-} from "@material-ui/core";
 import { DataNotification } from "../../utils/DataNotification";
 import { CloseSvg } from "../../assets/svg/CloseSvg";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Card from "@mui/material/Card";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import CustomDivider from "../UI/customDivider/CustomDivider";
+import {makeStyles} from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
-    height: "100%",
-    marginBottom: 100,
+    height:"100vh",
+    paddingTop: '90px',
+    marginBottom: '70px',
+    backgroundColor: '#e1e3e5',
     "& .MuiTypography-h6": {
       fontWeight: 500,
       fontSize: 18,
@@ -31,9 +30,6 @@ const useStyles = makeStyles({
       margin: "20px",
       boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.15)",
       padding: "30px",
-      "@media (max-width: 450px)": {
-        margin: "20px 0",
-      },
     },
   },
 });
@@ -41,42 +37,44 @@ const useStyles = makeStyles({
 const NotificationPage = (props) => {
   const classes = useStyles();
   return (
-    <Container maxWidth={"lg"} className={classes.root}>
-      <Box className={classes.containerSupport}>
-        <Card className={classes.root}>
-          {DataNotification.map((item, index) => (
-            <>
-              <p
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Typography style={{ paddingLeft: "20px" }}>
-                  {item.name}
-                </Typography>
-                <Box style={{ display: "flex", alignItems: "center" }}>
-                  <Typography
-                    style={{
-                      color: "#616161",
-                      paddingRight: "50px",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {item.data}
+      <Box className={classes.root}>
+      <Container maxWidth={"lg"} className={classes.root}>
+        <Box>
+          <Card>
+            {DataNotification.map((item, index) => (
+              <>
+                <p
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Typography style={{ paddingLeft: "20px" }}>
+                    {item.name}
                   </Typography>
-                  <IconButton>
-                    <CloseSvg />
-                  </IconButton>
-                </Box>
-              </p>
-              <Divider />
-            </>
-          ))}
-        </Card>
+                  <Box style={{ display: "flex", alignItems: "center" }}>
+                    <Typography
+                      style={{
+                        color: "#616161",
+                        paddingRight: "50px",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {item.data}
+                    </Typography>
+                    <IconButton>
+                      <CloseSvg />
+                    </IconButton>
+                  </Box>
+                </p>
+                <CustomDivider />
+              </>
+            ))}
+          </Card>
+        </Box>
+      </Container>
       </Box>
-    </Container>
   );
 };
 
