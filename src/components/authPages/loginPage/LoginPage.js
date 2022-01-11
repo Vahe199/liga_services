@@ -8,10 +8,13 @@ import Button from "@mui/material/Button";
 import {useStyles} from "../../../globalStyles/AuthStyles";
 import {LoginValidation} from "../../../utils/validation/LoginValidation";
 import CustomInput from "../../UI/customInput/CustomInput";
+import {useDispatch} from "react-redux";
+import {Login} from "../../../store/actions/AuthActions";
 
 
 const LoginPage = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
     return (
         <Box className={classes.root}>
             <Box>
@@ -24,6 +27,7 @@ const LoginPage = () => {
                     validationSchema={LoginValidation}
                     onSubmit={(values, action) => {
                         console.log(values, 'values')
+                        dispatch(Login(values))
                         action.resetForm()
                     }}
                 >
