@@ -12,7 +12,7 @@ import {makeStyles} from "@material-ui/core";
 import {useSelector} from "react-redux";
 import DistrictsAndAddresses from "./rightSide/onlyExecutor/DistrictsAndAddresses";
 import Box from "@mui/material/Box";
-import ExperienceBlock from "./rightSide/onlyExecutor/ExperienceBlock";
+import ExperienceBlock from "./rightSide/onlyExecutor/ExperienceBlock/ExperienceBlock";
 import Portfolio from "./rightSide/onlyExecutor/Portfolio";
 import EducationBlock from "./rightSide/onlyExecutor/EducationBlock";
 

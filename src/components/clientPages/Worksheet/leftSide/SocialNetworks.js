@@ -24,7 +24,7 @@ const SocialNetworks = ({setEditSocialNetwork, editSocialNetwork}) => {
                 }
             </Box>
             <Box style={{background:"#808080", height: 2, marginBottom: "10px"}}/>
-            <Box style={{display: "flex", alignItems: "center"}}>
+            <Box style={{display: "flex", alignItems: "center",marginBottom:15}}>
                 <Avatar src={VK} style={{marginRight: 25}} variant="rounded"/>
                 {!editSocialNetwork ? <Box>
                     <Typography variant={"h6"}>Вконтакте</Typography>

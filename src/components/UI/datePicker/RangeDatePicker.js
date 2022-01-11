@@ -24,9 +24,9 @@ const RangeDatePicker = ({value, name, fun, touched, errors}) => {
                         value={value}
                         name={name}
                         open={open}
-                        onChange={(date) => {
+                        onChange={(newValue) => {
                             setOpen(!open)
-                            fun(date);
+                            fun(newValue);
                         }}
                         renderInput={(startProps, endProps) => (
                             <React.Fragment>

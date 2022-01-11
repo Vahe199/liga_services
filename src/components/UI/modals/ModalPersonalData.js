@@ -63,10 +63,14 @@ const ModalPersonalData = ({showModal, setShowModal}) => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={{ ...style ,width:{xs: 270, sm: 400, md: 500}}}>
+                <Box sx={{ ...style ,width:{xs: 240, sm: 400, md: 500}}}>
                     <Box className={classes.root}>
                         <Box className={classes.titleWrap}>
-                            <Box style={{display: "flex", justifyContent: 'flex-end', width:{xs:"89%", sm: "70%", md:"70%"}}}>
+                            <Box sx={{
+                                display: "flex",
+                                justifyContent: 'flex-end',
+                                width: {xs: "89%", sm: "70%", md: "70%"}
+                            }}>
                                 <Typography variant={"h5"}
                                 >Подтвердите телефонный номер</Typography>
                             </Box>
