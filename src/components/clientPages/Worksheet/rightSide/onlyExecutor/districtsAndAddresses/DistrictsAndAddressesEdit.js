@@ -38,7 +38,7 @@ const DistrictsAndAddressesEdit = ({editAddress, setEditAddress}) => {
                             </Typography>
                             <Button type={"submit"}
                                     onClick={() => setEditAddress(false)}
-                                    size={"small"} sx={{minWidth:0,padding:0,marginLeft:5}}>
+                                    size={"small"} style={{cursor: "pointer", padding: '0 0 7px 20px'}}>
                                 <FileSVG color={'#808080'}/>
                             </Button>
 

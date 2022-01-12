@@ -62,7 +62,7 @@ const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
                             </Typography>
 
                                 <Button type={"submit"}  onClick={saveData}
-                                        size={"small"} sx={{minWidth:0,padding:0,marginLeft:5}}>
+                                        size={"small"} style={{cursor: "pointer", padding: '0 0 7px 20px'}}>
                                     <FileSVG color={'#808080'}/>
                                 </Button>
 
@@ -119,7 +119,7 @@ const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
                                                         {values.workPlace.length > index +1 ?<div onClick={() => remove(index)}>
                                                             <TrashSvg/>
                                                             </div>
-                                                        :<AddButton fun={() => push({place: '', date: [null,null]})}/>}
+                                                        : <AddButton fun={() => push({place: '', date: [null,null]})}/>}
                                                     </Box>
                                                 </Box>)
                                             }
