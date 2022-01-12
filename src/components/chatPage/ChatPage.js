@@ -8,6 +8,7 @@ import {SkrepSvg} from "../../assets/svg/chat/SkrepSvg";
 import CustomInput from "../UI/customInput/CustomInput";
 import {SendMessageSvg} from "../../assets/svg/chat/SendMessageSvg";
 import CustomInputAddFile from "../UI/customInputAddFile/CustomInputAddFile";
+import InfoOrder from "./blocks/InfoOrder";
 
 const ChatPage = () => {
     const classes = useChatStyles();
@@ -41,6 +42,7 @@ const ChatPage = () => {
                                setActive={setActive}/>
                 </Grid>}
                 {isGreaterThan900px && <Grid item xs={12} md={8}>
+                    <InfoOrder />
                     <ChatContent/>
                     <Box className={classes.inputField}>
                         <Box className={classes.iconSvg}>
