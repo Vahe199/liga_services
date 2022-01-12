@@ -19,37 +19,14 @@ import {TrashSvg} from "../../../../../../assets/svg/TrashSvg";
 
 const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
     const classes = useInfoCardStyles();
-    const [data, setData] = useState(categories);
-    const [valueTime, setValueTime] = useState([null, null]);
-    const [value, setValue] = useState([]);
 
-    const putDate = (val) => {
-        setValueTime(val)
-    }
 
-    useEffect(() => {
-        //console.log(valueTime)
-    }, [value])
+        const saveData = () => {
+            setTimeout(() => {
+                setEditExperienceBlock(false)
+            }, 2000)
+        }
 
-    const deleteItem = (id) => {
-        setData((prev) => data.filter((item) => id !== item.id));
-        console.log()
-    }
-
-    const handleChange = (event) => {
-        setData((prev) => [...prev, {
-            name: event.target.value,
-            subCategories: ['Ремонт ', 'Сантехнические работы и отопление', 'Ремонт к', 'Сантехничение', 'Ремонтр и домов', 'Сантские работы и отопление', 'Ремони домов', 'ческие работы и отопление'],
-            id: Math.random()
-        }])
-        console.log(event.target.value)
-    };
-                   const saveData = () => {
-                       setTimeout(()=>{
-                        setEditExperienceBlock(false)
-                       },2000)
-
-                   }
     return (
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
             <Formik

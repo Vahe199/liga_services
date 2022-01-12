@@ -10,11 +10,13 @@ import CustomerReviews from "./rightSide/CustomerReviews";
 import ModalPersonalData from "../../UI/modals/ModalPersonalData";
 import {makeStyles} from "@material-ui/core";
 import {useSelector} from "react-redux";
-import DistrictsAndAddresses from "./rightSide/onlyExecutor/DistrictsAndAddresses";
+import DistrictsAndAddresses from "./rightSide/onlyExecutor/districtsAndAddresses/DistrictsAndAddresses";
 import Box from "@mui/material/Box";
 import ExperienceBlock from "./rightSide/onlyExecutor/ExperienceBlock/ExperienceBlock";
 import Portfolio from "./rightSide/onlyExecutor/Portfolio";
 import EducationBlock from "./rightSide/onlyExecutor/EducationBlock";
+import DistrictsAndAddressesData from "./rightSide/onlyExecutor/districtsAndAddresses/DistrictsAndAddressesData";
+import DistrictsAndAddressesEdit from "./rightSide/onlyExecutor/districtsAndAddresses/DistrictsAndAddressesEdit";
 
 const useAncetaStyles = makeStyles({
     root:{

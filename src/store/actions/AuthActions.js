@@ -4,7 +4,6 @@ import {createAsyncThunk} from "@reduxjs/toolkit";
 export const Login = createAsyncThunk(
     'auth/login',
     async (data, thunkAPI) => {
-        debugger
         try{
             const response = await axios.get(`http://127.0.0.1:8000/api/v1/user/login${data}`)
             return response.data
