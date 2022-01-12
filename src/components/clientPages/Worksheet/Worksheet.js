@@ -3,7 +3,7 @@ import {Container, Grid} from "@mui/material";
 import PersonalData from "./rightSide/PersonalData";
 import OrderNotifications from "./leftSide/orderNotifications/OrderNotifications";
 import ProfileStatus from "./leftSide/ProfileStatus";
-import SocialNetworks from "./leftSide/SocialNetworks";
+import SocialNetworks from "./leftSide/socialNetworks/SocialNetworks";
 import ProfileActions from "./leftSide/ProfileActions";
 import EditPersonalData from "./rightSide/EditPersonalData";
 import CustomerReviews from "./rightSide/CustomerReviews";
@@ -15,6 +15,8 @@ import Box from "@mui/material/Box";
 import ExperienceBlock from "./rightSide/onlyExecutor/ExperienceBlock/ExperienceBlock";
 import Portfolio from "./rightSide/onlyExecutor/portfolio/Portfolio";
 import EducationBlock from "./rightSide/onlyExecutor/educationBlock/EducationBlock";
+import SocialNetworksData from "./leftSide/socialNetworks/SocialNetworksData";
+import SocialNetworksEdit from "./leftSide/socialNetworks/SocialNetworksEdit";
 
 const useAncetaStyles = makeStyles({
     root:{
