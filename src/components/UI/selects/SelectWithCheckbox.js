@@ -116,8 +116,8 @@ const SelectWithCheckbox = ({options}) => {
                         primary="Выбрать все"
                     />
                 </MenuItem>
-                {options.map((option) => (
-                    <MenuItem key={option} value={option}>
+                {options.map((option,i) => (
+                    <MenuItem key={i} value={option}>
                         <ListItemIcon>
                             <Checkbox checked={selected.indexOf(option) > -1} />
                         </ListItemIcon>

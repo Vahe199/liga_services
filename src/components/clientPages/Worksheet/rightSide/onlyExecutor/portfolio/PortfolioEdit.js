@@ -68,7 +68,7 @@ const PortfolioEdit = ({editPortfolio, setEditPortfolio}) => {
                                     {({push, remove}) => (
                                         <Box>
                                             {values.link.map((l, index) =>
-                                                <Box>
+                                                <Box key={index}>
 
                                                 <CustomInput
                                                     name={`link[${index}].l`}

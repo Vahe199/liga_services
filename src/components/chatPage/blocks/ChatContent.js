@@ -20,7 +20,7 @@ const ChatContent = () => {
     return (
         <Box style={{overflowY: 'scroll', height: '100vh', backgroundColor: '#e1e3e5'}}>
             {messages.map((item, index) =>
-                <Box style={{margin: '20px 0'}} key={item.id}>
+                <Box style={{margin: '20px 0'}} key={index}>
                     <Box className={classes.container} style={{display: 'flex', justifyContent: item.mine ? 'flex-end' : 'flex-start'}}>
                         {/*{item.mine || <Box>*/}
                         {/*    <Box className={classes.badge} >*/}

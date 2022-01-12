@@ -22,7 +22,7 @@ const MyOrdersBlock = ({setShowForm}) => {
             <Divider color={'#808080'} style={{margin: '20px 0'}}/>
 
             {arr.map((item, index) =>
-                <Box onClick={() => {
+                <Box key={index} onClick={() => {
                     setBtnSelected(index + 1)
                     setShowForm(false)
                 }} style={{display:'flex'}}>

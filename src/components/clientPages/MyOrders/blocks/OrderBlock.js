@@ -146,7 +146,7 @@ const OrderBlock = ({order}) => {
             </> :
                 <Box>
                     {order.executors.map((executor, index) =>
-                        <Box>
+                        <Box key={index}>
                             <Divider color={'#808080'} style={{margin: '10px 0'}} />
                             <Box className={classes.orderSubBlockSpaceBetween}>
                                 <Typography variant={'h6'}>Исполнитель № 1</Typography>

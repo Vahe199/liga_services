@@ -46,8 +46,8 @@ const CustomImageList = ({imageData}) => {
   const classes = useStyles();
   return (
     <ImageList cols={columns} >
-      {imageData.map((item) => (
-        <ImageListItem key={item.img}>
+      {imageData.map((item,i) => (
+        <ImageListItem key={i}>
           <img src={`${item.img}`} alt={item.title} />
         </ImageListItem>
       ))}

@@ -85,7 +85,7 @@ const CustomInput = ({label,
                 style={{width: '100%'}}
                 onChange={handleChange}
                 rows={textArea ? 2 : 0}
-                error={touched && Boolean(error)}
+                // error={Boolean(touched && error)}
                 helperText={touched && error}
             />
         </Box>

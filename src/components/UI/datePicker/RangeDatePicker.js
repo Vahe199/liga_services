@@ -31,7 +31,7 @@ const RangeDatePicker = ({value, name, fun, touched, errors}) => {
                         renderInput={(startProps, endProps) => (
                             <React.Fragment>
                                 <TextField {...startProps}
-                                           error={touched && Boolean(errors)}
+                                           error={Boolean(touched && errors)}
                                            helperText={touched && errors}
                                            autoComplete={'off'}
                                            InputProps={{
@@ -53,7 +53,7 @@ const RangeDatePicker = ({value, name, fun, touched, errors}) => {
                                 />
                                 <Box sx={{ margin: '0 5px' }}> - </Box>
                                 <TextField {...endProps}
-                                           error={touched && Boolean(errors)}
+                                           error={Boolean(touched && errors)}
                                            helperText={touched && errors}
                                            autoComplete={'off'}
                                            InputProps={{

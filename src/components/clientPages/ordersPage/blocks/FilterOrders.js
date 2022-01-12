@@ -55,7 +55,7 @@ const FilterOrders = ({setShowFilterBlock, showFilterBlock}) => {
                             {({push, remove}) => (
                                 <Box>
                                     {values.services.map((item, index) => (
-                                            item.item !== '' ? <Box style={{marginBottom: '10px'}} key={item.index}
+                                            item.item !== '' ? <Box style={{marginBottom: '10px'}} key={index}
                                                                     className={classes.orderSubBlockSpaceBetween}>
                                                 <Typography style={{paddingRight: '5px'}}
                                                             variant={'h4'}>{item.item}</Typography>

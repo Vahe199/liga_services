@@ -16,7 +16,7 @@ const Transactions = () => {
             <CustomDivider />
             <Box>
                 {balanceData.map((item, index) =>
-                    <>
+                    <div key={index}>
                     <Box className={classes.orderSubBlockSpaceBetween}>
                         <Box>
                             <Typography variant={'h4'}>{item.subject}</Typography>
@@ -41,7 +41,7 @@ const Transactions = () => {
                         </Box>
                     </Box>
                     <CustomDivider />
-                    </>
+                    </div>
                 )}
                 <Typography variant={'h5'}>Более >></Typography>
             </Box>

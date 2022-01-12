@@ -208,8 +208,8 @@ export const MainNavBar = () => {
                     <Divider />
                     <List>
 
-                    {pages.map((page) => (
-                        <ListItem  key={page.title} onClick={() => handleCloseNavMenu(page.path)}>
+                    {pages.map((page, i) => (
+                        <ListItem  key={i} onClick={() => handleCloseNavMenu(page.path)}>
                             <ListItemText primary={page.title}/>
                         </ListItem>
                     ))}
@@ -217,9 +217,9 @@ export const MainNavBar = () => {
                 </Drawer>
             </Box>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              {pages.map((page) => (
+              {pages.map((page,i) => (
                   <Button
-                      key={page.title}
+                      key={i}
                       onClick={() => handleCloseNavMenu(page.path)}
                       sx={{ my: 2, color: active === page.path ? '#445e77':'#000', display: 'block',textTransform: "none" }}
                   >

@@ -98,7 +98,7 @@ const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
                                             const fieldName = `workPlace[${index}].date`;
 
                                             return(
-                                                <Box>
+                                                <Box key={index}>
                                                     <Box style={{marginBottom: '20px'}}>
                                                         <Box style={{display: 'flex', flexWrap: 'wrap'}}>
                                                             <Box className={classes.singleInput}>

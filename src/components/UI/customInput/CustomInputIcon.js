@@ -71,7 +71,7 @@ const CustomInputIcon = ({label,
                 autoComplete={'off'}
                 value={value}
                 onChange={handleChange}
-                error={touched && Boolean(error)}
+                 error={Boolean(touched && error)}
                 helperText={touched && error}
             />
     )

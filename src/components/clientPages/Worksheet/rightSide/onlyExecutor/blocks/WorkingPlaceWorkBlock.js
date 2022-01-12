@@ -38,7 +38,7 @@ const WorkingPlaceWorkBlock = ({condition, setValueTime, valueTime}) => {
                             {({push, remove}) => (
                                 <Box>
                                     {values.workPlace.map((work, index) =>
-                                        <Box>
+                                        <Box key={index}>
                                             {!condition ?
                                                 <Box style={{display: 'flex', flexWrap: 'wrap'}}>
                                                     <Typography style={{marginRight: '40px'}} variant={'h6'}>

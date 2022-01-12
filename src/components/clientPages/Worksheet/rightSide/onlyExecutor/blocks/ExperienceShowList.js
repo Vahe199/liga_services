@@ -7,7 +7,7 @@ const ExperienceShowList = ({arr}) => {
     return (
         <Box style={{display: 'flex', flexWrap: 'wrap'}}>
             {arr.map((item, index) =>
-                item.item !== '' ? <Box key={item.index} className={classes.categoriesBackGround}>
+                item.item !== '' ? <Box key={index} className={classes.categoriesBackGround}>
                     <Typography variant={'h4'}>{`${item.item} `}</Typography>
                 </Box> : ''
             )}

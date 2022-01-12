@@ -42,7 +42,7 @@ const NotificationPage = (props) => {
         <Box>
           <Card>
             {DataNotification.map((item, index) => (
-              <>
+              <div key={index}>
                 <p
                   style={{
                     display: "flex",
@@ -69,7 +69,7 @@ const NotificationPage = (props) => {
                   </Box>
                 </p>
                 <CustomDivider />
-              </>
+              </div>
             ))}
           </Card>
         </Box>

@@ -92,8 +92,8 @@ const LogoBlock = () => {
                             display: { xs: 'block', md: 'none' },
                         }}
                     >
-                        {pages.map((page) => (
-                            <MenuItem key={page} onClick={() => goNewPage(page.path)}>
+                        {pages.map((page,i) => (
+                            <MenuItem key={i} onClick={() => goNewPage(page.path)}>
                                 <Typography textAlign="center">{page.name}</Typography>
                             </MenuItem>
                         ))}

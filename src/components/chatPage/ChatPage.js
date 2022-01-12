@@ -59,7 +59,7 @@ const ChatPage = () => {
                             <TextField
                                 fullWidth
                                 placeholder={'Сообщение...'}
-                                inputProps={{className: classes.input}}
+                                InputProps={{className: classes.input}}
                             />
                         </Box>
                         <Box className={classes.iconSvg}>

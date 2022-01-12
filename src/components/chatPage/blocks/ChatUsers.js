@@ -22,7 +22,7 @@ const ChatUsers = ({active, isGreaterThan900px, setHideChatUsers, setActive, set
     return (
         <Box style={{overflowY: 'scroll', height: '100vh', backgroundColor: '#fff'}}>
             {usersData.map((item, index) =>
-                <>
+                <div key={index}>
                 <Box style={{backgroundColor: active === item.id && '#D7D7D7'}} onClick={() => chooseUser(item.id)} className={classes.userBlock}>
                     <Avatar style={{marginRight: 10, width: '60px', height: '60px'}}/>
                     <Box>
@@ -38,7 +38,7 @@ const ChatUsers = ({active, isGreaterThan900px, setHideChatUsers, setActive, set
                     </Box>
                 </Box>
                     <Divider color={'#808080'} style={{margin: "0"}} />
-                </>
+                </div>
             )}
         </Box>
     )
