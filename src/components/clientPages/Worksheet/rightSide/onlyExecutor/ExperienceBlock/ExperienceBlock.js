@@ -7,7 +7,7 @@ const ExperienceBlock = ({editExperienceBlock, setEditExperienceBlock}) => {
     return (
         <>
             {editExperienceBlock ? <ExperienceBlockEdit setEditExperienceBlock={setEditExperienceBlock}/>
-            :<ExperienceBlockData setEditExperienceBlock={setEditExperienceBlock}/>}
+            : <ExperienceBlockData setEditExperienceBlock={setEditExperienceBlock}/>}
              </>
     )
 }

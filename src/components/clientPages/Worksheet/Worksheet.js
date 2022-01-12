@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Container, Grid} from "@mui/material";
 import PersonalData from "./rightSide/PersonalData";
 import OrderNotifications from "./leftSide/OrderNotifications";
@@ -13,10 +13,13 @@ import {useSelector} from "react-redux";
 import DistrictsAndAddresses from "./rightSide/onlyExecutor/districtsAndAddresses/DistrictsAndAddresses";
 import Box from "@mui/material/Box";
 import ExperienceBlock from "./rightSide/onlyExecutor/ExperienceBlock/ExperienceBlock";
-import Portfolio from "./rightSide/onlyExecutor/Portfolio";
-import EducationBlock from "./rightSide/onlyExecutor/EducationBlock";
+import Portfolio from "./rightSide/onlyExecutor/portfolio/Portfolio";
+import EducationBlock from "./rightSide/onlyExecutor/educationBlock/EducationBlock";
 import DistrictsAndAddressesData from "./rightSide/onlyExecutor/districtsAndAddresses/DistrictsAndAddressesData";
 import DistrictsAndAddressesEdit from "./rightSide/onlyExecutor/districtsAndAddresses/DistrictsAndAddressesEdit";
+import PortfolioData from "./rightSide/onlyExecutor/portfolio/PortfolioData";
+import EducationBlockData from "./rightSide/onlyExecutor/educationBlock/EducationBlockData";
+import EducationBlockEdit from "./rightSide/onlyExecutor/educationBlock/EducationBlockEdit";
 
 const useAncetaStyles = makeStyles({
     root:{
@@ -46,6 +49,9 @@ export const Worksheet = () =>{
     const [editPortfolio, setEditPortfolio] = useState(false);
     const [editEducationBlock, setEditEducationBlock] = useState(false);
 
+    useEffect(() => {
+        console.log(editPortfolio, 'editPortfolio')
+    }, [])
 
     return(
         <Box className={classes.root}>

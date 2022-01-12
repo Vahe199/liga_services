@@ -4,13 +4,14 @@ import Card from "@mui/material/Card";
 import CardTitle from "../../../../../UI/titles/CardTitle";
 import PenSvg from "../../../../../../assets/svg/Profile/PenSvg";
 import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
+import CustomDivider from "../../../../../UI/customDivider/CustomDivider";
 
 const DistrictsAndAddressesData = ({editAddress, setEditAddress}) => {
     const classes = useInfoCardStyles();
     return (
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
             <Box
-                x style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
+                style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
                 <Typography className={classes.title}>
                     Районы и адреса
                 </Typography>
@@ -19,6 +20,7 @@ const DistrictsAndAddressesData = ({editAddress, setEditAddress}) => {
                     <PenSvg/>
                 </Box>
             </Box>
+            <CustomDivider />
             <Typography variant={"h5"}>
                 Регион
             </Typography>
