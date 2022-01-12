@@ -2,9 +2,7 @@ import {makeStyles} from "@material-ui/core";
 
 export const useChatStyles = makeStyles({
     root:{
-        //height:"100%",
         paddingTop: '80px',
-        marginBottom: '70px',
         backgroundColor: '#e1e3e5',
         "& .MuiTypography-h1":{
             fontWeight: 500,
@@ -119,6 +117,50 @@ export const useChatStyles = makeStyles({
         backgroundColor: '#fff',
         color: "#000",
         borderRadius: '10px',
+    },
+    //modal
+    infoContainer: {
+      backgroundColor: '#fff',
+      padding: '20px',
+      position: 'absolute',
+      zIndex: 4,
+    },
+    orderSubBlockSpaceBetween: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+    },
+    orderSubBlockSpaceBetween2: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+    },
+    inLineBlock2: {
+        width: '50%',
+        '@media (max-width: 800px)' : {
+            width: '100%',
+        },
+    },
+    inLineBlock: {
+        display: 'flex',
+        alignSelf: 'flex-end',
+        //width: '30%',
+        '@media (max-width: 800px)' : {
+            width: '100%',
+        },
+    },
+    wrapBox: {
+        '@media (max-width: 450px)' : {
+            width: '100%',
+            marginBottom: '20px',
+        },
+    },
+    wrapRight: {
+        textAlign: 'right',
+        '@media (max-width: 450px)' : {
+            textAlign: 'left',
+        },
     },
 
 })

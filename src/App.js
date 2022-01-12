@@ -45,7 +45,7 @@ function App() {
                 <Route path='notification' element={<NotificationPage />} />
                 <Route path={'chat'} element={<ChatPage />} />
             </Routes>
-            <Footer />
+            {location.pathname !== '/chat' && <Footer/>}
         </div>
     )
 }

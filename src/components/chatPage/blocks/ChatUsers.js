@@ -20,7 +20,7 @@ const ChatUsers = ({active, isGreaterThan900px, setHideChatUsers, setActive, set
         }
     }
     return (
-        <Box style={{overflowY: 'scroll', height: '100vh', backgroundColor: '#fff'}}>
+        <Box style={{overflowY: 'scroll', height: '83vh', backgroundColor: '#fff'}}>
             {usersData.map((item, index) =>
                 <>
                 <Box style={{backgroundColor: active === item.id && '#D7D7D7'}} onClick={() => chooseUser(item.id)} className={classes.userBlock}>
