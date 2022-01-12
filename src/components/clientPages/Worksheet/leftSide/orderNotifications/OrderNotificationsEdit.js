@@ -1,10 +1,9 @@
 import * as React from "react";
-import {Typography, Box, IconButton, FormControlLabel, Radio, RadioGroup} from "@mui/material";
+import {Box, FormControlLabel, IconButton, Radio, RadioGroup, Typography} from "@mui/material";
 
 import Card from "@mui/material/Card";
-import PenSvg from "../../../../../../src/assets/svg/Profile/PenSvg";
 import {FileSVG} from "../../../../../../src/assets/svg/Profile/FileSVG";
-import { useInfoCardStyles } from "../../../../../globalStyles/InfoCardStyles";
+import {useInfoCardStyles} from "../../../../../globalStyles/InfoCardStyles";
 
 const radio = {
     color: "#4B9A2D",
@@ -20,7 +19,7 @@ const OrderNotificationsEdit = ({notificationsOrder, setNotificationOrders}) => 
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
             <Box className={classes.orderSubBlockSpaceBetween}>
                 <Typography variant={"h6"}>Увидомления по заказам</Typography>             
-                    <IconButton>
+                    <IconButton onClick={() => setNotificationOrders(false)}>
                         <FileSVG color={'#808080'} />
                     </IconButton> 
             </Box>

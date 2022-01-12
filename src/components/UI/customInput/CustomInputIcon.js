@@ -6,7 +6,6 @@ import {makeStyles} from "@material-ui/core";
 
 export const useStyles = makeStyles({
     root: {
-        width: '100%',
         '& .MuiOutlinedInput-root': {
             '& fieldset': {
                 border: "1px solid #808080",
@@ -14,14 +13,12 @@ export const useStyles = makeStyles({
                 //height: '30px',
                 padding: '5px 5px',
             },
+
             '&:hover fieldset': {
                 border: "1px solid blue",
             },
             '&.Mui-focused fieldset': {
                 borderColor: 'gray',
-            },
-            '& .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input': {
-              padding: '10px',
             },
             "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
                 border: "1px solid #808080",
@@ -34,7 +31,8 @@ export const useStyles = makeStyles({
             //focus
             "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
                 border: "1px solid #808080",
-            }
+            },
+
         },
     },
     inputText: {
@@ -53,7 +51,6 @@ const CustomInputIcon = ({label,
                          handleChange,
                          touched,
                          error,
-                         textArea = false,
                          icon = false,
                          mb = 10,
                          width = '100%',
@@ -63,9 +60,9 @@ const CustomInputIcon = ({label,
     return (
             <TextField
                 variant={"outlined"}
-                multiline={textArea}
                 placeholder={placeholder}
                 InputProps={{
+                    style: {height: '45px'},
                     endAdornment: <InputAdornment position="start">{icon}</InputAdornment>,
                     startAdornment: <InputAdornment position="start">{iconRight}</InputAdornment>,
                 }}
@@ -74,8 +71,6 @@ const CustomInputIcon = ({label,
                 autoComplete={'off'}
                 value={value}
                 onChange={handleChange}
-                rows={2}
-                maxRows={4}
                 error={touched && Boolean(error)}
                 helperText={touched && error}
             />

@@ -49,7 +49,10 @@ export const useOrderAboutStyles = makeStyles({
         },
         "& .MuiSwitch-track": {
             backgroundColor: '#4B9A2D'
-        }
+        },
+        '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
+            height: '10px',
+        },
     },
     radio: {
         '&$checked': {

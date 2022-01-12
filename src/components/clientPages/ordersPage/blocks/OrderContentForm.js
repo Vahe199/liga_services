@@ -11,13 +11,14 @@ import Switch from '@mui/material/Switch';
 import CustomDatePicker from "../../../UI/datePicker/CustomDatePicker";
 import CustomInputIcon from "../../../UI/customInput/CustomInputIcon";
 import Button from "@mui/material/Button";
+import RangeDatePicker from "../../../UI/datePicker/RangeDatePicker";
 
 
 const OrderContentForm = ({setShowModal}) => {
     const classes = useOrderAboutStyles();
     return (
         <Formik
-            initialValues={{ payment_from: '', payment_to: '', agree: 'N', time_to: new Date(), time_from: new Date(), offer: '' }}
+            initialValues={{ payment_from: '', payment_to: '', agree: 'N',offer: '', time: [null, null] }}
             onSubmit={(values, action) => {
                 console.log(values, 'values')
                 setShowModal(true)
@@ -41,7 +42,7 @@ const OrderContentForm = ({setShowModal}) => {
                             divider={<Divider orientation="vertical" flexItem />}
                             spacing={4}
                         >
-                            <Box>
+                            <Box style={{padding: '0 10px'}}>
                                 <Typography variant={'h4'}>
                                     Стоимость услуги
                                 </Typography>
@@ -77,21 +78,15 @@ const OrderContentForm = ({setShowModal}) => {
                                     />
                                 </Box>
                             </Box>
-                            <Box>
+                            <Box style={{padding: '0 10px'}}>
                                 <Typography variant={'h4'}>Предлогать свои даты</Typography>
                                 <Box style={{display: 'flex', margin: '10px 0'}}>
                                     <Box style={{paddingRight: '10px'}}>
-                                        <CustomDatePicker
-                                            value={values.time_from}
-                                            fun={(val) => setFieldValue('time_from',val)}
-                                            name={'time_from'}
+                                        <RangeDatePicker
+                                            value={values.time}
+                                            fun={(newValue) => setFieldValue('time', newValue)}
                                         />
                                     </Box>
-                                    <CustomDatePicker
-                                        value={values.time_to}
-                                        name={'time_to'}
-                                        fun={(val) => setFieldValue('time_to',val)}
-                                    />
                                 </Box>
                             </Box>
                         </Stack>

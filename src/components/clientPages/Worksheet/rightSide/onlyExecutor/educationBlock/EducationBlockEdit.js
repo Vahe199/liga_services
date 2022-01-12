@@ -18,26 +18,13 @@ import {Formik} from "formik";
 
 const EducationBlockEdit = ({editEducationBlock, setEditEducationBlock}) => {
     const classes = useInfoCardStyles();
-    const [state, setState] = useState({
-        initial: false,
-        basic: false,
-        average: false,
-        higher: false,
-    });
 
-    const handleChange = (event) => {
-        setState({
-            ...state,
-            [event.target.name]: event.target.checked,
-        });
-    };
-
-    const { initial, basic, average, higher } = state;
     return (
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
             <Formik
                 initialValues={{ education_type: [], education_name: '', description: '', file: ''}}
                 onSubmit={async (values, action) => {
+                    setEditEducationBlock(false)
                     console.log(values, 'values')
                     action.resetForm()
                 }}
