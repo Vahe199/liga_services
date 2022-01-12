@@ -2,10 +2,11 @@ import React from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import {useMyOrdersStyles} from "../MyOrders/MyOrders";
-import {Divider, Typography} from "@mui/material";
 import CustomInput from "../../UI/customInput/CustomInput";
-import {Button, makeStyles} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core";
+import Typography from "@mui/material/Typography";
+import Divider from "@mui/material/Divider";
+import Button from "@mui/material/Button";
 
 const useStyles = makeStyles({
     root:{
