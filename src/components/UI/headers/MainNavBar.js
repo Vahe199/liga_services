@@ -33,6 +33,9 @@ const useNavStyles = makeStyles({
             textTransform: "none",
             color: '#fff',
             fontWeight: 500,
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
         },
         "& .MuiButton-outlined": {
             background: "#445E77",
@@ -40,6 +43,9 @@ const useNavStyles = makeStyles({
             color: '#fff',
             fontWeight: 500,
             borderRadius: '10px',
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
             "&:hover": {
                 background: '#6585a5 !important',
             }
