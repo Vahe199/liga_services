@@ -1,14 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Typography} from "@mui/material";
 import Box from "@mui/material/Box";
-import {messages} from "../../../utils/data/chat/messages";
 import {useChatStyles} from "../../../globalStyles/ChatStyles";
-import InfoOrder from "./InfoOrder";
 
 
-const ChatContent = () => {
+const ChatContent = ({messagesData, chatRef}) => {
 
     const classes = useChatStyles();
+
+    useEffect(() => {
+        chatRef.current.scrollIntoView();
+        console.log(chatRef)
+    }, [messagesData])
 
     const MessageText = ({item}) => {
         return (
@@ -20,7 +23,7 @@ const ChatContent = () => {
 
     return (
         <Box style={{overflowY: 'scroll', height: '83vh', backgroundColor: '#e1e3e5', position: 'relative'}}>
-            {messages.map((item, index) =>
+            {messagesData.map((item, index) =>
                 <Box style={{margin: '20px 0'}} key={index}>
                     <Box className={classes.container} style={{display: 'flex', justifyContent: item.mine ? 'flex-end' : 'flex-start'}}>
                         {/*{item.mine || <Box>*/}
@@ -41,6 +44,9 @@ const ChatContent = () => {
                     </Box>
                 </Box>
             )}
+            <Box ref={chatRef} >
+
+            </Box>
         </Box>
     );
 }

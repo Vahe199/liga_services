@@ -125,6 +125,16 @@ export const useChatStyles = makeStyles({
       position: 'absolute',
       zIndex: 4,
     },
+    headerContainer: {
+        backgroundColor: '#fff',
+        padding: '2px',
+        position: 'absolute',
+        zIndex: 5,
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        top: '67px',
+    },
     orderSubBlockSpaceBetween: {
         display: 'flex',
         justifyContent: 'space-between',

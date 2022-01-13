@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Box, Typography} from "@mui/material";
 import CustomSelect from "../../../../../UI/selects/CustomSelect";
 import {DelBtnSvg} from "../../../../../../assets/svg/Profile/DelBtnSvg";

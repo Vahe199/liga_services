@@ -20,7 +20,6 @@ import {Divider, Drawer, List, ListItem, ListItemText, Stack} from "@mui/materia
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import {useDispatch, useSelector} from "react-redux";
 import {changeStatus} from "../../../store/reducers/AuthReducer";
-import NotificationPage from '../../notificationPages/NotificationPage';
 
 const useNavStyles = makeStyles({
     root: {

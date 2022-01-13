@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Box from "@mui/material/Box";
 import {Button, Divider, IconButton, TextField, Typography} from "@mui/material";
 import Rating from "@mui/material/Rating";
@@ -7,7 +7,6 @@ import {useMyOrdersStyles} from "../MyOrders";
 import MessengerSvg from "../../../../assets/svg/MessengerSvg";
 import Avatar from "@mui/material/Avatar";
 import {OnlineSvg} from "../../../../assets/svg/Profile/OnlineSvg";
-import {useSelector} from "react-redux";
 
 
 const OrderBlock = ({order}) => {

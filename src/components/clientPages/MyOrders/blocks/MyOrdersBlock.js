@@ -1,8 +1,7 @@
-import * as React from "react";
+import React, {useEffect, useState} from "react";
 import {Divider, IconButton, Typography} from "@mui/material";
 import {ArrowSvg} from "../../../../assets/svg/ArrowSvg";
 import Box from "@mui/material/Box";
-import {useEffect, useState} from "react";
 
 
 const MyOrdersBlock = ({setShowForm}) => {
