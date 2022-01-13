@@ -3,10 +3,10 @@ import {useChatStyles} from "../../../globalStyles/ChatStyles";
 import Box from "@mui/material/Box";
 import {Typography} from "@mui/material";
 
-const InfoOrder = () => {
+const InfoOrder = ({showChatHeader}) => {
     const classes = useChatStyles();
     return (
-        <Box className={classes.infoContainer}>
+        <Box style={{top: showChatHeader && '132px'}} className={classes.headerContainer} className={classes.infoContainer}>
             <Box className={classes.orderSubBlockSpaceBetween} style={{marginBottom: '20px'}}>
                 <Box>
                     <Typography variant={'h1'}>Описание заказа</Typography>

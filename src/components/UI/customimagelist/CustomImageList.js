@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import { makeStyles } from "@material-ui/core";
+import {makeStyles} from "@material-ui/core";
 
 
 export const useStyles = makeStyles({

@@ -1,35 +1,41 @@
 import React from 'react';
 import Box from "@mui/material/Box";
 import {usersData} from "../../../utils/data/chat/usersData";
-import {AddAvatar} from "../../UI/modals/Avatar/AddAvatar";
 import {Typography} from "@mui/material";
-import InfoSVG from "../../../assets/svg/Profile/InfoSVG";
 import Rating from "@mui/material/Rating";
 import Avatar from "@mui/material/Avatar";
-import CustomDivider from "../../UI/customDivider/CustomDivider";
 import {useChatStyles} from "../../../globalStyles/ChatStyles";
 import Divider from "@mui/material/Divider";
 
-const ChatUsers = ({active, isGreaterThan900px, setHideChatUsers, setActive, setIsGreaterThan900px, hideChatUsers}) => {
+const ChatUsers = ({active,
+                    setInfoUser,
+                    isGreaterThan900px,
+                    setShowChatHeader,
+                    setHideChatUsers,
+                    setActive,
+                    setIsGreaterThan900px}) => {
+
     const classes = useChatStyles();
-    const chooseUser = (id) => {
-        setActive(id)
+    const chooseUser = (item) => {
+        setActive(item.id)
         setIsGreaterThan900px(true)
         if(!isGreaterThan900px){
+            setInfoUser(item.name)
             setHideChatUsers(true)
+            setShowChatHeader(true)
         }
     }
     return (
         <Box style={{overflowY: 'scroll', height: '83vh', backgroundColor: '#fff'}}>
             {usersData.map((item, index) =>
                 <div key={index}>
-                <Box style={{backgroundColor: active === item.id && '#D7D7D7'}} onClick={() => chooseUser(item.id)} className={classes.userBlock}>
+                <Box style={{backgroundColor: active === item.id && '#D7D7D7'}} onClick={() => chooseUser(item)} className={classes.userBlock}>
                     <Avatar style={{marginRight: 10, width: '60px', height: '60px'}}/>
                     <Box>
                         <div  style={{display: "flex", alignItems: "center"}}>
                             <Typography variant={"h1"}>Номер и описание заказа</Typography>
                         </div>
-                        <Typography variant={"h4"}>Имя исполнителя</Typography>
+                        <Typography variant={"h4"}>{item.name}</Typography>
                         <Box style={{display: "flex", alignItems: "center", flexWrap: 'wrap'}}>
                             <Rating style={{color: "#FFF066"}} size={'small'} name="half-rating-read" defaultValue={4}
                                     readOnly precision={0.5}/>

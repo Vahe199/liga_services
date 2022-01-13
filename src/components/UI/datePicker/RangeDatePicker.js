@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -8,7 +7,6 @@ import Box from '@mui/material/Box';
 import {useStyles} from "./CustomDatePicker";
 import {IconButton, InputAdornment} from "@mui/material";
 import Calendar from "../../../assets/image/Calendar.png";
-import moment from "moment";
 
 const RangeDatePicker = ({value, name, fun, touched, errors}) => {
     //const [value, setValue] = React.useState([null, null]);

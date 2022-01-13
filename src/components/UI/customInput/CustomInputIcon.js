@@ -1,6 +1,5 @@
 import React from 'react';
 import {TextField} from "@mui/material";
-import Box from "@mui/material/Box";
 import InputAdornment from '@mui/material/InputAdornment';
 import {makeStyles} from "@material-ui/core";
 

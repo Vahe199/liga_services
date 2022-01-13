@@ -1,7 +1,6 @@
 import React from 'react';
 import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
 import Card from "@mui/material/Card";
-import CardTitle from "../../../../../UI/titles/CardTitle";
 import {Box, Button, Typography} from "@mui/material";
 import CustomImageList from "../../../../../UI/customimagelist/CustomImageList";
 import {imageData} from "../../../../../../utils/data/imagedata/ImageData";
