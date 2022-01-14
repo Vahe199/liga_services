@@ -32,7 +32,7 @@ const ChatPage = () => {
     const SendMessage = () => {
         if(value !== ''){
             setMessagesData((prev) => [...prev, {
-                id: Math.random(),
+                id: new Date(),
                 text: value,
                 mine: true,
                 file: false,

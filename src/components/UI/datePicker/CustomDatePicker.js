@@ -61,7 +61,7 @@ const CustomDatePicker = ({value, name, fun, touched, errors}) => {
                         fun(date)
                     }}
                     renderInput={(params) => <TextField
-                         error={ Boolean(touched && errors)}
+                        error={ Boolean(touched && errors)}
                         helperText={touched && errors}
                         autoComplete={'off'}
                         {...params}

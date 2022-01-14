@@ -67,7 +67,7 @@ const CustomSelect = ({label, handleChange, placeholder, value, name, touched, e
                     onChange={handleChange}
                     value={value}
                     name={name}
-                    error={touched && Boolean(error)}
+                    error={Boolean(touched && error)}
                     defaultValue={placeholder}
                 >
                     <MenuItem disabled value={placeholder}>{placeholder}</MenuItem>

@@ -1,5 +1,5 @@
 export const messages = [{
-        id: Math.random(),
+        id: new Date(),
         text: 'Спасибо. Опишите свои симптомы.',
         mine: true,
         file: true,
@@ -7,7 +7,7 @@ export const messages = [{
         video: false,
     },
         {
-            id: Math.random(),
+            id:  new Date(),
             text: 'Головная боль, тошнота, головокружение.',
             mine: false,
             file: false,
@@ -15,7 +15,7 @@ export const messages = [{
             video: false,
         },
         {
-            id: Math.random(),
+            id:  new Date(),
             text: 'Хорошо. Вы мобли бы прислать фотографию или скан последних анализов?',
             mine: true,
             file: false,
@@ -23,7 +23,7 @@ export const messages = [{
             video: false,
         },
         {
-            id: Math.random(),
+            id:  new Date(),
             text: 'vsvjdsnvjsdnvjd',
             mine: false,
             file: false,
@@ -31,7 +31,7 @@ export const messages = [{
             video: false,
         },
         {
-            id: Math.random(),
+            id: new Date(),
             text: 'vdsmvdvnosjvndk',
             mine: false,
             file: true,
@@ -39,7 +39,7 @@ export const messages = [{
             video: false,
         },
         {
-            id: Math.random(),
+            id:  new Date(),
             text: 'Хорошо. Вы мобли бы прислать фотографию или скан последних анализов?',
             mine: true,
             file: false,
@@ -47,7 +47,7 @@ export const messages = [{
             video: false,
         },
         {
-            id: Math.random(),
+            id:  new Date(),
             text: 'vsvjdsnvjsdnvjd',
             mine: false,
             file: false,
@@ -55,7 +55,7 @@ export const messages = [{
             video: false,
         },
         {
-            id: Math.random(),
+            id:  new Date(),
             text: 'vdsmvdvnosjvndk',
             mine: false,
             file: true,
@@ -63,7 +63,7 @@ export const messages = [{
             video: false,
         },
         {
-            id: Math.random(),
+            id:  new Date(),
             text: 'Головная боль, тошнота, головокружение.',
             mine: false,
             file: false,
@@ -71,7 +71,7 @@ export const messages = [{
             video: false,
         },
         {
-            id: Math.random(),
+            id: new Date(),
             text: 'Хорошо. Вы мобли бы прислать фотографию или скан последних анализов?',
             mine: true,
             file: false,
@@ -79,7 +79,7 @@ export const messages = [{
             video: false,
         },
         {
-            id: Math.random(),
+            id:  new Date(),
             text: 'vsvjdsnvjsdnvjd',
             mine: false,
             file: false,
@@ -87,7 +87,7 @@ export const messages = [{
             video: true,
         },
         {
-            id: Math.random(),
+            id:  new Date(),
             text: 'vdsmvdvnosjvndk',
             mine: false,
             file: true,
@@ -95,7 +95,7 @@ export const messages = [{
             video: false,
         },
         {
-            id: Math.random(),
+            id:  new Date(),
             text: 'Хорошо. Вы мобли бы прислать фотографию или скан последних анализов?',
             mine: true,
             file: false,
@@ -103,7 +103,7 @@ export const messages = [{
             video: false,
         },
         {
-            id: Math.random(),
+            id:  new Date(),
             text: 'vsvjdsnvjsdnvjd',
             mine: false,
             file: false,
@@ -111,7 +111,7 @@ export const messages = [{
             video: true,
         },
         {
-            id: Math.random(),
+            id:  new Date(),
             text: 'vdsmvdvnosjvndk',
             mine: false,
             file: true,
@@ -119,7 +119,7 @@ export const messages = [{
             video: false,
         },
         {
-            id: Math.random(),
+            id:  new Date(),
             text: 'vdsmvdvnosjvndk',
             mine: true,
             file: true,

@@ -36,11 +36,11 @@ const ChatContent = ({messagesData, chatRef}) => {
                         {/*        </Typography>*/}
                         {/*    </Box>*/}
                         {/*</Box>}*/}
-                        {item.mine && <Typography className={classes.textDate} style={{marginRight: 5}}>12:48</Typography>}
+                        {item.mine && <Typography className={classes.textDate} style={{marginRight: 5}}>{item?.id ? `${item.id?.getHours()} : ${item.id?.getMinutes()}` : ''}</Typography>}
                         <Box className={classes.messageBlock} style={{backgroundColor: item.mine ? '#445E77' : '#D0D0D0'}}>
                             <MessageText item={item} />
                         </Box>
-                        {item.mine || <Typography className={classes.textDate} style={{marginLeft: 5}}>12:48</Typography>}
+                        {item.mine || <Typography className={classes.textDate} style={{marginLeft: 5}}>{item?.id ? `${item.id?.getHours()} : ${item.id?.getMinutes()}` : ''}</Typography>}
                     </Box>
                 </Box>
             )}
