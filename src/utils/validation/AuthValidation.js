@@ -5,10 +5,10 @@ export const AuthValidation = object().shape({
         .required('Обязательное поле')
         .min(4, 'Слишком короткый')
         .max(20, 'Слишком длинный'),
-    phone: number()
+    phonenumber: number()
         .typeError('Толко цифры')
-        .min(3, 'Номер телефона недействителен')
-        .max(18, 'Номер телефона недействителен'),
+        .min(10, 'Номер телефона недействителен')
+        .max(11, 'Номер телефона недействителен'),
     email: string()
         .required('Обязательное поле')
         .min(3, 'Слишком короткый')
@@ -18,7 +18,7 @@ export const AuthValidation = object().shape({
         .required('Обязательное поле')
         .min(4, 'Слишком короткый')
         .max(20, 'Слишком длинный'),
-    confirmPassword: string()
+    password_confirmation: string()
         .required('Обязательное поле')
         .oneOf([ref("password")], "пароль не совпадает")
 });

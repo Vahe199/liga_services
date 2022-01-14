@@ -7,10 +7,13 @@ import Button from "@mui/material/Button";
 import {useStyles} from "../../../globalStyles/AuthStyles";
 import {AuthValidation} from "../../../utils/validation/AuthValidation";
 import CustomInput from "../../UI/customInput/CustomInput";
+import {useDispatch} from "react-redux";
+import {Registration} from "../../../store/actions/AuthActions";
 
 
 const RegistrationPage = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
     return (
         <Box className={classes.root}>
             <Box>
@@ -19,10 +22,11 @@ const RegistrationPage = () => {
             <Box className={classes.container}>
                 <p className={classes.title}>Пройти регистрацию</p>
                 <Formik
-                    initialValues={{ name: '', phone: '', email: '', password: '', confirmPassword: '' }}
-                    validationSchema={AuthValidation}
-                    onSubmit={async (values, action) => {
+                    initialValues={{ name: '', phonenumber: '', email: '', password: '', password_confirmation: '' }}
+                    //validationSchema={AuthValidation}
+                    onSubmit={ (values, action) => {
                         console.log(values, 'values')
+                        dispatch(Registration(values))
                         action.resetForm()
                     }}
                 >
@@ -49,11 +53,11 @@ const RegistrationPage = () => {
                                 <CustomInput
                                     label={'Телефон'}
                                     width={'70%'}
-                                    name={'phone'}
-                                    value={values.phone}
+                                    name={'phonenumber'}
+                                    value={values.phonenumber}
                                     handleChange={handleChange}
-                                    touched={touched.phone}
-                                    error={errors.phone}
+                                    touched={touched.phonenumber}
+                                    error={errors.phonenumber}
                                     mb={0}
                                 />
                                 <CustomInput
@@ -79,11 +83,11 @@ const RegistrationPage = () => {
                                 <CustomInput
                                     label={'Подтвердить пароль*'}
                                     width={'70%'}
-                                    name={'confirmPassword'}
-                                    value={values.confirmPassword}
+                                    name={'password_confirmation'}
+                                    value={values.password_confirmation}
                                     handleChange={handleChange}
-                                    touched={touched.confirmPassword}
-                                    error={errors.confirmPassword}
+                                    touched={touched.password_confirmation}
+                                    error={errors.password_confirmation}
                                     mb={0}
                                 />
                                  <Box className={classes.footer}>

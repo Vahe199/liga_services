@@ -13,3 +13,18 @@ export const Login = createAsyncThunk(
         }
     }
 )
+
+export const Registration = createAsyncThunk(
+    'auth/registration',
+    async (data, thunkAPI) => {
+        debugger
+        try{
+            const response = await axios.post(`https://api.nver.am/api/v1/user/register${data}`)
+            return response
+        }
+        catch (e) {
+            console.log(e)
+            //return thunkAPI.rejectWithValue('404 error')
+        }
+    }
+)
