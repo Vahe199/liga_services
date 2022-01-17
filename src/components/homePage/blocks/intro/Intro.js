@@ -118,7 +118,7 @@ const Intro = ({ categoriesRef }) => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const {auth} = useSelector(state => state.auth);
-
+  console.log(auth)
   const goToChat = () => {
     if(auth){
       navigate('/chat')

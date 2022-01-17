@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {FormControlLabel,  Typography} from "@mui/material";
 import Checkbox from '@mui/material/Checkbox';
 import img from '../../../assets/image/authImg.jpg';
@@ -15,6 +15,7 @@ import {Login} from "../../../store/actions/AuthActions";
 const LoginPage = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const [remember, setRemember] = useState(false)
     return (
         <Box className={classes.root}>
             <Box>
@@ -23,12 +24,11 @@ const LoginPage = () => {
             <Box className={classes.container}>
                 <p className={classes.title}>Вход</p>
                 <Formik
-                    initialValues={{ email: '', password: '', remember: false }}
-                    validationSchema={LoginValidation}
+                    initialValues={{ email: '', password: ''}}
+                    // validationSchema={LoginValidation}
                     onSubmit={(values, action) => {
-                        console.log(values, 'values')
-                        dispatch(Login(values))
-                        action.resetForm()
+                         dispatch(Login(values))
+                        // action.resetForm()
                     }}
                 >
                     {({
@@ -62,8 +62,11 @@ const LoginPage = () => {
                                 />
                                 <FormControlLabel
                                     className={classes.checkbox}
-                                    control={<Checkbox onChange={handleChange}
-                                                       checked={values.remember}
+                                    control={<Checkbox onChange={(e)=> {
+                                        setRemember(!remember)
+                                    }}
+                                                        checked={remember}
+                                                        value={remember}
                                                        name={'remember'}  />}
                                     label="Запомнить"
                                     labelPlacement="end"
