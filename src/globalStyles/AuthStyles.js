@@ -47,6 +47,19 @@ export const useStyles = makeStyles({
                 background: '#6585a5 !important',
             }
         },
+        "& .MuiButton-contained": {
+            //background: "#445E77",
+            textTransform: "none",
+            //color: '#fff',
+            fontWeight: 500,
+            borderRadius: '10px',
+            width: '160px',
+            marginBottom: '10px',
+            "&:hover": {
+                //background: '#6585a5 !important',
+            }
+        },
+
     },
     container: {
         display: 'flex',

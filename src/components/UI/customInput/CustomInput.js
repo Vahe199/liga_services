@@ -10,6 +10,9 @@ export const useStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column',
         marginBottom: '18px',
+        '& .MuiFormHelperText-root': {
+            color: 'red'
+        },
         '& .MuiOutlinedInput-root': {
             '& fieldset': {
                 border: "1px solid #808080",
@@ -85,7 +88,7 @@ const CustomInput = ({label,
                 style={{width: '100%'}}
                 onChange={handleChange}
                 rows={textArea ? 2 : 0}
-                // error={Boolean(touched && error)}
+                error={Boolean(touched && error)}
                 helperText={touched && error}
             />
         </Box>

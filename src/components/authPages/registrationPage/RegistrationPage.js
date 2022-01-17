@@ -1,23 +1,42 @@
-import React from 'react';
-import { Typography} from "@mui/material";
+import React, {useState} from 'react';
+import {Typography} from "@mui/material";
 import img from '../../../assets/image/authImg.jpg';
 import Box from "@mui/material/Box";
-import { Formik } from "formik";
-import Button from "@mui/material/Button";
+import {Formik} from "formik";
 import {useStyles} from "../../../globalStyles/AuthStyles";
 import {AuthValidation} from "../../../utils/validation/AuthValidation";
 import CustomInput from "../../UI/customInput/CustomInput";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Registration} from "../../../store/actions/AuthActions";
+import Toaster from "../../UI/toaster/Toaster";
+import BlueButton from "../../UI/CustomButtons/BlueButton";
+import {useNavigate} from "react-router-dom";
 
 
 const RegistrationPage = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const {message, errorAuth, loadAuth} = useSelector(state => state.auth);
+
+    //toaster
+    const [openToaster, setOpenToaster] = useState(false);
+
+    // useEffect(() => {
+    //     console.log(message.message, error, openToaster)
+    // }, [message.message, error, openToaster])
+
     return (
         <Box className={classes.root}>
+            <Box style={{position: 'absolute'}}>
+                <Toaster open={openToaster}
+                         message={message.message}
+                         error={errorAuth}
+                         setOpen={setOpenToaster} />
+            </Box>
             <Box>
-                <img src={img} className={classes.img} />
+                <img alt={'photo'} src={img} className={classes.img} />
             </Box>
             <Box className={classes.container}>
                 <p className={classes.title}>Пройти регистрацию</p>
@@ -26,17 +45,14 @@ const RegistrationPage = () => {
                     password_confirmation
 
                     initialValues={{ name: '', phonenumber: '', email: '', password: '', password_confirmation: '' }}
-                    //validationSchema={AuthValidation}
-                    onSubmit={ (values, action) => {
-                        // console.log(values, 'values')
-                        let formData = new FormData();
-                        Object.entries(values).forEach(([key, value]) => {
-                            formData.append(key, value)
-                        })
-
-                        dispatch(Registration(values))
-                        //console.log(formData, 'formData')
-                        // action.resetForm()
+                    validationSchema={AuthValidation}
+                    onSubmit={ async (values, action) => {
+                        await dispatch(Registration(values))
+                        setOpenToaster(true)
+                        if(!errorAuth){
+                            navigate('/')
+                        }
+                        action.resetForm()
                     }}
                 >
                     {({
@@ -44,7 +60,6 @@ const RegistrationPage = () => {
                           errors,
                           touched,
                           handleChange,
-                          handleBlur,
                           handleSubmit,
                       }) => (
                         <form onSubmit={handleSubmit}>
@@ -100,7 +115,7 @@ const RegistrationPage = () => {
                                     mb={0}
                                 />
                                  <Box className={classes.footer}>
-                                    <Button variant={'outlined'} onClick={handleSubmit}>Регистрация</Button>
+                                    <BlueButton load={loadAuth} label={'Регистрация'} action={handleSubmit} />
                                     <Typography style={{fontSize: '15px', textAlign: 'center'}} color={'#4B9A2D'}>Для завершения регистрации, вам на почту выслана ссылка, пройдите по ссылке</Typography>
                                 </Box>
                             </Box>

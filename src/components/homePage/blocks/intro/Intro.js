@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
-import { Typography } from "@mui/material";
 import { makeStyles } from "@material-ui/core";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
@@ -10,6 +9,7 @@ import { GoToChatSvg } from "../../../../assets/svg/intro/GoToChatSvg";
 import ModalNewTask from "../../../UI/modals/ModalNewTask";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
+import Typography from "@mui/material/Typography";
 
 export const useStyles = makeStyles({
   title: {

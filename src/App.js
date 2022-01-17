@@ -1,9 +1,9 @@
 import './App.css';
 import HomePage from "./components/homePage/HomePage";
-import {Route, Routes, useLocation} from "react-router-dom";
+import {Navigate, Route, Routes, useLocation} from "react-router-dom";
 import LoginPage from "./components/authPages/loginPage/LoginPage";
 import RegistrationPage from "./components/authPages/registrationPage/RegistrationPage";
-import React from "react";
+import React, {useEffect} from "react";
 import NotificationPage from './components/notificationPages/NotificationPage';
 import LogoBlock from "./components/UI/headers/LogoBlock";
 import Container from "@mui/material/Container";
@@ -21,20 +21,20 @@ import BalancePage from "./components/clientPages/balancePage/BalancePage";
 
 function App() {
     const location = useLocation();
-    const {auth} = useSelector(state => state.auth);
-    const conditionForFooter = location.pathname !== '/chat' || location.pathname !== '/login' || location.pathname !== '/registration';
+    const {authStatus, auth} = useSelector(state => state.auth);
+
 
 
     return (<div style={{overflow:"hidden"}}>
-            {location.pathname === '/login' || location.pathname === '/registration' ?'' : <Container maxWidth={'xl'}>
+            {location.pathname === '/login' || location.pathname === '/registration' ? '' : <Container maxWidth={'xl'}>
                 {auth ? <MainNavBar /> : <LogoBlock/>}
             </Container>}
 
             <Routes>
                 <Route path='/' element={<HomePage />} />
                 {/*AuthPages*/}
-                <Route path='registration' element={<RegistrationPage />} />
-                <Route path='login' element={<LoginPage />} />
+                <Route path='registration' element={auth ? <Navigate to='/' /> : <RegistrationPage />} />
+                <Route path='login' element={auth ? <Navigate to='/' /> : <LoginPage />} />
                 {/*NavBar*/}
                 <Route path='workSheet' element={<Worksheet />}/>
                 <Route path={"support"} element={<Support />}/>

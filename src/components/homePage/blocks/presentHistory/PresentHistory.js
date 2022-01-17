@@ -2,8 +2,8 @@ import React from 'react';
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import {Typography} from "@mui/material";
 import {makeStyles} from "@material-ui/core";
+import Typography from "@mui/material/Typography";
 
 const useStyles = makeStyles({
     titleReview: {

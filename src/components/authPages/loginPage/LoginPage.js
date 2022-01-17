@@ -1,21 +1,23 @@
 import React, {useState} from 'react';
-import {FormControlLabel,  Typography} from "@mui/material";
+import {FormControlLabel, Typography} from "@mui/material";
 import Checkbox from '@mui/material/Checkbox';
 import img from '../../../assets/image/authImg.jpg';
 import Box from "@mui/material/Box";
 import {Formik} from "formik";
-import Button from "@mui/material/Button";
 import {useStyles} from "../../../globalStyles/AuthStyles";
-import {LoginValidation} from "../../../utils/validation/LoginValidation";
 import CustomInput from "../../UI/customInput/CustomInput";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {Login} from "../../../store/actions/AuthActions";
+import BlueButton from "../../UI/CustomButtons/BlueButton";
+import {useNavigate} from "react-router-dom";
 
 
 const LoginPage = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [remember, setRemember] = useState(false)
+    const {load, error} = useSelector(state => state.auth)
     return (
         <Box className={classes.root}>
             <Box>
@@ -28,7 +30,10 @@ const LoginPage = () => {
                     // validationSchema={LoginValidation}
                     onSubmit={(values, action) => {
                          dispatch(Login(values))
-                        // action.resetForm()
+                        action.resetForm()
+                        if(!error){
+                            navigate('/')
+                        }
                     }}
                 >
                     {({
@@ -72,7 +77,7 @@ const LoginPage = () => {
                                     labelPlacement="end"
                                 />
                                 <Box className={classes.footer}>
-                                    <Button variant={'outlined'}  onClick={handleSubmit}>Вход</Button>
+                                    <BlueButton action={handleSubmit} load={load} label={'Вход'} />
                                     <Typography style={{fontSize: '15px', textAlign: 'center'}} color={'#fff'}>Для завершения регистрации, вам на почту выслана ссылка, пройдите по ссылке</Typography>
                                 </Box>
                             </Box>

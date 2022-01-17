@@ -5,19 +5,20 @@ const authSlice = createSlice({
     name: "auth",
     initialState: {
         auth: false,
+        authStatus: false,
         status: 'executor',
-        user:{},
-        load:false,
-        error:false,
-        messages:""
+        user: {},
+        load: false,
+        error: '',
+        message: "",
+        loadAuth: true,
+        errorAuth: '',
+
     },
     reducers: {
         changeStatus: (state, action) => {
             state.status = action.payload
         },
-        logIn:() =>{
-
-        }
     },
     extraReducers: {
         [Login.pending]: (state) => {
@@ -33,19 +34,19 @@ const authSlice = createSlice({
             state.load = false
             state.error = action.payload
             state.auth = false
-
         },
         [Registration.pending]: (state) => {
-            state.load = true
+            state.loadAuth = true
         },
         [Registration.fulfilled]: (state, action) => {
-            state.load = false
-            state.messages = action.payload
-            state.error = false
+            state.loadAuth = false
+            state.message = action.payload
+            state.errorAuth = false
         },
         [Registration.rejected]: (state, action) => {
-            state.load = false
-            state.error = action.payload
+            state.loadAuth = false
+            state.errorAuth = action.payload
+            state.message = ''
         }
     }
 
