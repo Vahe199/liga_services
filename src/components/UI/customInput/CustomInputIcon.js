@@ -5,6 +5,9 @@ import {makeStyles} from "@material-ui/core";
 
 export const useStyles = makeStyles({
     root: {
+        '& .MuiFormHelperText-root': {
+            color: 'red'
+        },
         '& .MuiOutlinedInput-root': {
             '& fieldset': {
                 border: "1px solid #808080",
@@ -70,7 +73,7 @@ const CustomInputIcon = ({label,
                 autoComplete={'off'}
                 value={value}
                 onChange={handleChange}
-                 error={Boolean(touched && error)}
+                error={Boolean(touched && error)}
                 helperText={touched && error}
             />
     )

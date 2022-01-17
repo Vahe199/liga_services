@@ -1,14 +1,14 @@
-import {object, string, ref, number} from "yup";
+import {object, ref, string} from "yup";
 
 export const AuthValidation = object().shape({
     name: string()
         .required('Обязательное поле')
         .min(4, 'Слишком короткый')
         .max(20, 'Слишком длинный'),
-    phonenumber: number()
-        .typeError('Толко цифры')
-        .min(10, 'Номер телефона недействителен')
-        .max(11, 'Номер телефона недействителен'),
+    phonenumber: string()
+        .matches(/^[0-9]+$/, "Толко число")
+        .min(11, 'Номер телефона должен быть 11 символов')
+        .max(11, 'Номер телефона должен быть 11 символов'),
     email: string()
         .required('Обязательное поле')
         .min(3, 'Слишком короткый')
