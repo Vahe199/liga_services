@@ -1,6 +1,18 @@
 import axios from "axios";
 import {createAsyncThunk} from "@reduxjs/toolkit";
-
+const instance = axios.create({
+    baseURL: 'https://api.nver.am/api/',
+    // headers: {
+    //     "Content-Type": "application/json",
+    //     "Accept":"*/*"
+    //     // 'Authorization': `Bearer ${null}`
+    // }
+    headers: {
+        'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8;application/json',
+        'Access-Control-Allow-Origin' : '*',
+        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    }
+})
 export const Login = createAsyncThunk(
     'auth/login',
     async (data, thunkAPI) => {
@@ -19,12 +31,11 @@ export const Registration = createAsyncThunk(
     async (data, thunkAPI) => {
         debugger
         try{
-            const response = await axios.post(`https://api.nver.am/api/v1/user/register${data}`)
+            const response = await instance.post(`v1/user/register`, data)
             return response
-        }
+            }
         catch (e) {
-            console.log(e)
-            //return thunkAPI.rejectWithValue('404 error')
+            console.log(e,"register err")
         }
-    }
+        }
 )

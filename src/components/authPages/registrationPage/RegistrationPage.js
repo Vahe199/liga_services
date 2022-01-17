@@ -22,12 +22,21 @@ const RegistrationPage = () => {
             <Box className={classes.container}>
                 <p className={classes.title}>Пройти регистрацию</p>
                 <Formik
+                    phonenumber
+                    password_confirmation
+
                     initialValues={{ name: '', phonenumber: '', email: '', password: '', password_confirmation: '' }}
                     //validationSchema={AuthValidation}
                     onSubmit={ (values, action) => {
-                        console.log(values, 'values')
+                        // console.log(values, 'values')
+                        let formData = new FormData();
+                        Object.entries(values).forEach(([key, value]) => {
+                            formData.append(key, value)
+                        })
+
                         dispatch(Registration(values))
-                        action.resetForm()
+                        //console.log(formData, 'formData')
+                        // action.resetForm()
                     }}
                 >
                     {({

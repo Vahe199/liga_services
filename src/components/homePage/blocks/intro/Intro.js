@@ -9,6 +9,7 @@ import { GreenArrowSvg } from "../../../../assets/svg/intro/GreenArrowSvg";
 import { GoToChatSvg } from "../../../../assets/svg/intro/GoToChatSvg";
 import ModalNewTask from "../../../UI/modals/ModalNewTask";
 import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 export const useStyles = makeStyles({
   title: {
@@ -116,6 +117,15 @@ const Intro = ({ categoriesRef }) => {
   const classes = useStyles();
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
+  const {auth} = useSelector(state => state.auth);
+
+  const goToChat = () => {
+    if(auth){
+      navigate('/chat')
+    }else{
+      navigate('/login')
+    }
+  }
 
   const scrollToCategories = () => {
     categoriesRef.current.scrollIntoView();
@@ -163,7 +173,7 @@ const Intro = ({ categoriesRef }) => {
       </Grid>
       <Grid style={{ position: "relative" }} item xs={12} md={6}>
         <img src={LargeLogo} alt={"logo"} className={classes.img} />
-        <Box onClick={() => navigate('chat')} className={classes.chat}>
+        <Box onClick={goToChat} className={classes.chat}>
           <GoToChatSvg />
         </Box>
       </Grid>
