@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit"
-import {Login, Registration} from "../actions/AuthActions";
+import {Login, Logouts, Registration} from "../actions/AuthActions";
 
 const authSlice = createSlice({
     name: "auth",
@@ -21,20 +21,6 @@ const authSlice = createSlice({
         },
     },
     extraReducers: {
-        [Login.pending]: (state) => {
-            state.load = true
-        },
-        [Login.fulfilled]: (state, action) => {
-            state.load = false
-            state.user = action.payload.user
-            state.error = false
-            state.auth = true
-        },
-        [Login.rejected]: (state, action) => {
-            state.load = false
-            state.error = action.payload
-            state.auth = false
-        },
         [Registration.pending]: (state) => {
             state.loadAuth = true
         },
@@ -47,7 +33,39 @@ const authSlice = createSlice({
             state.loadAuth = false
             state.errorAuth = action.payload
             state.message = ''
-        }
+        },
+        [Login.pending]: (state) => {
+            state.load = true
+        },
+        [Login.fulfilled]: (state, action) => {
+            state.load = false
+            state.user = {}
+            state.error = false
+            state.auth = false
+        },
+        [Login.rejected]: (state, action) => {
+            state.load = false
+            state.error = action.payload
+            state.auth = false
+        },
+        [Logouts.pending]: (state) => {
+            state.load = true
+        },
+        [Logouts.fulfilled]: (state, action) => {
+            state.load = false
+            state.user = action.payload.user
+            state.error = false
+            state.auth = true
+            state.authStatus = false
+            state.status = 'executor'
+            state.smessage = action.payload
+        },
+        [Logouts.rejected]: (state, action) => {
+            state.load = false
+            state.error = action.payload
+            state.auth = false
+        },
+
     }
 
 })

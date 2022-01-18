@@ -35,17 +35,17 @@ function App() {
                 <Route path='registration' element={auth ? <Navigate to='/' /> : <RegistrationPage />} />
                 <Route path='login' element={auth ? <Navigate to='/' /> : <LoginPage />} />
                 {/*NavBar*/}
-                <Route path='workSheet' element={<Worksheet />}/>
-                <Route path={"support"} element={<Support />}/>
-                <Route path={"MyOrders"} element={<MyOrders />}/>
-                <Route path={"Balance"} element={<BalancePage />}/>
-                <Route path={"Orders"} element={<OrdersPage />}/>
-                <Route path={'orderAboutPage/:id'} element={<OrderAboutPage />} />
+                <Route path={'workSheet'} element={!auth ? <Navigate to='/' /> :<Worksheet />}/>
+                <Route path={"support"} element={!auth ? <Navigate to='/' /> :<Support />}/>
+                <Route path={"MyOrders"} element={!auth ? <Navigate to='/' /> :<MyOrders />}/>
+                <Route path={"Balance"} element={!auth ? <Navigate to='/' /> :<BalancePage />}/>
+                <Route path={"Orders"} element={!auth ? <Navigate to='/' /> :<OrdersPage />}/>
+                <Route path={'orderAboutPage/:id'} element={!auth ? <Navigate to='/' /> :<OrderAboutPage />} />
                 {/*NavBarTabs*/}
-                <Route path='notification' element={<NotificationPage />} />
-                <Route path={'chat'} element={<ChatPage />} />
+                <Route path='notification' element={auth ? <Navigate to='/' /> :<NotificationPage />} />
+                <Route path={'chat'} element={auth ? <Navigate to='/' /> :<ChatPage />} />
             </Routes>
-            {location.pathname !== '/chat' || location.pathname !== '/login' || location.pathname !== '/registration' ? <Footer/> : ''}
+            {location.pathname !== '/chat' && location.pathname !== '/login' && location.pathname !== '/registration' ? <Footer/> : ''}
         </div>
     )
 }
