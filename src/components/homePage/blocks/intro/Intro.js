@@ -7,8 +7,8 @@ import LargeLogo from "../../../../assets/image/LogoLarge.png";
 import { GreenArrowSvg } from "../../../../assets/svg/intro/GreenArrowSvg";
 import { GoToChatSvg } from "../../../../assets/svg/intro/GoToChatSvg";
 import ModalNewTask from "../../../UI/modals/ModalNewTask";
-import {useNavigate} from "react-router-dom";
-import {useSelector} from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Typography from "@mui/material/Typography";
 
 export const useStyles = makeStyles({
@@ -27,15 +27,14 @@ export const useStyles = makeStyles({
     position: "absolute",
     bottom: -60,
     right: "0",
-    cursor: 'pointer',
+    cursor: "pointer",
   },
   img: {
     width: "100%",
     height: "100%",
   },
 
-
-pulse: {
+  pulse: {
     background: "transparent",
     borderRadius: "50%",
     height: 30,
@@ -46,17 +45,17 @@ pulse: {
   },
   "@keyframes pulse": {
     "0%": {
-        transform: "scale(1)",
-        boxShadow: "0 0 0 0 rgba(0, 0, 0, 0.2)",
-      },
-      "75%": {
-        transform: "scale(1)",
-        boxShadow: "0 0 0 15px rgba(0, 0, 0, 0)",
-      },
-      "100%": {
-        transform: "scale(1)",
-        boxShadow: "0 0 0 0 rgba(0, 0, 0, 0)",
-      },
+      transform: "scale(1)",
+      boxShadow: "0 0 0 0 rgba(0, 0, 0, 0.2)",
+    },
+    "75%": {
+      transform: "scale(1)",
+      boxShadow: "0 0 0 15px rgba(0, 0, 0, 0)",
+    },
+    "100%": {
+      transform: "scale(1)",
+      boxShadow: "0 0 0 0 rgba(0, 0, 0, 0)",
+    },
   },
 
   pulse1: {
@@ -71,17 +70,17 @@ pulse: {
 
   "@keyframes pulse1": {
     "0%": {
-        transform: "scale(1)",
-        boxShadow: "0 0 0 0 rgba(0, 0, 0, 0.2)",
-      },
-      "75%": {
-        transform: "scale(1)",
-        boxShadow: "0 0 0 15px rgba(0, 0, 0, 0)",
-      },
-      "100%": {
-        transform: "scale(1)",
-        boxShadow: "0 0 0 0 rgba(0, 0, 0, 0)",
-      },
+      transform: "scale(1)",
+      boxShadow: "0 0 0 0 rgba(0, 0, 0, 0.2)",
+    },
+    "75%": {
+      transform: "scale(1)",
+      boxShadow: "0 0 0 15px rgba(0, 0, 0, 0)",
+    },
+    "100%": {
+      transform: "scale(1)",
+      boxShadow: "0 0 0 0 rgba(0, 0, 0, 0)",
+    },
   },
 
   pulse2: {
@@ -108,24 +107,21 @@ pulse: {
       boxShadow: "0 0 0 0 rgba(0, 0, 0, 0)",
     },
   },
-
-
-
 });
 
 const Intro = ({ categoriesRef }) => {
   const classes = useStyles();
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  const {auth} = useSelector(state => state.auth);
-  console.log(auth)
+  const { auth } = useSelector((state) => state.auth);
+  console.log(auth);
   const goToChat = () => {
-    if(auth){
-      navigate('/chat')
-    }else{
-      navigate('/login')
+    if (auth) {
+      navigate("/chat");
+    } else {
+      navigate("/login");
     }
-  }
+  };
 
   const scrollToCategories = () => {
     categoriesRef.current.scrollIntoView();
@@ -167,7 +163,7 @@ const Intro = ({ categoriesRef }) => {
             onClick={scrollToCategories}
             style={{ color: "grey", paddingLeft: 20, cursor: "pointer" }}
           >
-            Стать исполнителем и начать зарабатывть
+            Стать исполнителем и начать зарабатывать
           </Typography>
         </Box>
       </Grid>
