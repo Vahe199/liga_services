@@ -70,6 +70,7 @@ const CustomInputIcon = ({label,
                 }}
                 className={classes.root}
                 name={name}
+                style={{width}}
                 autoComplete={'off'}
                 value={value}
                 onChange={handleChange}

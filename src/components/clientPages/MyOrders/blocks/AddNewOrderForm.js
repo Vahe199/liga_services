@@ -1,35 +1,44 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import CustomDatePicker from "../../../UI/datePicker/CustomDatePicker";
 import {DownloadSvg} from "../../../../assets/svg/DownloadSvg";
 import Button from "@mui/material/Button";
 import {Formik} from "formik";
-import {useMyOrdersStyles} from "../MyOrders";
 import CustomSelect from "../../../UI/selects/CustomSelect";
 import CustomInputAddFile from "../../../UI/customInputAddFile/CustomInputAddFile";
 import CustomInput from "../../../UI/customInput/CustomInput";
 import {AddNewOrderValidation} from "../../../../utils/validation/AddNewOrderValidation";
 import FormControl from "@mui/material/FormControl";
-import {FormControlLabel, FormLabel, RadioGroup} from "@mui/material";
-import {Radio} from "@material-ui/icons";
+import CustomInputIcon from "../../../UI/customInput/CustomInputIcon";
+import InputIcons from "../../../UI/modals/blocks/InputIcons";
+import RangeDatePicker from "../../../UI/datePicker/RangeDatePicker";
+import BlueButton from "../../../UI/CustomButtons/BlueButton";
+import {useMyOrdersStyles} from "../MyOrders";
+import {FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
+import {AddNewTask} from "../../../../store/actions/TaskActions";
+import {useDispatch} from "react-redux";
 
 
 const AddNewOrderForm = () => {
     const classes = useMyOrdersStyles();
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState('remotely');
+    const dispatch = useDispatch();
+
+
     return (
         <Formik
             initialValues={{
-                nomination: '', Service_category: '',
-                subCategories: '', description: '',
-                file: '', region: '', address: '', time_from: '',
-                time_to: '', payment_from: '', payment_to: '', place_work: value
+                category_name: '', subcategory_name: '',
+                subCategories: '', task_description: '',
+                task_img: '', region: '', address: '', task_starttime: '',
+                task_finishtime: '', task_location: value
             }}
-            validationSchema={AddNewOrderValidation}
+            //validationSchema={() => AddNewOrderValidation(value)}
             onSubmit={async (values, action) => {
-                console.log(values, 'values')
-                action.resetForm()
+                //console.log(values, 'values')
+                dispatch(AddNewTask(values))
+                //action.resetForm()
             }}
         >
             {({
@@ -46,23 +55,23 @@ const AddNewOrderForm = () => {
                         <Grid  item sm={12} lg={6}>
                             <Box style={{marginBottom: '50px'}}>
                                 <CustomSelect
-                                    name={'nomination'}
+                                    name={'category_name'}
                                     label={'Название'}
                                     handleChange={handleChange}
-                                    value={values.nomination}
-                                    touched={touched.nomination}
-                                    error={errors.nomination}
+                                    value={values.category_name}
+                                    touched={touched.category_name}
+                                    error={errors.category_name}
                                     mt={0}
                                 />
                             </Box>
                             <Box style={{marginBottom: '40px'}}>
                                 <CustomSelect
-                                    name={'Service_category'}
+                                    name={'subcategory_name'}
                                     label={'Категория услуг*'}
                                     handleChange={handleChange}
-                                    value={values.Service_category}
-                                    touched={touched.Service_category}
-                                    error={errors.Service_category}
+                                    value={values.subcategory_name}
+                                    touched={touched.subcategory_name}
+                                    error={errors.subcategory_name}
                                 />
                             </Box>
                             <CustomInput
@@ -75,17 +84,17 @@ const AddNewOrderForm = () => {
                             />
                             <CustomInput
                                 label={'Описание'}
-                                name={'description'}
-                                value={values.description}
+                                name={'task_description'}
+                                value={values.task_description}
                                 handleChange={handleChange}
-                                touched={touched.description}
-                                error={errors.description}
+                                touched={touched.task_description}
+                                error={errors.task_description}
                                 textArea={true}
                             />
                             <Box>
                                 <CustomInputAddFile
-                                    name={'file'}
-                                    value={values.file}
+                                    name={'task_img'}
+                                    value={values.task_img}
                                     handleChange={handleChange}
                                     label={'Прикрепить файл'}
                                     svg={<DownloadSvg />}
@@ -111,7 +120,8 @@ const AddNewOrderForm = () => {
                             </Box>}
 
                             <Box style={{marginTop: value === 'client' ? '10px' : '10px'}}>
-                                <Button onClick={handleSubmit} variant={'outlined'}>Профиль исполнителя</Button>
+                                <BlueButton action={handleSubmit} label={'Профиль исполнителя'} />
+                                {/*<Button onClick={handleSubmit} variant={'outlined'}>Профиль исполнителя</Button>*/}
                             </Box>
 
                         </Grid>
@@ -122,21 +132,21 @@ const AddNewOrderForm = () => {
                                     <RadioGroup
                                         aria-label="gender"
                                         defaultValue="remotely"
-                                        name="place_work"
+                                        name="task_location"
                                     >
                                         <FormControlLabel control={<Radio classes={{root: classes.radio, checked: classes.checked}}
                                               style={{color: '#4B9A2D'}} size={'small'} onChange={(e) => {
                                             setValue('remotely')
-                                           setFieldValue('place_work', e.target.value)
+                                           setFieldValue('task_location', e.target.value)
                                         }} value="remotely" />} label="Дистанционно" />
                                         <FormControlLabel  control={<Radio  onChange={(e) => {
                                             setValue('executor')
-                                            setFieldValue('place_work', e.target.value)
+                                            setFieldValue('task_location', e.target.value)
                                         }} classes={{root: classes.radio, checked: classes.checked}} style={{color: '#4B9A2D'}} size={'small'}   value="executor" />} label="У исполнителя" />
                                         <FormControlLabel  control={<Radio classes={{root: classes.radio, checked: classes.checked}} style={{color: '#4B9A2D'}}  size={'small'}
                                              onChange={(e) => {
                                                  setValue('client')
-                                            setFieldValue('place_work', e.target.value)
+                                            setFieldValue('task_location', e.target.value)
                                         }} value="client" />} label="У клиента" />
                                     </RadioGroup>
                                 </FormControl>
@@ -145,39 +155,48 @@ const AddNewOrderForm = () => {
                             <Box style={{marginBottom: '20px', width: '60%'}}>
                                 <Box style={{marginBottom: '20px'}}>
                                     <CustomDatePicker
-                                        value={values.time_from}
-                                        name={'time_from'}
-                                        fun={(val)=>setFieldValue('time_from',val)}
-                                        touched={touched.time_from}
-                                        errors={errors.time_from}
+                                        value={values.task_starttime}
+                                        name={'task_starttime'}
+                                        fun={(val)=>setFieldValue('task_starttime',val)}
+                                        touched={touched.task_starttime}
+                                        errors={errors.task_starttime}
                                     />
                                 </Box>
                                 <CustomDatePicker
-                                    value={values.time_to}
-                                    name={'time_to'}
-                                    fun={(val)=>setFieldValue('time_to',val)}
-                                    touched={touched.time_to}
-                                    errors={errors.time_to}
+                                    value={values.task_finishtime}
+                                    name={'task_finishtime'}
+                                    fun={(val)=>setFieldValue('task_finishtime',val)}
+                                    touched={touched.task_finishtime}
+                                    errors={errors.task_finishtime}
                                 />
+                                {/*<RangeDatePicker*/}
+                                {/*    value={values.time_to}*/}
+                                {/*    name={'time_to'}*/}
+                                {/*    touched={touched.time_to}*/}
+                                {/*    errors={errors.time_to}*/}
+                                {/*    fun={(newValue) => setFieldValue('time_to', newValue)}*/}
+
+                                {/*/>*/}
                             </Box>
-                            <CustomInput
+                            <CustomInputIcon
                                 name={'payment_from'}
                                 label={'Оплата'}
                                 value={values.payment_from}
                                 handleChange={handleChange}
                                 touched={touched.payment_from}
                                 error={errors.payment_from}
-                                icon={true}
+                                icon={'Руб.'}
                                 placeholder={'От'}
                                 width={'60%'}
                             />
-                            <CustomInput
+                            <CustomInputIcon
                                 name={'payment_to'}
+                                label={'Оплата'}
                                 value={values.payment_to}
                                 handleChange={handleChange}
                                 touched={touched.payment_to}
                                 error={errors.payment_to}
-                                icon={true}
+                                icon={'Руб.'}
                                 placeholder={'До'}
                                 width={'60%'}
                             />
