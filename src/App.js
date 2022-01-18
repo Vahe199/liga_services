@@ -3,7 +3,7 @@ import HomePage from "./components/homePage/HomePage";
 import {Navigate, Route, Routes, useLocation} from "react-router-dom";
 import LoginPage from "./components/authPages/loginPage/LoginPage";
 import RegistrationPage from "./components/authPages/registrationPage/RegistrationPage";
-import React, {useEffect} from "react";
+import React from "react";
 import NotificationPage from './components/notificationPages/NotificationPage';
 import LogoBlock from "./components/UI/headers/LogoBlock";
 import Container from "@mui/material/Container";

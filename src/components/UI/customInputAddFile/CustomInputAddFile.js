@@ -1,5 +1,4 @@
 import React from 'react';
-import {DownloadSvg} from "../../../assets/svg/DownloadSvg";
 import Box from "@mui/material/Box";
 
 const CustomInputAddFile = ({value, handleChange, name, svg, label}) => {

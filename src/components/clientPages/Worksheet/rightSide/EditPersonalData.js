@@ -1,12 +1,16 @@
 import * as React from "react";
 import {useState} from "react";
-import {Box, FormControlLabel, Radio, RadioGroup, Stack, Typography} from "@mui/material";
 import {useEditCardStyles} from "../styles/EditCardStyles";
 import CustomDatePicker from "../../../UI/datePicker/CustomDatePicker";
 import Card from "@mui/material/Card";
 import {FileSVG} from "../../../../assets/svg/Profile/FileSVG";
 import {useSelector} from "react-redux";
 import CustomInput from "../../../UI/customInput/CustomInput";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import {FormControlLabel, RadioGroup} from "@mui/material";
+import Stack from "@mui/material/Stack";
+import {Radio} from "@material-ui/icons";
 
 
 const EditPersonalData = ({setEditPersonallyData}) => {

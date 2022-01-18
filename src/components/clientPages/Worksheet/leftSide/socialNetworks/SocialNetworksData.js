@@ -1,10 +1,13 @@
-import * as React from "react";
-import { Avatar, Box, IconButton, Typography } from "@mui/material";
+import React from "react";
 import Card from "@mui/material/Card";
 import { useProfileCardStyles } from "../../../../../globalStyles/ProfileCardStyles";
 import PenSvg from "../../../../../assets/svg/Profile/PenSvg";
 import VK from "../../../../../assets/image/VK.png";
 import instagram from "../../../../../assets/image/Instagram.png";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import Avatar from "@mui/material/Avatar";
 
 const SocialNetworksData = ({ setEditSocialNetwork, editSocialNetwork }) => {
   const classes = useProfileCardStyles();

@@ -1,12 +1,12 @@
 import React from "react";
 import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
 import Card from "@mui/material/Card";
-import CardTitle from "../../../../../UI/titles/CardTitle";
-import {Box, Typography} from "@mui/material";
 import CustomImageList from "../../../../../UI/customimagelist/CustomImageList";
 import {imageData} from "../../../../../../utils/data/imagedata/ImageData";
 import PenSvg from "../../../../../../assets/svg/Profile/PenSvg";
 import CustomDivider from "../../../../../UI/customDivider/CustomDivider";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 const EducationBlockData = ({ editEducationBlock, setEditEducationBlock }) => {
     const classes = useInfoCardStyles();

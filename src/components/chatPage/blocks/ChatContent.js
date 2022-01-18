@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
-import {Typography} from "@mui/material";
 import Box from "@mui/material/Box";
 import {useChatStyles} from "../../../globalStyles/ChatStyles";
+import Typography from "@mui/material/Typography";
 
 
 const ChatContent = ({messagesData, chatRef}) => {

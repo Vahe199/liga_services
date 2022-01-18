@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import {Box, Typography} from "@mui/material";
 import {useProfileCardStyles} from "../../../../globalStyles/ProfileCardStyles";
 import SuccessSVG from "../../../../assets/svg/Profile/SuccessSVG";
 import InfoSVG from "../../../../assets/svg/Profile/InfoSVG";
@@ -9,6 +8,8 @@ import {AddAvatar} from "../../../UI/modals/Avatar/AddAvatar";
 import {useSelector} from "react-redux";
 import ProgressLine from "../../../UI/progressLine/ProgressLine";
 import {LightTooltip} from "../../../../globalStyles/LightTooltip";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 
 const ProfileStatus = ({setShowModal}) => {

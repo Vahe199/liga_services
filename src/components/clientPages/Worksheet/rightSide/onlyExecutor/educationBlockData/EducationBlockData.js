@@ -1,15 +1,12 @@
-import React, { useState } from "react";
-import { useInfoCardStyles } from "../../../../../../globalStyles/InfoCardStyles";
+import React, {useState} from "react";
+import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
 import Card from "@mui/material/Card";
 import CardTitle from "../../../../../UI/titles/CardTitle";
-import { Box, Typography } from "@mui/material";
-import FormControl from "@material-ui/core/FormControl";
-import { Checkbox, FormControlLabel, FormGroup } from "@material-ui/core";
-import CustomInput from "../../../../../UI/customInput/CustomInput";
 import CustomImageList from "../../../../../UI/customimagelist/CustomImageList";
-import { imageData } from "../../../../../../utils/data/imagedata/ImageData";
+import {imageData} from "../../../../../../utils/data/imagedata/ImageData";
 import CustomInputAddFile from "../../../../../UI/customInputAddFile/CustomInputAddFile";
 import AddButton from "../../../../../UI/CustomButtons/AddButton";
+import Typography from "@mui/material/Typography";
 
 const EducationBlockData = ({ editEducationBlock, setEditEducationBlock }) => {
   const classes = useInfoCardStyles();

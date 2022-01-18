@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Box from "@mui/material/Box";
-import {Typography} from "@mui/material";
+import Typography from "@mui/material/Typography";
 
 const Rating = () => {
     const [value, setValue] = useState(2);

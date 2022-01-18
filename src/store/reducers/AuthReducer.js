@@ -11,7 +11,7 @@ const authSlice = createSlice({
         load: false,
         error: '',
         message: "",
-        loadAuth: true,
+        loadAuth: false,
         errorAuth: '',
 
     },

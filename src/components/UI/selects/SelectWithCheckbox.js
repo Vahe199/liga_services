@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import {makeStyles} from "@material-ui/core";
 import FormControl from "@mui/material/FormControl";
-import {Checkbox, ListItemIcon, ListItemText, Select} from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
+import {Checkbox, ListItemIcon, ListItemText, Select} from "@mui/material";
 
 const useStyles = makeStyles( ({
     root: {

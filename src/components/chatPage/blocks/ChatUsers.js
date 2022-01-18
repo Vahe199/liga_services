@@ -1,11 +1,11 @@
 import React from 'react';
 import Box from "@mui/material/Box";
 import {usersData} from "../../../utils/data/chat/usersData";
-import {Typography} from "@mui/material";
 import Rating from "@mui/material/Rating";
 import Avatar from "@mui/material/Avatar";
 import {useChatStyles} from "../../../globalStyles/ChatStyles";
 import Divider from "@mui/material/Divider";
+import Typography from "@mui/material/Typography";
 
 const ChatUsers = ({active,
                     setInfoUser,

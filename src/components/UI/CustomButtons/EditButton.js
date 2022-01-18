@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
-import {Box} from "@mui/material";
 import {FileSVG} from "../../../assets/svg/Profile/FileSVG";
 import PenSvg from "../../../assets/svg/Profile/PenSvg";
+import Box from "@mui/material/Box";
 
 const EditButton = ({condition, editFun, handleSubmit}) => {
 

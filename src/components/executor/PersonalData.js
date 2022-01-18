@@ -1,18 +1,14 @@
 import React from "react";
-import { Box, FormControlLabel, RadioGroup, Stack } from "@mui/material";
 import Divider from "@mui/material/Divider";
-import { Radio } from "@mui/material";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import DatePicker from "@mui/lab/DatePicker";
 import TextField from "@mui/material/TextField";
 import CustomDatePicker from "../UI/datePicker/CustomDatePicker";
 import CustomInput from "../UI/customInput/CustomInput";
+import Box from "@mui/material/Box";
+import {FormControlLabel, RadioGroup} from "@mui/material";
+import Stack from "@mui/material/Stack";
+import {Radio} from "@material-ui/icons";
 
 
-
-
- 
 const PersonalData = () => {
   const [selectedValue, setSelectedValue] = React.useState('a');
 

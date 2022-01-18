@@ -1,6 +1,7 @@
 import React from 'react';
-import {Box, Typography} from "@mui/material";
 import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 const ExperienceShowList = ({arr}) => {
     const classes = useInfoCardStyles();

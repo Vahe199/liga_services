@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {Divider, IconButton, Typography} from "@mui/material";
 import {ArrowSvg} from "../../../../assets/svg/ArrowSvg";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import CustomDivider from "../../../UI/customDivider/CustomDivider";
+import IconButton from "@mui/material/IconButton";
 
 
 const MyOrdersBlock = ({setShowForm}) => {
@@ -18,7 +20,7 @@ const MyOrdersBlock = ({setShowForm}) => {
                     Заказы
                 </Typography>
             </Box>
-            <Divider color={'#808080'} style={{margin: '20px 0'}}/>
+            <CustomDivider />
 
             {arr.map((item, index) =>
                 <Box key={index} onClick={() => {

@@ -1,10 +1,10 @@
 import React from "react";
-import {Box, Typography} from "@mui/material";
 import Card from "@mui/material/Card";
-import CardTitle from "../../../../../UI/titles/CardTitle";
 import PenSvg from "../../../../../../assets/svg/Profile/PenSvg";
 import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
 import CustomDivider from "../../../../../UI/customDivider/CustomDivider";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 const DistrictsAndAddressesData = ({editAddress, setEditAddress}) => {
     const classes = useInfoCardStyles();

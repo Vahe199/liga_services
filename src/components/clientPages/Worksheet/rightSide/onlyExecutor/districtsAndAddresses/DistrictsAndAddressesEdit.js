@@ -7,7 +7,7 @@ import CustomSelect from "../../../../../UI/selects/CustomSelect";
 import CustomInput from "../../../../../UI/customInput/CustomInput";
 import SelectWithCheckbox from "../../../../../UI/selects/SelectWithCheckbox";
 import {options} from "../../../../../../utils/data/selectWithCheckbox/DataSelectWithCheckbox";
-import {FieldArray, Formik} from "formik";
+import {Formik} from "formik";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";

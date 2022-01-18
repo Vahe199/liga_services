@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {Avatar, Button} from "@mui/material";
 import {makeStyles} from "@material-ui/core";
 import upload from "../../../../assets/image/upload.png";

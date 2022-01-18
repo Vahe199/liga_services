@@ -1,7 +1,7 @@
 import React from 'react';
 import {useChatStyles} from "../../../globalStyles/ChatStyles";
 import Box from "@mui/material/Box";
-import {Typography} from "@mui/material";
+import Typography from "@mui/material/Typography";
 
 const InfoOrder = ({showChatHeader}) => {
     const classes = useChatStyles();

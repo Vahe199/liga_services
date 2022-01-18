@@ -1,7 +1,7 @@
 import React from 'react';
 import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
-import {Typography} from "@mui/material";
+import Typography from "@mui/material/Typography";
 
 const RatingBlock = ({reviews, size = 'medium'}) => {
     return (

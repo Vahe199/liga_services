@@ -1,9 +1,11 @@
 import React from 'react';
 import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
 import Card from "@mui/material/Card";
-import {Box, Divider, Typography} from "@mui/material";
 import ExperienceShowList from "../blocks/ExperienceShowList";
 import PenSvg from "../../../../../../assets/svg/Profile/PenSvg";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import CustomDivider from "../../../../../UI/customDivider/CustomDivider";
 
 const ExperienceBlockData = ({editExperienceBlock, setEditExperienceBlock}) => {
     const classes = useInfoCardStyles();
@@ -19,7 +21,7 @@ const ExperienceBlockData = ({editExperienceBlock, setEditExperienceBlock}) => {
                         <PenSvg/>
                     </Box>
             </Box>
-            <Divider style={{ border: "1px solid #808080", width: "100%" }} />
+            <CustomDivider />
             <Box>
                 <Typography variant={'h5'}>
                     Категории услуг

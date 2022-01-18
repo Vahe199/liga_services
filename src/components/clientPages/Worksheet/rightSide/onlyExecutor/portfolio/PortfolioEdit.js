@@ -1,7 +1,6 @@
 import React from 'react';
 import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
 import Card from "@mui/material/Card";
-import {Box, Button, Typography} from "@mui/material";
 import CustomImageList from "../../../../../UI/customimagelist/CustomImageList";
 import {imageData} from "../../../../../../utils/data/imagedata/ImageData";
 import CustomInputAddFile from "../../../../../UI/customInputAddFile/CustomInputAddFile";
@@ -11,6 +10,9 @@ import CustomInput from "../../../../../UI/customInput/CustomInput";
 import {FileSVG} from "../../../../../../assets/svg/Profile/FileSVG";
 import {TrashSvg} from "../../../../../../assets/svg/TrashSvg";
 import CustomDivider from "../../../../../UI/customDivider/CustomDivider";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 
 const PortfolioEdit = ({editPortfolio, setEditPortfolio}) => {
     const classes = useInfoCardStyles();

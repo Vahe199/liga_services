@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
 import Box from "@mui/material/Box";
-import {Button, Divider, IconButton, TextField, Typography} from "@mui/material";
 import Rating from "@mui/material/Rating";
 import {DownLoad2Svg} from "../../../../assets/svg/client/DownLoad2Svg";
 import {useMyOrdersStyles} from "../MyOrders";
 import MessengerSvg from "../../../../assets/svg/MessengerSvg";
 import Avatar from "@mui/material/Avatar";
 import {OnlineSvg} from "../../../../assets/svg/Profile/OnlineSvg";
+import Typography from "@mui/material/Typography";
+import CustomDivider from "../../../UI/customDivider/CustomDivider";
+import {TextField} from "@mui/material";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 
 
 const OrderBlock = ({order}) => {
@@ -29,7 +33,7 @@ const OrderBlock = ({order}) => {
                 </Box>
 
             </Box>
-            <Divider color={'#808080'} style={{margin: '10px 0'}} />
+            <CustomDivider />
 
             <Box className={classes.orderSubBlockSpaceBetween}>
                 <Box className={classes.wrapBox}>
@@ -130,7 +134,7 @@ const OrderBlock = ({order}) => {
                 </Box>
 
                 {showInfo && <Box>
-                    <Divider color={'#808080'} style={{margin: '20px 0'}}/>
+                    <CustomDivider />
                     <Box style={{}}>
                         <Typography style={{cursor: 'pointer', whiteSpace: 'pre-wrap'}} variant={'h6'}>
                             Единый центр услуг - это удобный, динамично развивающийся Единый Сервис Красноярского края,
@@ -146,7 +150,7 @@ const OrderBlock = ({order}) => {
                 <Box>
                     {order.executors.map((executor, index) =>
                         <Box key={index}>
-                            <Divider color={'#808080'} style={{margin: '10px 0'}} />
+                            <CustomDivider />
                             <Box className={classes.orderSubBlockSpaceBetween}>
                                 <Typography variant={'h6'}>Исполнитель № 1</Typography>
                                 <Typography variant={'h6'}>16:50 20/12/21</Typography>

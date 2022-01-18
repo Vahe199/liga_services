@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import {Box, Button, FormControl, FormControlLabel, Radio, RadioGroup, Typography} from "@mui/material";
 import Divider from "@mui/material/Divider";
 import {SelectSvg} from "../../../../assets/svg/SelectSvg";
 import {DeleteSvg} from "../../../../assets/svg/DeleteSvg";
@@ -8,6 +7,13 @@ import {useOrderStyles} from "../../../../globalStyles/OrderStyles";
 import {FieldArray, Formik} from "formik";
 import CustomSelect from "../../../UI/selects/CustomSelect";
 import CustomInput from "../../../UI/customInput/CustomInput";
+import CustomDivider from "../../../UI/customDivider/CustomDivider";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import FormControl from "@material-ui/core/FormControl";
+import {FormControlLabel, RadioGroup} from "@mui/material";
+import {Radio} from "@material-ui/icons";
 
 
 const FilterOrders = ({setShowFilterBlock, showFilterBlock}) => {
@@ -22,7 +28,7 @@ const FilterOrders = ({setShowFilterBlock, showFilterBlock}) => {
           Свернуть
         </Typography>
       </Box>
-      <Divider style={{marginBottom: '20px'}} color={'#808080'} />
+      <CustomDivider />
         {showFilterBlock && <Box>
             <Formik
                 initialValues={{

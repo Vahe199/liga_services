@@ -14,33 +14,36 @@ const useStyles = makeStyles({
             width: '160px',
             marginBottom: '10px',
         },
+        '& .MuiButton-root': {
+            "& .Mui-disabled":{
+                backgroundColor: '#f08000 !important'
+            }
+        },
+        "& .Mui-disabled": {
+            backgroundColor: '#445e77c4 !important',
+            color:"#fff !important"
+        }
     },
 });
 
 const BlueButton = ({load, action, label}) => {
     const classes = useStyles();
     return (
-        <Box className={classes.root} sx={{ m: 1, position: 'relative' }}>
+        <Box className={classes.root} sx={{ m: 1}}>
             <Button
+                startIcon={load && (
+                    <CircularProgress
+                        sx={{color: '#fff'}}
+                        size={12}
+                    />
+                )}
                 variant="contained"
                 disabled={load}
+                disabledStyle={{backgroundColor: 'yellow'}}
                 onClick={action}
             >
-                {label}
+                {load ? 'Загрузка...' : label}
             </Button>
-            {load && (
-                <CircularProgress
-                    size={24}
-                    sx={{
-                        color: '#4b9a2d',
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        marginTop: '-12px',
-                        marginLeft: '-12px',
-                    }}
-                />
-            )}
         </Box>
     )
 }

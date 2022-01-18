@@ -1,10 +1,11 @@
 import React from 'react';
-import {Box, Typography} from "@mui/material";
 import CustomInput from "../../../../../UI/customInput/CustomInput";
 import RangeDatePicker from "../../../../../UI/datePicker/RangeDatePicker";
 import AddButton from "../../../../../UI/CustomButtons/AddButton";
 import {FieldArray, Formik} from "formik";
 import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 const WorkingPlaceWorkBlock = ({condition, setValueTime, valueTime}) => {
     const classes = useInfoCardStyles();

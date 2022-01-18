@@ -1,11 +1,12 @@
 import React from 'react';
 import Box from "@mui/material/Box";
-import {Divider, Typography} from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import {OnlineSvg} from "../../../../assets/svg/Profile/OnlineSvg";
 import {useOrderStyles} from "../../../../globalStyles/OrderStyles";
 import {DeleteSvg} from "../../../../assets/svg/DeleteSvg";
 import {useNavigate} from "react-router-dom";
+import Typography from "@mui/material/Typography";
+import CustomDivider from "../../../UI/customDivider/CustomDivider";
 
 
 const OrderExecutorBlock = ({order, index, deleteOrder, setShowModal}) => {
@@ -32,7 +33,7 @@ const OrderExecutorBlock = ({order, index, deleteOrder, setShowModal}) => {
                     </Box>
                 </Box>
             </Box>
-            <Divider style={{margin: '20px 0'}} color={'#808080'}/>
+            <CustomDivider />
 
             <Box style={{marginBottom: '20px'}} className={order.status !== 'none' ? classes.orderSubBlockSpaceBetween : classes.singleBlock}>
                 {order.status !== 'none' && <Box className={classes.wrapBox}>

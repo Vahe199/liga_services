@@ -1,11 +1,13 @@
 import React, {useState} from "react";
-import {Avatar, Box, Typography} from "@mui/material";
 import SuccessSVG from "../../../../assets/svg/Profile/SuccessSVG";
 import InfoSVG from "../../../../assets/svg/Profile/InfoSVG";
 import Card from "@mui/material/Card";
 import {useSelector} from "react-redux";
 import {useOrderAboutStyles} from "../../../../globalStyles/OrderAboutStyles";
 import CustomDivider from "../../../UI/customDivider/CustomDivider";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Avatar from "@mui/material/Avatar";
 
 
 const ProfileShow = () => {

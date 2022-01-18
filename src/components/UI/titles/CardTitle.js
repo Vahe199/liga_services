@@ -1,8 +1,9 @@
 import React from 'react';
-import {Box, Typography} from "@mui/material";
 import EditButton from "../CustomButtons/EditButton";
 import {makeStyles} from "@material-ui/core";
 import Divider from "@mui/material/Divider";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 const useStyles = makeStyles({
     title:{

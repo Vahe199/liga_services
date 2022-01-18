@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
-import {Typography} from "@mui/material";
 import img from '../../../assets/image/authImg.jpg';
 import Box from "@mui/material/Box";
 import {Formik} from "formik";
-import {useStyles} from "../../../globalStyles/AuthStyles";
 import {AuthValidation} from "../../../utils/validation/AuthValidation";
 import CustomInput from "../../UI/customInput/CustomInput";
 import {useDispatch, useSelector} from "react-redux";
@@ -11,6 +9,8 @@ import {Registration} from "../../../store/actions/AuthActions";
 import Toaster from "../../UI/toaster/Toaster";
 import BlueButton from "../../UI/CustomButtons/BlueButton";
 import {useNavigate} from "react-router-dom";
+import Typography from "@mui/material/Typography";
+import {useStyles} from "../../../globalStyles/AuthStyles";
 
 
 const RegistrationPage = () => {
@@ -22,10 +22,6 @@ const RegistrationPage = () => {
 
     //toaster
     const [openToaster, setOpenToaster] = useState(false);
-
-    // useEffect(() => {
-    //     console.log(message.message, error, openToaster)
-    // }, [message.message, error, openToaster])
 
     return (
         <Box className={classes.root}>
@@ -48,10 +44,13 @@ const RegistrationPage = () => {
                     validationSchema={AuthValidation}
                     onSubmit={ async (values, action) => {
                         await dispatch(Registration(values))
-                        setOpenToaster(true)
-                        if(!errorAuth){
-                            navigate('/')
-                        }
+                        await setOpenToaster(true)
+                        setTimeout(() => {
+                            if(!errorAuth){
+                                navigate('/')
+                            }
+                        }, 2000)
+
                         action.resetForm()
                     }}
                 >

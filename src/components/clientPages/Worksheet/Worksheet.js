@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {Container, Grid} from "@mui/material";
 import PersonalData from "./rightSide/PersonalData";
 import OrderNotifications from "./leftSide/orderNotifications/OrderNotifications";
 import ProfileStatus from "./leftSide/ProfileStatus";
@@ -15,8 +14,8 @@ import Box from "@mui/material/Box";
 import ExperienceBlock from "./rightSide/onlyExecutor/ExperienceBlock/ExperienceBlock";
 import Portfolio from "./rightSide/onlyExecutor/portfolio/Portfolio";
 import EducationBlock from "./rightSide/onlyExecutor/educationBlock/EducationBlock";
-import SocialNetworksData from "./leftSide/socialNetworks/SocialNetworksData";
-import SocialNetworksEdit from "./leftSide/socialNetworks/SocialNetworksEdit";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
 
 const useAncetaStyles = makeStyles({
     root:{

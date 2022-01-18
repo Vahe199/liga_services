@@ -3,15 +3,14 @@ import {Formik} from "formik";
 import {useOrderAboutStyles} from "../../../../globalStyles/OrderAboutStyles";
 import Divider from "@mui/material/Divider";
 import CustomDivider from "../../../UI/customDivider/CustomDivider";
-import {Stack} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import CustomInput from "../../../UI/customInput/CustomInput";
 import Switch from '@mui/material/Switch';
-import CustomDatePicker from "../../../UI/datePicker/CustomDatePicker";
 import CustomInputIcon from "../../../UI/customInput/CustomInputIcon";
 import Button from "@mui/material/Button";
 import RangeDatePicker from "../../../UI/datePicker/RangeDatePicker";
+import Stack from "@mui/material/Stack";
 
 
 const OrderContentForm = ({setShowModal}) => {

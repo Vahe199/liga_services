@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
 import Card from "@mui/material/Card";
 import CustomInput from "../../../../../UI/customInput/CustomInput";
@@ -12,8 +12,8 @@ import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 import {FileSVG} from "../../../../../../assets/svg/Profile/FileSVG";
 import CustomDivider from "../../../../../UI/customDivider/CustomDivider";
-import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
 import {Formik} from "formik";
+import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
 
 
 const EducationBlockEdit = ({editEducationBlock, setEditEducationBlock}) => {

@@ -1,7 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useChatStyles} from "../../globalStyles/ChatStyles";
 import Box from "@mui/material/Box";
-import {Grid, TextField} from "@mui/material";
 import ChatUsers from "./blocks/ChatUsers";
 import ChatContent from "./blocks/ChatContent";
 import {SkrepSvg} from "../../assets/svg/chat/SkrepSvg";
@@ -9,6 +8,8 @@ import {SendMessageSvg} from "../../assets/svg/chat/SendMessageSvg";
 import InfoOrder from "./blocks/InfoOrder";
 import ChatHeader from "../UI/headers/ChatHeader";
 import {messages} from "../../utils/data/chat/messages";
+import Grid from "@mui/material/Grid";
+import {TextField} from "@mui/material";
 
 const ChatPage = () => {
     const classes = useChatStyles();

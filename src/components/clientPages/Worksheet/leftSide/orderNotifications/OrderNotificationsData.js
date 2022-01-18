@@ -1,9 +1,11 @@
-import * as React from "react";
-import {Box, IconButton, Typography} from "@mui/material";
+import React from "react";
 import Card from "@mui/material/Card";
 import {useInfoCardStyles} from "../../../../../globalStyles/InfoCardStyles";
 import PenSvg from "../../../../../assets/svg/Profile/PenSvg";
 import CustomDivider from "../../../../UI/customDivider/CustomDivider";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
 
 const OrderNotificationsData = ({notificationsOrder, setNotificationOrders}) => {
   const classes = useInfoCardStyles();

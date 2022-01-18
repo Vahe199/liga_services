@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from "@mui/material/Box";
-import {Typography} from "@mui/material";
 import {makeStyles} from "@material-ui/core";
+import Typography from "@mui/material/Typography";
 
 export const useStyles = makeStyles({
     container: {

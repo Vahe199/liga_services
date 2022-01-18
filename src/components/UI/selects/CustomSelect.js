@@ -1,9 +1,9 @@
 import React from 'react';
-import {FormControl, FormHelperText, Select} from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import {makeStyles} from "@material-ui/core";
 import Box from "@mui/material/Box";
-import OutlinedInput from '@mui/material/OutlinedInput';
+import FormControl from "@mui/material/FormControl";
+import {FormHelperText, Select} from "@mui/material";
 
 export const useStyles = makeStyles({
     root: {

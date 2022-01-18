@@ -1,9 +1,10 @@
 import * as React from "react";
-import {Box, Typography} from "@mui/material";
 import {useInfoCardStyles} from "../../../../globalStyles/InfoCardStyles";
 import Card from "@mui/material/Card";
 import PenSvg from "../../../../assets/svg/Profile/PenSvg";
 import {useSelector} from "react-redux";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 
 const PersonalData = ({setEditPersonallyData}) => {

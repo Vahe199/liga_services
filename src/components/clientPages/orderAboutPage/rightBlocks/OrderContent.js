@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import Box from "@mui/material/Box";
-import {Typography} from "@mui/material";
 import {useOrderAboutStyles} from "../../../../globalStyles/OrderAboutStyles";
 import Card from "@mui/material/Card";
 import CustomDivider from "../../../UI/customDivider/CustomDivider";
@@ -9,6 +8,7 @@ import {imageData} from "../../../../utils/data/imagedata/ImageData";
 import CustomImageList from "../../../UI/customimagelist/CustomImageList";
 import Button from "@mui/material/Button";
 import OrderContentForm from "../../ordersPage/blocks/OrderContentForm";
+import Typography from "@mui/material/Typography";
 
 
 const OrderContent = ({meeting, setShowModal}) => {

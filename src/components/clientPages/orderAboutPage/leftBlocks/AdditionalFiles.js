@@ -1,9 +1,10 @@
 import React from "react";
-import {Box, Typography} from "@mui/material";
 import Divider from "@mui/material/Divider";
 import DownloadFileSvg2 from "../../../../assets/svg/DownloadFileSvg2";
 import Card from "@mui/material/Card";
 import CustomInputAddFile from "../../../UI/customInputAddFile/CustomInputAddFile";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 const AdditionalFiles = () => {
   return (

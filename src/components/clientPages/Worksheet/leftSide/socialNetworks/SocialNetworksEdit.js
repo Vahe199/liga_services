@@ -1,5 +1,4 @@
 import * as React from "react";
-import {Avatar, Box, IconButton, Typography} from "@mui/material";
 import Card from "@mui/material/Card";
 import CustomInputIcon from "../../../../UI/customInput/CustomInputIcon";
 import {useProfileCardStyles} from "../../../../../globalStyles/ProfileCardStyles";
@@ -7,6 +6,10 @@ import VK from "../../../../../assets/image/VK.png";
 import instagram from "../../../../../assets/image/Instagram.png";
 import {FileSVG} from "../../../../../assets/svg/Profile/FileSVG";
 import {Formik} from "formik";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import Avatar from "@mui/material/Avatar";
 
 const SocialNetworksEdit = ({setEditSocialNetwork, editSocialNetwork}) => {
   const classes = useProfileCardStyles();

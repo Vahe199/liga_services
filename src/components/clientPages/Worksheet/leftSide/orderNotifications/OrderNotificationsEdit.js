@@ -1,9 +1,12 @@
-import * as React from "react";
-import {Box, FormControlLabel, IconButton, Radio, RadioGroup, Typography} from "@mui/material";
-
+import React from "react";
 import Card from "@mui/material/Card";
 import {FileSVG} from "../../../../../../src/assets/svg/Profile/FileSVG";
 import {useInfoCardStyles} from "../../../../../globalStyles/InfoCardStyles";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import {FormControlLabel, RadioGroup} from "@mui/material";
+import {Radio} from "@material-ui/icons";
 
 const radio = {
     color: "#4B9A2D",

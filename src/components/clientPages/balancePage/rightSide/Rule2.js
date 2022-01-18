@@ -1,8 +1,9 @@
 import React from "react";
-import {Box, Typography} from "@mui/material";
 import Card from "@mui/material/Card";
 import {useOrderAboutStyles} from "../../../../globalStyles/OrderAboutStyles";
 import CustomDivider from "../../../UI/customDivider/CustomDivider";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 
 const Rule2 = () => {

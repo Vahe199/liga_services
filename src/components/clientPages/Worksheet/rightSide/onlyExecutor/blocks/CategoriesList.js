@@ -1,8 +1,9 @@
 import React from 'react';
-import {Box, Typography} from "@mui/material";
 import CustomSelect from "../../../../../UI/selects/CustomSelect";
 import {DelBtnSvg} from "../../../../../../assets/svg/Profile/DelBtnSvg";
 import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 const CategoriesList = ({arr, handleChange, placeholder, remove}) => {
     const classes = useInfoCardStyles();

@@ -1,5 +1,5 @@
 import { IconButton } from "@mui/material";
-import * as React from "react";
+import React from "react";
 import InstaSvg from "../../../assets/svg/footer/InstaSvg";
 import OkSvg from "../../../assets/svg/footer/OkSvg";
 import VkSvg from "../../../assets/svg/footer/VkSvg";

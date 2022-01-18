@@ -2,7 +2,6 @@ import React from 'react';
 import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
 import Card from "@mui/material/Card";
 import {FieldArray, Formik} from "formik";
-import {Box, Button, Divider, Typography} from "@mui/material";
 import CategoriesListEdit from "../blocks/CategoriesList";
 import CategoriesList from "../blocks/CategoriesList";
 import {FileSVG} from "../../../../../../assets/svg/Profile/FileSVG";
@@ -10,6 +9,10 @@ import CustomInput from "../../../../../UI/customInput/CustomInput";
 import RangeDatePicker from "../../../../../UI/datePicker/RangeDatePicker";
 import AddButton from "../../../../../UI/CustomButtons/AddButton";
 import {TrashSvg} from "../../../../../../assets/svg/TrashSvg";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import CustomDivider from "../../../../../UI/customDivider/CustomDivider";
 
 const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
     const classes = useInfoCardStyles();
@@ -61,7 +64,7 @@ const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
                                 </Button>
 
                         </Box>
-                        <Divider style={{ border: "1px solid #808080", width: "100%" }} />
+                        <CustomDivider />
                             <Box>
                                 <FieldArray name={'categories'}>
                                     {({push, remove}) => (

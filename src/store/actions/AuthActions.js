@@ -27,6 +27,7 @@ export const Registration = createAsyncThunk(
             return response.data
             }
         catch (e) {
+            console.log(e, 'register error')
             return thunkAPI.rejectWithValue('Что то пошло не так')
         }
         }
