@@ -46,7 +46,7 @@ function App() {
                 <Route path='notification' element={<NotificationPage />} />
                 <Route path={'chat'} element={<ChatPage />} />
             </Routes>
-            {location.pathname !== '/chat' || location.pathname !== '/login' || location.pathname !== '/registration' && <Footer/>}
+            {location.pathname !== '/chat' || location.pathname !== '/login' || location.pathname !== '/registration' ? <Footer/> : ''}
         </div>
     )
 }
