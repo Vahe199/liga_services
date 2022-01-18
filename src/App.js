@@ -10,20 +10,20 @@ import Container from "@mui/material/Container";
 import {MainNavBar} from "./components/UI/headers/MainNavBar";
 import {useSelector} from "react-redux";
 import Footer from "./components/UI/footer/Footer";
-import {Worksheet} from "./components/clientPages/Worksheet/Worksheet";
 import Support from "./components/clientPages/Support/Support";
 import {MyOrders} from "./components/clientPages/MyOrders/MyOrders";
 import OrdersPage from "./components/clientPages/ordersPage/OrdersPage";
 import ChatPage from "./components/chatPage/ChatPage";
 import OrderAboutPage from "./components/clientPages/orderAboutPage/OrderAboutPage";
 import BalancePage from "./components/clientPages/balancePage/BalancePage";
+import {Worksheet} from "./components/clientPages/Worksheet/Worksheet";
 
 
 function App() {
     const location = useLocation();
-    const {authStatus, auth} = useSelector(state => state.auth);
+    const {authStatus, auth, status} = useSelector(state => state.auth);
 
-
+    console.log(status, 'status')
 
     return (<div style={{overflow:"hidden"}}>
             {location.pathname === '/login' || location.pathname === '/registration' ? '' : <Container maxWidth={'xl'}>

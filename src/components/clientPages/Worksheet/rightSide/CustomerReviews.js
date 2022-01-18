@@ -1,12 +1,12 @@
 import React from "react";
 import { review } from "../../../../utils/data/review2/Review2";
-import {makeStyles} from "@mui/styles";
 import Box from "@mui/material/Box";
 import CustomDivider from "../../../UI/customDivider/CustomDivider";
-import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import Rating from "../../../UI/rating/Rating";
 import Card from "@mui/material/Card";
+import {makeStyles} from "@material-ui/core";
+import Avatar from "@mui/material/Avatar";
+import {Rating} from "@mui/material";
 
 
 const useStyles = makeStyles({
@@ -19,9 +19,9 @@ const useStyles = makeStyles({
             paddingBottom: '20px',
             height: 'auto',
         },
-        "& .MuiTypography-h3":{
+        "& .MuiTypography-h3": {
             fontWeight: 500,
-            fontSize:20,
+            fontSize: 20,
             whiteSpace: 'noWrap',
         },
         "& .MuiTypography-h4":{
@@ -54,7 +54,7 @@ const CustomerReviews = () => {
       </Typography>
       {review.map((item, index) => (
         <Box style={{marginBottom: '20px'}} key={index}>
-          <CustomDivider />
+            <CustomDivider />
           <Box style={{ display: "flex", alignItems: "center", marginBottom: '20px' }}>
             <Avatar
               style={{ width: "70px", height: "70px", marginTop: "10px" }}
