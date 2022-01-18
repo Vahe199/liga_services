@@ -10,6 +10,7 @@ import Toaster from "../../UI/toaster/Toaster";
 import BlueButton from "../../UI/CustomButtons/BlueButton";
 import {useNavigate} from "react-router-dom";
 import Typography from "@mui/material/Typography";
+import { GreenArrowSvg } from '../../../assets/svg/intro/GreenArrowSvg';
 import {useStyles} from "../../../globalStyles/AuthStyles";
 
 
@@ -23,6 +24,10 @@ const RegistrationPage = () => {
     //toaster
     const [openToaster, setOpenToaster] = useState(false);
 
+    const HandleSvg = () => {  
+        navigate('/');
+      }
+
     return (
         <Box className={classes.root}>
             <Box style={{position: 'absolute'}}>
@@ -34,7 +39,11 @@ const RegistrationPage = () => {
             <Box>
                 <img alt={'photo'} src={img} className={classes.img} />
             </Box>
+       
             <Box className={classes.container}>
+                <Box onClick={HandleSvg} style={{position:"absolute", left:"50px", top:"20px", transform: "rotate(180deg)", cursor:"pointer"}}>
+                <GreenArrowSvg />
+            </Box>
                 <p className={classes.title}>Пройти регистрацию</p>
                 <Formik
                     phonenumber

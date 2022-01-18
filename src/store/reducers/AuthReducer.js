@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit"
-import {Login, Registration} from "../actions/AuthActions";
+import {Login, Logouts, Registration} from "../actions/AuthActions";
 
 const authSlice = createSlice({
     name: "auth",
@@ -21,6 +21,19 @@ const authSlice = createSlice({
         },
     },
     extraReducers: {
+        [Registration.pending]: (state) => {
+            state.loadAuth = true
+        },
+        [Registration.fulfilled]: (state, action) => {
+            state.loadAuth = false
+            state.message = action.payload
+            state.errorAuth = false
+        },
+        [Registration.rejected]: (state, action) => {
+            state.loadAuth = false
+            state.errorAuth = action.payload
+            state.message = ''
+        },
         [Login.pending]: (state) => {
             state.load = true
         },
@@ -35,19 +48,25 @@ const authSlice = createSlice({
             state.error = action.payload
             state.auth = false
         },
-        [Registration.pending]: (state) => {
-            state.loadAuth = true
+        [Logouts.pending]: (state) => {
+            state.load = true
         },
-        [Registration.fulfilled]: (state, action) => {
-            state.loadAuth = false
-            state.message = action.payload
-            state.errorAuth = false
+        [Logouts.fulfilled]: (state, action) => {
+            state.load = false
+            state.user ={}
+            state.error = false
+            state.auth = false
+            state.authStatus = false
+            state.status = 'executor'
+            state.smessage = action.payload
+            state.user = {}
         },
-        [Registration.rejected]: (state, action) => {
-            state.loadAuth = false
-            state.errorAuth = action.payload
-            state.message = ''
-        }
+        [Logouts.rejected]: (state, action) => {
+            state.load = false
+            state.error = action.payload
+            state.auth = false
+        },
+
     }
 
 })
