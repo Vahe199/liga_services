@@ -20,6 +20,7 @@ import {Divider, Drawer, List, ListItem, ListItemText, Stack} from "@mui/materia
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import {useDispatch, useSelector} from "react-redux";
 import {changeStatus} from "../../../store/reducers/AuthReducer";
+import Avatar from "@mui/material/Avatar";
 
 const useNavStyles = makeStyles({
     root: {
@@ -93,7 +94,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 export const MainNavBar = () => {
-    const {status} = useSelector(state => state.auth);
+    const {status, user} = useSelector(state => state.auth);
     const dispatch = useDispatch();
     const changePage = () => {
         if(status === 'client'){
@@ -281,11 +282,11 @@ export const MainNavBar = () => {
               </IconButton>
 
                 <IconButton>
-                  {/*<Avatar  src="/broken-image.jpg" />*/}
-                  <UserSvg/>
+                    {user?.img_path ?<Avatar src={user?.img_path}/>
+                        :<UserSvg/>}
 
                 </IconButton>
-                <Typography  sx={{color:"#000",ml:2}}>Имя</Typography>
+                <Typography  sx={{color:"#000",ml:2}}>{user?.name}</Typography>
             </Box>
           </Toolbar>
         </Container>
