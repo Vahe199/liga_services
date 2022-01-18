@@ -21,9 +21,8 @@ import {Worksheet} from "./components/clientPages/Worksheet/Worksheet";
 
 function App() {
     const location = useLocation();
-    const {authStatus, auth, status} = useSelector(state => state.auth);
+    const {auth} = useSelector(state => state.auth);
 
-    console.log(status, 'status')
 
     return (<div style={{overflow:"hidden"}}>
             {location.pathname === '/login' || location.pathname === '/registration' ? '' : <Container maxWidth={'xl'}>
