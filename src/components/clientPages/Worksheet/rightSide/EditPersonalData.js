@@ -8,9 +8,8 @@ import {useSelector} from "react-redux";
 import CustomInput from "../../../UI/customInput/CustomInput";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import {FormControlLabel, RadioGroup} from "@mui/material";
+import {FormControlLabel, Radio, RadioGroup} from "@mui/material";
 import Stack from "@mui/material/Stack";
-import {Radio} from "@material-ui/icons";
 
 
 const EditPersonalData = ({setEditPersonallyData}) => {
