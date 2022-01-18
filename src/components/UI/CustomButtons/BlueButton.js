@@ -9,9 +9,10 @@ const useStyles = makeStyles({
     root: {
         "& .MuiButton-contained": {
             textTransform: "none",
+            backgroundColor: '#445E77 !important',
             fontWeight: 500,
             borderRadius: '10px',
-            width: '160px',
+            //width: '160px',
             marginBottom: '10px',
         },
         '& .MuiButton-root': {
@@ -26,7 +27,7 @@ const useStyles = makeStyles({
     },
 });
 
-const BlueButton = ({load, action, label}) => {
+const BlueButton = ({load, action, label, width}) => {
     const classes = useStyles();
     return (
         <Box className={classes.root} sx={{ m: 1}}>
@@ -39,6 +40,7 @@ const BlueButton = ({load, action, label}) => {
                 )}
                 variant="contained"
                 disabled={load}
+                style={{width}}
                 disabledStyle={{backgroundColor: 'yellow'}}
                 onClick={action}
             >

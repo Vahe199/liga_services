@@ -123,7 +123,7 @@ const RegistrationPage = () => {
                                     mb={0}
                                 />
                                  <Box className={classes.footer}>
-                                    <BlueButton load={loadAuth} label={'Регистрация'} action={handleSubmit} />
+                                    <BlueButton width={'160px'} load={loadAuth} label={'Регистрация'} action={handleSubmit} />
                                     <Typography style={{fontSize: '15px', textAlign: 'center'}} color={'#4B9A2D'}>Для завершения регистрации, вам на почту выслана ссылка, пройдите по ссылке</Typography>
                                 </Box>
                             </Box>
