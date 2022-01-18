@@ -18,7 +18,6 @@ const instance = axios.create({
 export const Registration = createAsyncThunk(
     'auth/registration',
     async (data, thunkAPI) => {
-        debugger
         try {
             const response = await instance.post(`v1/user/register`, data)
             return response.data
@@ -36,12 +35,10 @@ export const Login = createAsyncThunk(
             const response= await instance.post(`v1/user/login`, data)
             localStorage.setItem('token', response?.data?.access_token);
             setAuthHeader(response?.data?.access_token)
-            debugger
             return response.data
         }
         catch (e) {
             console.log(e)
-            debugger
             return thunkAPI.rejectWithValue('404 error')
         }
     }
@@ -50,16 +47,13 @@ export const Login = createAsyncThunk(
 export const Logouts = createAsyncThunk(
     'auth/logout',
     async ( thunkAPI) => {
-        debugger
         try{
             const response= await instance.post("v1/user/logout")
              localStorage.removeItem('token');
-            debugger
             return response.data
         }
         catch (e) {
             console.log(e.message)
-            debugger
             return thunkAPI.rejectWithValue('404 error')
         }
     }

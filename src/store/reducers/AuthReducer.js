@@ -39,9 +39,9 @@ const authSlice = createSlice({
         },
         [Login.fulfilled]: (state, action) => {
             state.load = false
-            state.user = {}
+            state.user = action.payload.user
             state.error = false
-            state.auth = false
+            state.auth = true
         },
         [Login.rejected]: (state, action) => {
             state.load = false
@@ -53,12 +53,13 @@ const authSlice = createSlice({
         },
         [Logouts.fulfilled]: (state, action) => {
             state.load = false
-            state.user = action.payload.user
+            state.user ={}
             state.error = false
-            state.auth = true
+            state.auth = false
             state.authStatus = false
             state.status = 'executor'
             state.smessage = action.payload
+            state.user = {}
         },
         [Logouts.rejected]: (state, action) => {
             state.load = false
