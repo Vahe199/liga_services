@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import img from '../../../assets/image/authImg.jpg';
 import Box from "@mui/material/Box";
 import {Formik} from "formik";
@@ -12,6 +12,7 @@ import {useNavigate} from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import { GreenArrowSvg } from '../../../assets/svg/intro/GreenArrowSvg';
 import {useStyles} from "../../../globalStyles/AuthStyles";
+import {resetAuth} from "../../../store/reducers/AuthReducer";
 
 
 const RegistrationPage = () => {
@@ -19,48 +20,53 @@ const RegistrationPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const {message, errorAuth, loadAuth} = useSelector(state => state.auth);
-
+    const {success, error, message, errorAuth, loadAuth} = useSelector(state => state.auth);
     //toaster
     const [openToaster, setOpenToaster] = useState(false);
-
-    const HandleSvg = () => {  
+    const formikRef = useRef({});
+    const HandleSvg = () => {
         navigate('/');
       }
+
+    useEffect(() => {
+        if (error) {
+            setOpenToaster(true)
+            dispatch(resetAuth())
+
+        }
+        if (success) {
+            navigate("/")
+            formikRef.current.resetForm();
+            dispatch(resetAuth())
+        }
+    }, [success, error, message]);
 
     return (
         <Box className={classes.root}>
             <Box style={{position: 'absolute'}}>
                 <Toaster open={openToaster}
-                         message={message.message}
+                         message={message}
                          error={errorAuth}
                          setOpen={setOpenToaster} />
             </Box>
             <Box>
                 <img alt={'photo'} src={img} className={classes.img} />
             </Box>
-       
+
             <Box className={classes.container}>
                 <Box onClick={HandleSvg} style={{position:"absolute", left:"50px", top:"20px", transform: "rotate(180deg)", cursor:"pointer"}}>
-                <GreenArrowSvg />
+                    <GreenArrowSvg color={"#25588d"}/>
             </Box>
                 <p className={classes.title}>Пройти регистрацию</p>
                 <Formik
                     phonenumber
                     password_confirmation
-
+                    innerRef={formikRef}
                     initialValues={{ name: '', phonenumber: '', email: '', password: '', password_confirmation: '' }}
                     validationSchema={AuthValidation}
-                    onSubmit={ async (values, action) => {
+                    onSubmit={ async (values) => {
                         await dispatch(Registration(values))
-                        await setOpenToaster(true)
-                        setTimeout(() => {
-                            if(!errorAuth){
-                                navigate('/')
-                            }
-                        }, 2000)
 
-                        action.resetForm()
                     }}
                 >
                     {({

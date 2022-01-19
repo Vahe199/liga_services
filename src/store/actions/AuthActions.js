@@ -3,7 +3,7 @@ import axios from "axios";
 
 const token = localStorage.getItem('token') ? localStorage.getItem('token') : null;
 const setAuthHeader = (token) => {
-    instance.defaults.headers.Authentication = `Bearer ${token}`
+    instance.defaults.headers.Authorization = `Bearer ${token}`
 }
 const instance = axios.create({
     baseURL: 'https://api.nver.am/api/',
@@ -22,8 +22,8 @@ export const Registration = createAsyncThunk(
             const response = await instance.post(`v1/user/register`, data)
             return response.data
         } catch (e) {
-            console.log(e, 'register error')
-            return thunkAPI.rejectWithValue('Что то пошло не так')
+            console.log(e.response.data.errors[0], 'register error')
+            return thunkAPI.rejectWithValue(e.response.data.errors[0])
         }
     }
 )
@@ -39,7 +39,7 @@ export const Login = createAsyncThunk(
         }
         catch (e) {
             console.log(e)
-            return thunkAPI.rejectWithValue('404 error')
+            return thunkAPI.rejectWithValue('неверный адрес электронной почты или пароль')
         }
     }
 )
