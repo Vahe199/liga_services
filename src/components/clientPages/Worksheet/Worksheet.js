@@ -16,6 +16,7 @@ import Portfolio from "./rightSide/onlyExecutor/portfolio/Portfolio";
 import EducationBlock from "./rightSide/onlyExecutor/educationBlock/EducationBlock";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
+import ModalLogOut from "../../UI/modals/ModalLogOut";
 
 const useAncetaStyles = makeStyles({
     root:{
@@ -44,21 +45,20 @@ export const Worksheet = () =>{
     const [editExperienceBlock, setEditExperienceBlock] = useState(false);
     const [editPortfolio, setEditPortfolio] = useState(false);
     const [editEducationBlock, setEditEducationBlock] = useState(false);
+    const [openLogOutModal, setOpenLogOutModal] = useState(false);
 
-    useEffect(() => {
-        console.log(editPortfolio, 'editPortfolio')
-    }, [])
 
     return(
         <Box className={classes.root}>
             <Container maxWidth={'lg'}>
+                <ModalLogOut open={openLogOutModal} setOpen={setOpenLogOutModal}/>
                 <ModalPersonalData showModal={showModal} setShowModal={setShowModal}/>
             <Grid container spacing={1}>
                 <Grid item sm={12} lg={4}>
                     <ProfileStatus setShowModal={setShowModal}/>
                     <SocialNetworks setEditSocialNetwork={setEditSocialNetwork} editSocialNetwork={editSocialNetwork}/>
                     <OrderNotifications notificationsOrder={notificationsOrder} setNotificationOrders={setNotificationOrders} />
-                    <ProfileActions/>
+                    <ProfileActions setOpenLogOutModal={setOpenLogOutModal} />
                 </Grid>
                 <Grid item sm={12} lg={8}>
                     {editPersonallyData ? <EditPersonalData setEditPersonallyData={setEditPersonallyData}

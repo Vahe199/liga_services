@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import {useDispatch} from "react-redux";
 import {Logouts} from "../../../../store/actions/AuthActions";
 
-const ProfileActions = () => {
+const ProfileActions = ({setOpenLogOutModal}) => {
     const classes = useProfileCardStyles()
     const dispatch = useDispatch()
     return (
@@ -14,7 +14,7 @@ const ProfileActions = () => {
 
                     <Typography variant={"h6"}>Действия с профилем</Typography>
             <Box style={{background:"#808080", height:2, marginBottom: "10px"}}/>
-            <Typography  onClick={()=>dispatch(Logouts())}
+            <Typography  onClick={() => setOpenLogOutModal(true)}
                 variant={"h6"} className={classes.textBtn}>Выйти</Typography>
             <Typography variant={"h6"} className={classes.textBtn}>Удалить</Typography>
             <Typography variant={"h5"} style={{margin:0}}>Вы потеряете акаунт исполнителя

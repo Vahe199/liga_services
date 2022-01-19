@@ -26,7 +26,7 @@ const RegistrationPage = () => {
     //toaster
     const [openToaster, setOpenToaster] = useState(false);
     const formikRef = useRef({});
-
+  
     useEffect(() => {
         if (error) {
             setOpenToaster(true)
