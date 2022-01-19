@@ -26,9 +26,7 @@ const RegistrationPage = () => {
     //toaster
     const [openToaster, setOpenToaster] = useState(false);
     const formikRef = useRef({});
-    const HandleSvg = () => {
-        navigate('/');
-      }
+
 
     useEffect(() => {
         if (error) {

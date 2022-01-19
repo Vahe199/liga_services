@@ -114,8 +114,12 @@ export const useStyles = makeStyles({
     title: {
         color: '#445E77',
         fontWeight: '500',
-        fontSize: '25px',
+        fontSize: '20px',
         margin: 0,
+    },
+    exitModal:{
+        backgroundColor: '#EBEBEB',
+        cursor: 'pointer',
     },
     headerBlock: {
         display: 'flex',
