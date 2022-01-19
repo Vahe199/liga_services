@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import { Formik } from "formik";
 import CustomInput from "../../UI/customInput/CustomInput";
 import { useDispatch, useSelector } from "react-redux";
-import { Login } from "../../../store/actions/AuthActions";
+import {Login} from "../../../store/actions/AuthActions";
 import BlueButton from "../../UI/CustomButtons/BlueButton";
 import { useNavigate } from "react-router-dom";
 import { FormControlLabel } from "@mui/material";
@@ -35,10 +35,11 @@ const LoginPage = () => {
                 <Formik
                     initialValues={{ email: '', password: ''}}
                     // validationSchema={LoginValidation}
-                    onSubmit={(values, action) => {
-                        dispatch(Login(values))
+                    onSubmit={ async (values, action) => {
+                        await dispatch(Login(values))
                         action.resetForm()
                         if(!error){
+                            await dispatch(getProfilePageData())
                             navigate('/')
                         }
                     }}
