@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import { Formik } from "formik";
 import CustomInput from "../../UI/customInput/CustomInput";
 import { useDispatch, useSelector } from "react-redux";
-import { Login } from "../../../store/actions/AuthActions";
+import {Login} from "../../../store/actions/AuthActions";
 import BlueButton from "../../UI/CustomButtons/BlueButton";
 import { useNavigate } from "react-router-dom";
 import { FormControlLabel } from "@mui/material";
@@ -58,6 +58,7 @@ const [open, setOpen] = useState(false)
                     <GreenArrowSvg color={"#25588d"}/>
                 </Box>
                 <p className={classes.title}>Вход</p>
+
                 <Formik innerRef={formikRef}
                         initialValues={{email: "", password: ""}}
                         validationSchema={LoginValidation}

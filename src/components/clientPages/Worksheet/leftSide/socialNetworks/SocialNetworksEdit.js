@@ -16,7 +16,7 @@ const SocialNetworksEdit = ({setEditSocialNetwork, editSocialNetwork}) => {
   return (
     <Card sx={{ boxShadow: 2 }} className={classes.root}>
         <Formik
-            initialValues={{ vk: '', instagram: '' }}
+            initialValues={{ fasebook_link: '', instagram_link: '' }}
             onSubmit={async (values, action) => {
                 console.log(values, 'values')
                 setEditSocialNetwork(false)
@@ -39,17 +39,17 @@ const SocialNetworksEdit = ({setEditSocialNetwork, editSocialNetwork}) => {
                         <Box style={{ background: "#808080", height: 2, marginBottom: "10px" }} />
                         <Box style={{ display: "flex", alignItems: "center", marginBottom: 15 }}>
                             <Avatar src={VK} style={{ marginRight: 25 }} variant="rounded" />
-                            <CustomInputIcon name={'vk'}
+                            <CustomInputIcon name={'fasebook_link'}
                                              width={'100%'}
-                                             value={values.vk}
+                                             value={values.fasebook_link}
                                              handleChange={handleChange}
                                              placeholder={"привязать"} />
                         </Box>
                         <Box style={{ display: "flex", alignItems: "center" }}>
                             <Avatar src={instagram} style={{ marginRight: 25 }} variant="rounded" />
-                            <CustomInputIcon name={'instagram'}
+                            <CustomInputIcon name={'instagram_link'}
                                              width={'100%'}
-                                             value={values.instagram}
+                                             value={values.instagram_link}
                                              handleChange={handleChange}
                                              placeholder={"привязать"} />
                         </Box>
