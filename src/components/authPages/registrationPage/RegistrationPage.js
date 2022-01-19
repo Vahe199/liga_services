@@ -5,7 +5,6 @@ import {Formik} from "formik";
 import {AuthValidation} from "../../../utils/validation/AuthValidation";
 import CustomInput from "../../UI/customInput/CustomInput";
 import {useDispatch, useSelector} from "react-redux";
-import {Registration} from "../../../store/actions/AuthActions";
 import Toaster from "../../UI/toaster/Toaster";
 import BlueButton from "../../UI/CustomButtons/BlueButton";
 import {useNavigate} from "react-router-dom";
@@ -13,6 +12,9 @@ import Typography from "@mui/material/Typography";
 import { GreenArrowSvg } from '../../../assets/svg/intro/GreenArrowSvg';
 import {useStyles} from "../../../globalStyles/AuthStyles";
 import {resetAuth} from "../../../store/reducers/AuthReducer";
+
+import {Registration} from "../../../store/actions/AuthActions";
+
 
 
 const RegistrationPage = () => {
@@ -41,6 +43,10 @@ const RegistrationPage = () => {
         }
     }, [success, error, message]);
 
+    const HandleSvg = () => {  
+        navigate('/');
+      }
+
     return (
         <Box className={classes.root}>
             <Box style={{position: 'absolute'}}>
@@ -56,6 +62,7 @@ const RegistrationPage = () => {
             <Box className={classes.container}>
                 <Box onClick={HandleSvg} style={{position:"absolute", left:"50px", top:"20px", transform: "rotate(180deg)", cursor:"pointer"}}>
                     <GreenArrowSvg color={"#25588d"}/>
+
             </Box>
                 <p className={classes.title}>Пройти регистрацию</p>
                 <Formik
@@ -129,7 +136,7 @@ const RegistrationPage = () => {
                                     mb={0}
                                 />
                                  <Box className={classes.footer}>
-                                    <BlueButton load={loadAuth} label={'Регистрация'} action={handleSubmit} />
+                                    <BlueButton width={'160px'} load={loadAuth} label={'Регистрация'} action={handleSubmit} />
                                     <Typography style={{fontSize: '15px', textAlign: 'center'}} color={'#4B9A2D'}>Для завершения регистрации, вам на почту выслана ссылка, пройдите по ссылке</Typography>
                                 </Box>
                             </Box>

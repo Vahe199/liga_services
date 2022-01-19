@@ -4,8 +4,9 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import DatePicker from "@mui/lab/DatePicker";
 import {IconButton, InputAdornment, TextField} from "@mui/material";
 import Calendar from '../../../assets/image/Calendar.png';
-import {makeStyles} from "@material-ui/core";
+import moment from 'moment';
 import Box from "@mui/material/Box";
+import {makeStyles} from "@material-ui/core";
 
 export const useStyles = makeStyles({
     root: {
@@ -45,6 +46,7 @@ export const useStyles = makeStyles({
 const CustomDatePicker = ({value, name, fun, touched, errors}) => {
     const [open,setOpen] = useState(false)
     const classes = useStyles();
+
     return (
         <Box className={classes.root}>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -52,13 +54,14 @@ const CustomDatePicker = ({value, name, fun, touched, errors}) => {
                     value={value}
                     name={name}
                     open={open}
+                    format="DD-MM-YYYY"
                     classes={{
                         root: classes.root,
                         checked: classes.checked,
                     }}
                     onChange={(date) => {
                         setOpen(!open)
-                        fun(date)
+                        fun(moment(date).format("YYYY-MM-DD"))
                     }}
                     renderInput={(params) => <TextField
                         error={ Boolean(touched && errors)}

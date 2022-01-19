@@ -1,19 +1,20 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
+import {instance} from "../api/api";
 
-const token = localStorage.getItem('token') ? localStorage.getItem('token') : null;
+// const token = localStorage.getItem('token') ? localStorage.getItem('token') : null;
 const setAuthHeader = (token) => {
     instance.defaults.headers.Authorization = `Bearer ${token}`
 }
-const instance = axios.create({
-    baseURL: 'https://api.nver.am/api/',
-    headers: {
-        'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8;application/json',
-        'Access-Control-Allow-Origin' : '*',
-        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-        'Authorization': `Bearer ${token}`
-    }
-})
+// const instance = axios.create({
+//     baseURL: 'https://api.nver.am/api/',
+//     headers: {
+//         'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8;application/json',
+//         'Access-Control-Allow-Origin' : '*',
+//         'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+//         'Authorization': `Bearer ${token}`
+//     }
+// })
 
 export const Registration = createAsyncThunk(
     'auth/registration',
@@ -58,3 +59,4 @@ export const Logouts = createAsyncThunk(
         }
     }
 )
+
