@@ -117,8 +117,7 @@ const [open, setOpen] = useState(false)
                                         label={"Вход"}
                                     />
                                     <Typography
-                                        style={{fontSize: "15px", textAlign: "center"}}
-                                        color={"#fff"}
+                                        style={{fontSize: "15px", textAlign: "center",color:'transparent'}}
                                     >
                                         Для завершения регистрации, вам на почту выслана ссылка,
                                         пройдите по ссылке
