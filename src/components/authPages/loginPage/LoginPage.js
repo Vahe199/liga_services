@@ -84,8 +84,17 @@ const LoginPage = () => {
                                     labelPlacement="end"
                                 />
                                 <Box className={classes.footer}>
-                                    <BlueButton width={'160px'} action={handleSubmit} load={load} label={'Вход'} />
-                                    <Typography style={{fontSize: '15px', textAlign: 'center'}} color={'#fff'}>Для завершения регистрации, вам на почту выслана ссылка, пройдите по ссылке</Typography>
+                                    <BlueButton
+                                        action={handleSubmit}
+                                        load={load}
+                                        label={"Вход"}
+                                    />
+                                    <Typography
+                                        style={{fontSize: "15px", textAlign: "center",color:'transparent'}}
+                                    >
+                                        Для завершения регистрации, вам на почту выслана ссылка,
+                                        пройдите по ссылке
+                                    </Typography>
                                 </Box>
                             </Box>
                         </form>

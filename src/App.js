@@ -42,8 +42,8 @@ function App() {
                 <Route path={"Orders"} element={!auth ? <Navigate to='/' /> :<OrdersPage />}/>
                 <Route path={'orderAboutPage/:id'} element={!auth ? <Navigate to='/' /> :<OrderAboutPage />} />
                 {/*NavBarTabs*/}
-                <Route path='notification' element={auth ? <Navigate to='/' /> :<NotificationPage />} />
-                <Route path={'chat'} element={auth ? <Navigate to='/' /> :<ChatPage />} />
+                <Route path='notification' element={!auth ? <Navigate to='/' /> :<NotificationPage />} />
+                <Route path={'chat'} element={!auth ? <Navigate to='/' /> :<ChatPage />} />
             </Routes>
             {location.pathname !== '/chat' && location.pathname !== '/login' && location.pathname !== '/registration' ? <Footer/> : ''}
         </div>

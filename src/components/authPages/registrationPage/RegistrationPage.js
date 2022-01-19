@@ -26,8 +26,7 @@ const RegistrationPage = () => {
     //toaster
     const [openToaster, setOpenToaster] = useState(false);
     const formikRef = useRef({});
-
-
+  
     useEffect(() => {
         if (error) {
             setOpenToaster(true)
@@ -41,7 +40,7 @@ const RegistrationPage = () => {
         }
     }, [success, error, message]);
 
-    const HandleSvg = () => {  
+    const HandleSvg = () => {
         navigate('/');
       }
 
@@ -135,7 +134,7 @@ const RegistrationPage = () => {
                                 />
                                  <Box className={classes.footer}>
                                     <BlueButton width={'160px'} load={loadAuth} label={'Регистрация'} action={handleSubmit} />
-                                    <Typography style={{fontSize: '15px', textAlign: 'center'}} color={'#4B9A2D'}>Для завершения регистрации, вам на почту выслана ссылка, пройдите по ссылке</Typography>
+                                    <Typography style={{fontSize: '15px', textAlign: 'center',color:'#4B9A2D'}} >Для завершения регистрации, вам на почту выслана ссылка, пройдите по ссылке</Typography>
                                 </Box>
                             </Box>
                         </form>
