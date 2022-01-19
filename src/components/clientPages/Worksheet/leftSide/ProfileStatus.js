@@ -14,7 +14,7 @@ import Typography from "@mui/material/Typography";
 
 const ProfileStatus = ({setShowModal}) => {
     const classes = useProfileCardStyles();
-    const {status} = useSelector(state => state.auth);
+    const {status,user} = useSelector(state => state.auth);
     const [avatarPreview, setAvatarPreview] = useState();
 
     return (

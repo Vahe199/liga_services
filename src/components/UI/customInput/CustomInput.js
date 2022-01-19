@@ -11,7 +11,10 @@ export const useStyles = makeStyles({
         flexDirection: 'column',
         marginBottom: '18px',
         '& .MuiFormHelperText-root': {
-            color: 'red'
+            color: 'red',
+            position:" absolute",
+            top: "-20px",
+            right: 0
         },
         '& .MuiOutlinedInput-root': {
             '& fieldset': {

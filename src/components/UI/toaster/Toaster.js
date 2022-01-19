@@ -7,13 +7,13 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-const Toaster = ({open, setOpen, message, error}) => {
+const Toaster = ({open, setOpen, message, error,success}) => {
 
     // useEffect(() => {
     //     console.log(message, error)
     // }, [message, error])
 
-    const status = message ? 'success' : 'error';
+    const status = success ? 'success' : 'error';
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
