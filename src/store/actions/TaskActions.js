@@ -1,6 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {authApi, instance} from "../../api/api";
-import axios from "axios";
+import {instance} from "../api/api";
 
 export const AddNewTask = createAsyncThunk(
     'task/addNewTask',
