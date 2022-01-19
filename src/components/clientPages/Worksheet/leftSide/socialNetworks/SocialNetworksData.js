@@ -1,6 +1,5 @@
 import React from "react";
 import Card from "@mui/material/Card";
-import {useProfileCardStyles} from "../../../../../globalStyles/ProfileCardStyles";
 import PenSvg from "../../../../../assets/svg/Profile/PenSvg";
 import VK from "../../../../../assets/image/VK.png";
 import instagram from "../../../../../assets/image/Instagram.png";
@@ -10,6 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import Avatar from "@mui/material/Avatar";
 import {useSelector} from "react-redux";
 import {Link} from "@mui/material";
+import {useProfileCardStyles} from "../../../../../globalStyles/ProfileCardStyles";
 
 const SocialNetworksData = ({ setEditSocialNetwork, editSocialNetwork }) => {
   const classes = useProfileCardStyles();
