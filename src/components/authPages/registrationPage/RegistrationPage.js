@@ -5,13 +5,13 @@ import {Formik} from "formik";
 import {AuthValidation} from "../../../utils/validation/AuthValidation";
 import CustomInput from "../../UI/customInput/CustomInput";
 import {useDispatch, useSelector} from "react-redux";
-import {Registration} from "../../../store/actions/AuthActions";
 import Toaster from "../../UI/toaster/Toaster";
 import BlueButton from "../../UI/CustomButtons/BlueButton";
 import {useNavigate} from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import { GreenArrowSvg } from '../../../assets/svg/intro/GreenArrowSvg';
 import {useStyles} from "../../../globalStyles/AuthStyles";
+import {Registration} from "../../../store/actions/AuthActions";
 
 
 const RegistrationPage = () => {

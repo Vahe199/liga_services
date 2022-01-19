@@ -1,16 +1,17 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import img from "../../../assets/image/authImg.jpg";
 import Box from "@mui/material/Box";
-import {Formik} from "formik";
+import { Formik } from "formik";
 import CustomInput from "../../UI/customInput/CustomInput";
-import {useDispatch, useSelector} from "react-redux";
-import {Login} from "../../../store/actions/AuthActions";
+import { useDispatch, useSelector } from "react-redux";
+import { Login } from "../../../store/actions/AuthActions";
 import BlueButton from "../../UI/CustomButtons/BlueButton";
-import {useNavigate} from "react-router-dom";
-import {FormControlLabel} from "@mui/material";
-import {useStyles} from "../../../globalStyles/AuthStyles";
-import {GreenArrowSvg} from "../../../assets/svg/intro/GreenArrowSvg";
+import { useNavigate } from "react-router-dom";
+import { FormControlLabel } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import { GreenArrowSvg } from "../../../assets/svg/intro/GreenArrowSvg";
+import { useStyles } from "../../../globalStyles/AuthStyles";
 
 const LoginPage = () => {
     const classes = useStyles();
@@ -38,9 +39,7 @@ const LoginPage = () => {
                         dispatch(Login(values))
                         action.resetForm()
                         if(!error){
-                            setTimeout(() => {
-                                navigate('/')
-                            }, 2000)
+                            navigate('/')
                         }
                     }}
                 >
@@ -86,6 +85,7 @@ const LoginPage = () => {
                                 />
                                 <Box className={classes.footer}>
                                     <BlueButton width={'160px'} action={handleSubmit} load={load} label={'Вход'} />
+                                    <Typography style={{fontSize: '15px', textAlign: 'center'}} color={'#fff'}>Для завершения регистрации, вам на почту выслана ссылка, пройдите по ссылке</Typography>
                                 </Box>
                             </Box>
                         </form>
@@ -93,7 +93,6 @@ const LoginPage = () => {
                 </Formik>
             </Box>
         </Box>
-
 );
 };
 
