@@ -15,9 +15,10 @@ import {GreenArrowSvg} from "../../../assets/svg/intro/GreenArrowSvg";
 import {LoginValidation} from "../../../utils/validation/LoginValidation";
 import Toaster from "../../UI/toaster/Toaster";
 import {resetAuth} from "../../../store/reducers/AuthReducer";
+import ModalForget from "../../UI/modals/ModalForget";
 
 
-const LoginPage = () => {
+const LoginPage = ({setOpenLogOutModal}) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -25,6 +26,7 @@ const LoginPage = () => {
     const [remember, setRemember] = useState(false);
     const {load, error, success,message} = useSelector((state) => state.auth);
     const [open, setOpen] = useState(false)
+    const [openModalForget, setopenModalForget] = useState(false)
     const HandleSvg = () => {
         navigate('/');
     }
@@ -43,6 +45,7 @@ const LoginPage = () => {
 
     return (
         <Box className={classes.root}>
+            <ModalForget open={openModalForget} setOpen={setopenModalForget}/>
             <Box>
                 <img src={img} className={classes.img}/>
             </Box>
@@ -95,6 +98,9 @@ const LoginPage = () => {
                                     error={errors.password}
 
                                 />
+
+<Typography style={{cursor:'pointer'}} onClick={() => setopenModalForget(true)}
+                        variant={"h6"} className={classes.textBtn}>Забыли пароль</Typography>
                                 <FormControlLabel
                                     className={classes.checkbox}
                                     control={
