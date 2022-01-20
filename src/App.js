@@ -17,6 +17,7 @@ import ChatPage from "./components/chatPage/ChatPage";
 import OrderAboutPage from "./components/clientPages/orderAboutPage/OrderAboutPage";
 import BalancePage from "./components/clientPages/balancePage/BalancePage";
 import {Worksheet} from "./components/clientPages/Worksheet/Worksheet";
+import ForgetPassword from "./components/authPages/forgetPassword/ForgetPassword";
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
 
 
     return (<div style={{overflow:"hidden"}}>
-            {location.pathname === '/login' || location.pathname === '/registration' ? '' : <Container maxWidth={'xl'}>
+            {location.pathname === '/login' || location.pathname === '/forgetPassword' || location.pathname === '/registration' ? '' : <Container maxWidth={'xl'}>
                 {auth ? <MainNavBar /> : <LogoBlock/>}
             </Container>}
 
@@ -34,6 +35,7 @@ function App() {
                 {/*AuthPages*/}
                 <Route path='registration' element={auth ? <Navigate to='/' /> : <RegistrationPage />} />
                 <Route path='login' element={auth ? <Navigate to='/' /> : <LoginPage />} />
+                <Route path='/forgetPassword' element={auth ? <Navigate to='/' /> : <ForgetPassword />} />
                 {/*NavBar*/}
                 <Route path={'workSheet'} element={!auth ? <Navigate to='/' /> :<Worksheet />}/>
                 <Route path={"support"} element={!auth ? <Navigate to='/' /> :<Support />}/>
@@ -45,7 +47,7 @@ function App() {
                 <Route path='notification' element={!auth ? <Navigate to='/' /> :<NotificationPage />} />
                 <Route path={'chat'} element={!auth ? <Navigate to='/' /> :<ChatPage />} />
             </Routes>
-            {location.pathname !== '/chat' && location.pathname !== '/login' && location.pathname !== '/registration' ? <Footer/> : ''}
+            {location.pathname !== '/chat' && location.pathname !== '/forgetPassword' && location.pathname !== '/login' && location.pathname !== '/registration' ? <Footer/> : ''}
         </div>
     )
 }
