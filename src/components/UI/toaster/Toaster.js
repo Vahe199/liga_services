@@ -34,7 +34,7 @@ const Toaster = ({open, setOpen, message, error,success}) => {
                       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
                       onClose={handleClose}>
                 <Alert onClose={handleClose} severity={status} sx={{ width: '100%' }}>
-                    {message ? message : error}
+                    {message}
                 </Alert>
             </Snackbar>
         </Stack>

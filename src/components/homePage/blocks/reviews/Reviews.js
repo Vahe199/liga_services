@@ -35,7 +35,7 @@ const Reviews = () => {
             <Grid container spacing={8} justifyContent="center"
                   alignItems="center">
                 {reviews.map((review, index) =>
-                    <Grid key={index} square={true} item sm={10} md={8} lg={3} >
+                    <Grid  key={index}  item sm={10} md={8} lg={3} >
                         <Paper className={classes.card}>
                             <CardContent>
                                 <Box className={classes.cardContent}>

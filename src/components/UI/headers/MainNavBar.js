@@ -261,7 +261,7 @@ export const MainNavBar = () => {
                           direction={{ xs: 'column', sm: 'column' }}
                           // spacing={{ xs: 1, sm: 2, md: 4 }}
                       >
-                          <Typography  sx={{color:"#000",ml:2}}>Имя ivanova</Typography>
+                          <Typography  sx={{color:"#000",ml:2}}>{user?.user_name}</Typography>
                           <IconButton>
                               <MessageSvg/>
                           </IconButton>
@@ -286,7 +286,7 @@ export const MainNavBar = () => {
                         :<UserSvg/>}
 
                 </IconButton>
-                <Typography  sx={{color:"#000",ml:2}}>{user?.name}</Typography>
+                <Typography  sx={{color:"#000",ml:2}}>{user?.user_name}</Typography>
             </Box>
           </Toolbar>
         </Container>
