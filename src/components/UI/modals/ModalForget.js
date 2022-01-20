@@ -1,11 +1,12 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import {useStyles} from "../../../globalStyles/ModalStyles";
 import HeaderModal from './blocks/HeaderModal';
-import { useDispatch } from "react-redux";
-import { Logouts } from '../../../store/actions/AuthActions';
+import CustomInput from "../customInput/CustomInput";
+import {Formik} from "formik";
+import {ForgetEmailValidation} from "../../../utils/validation/ForgetEmailValidation";
+import {useStyles} from "../../../globalStyles/ModalStyles";
 
 
 const style = {
@@ -23,6 +24,12 @@ const style = {
 const ModalForget = ({open, setOpen}) => {
     const handleClose = () => setOpen(false);
     const classes = useStyles();
+    const [value, setValue] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(e.target.value)
+    }
     
     return (
         <div>
@@ -35,14 +42,43 @@ const ModalForget = ({open, setOpen}) => {
             >
                 <Box sx={{ ...style ,width:{xs: 270, md: 400}}}>
                     <Box className={classes.root}>
-                        <Box>
-                            <Box className={classes.footer}>
-                                {/* <p style={{textAlign: 'center', fontSize: '24px'}}>Вы действительно хотите выйди ? </p> */}
-                                <Box style={{width:'50%',display:'flex',justifyContent:'space-between' }}>
-                                    
-                                </Box>
-                            </Box>
-                        </Box>
+                        <Formik initialValues={{email: ""}}
+                                validationSchema={ForgetEmailValidation}
+                                onSubmit={(values) => {
+                                    console.log(values, 'values')
+                                }}
+                        >
+                            {({
+                                  values,
+                                  errors,
+                                  touched,
+                                  handleChange,
+                                  handleSubmit,
+                              }) => (
+                                <form onSubmit={handleSubmit}>
+                                    <Box>
+                                        <HeaderModal title={'Отправить сообщение на email'} close={handleClose}/>
+                                        <Box style={{margin: '10px', display:'flex', justifyContent: 'center'}}>
+                                            <CustomInput
+                                                label={'Email'}
+                                                name={'email'}
+                                                value={values.email}
+                                                handleChange={handleChange}
+                                                touched={touched.email}
+                                                error={errors.email}
+                                            />
+                                        </Box>
+                                        <Box className={classes.footer}>
+                                            <Box style={{width:'50%',display:'flex',justifyContent:'space-between' }}>
+                                                <Button onClick={handleSubmit} variant={'contained'} style={{ cursor: 'pointer'}}>Да</Button>
+
+                                                <Button onClick={handleClose} className={classes.exitModal}>Нет</Button>
+                                            </Box>
+                                        </Box>
+                                    </Box>
+                                </form>
+                            )}
+                        </Formik>
                     </Box>
                 </Box>
             </Modal>
