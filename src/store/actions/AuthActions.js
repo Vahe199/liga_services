@@ -36,12 +36,10 @@ export const Login = createAsyncThunk(
             const response= await instance.post(`v1/user/login`, data)
             localStorage.setItem('token', response?.data?.access_token);
             setAuthHeader(response?.data?.access_token)
-            debugger
             return response.data
         }
         catch (e) {
             console.log(e)
-            debugger
             return thunkAPI.rejectWithValue('неверный адрес электронной почты или пароль')
         }
     }

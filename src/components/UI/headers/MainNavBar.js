@@ -21,6 +21,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import {useDispatch, useSelector} from "react-redux";
 import {changeStatus} from "../../../store/reducers/AuthReducer";
 import Avatar from "@mui/material/Avatar";
+import {getProfilePageData} from "../../../store/actions/ProfileDataActions";
 
 const useNavStyles = makeStyles({
     root: {
@@ -94,7 +95,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 export const MainNavBar = () => {
-    const {status, user} = useSelector(state => state.auth);
+    const {status, user, auth} = useSelector(state => state.auth);
+    const {success,profile} = useSelector(state => state.profile);
     const dispatch = useDispatch();
     const changePage = () => {
         if(status === 'client'){
@@ -124,6 +126,12 @@ export const MainNavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [active, setActive] = React.useState("/");
+
+  useEffect(()=>{
+      if(auth && !success) {
+          dispatch(getProfilePageData())
+      }
+  },[])
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -282,7 +290,7 @@ export const MainNavBar = () => {
               </IconButton>
 
                 <IconButton>
-                    {user?.img_path ?<Avatar src={user?.img_path}/>
+                    {profile?.img_path ?<Avatar src={profile?.img_path}/>
                         :<UserSvg/>}
 
                 </IconButton>

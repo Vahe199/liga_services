@@ -20,10 +20,10 @@ const localStorageMiddleware = ({ getState }) => {
 
 const reHydrateStore = () => {
     if (localStorage.getItem('applicationState') !== null) {
-        return JSON.parse(localStorage.getItem('applicationState')); // re-hydrate the store
+        return JSON.parse(localStorage.getItem('applicationState')); // re-hydrate the index
     }
 };
-const store = configureStore({
+const index = configureStore({
     reducer: rootReducer,
     preloadedState: reHydrateStore(),
     middleware: getDefaultMiddleware =>
@@ -31,6 +31,6 @@ const store = configureStore({
 
 })
 
-window.store = store;
+window.store = index;
 
-export default store;
+export default index;
