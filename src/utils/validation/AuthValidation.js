@@ -20,5 +20,5 @@ export const AuthValidation = object().shape({
         .max(20, 'Слишком длинный'),
     password_confirmation: string()
         .required('Обязательное поле')
-        .oneOf([ref("password")], "пароль не совпадает")
+        .oneOf([ref("password")], "Пароль не совпадает")
 });

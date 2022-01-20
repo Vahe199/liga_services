@@ -15,43 +15,35 @@ import {GreenArrowSvg} from "../../../assets/svg/intro/GreenArrowSvg";
 import {LoginValidation} from "../../../utils/validation/LoginValidation";
 import Toaster from "../../UI/toaster/Toaster";
 import {resetAuth} from "../../../store/reducers/AuthReducer";
-import ModalForget from "../../UI/modals/ModalForget";
+import {UpdatePassword} from "../../../utils/validation/UpdatePassword";
 
 
-const LoginPage = ({setOpenLogOutModal}) => {
+const ForgetPassword = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const formikRef = useRef({});
-    const [remember, setRemember] = useState(false);
     const {load, error, success,message} = useSelector((state) => state.auth);
     const [open, setOpen] = useState(false)
-    const [openModalForget, setopenModalForget] = useState(false)
-    const HandleSvg = () => {
+    const handleSvg = () => {
         navigate('/');
     }
     useEffect(() => {
         if (error) {
             setOpen(true)
-            dispatch(resetAuth())
-
         }
         if (success) {
             navigate("/")
-            formikRef.current.resetForm();
-            dispatch(resetAuth())
         }
     }, [success, error, message]);
 
     return (
         <Box className={classes.root}>
-            <ModalForget open={openModalForget} setOpen={setopenModalForget}/>
             <Box>
                 <img src={img} className={classes.img}/>
             </Box>
             <Box className={classes.container}>
                 <Toaster error={error} success={success} message={message} open={open} setOpen={setOpen}/>
-                <Box onClick={HandleSvg} style={{
+                <Box onClick={handleSvg} style={{
                     position: "absolute",
                     left: "50px",
                     top: "20px",
@@ -60,12 +52,13 @@ const LoginPage = ({setOpenLogOutModal}) => {
                 }}>
                     <GreenArrowSvg color={"#25588d"}/>
                 </Box>
-                <p className={classes.title}>Вход</p>
-                <Formik innerRef={formikRef}
-                        initialValues={{email: "", password: ""}}
-                        validationSchema={LoginValidation}
+                <p className={classes.title}>Восстановите пароль</p>
+                <Formik
+                        initialValues={{password: "", password_confirmation: ""}}
+                        validationSchema={UpdatePassword}
                         onSubmit={(values) => {
-                            dispatch(Login(values));
+                            console.log(values, 'values')
+                            //dispatch(Login(values));
                         }}
                 >
                     {({
@@ -73,49 +66,28 @@ const LoginPage = ({setOpenLogOutModal}) => {
                           errors,
                           touched,
                           handleChange,
-                          handleBlur,
-                          setFieldValue,
                           handleSubmit,
                       }) => (
                         <form onSubmit={handleSubmit}>
                             <Box className={classes.subContainer}>
                                 <CustomInput
-                                    label={"Email*"}
-                                    width={"70%"}
-                                    name={"email"}
-                                    value={values.email}
-                                    handleChange={handleChange}
-                                    touched={touched.email}
-                                    error={errors.email}
-                                />
-                                <CustomInput
-                                    label={"Пароль*"}
+                                    label={"Пароль"}
                                     width={"70%"}
                                     name={"password"}
                                     value={values.password}
                                     handleChange={handleChange}
                                     touched={touched.password}
                                     error={errors.password}
-
                                 />
+                                <CustomInput
+                                    label={"Подтвердить пароль"}
+                                    width={"70%"}
+                                    name={"password_confirmation"}
+                                    value={values.password_confirmation}
+                                    handleChange={handleChange}
+                                    touched={touched.password_confirmation}
+                                    error={errors.password_confirmation}
 
-<Typography style={{cursor:'pointer'}} onClick={() => setopenModalForget(true)}
-                        variant={"h6"} className={classes.textBtn}>Забыли пароль</Typography>
-                                <FormControlLabel
-                                    className={classes.checkbox}
-                                    control={
-                                        <Checkbox
-                                            onChange={(e) => {
-                                                setRemember(!remember);
-                                            }}
-                                            checked={remember}
-                                            value={remember}
-                                            name={"remember"}
-                                        />
-                                    }
-
-                                    label="Запомнить"
-                                    labelPlacement="end"
                                 />
                                 <Box className={classes.footer}>
                                     <BlueButton
@@ -141,4 +113,4 @@ const LoginPage = ({setOpenLogOutModal}) => {
     );
 };
 
-export default LoginPage;
+export default ForgetPassword;
