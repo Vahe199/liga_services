@@ -17,7 +17,7 @@ import ChatPage from "./components/chatPage/ChatPage";
 import OrderAboutPage from "./components/clientPages/orderAboutPage/OrderAboutPage";
 import BalancePage from "./components/clientPages/balancePage/BalancePage";
 import {Worksheet} from "./components/clientPages/Worksheet/Worksheet";
-import ForgetPassword from "./components/authPages/forgetPassword/ForgetPassword";
+import ForgetPasswordPage from "./components/authPages/forgetPassword/ForgetPassword";
 
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
                 {/*AuthPages*/}
                 <Route path='registration' element={auth ? <Navigate to='/' /> : <RegistrationPage />} />
                 <Route path='login' element={auth ? <Navigate to='/' /> : <LoginPage />} />
-                <Route path='/forgetPassword' element={auth ? <Navigate to='/' /> : <ForgetPassword />} />
+                <Route path='/forgetPassword' element={auth ? <Navigate to='/' /> : <ForgetPasswordPage />} />
                 {/*NavBar*/}
                 <Route path={'workSheet'} element={!auth ? <Navigate to='/' /> :<Worksheet />}/>
                 <Route path={"support"} element={!auth ? <Navigate to='/' /> :<Support />}/>

@@ -73,7 +73,8 @@ const CustomInput = ({label,
                          mb = 10,
                          icon = false,
                          width = '100%',
-                         placeholder}) => {
+                         placeholder,
+                         password}) => {
     const classes = useStyles();
     return (
         <Box style={{marginBottom: mb, width, display: 'flex', alignItems: 'flex-start'}} className={classes.root}>
@@ -86,6 +87,7 @@ const CustomInput = ({label,
                     endAdornment: <InputAdornment position="start">{'Руб.'}</InputAdornment>,
                 }}
                 name={name}
+                type={password}
                 autoComplete={'off'}
                 value={value}
                 style={{width: '100%'}}

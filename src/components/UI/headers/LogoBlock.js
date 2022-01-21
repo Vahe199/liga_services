@@ -10,8 +10,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import {useNavigate} from "react-router-dom"
 import {LocationSvg} from "../../../assets/svg/header/LocationSvg";
-import {useStyles} from "../../../globalStyles/HomePageStyles";
 import Container from "@mui/material/Container";
+import {useStyles} from "../../../globalStyles/HomePageStyles";
+
 
 const pages = [
     {

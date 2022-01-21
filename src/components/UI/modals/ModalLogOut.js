@@ -7,9 +7,10 @@ import {useStyles} from "../../../globalStyles/ModalStyles";
 import {CloseSvg} from "../../../assets/svg/CloseSvg";
 import {useNavigate} from "react-router-dom";
 import HeaderModal from './blocks/HeaderModal';
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { Logouts } from '../../../store/actions/AuthActions';
 import {resetProfile} from "../../../store/reducers/ProfileDataReducer";
+import BlueButton from "../CustomButtons/BlueButton";
 
 
 const style = {
@@ -26,6 +27,7 @@ const style = {
 
 const ModalLogOut = ({open, setOpen}) => {
     const handleClose = () => setOpen(false);
+    const {load} = useSelector(state => state.auth)
     const classes = useStyles();
     const dispatch = useDispatch();
     const logOut = () => {
@@ -47,8 +49,8 @@ const ModalLogOut = ({open, setOpen}) => {
                             <HeaderModal title={'Вы действительно хотите выйти ?'} close={handleClose}/>
                             <Box className={classes.footer}>
                                 {/* <p style={{textAlign: 'center', fontSize: '24px'}}>Вы действительно хотите выйди ? </p> */}
-                                <Box style={{width:'50%',display:'flex',justifyContent:'space-between' }}>
-                                    <Button variant={'contained'} onClick={logOut} style={{ cursor: 'pointer'}}>Да</Button>
+                                <Box style={{width:'50%', alignItems: 'center', display:'flex',justifyContent:'space-between' }}>
+                                    <BlueButton load={load} label={'Вход'} variant={'contained'} action={logOut}  />
 
                                     <Button onClick={handleClose} className={classes.exitModal}>Нет</Button>
                                 </Box>

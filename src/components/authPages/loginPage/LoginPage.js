@@ -24,7 +24,7 @@ const LoginPage = () => {
     const navigate = useNavigate();
     const formikRef = useRef({});
     const [remember, setRemember] = useState(false);
-    const {load, error, success, message} = useSelector((state) => state.auth);
+    const {load, error, success, message, forgetErrorError, successWork, loadForget} = useSelector((state) => state.auth);
     const [open, setOpen] = useState(false)
     const [openModalForget, setOpenModalForget] = useState(false)
     const HandleSvg = () => {
@@ -33,23 +33,30 @@ const LoginPage = () => {
     useEffect(() => {
         if (error) {
             setOpen(true)
-            dispatch(resetAuth())
+            //dispatch(resetAuth())
         }
         if (success) {
-            navigate("/")
-            formikRef.current.resetForm();
-            dispatch(resetAuth())
+             navigate("/")
+             formikRef.current.resetForm();
+             //dispatch(resetAuth())
         }
-    }, [success, error, message]);
+    }, [success, error, message, successWork, forgetErrorError]);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setOpen(false)
+            dispatch(resetAuth())
+        }, 6000)
+    }, [open])
 
     return (
         <Box className={classes.root}>
-            <ModalForget open={openModalForget} setOpen={setOpenModalForget}/>
+            <ModalForget load={loadForget} setOpenToaster={setOpen} open={openModalForget} setOpen={setOpenModalForget}/>
             <Box>
                 <img src={img} className={classes.img}/>
             </Box>
             <Box className={classes.container}>
-                <Toaster error={error} success={success} message={message} open={open} setOpen={setOpen}/>
+                <Toaster error={forgetErrorError} success={successWork} message={message} open={open} setOpen={setOpen}/>
                 <Box onClick={HandleSvg} style={{
                     position: "absolute",
                     left: "50px",
@@ -91,6 +98,7 @@ const LoginPage = () => {
                                     label={"Пароль*"}
                                     width={"70%"}
                                     name={"password"}
+                                    type={'password'}
                                     value={values.password}
                                     handleChange={handleChange}
                                     touched={touched.password}
