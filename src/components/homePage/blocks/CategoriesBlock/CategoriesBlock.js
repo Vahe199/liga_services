@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import {makeStyles} from "@material-ui/core";
 import ModalCategories from "../../../UI/modals/ModalCategories";
 import {categories} from "../../../../utils/data/categories/Categories";
 import MainTitle from "../../../UI/titles/MainTitles";
+import {makeStyles} from "@material-ui/core";
 
 export const useStyles = makeStyles({
     aboutTitle: {

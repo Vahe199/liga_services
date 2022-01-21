@@ -1,40 +1,29 @@
-import React, {useEffect, useRef, useState} from "react";
-import Checkbox from "@mui/material/Checkbox";
+import React, {useEffect, useState} from "react";
 import img from "../../../assets/image/authImg.jpg";
 import Box from "@mui/material/Box";
-import { Formik } from "formik";
+import {Formik} from "formik";
 import CustomInput from "../../UI/customInput/CustomInput";
-import { useDispatch, useSelector } from "react-redux";
-import { Login } from "../../../store/actions/AuthActions";
+import {useDispatch, useSelector} from "react-redux";
 import BlueButton from "../../UI/CustomButtons/BlueButton";
-import { useNavigate } from "react-router-dom";
-import { FormControlLabel } from "@mui/material";
+import {useNavigate} from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import {useStyles} from "../../../globalStyles/AuthStyles";
 import {GreenArrowSvg} from "../../../assets/svg/intro/GreenArrowSvg";
-import {LoginValidation} from "../../../utils/validation/LoginValidation";
 import Toaster from "../../UI/toaster/Toaster";
-import {resetAuth} from "../../../store/reducers/AuthReducer";
 import {UpdatePassword} from "../../../utils/validation/UpdatePassword";
+import {ForgetPassword, ResetPassword} from "../../../store/actions/AuthActions";
 
 
-const ForgetPassword = () => {
+const ForgetPasswordPage = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {load, error, success,message} = useSelector((state) => state.auth);
+    const {load} = useSelector((state) => state.auth);
     const [open, setOpen] = useState(false)
     const handleSvg = () => {
         navigate('/');
     }
-    useEffect(() => {
-        if (error) {
-            setOpen(true)
-        }
-        if (success) {
-            navigate("/")
-        }
-    }, [success, error, message]);
+
 
     return (
         <Box className={classes.root}>
@@ -42,7 +31,7 @@ const ForgetPassword = () => {
                 <img src={img} className={classes.img}/>
             </Box>
             <Box className={classes.container}>
-                <Toaster error={error} success={success} message={message} open={open} setOpen={setOpen}/>
+                {/*<Toaster error={error} success={success} message={message} open={open} setOpen={setOpen}/>*/}
                 <Box onClick={handleSvg} style={{
                     position: "absolute",
                     left: "50px",
@@ -57,8 +46,8 @@ const ForgetPassword = () => {
                         initialValues={{password: "", password_confirmation: ""}}
                         validationSchema={UpdatePassword}
                         onSubmit={(values) => {
-                            console.log(values, 'values')
-                            //dispatch(Login(values));
+                            //dispatch(ResetPassword(values));
+                            navigate('/login')
                         }}
                 >
                     {({
@@ -74,6 +63,7 @@ const ForgetPassword = () => {
                                     label={"Пароль"}
                                     width={"70%"}
                                     name={"password"}
+                                    type={'password'}
                                     value={values.password}
                                     handleChange={handleChange}
                                     touched={touched.password}
@@ -82,6 +72,7 @@ const ForgetPassword = () => {
                                 <CustomInput
                                     label={"Подтвердить пароль"}
                                     width={"70%"}
+                                    type={'password'}
                                     name={"password_confirmation"}
                                     value={values.password_confirmation}
                                     handleChange={handleChange}
@@ -93,7 +84,7 @@ const ForgetPassword = () => {
                                     <BlueButton
                                         action={handleSubmit}
                                         load={load}
-                                        label={"Вход"}
+                                        label={"Продолжить"}
                                     />
                                     <Typography
                                         style={{fontSize: "15px", textAlign: "center"}}
@@ -113,4 +104,4 @@ const ForgetPassword = () => {
     );
 };
 
-export default ForgetPassword;
+export default ForgetPasswordPage;

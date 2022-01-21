@@ -120,7 +120,7 @@ export const useStyles = makeStyles({
     exitModal:{
         backgroundColor: '#EBEBEB',
         cursor: 'pointer',
-        border: '1px solid #000'
+        height: '38px',
     },
     headerBlock: {
         display: 'flex',

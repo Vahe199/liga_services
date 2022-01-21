@@ -13,7 +13,6 @@ const useStyles = makeStyles({
             fontWeight: 500,
             borderRadius: '10px',
             //width: '160px',
-            marginBottom: '10px',
         },
         '& .MuiButton-root': {
             "& .Mui-disabled":{
@@ -41,7 +40,6 @@ const BlueButton = ({load, action, label, width}) => {
                 variant="contained"
                 disabled={load}
                 style={{width}}
-                disabledStyle={{backgroundColor: 'yellow'}}
                 onClick={action}
             >
                 {load ? 'Загрузка...' : label}

@@ -1,5 +1,4 @@
 import React from 'react';
-import {makeStyles} from "@material-ui/core";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -10,6 +9,8 @@ import Avatar from "@mui/material/Avatar";
 import MainTitle from "../../../UI/titles/MainTitles";
 import RatingBlock from "../../../UI/ratingBlock/RatingBlock";
 import Typography from "@mui/material/Typography";
+import {makeStyles} from "@material-ui/core";
+
 export const useStyles = makeStyles({
     card: {
         //borderRadius: '30px',
