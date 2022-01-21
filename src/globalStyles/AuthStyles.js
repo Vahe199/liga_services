@@ -59,7 +59,13 @@ export const useStyles = makeStyles({
                 //background: '#6585a5 !important',
             }
         },
-
+        //text
+        "& .MuiTypography-h6": {
+            fontWeight: 400,
+            fontSize: 16,
+            display: 'flex',
+            textDecoration: 'underLine',
+        }
     },
     container: {
         position:'relative',

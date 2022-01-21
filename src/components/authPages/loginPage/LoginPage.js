@@ -18,15 +18,15 @@ import {resetAuth} from "../../../store/reducers/AuthReducer";
 import ModalForget from "../../UI/modals/ModalForget";
 
 
-const LoginPage = ({setOpenLogOutModal}) => {
+const LoginPage = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const formikRef = useRef({});
     const [remember, setRemember] = useState(false);
-    const {load, error, success,message} = useSelector((state) => state.auth);
+    const {load, error, success, message} = useSelector((state) => state.auth);
     const [open, setOpen] = useState(false)
-    const [openModalForget, setopenModalForget] = useState(false)
+    const [openModalForget, setOpenModalForget] = useState(false)
     const HandleSvg = () => {
         navigate('/');
     }
@@ -34,7 +34,6 @@ const LoginPage = ({setOpenLogOutModal}) => {
         if (error) {
             setOpen(true)
             dispatch(resetAuth())
-
         }
         if (success) {
             navigate("/")
@@ -45,7 +44,7 @@ const LoginPage = ({setOpenLogOutModal}) => {
 
     return (
         <Box className={classes.root}>
-            <ModalForget open={openModalForget} setOpen={setopenModalForget}/>
+            <ModalForget open={openModalForget} setOpen={setOpenModalForget}/>
             <Box>
                 <img src={img} className={classes.img}/>
             </Box>
@@ -99,7 +98,7 @@ const LoginPage = ({setOpenLogOutModal}) => {
 
                                 />
 
-<Typography style={{cursor:'pointer'}} onClick={() => setopenModalForget(true)}
+<Typography style={{cursor:'pointer'}} onClick={() => setOpenModalForget(true)}
                         variant={"h6"} className={classes.textBtn}>Забыли пароль</Typography>
                                 <FormControlLabel
                                     className={classes.checkbox}

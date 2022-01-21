@@ -10,10 +10,9 @@ import BlueButton from "../../UI/CustomButtons/BlueButton";
 import {useNavigate} from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import { GreenArrowSvg } from '../../../assets/svg/intro/GreenArrowSvg';
-import {useStyles} from "../../../globalStyles/AuthStyles";
 import {resetAuth} from "../../../store/reducers/AuthReducer";
-
 import {Registration} from "../../../store/actions/AuthActions";
+import {useStyles} from "../../../globalStyles/AuthStyles";
 
 
 
