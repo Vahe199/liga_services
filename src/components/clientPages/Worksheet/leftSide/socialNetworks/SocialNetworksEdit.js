@@ -10,13 +10,15 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Avatar from "@mui/material/Avatar";
+import {useSelector} from "react-redux";
 
 const SocialNetworksEdit = ({setEditSocialNetwork, editSocialNetwork}) => {
   const classes = useProfileCardStyles();
+    const {profile} = useSelector(state => state.profile);
   return (
     <Card sx={{ boxShadow: 2 }} className={classes.root}>
         <Formik
-            initialValues={{ fasebook_link: '', instagram_link: '' }}
+            initialValues={{ fasebook_link: profile?.fasebook_link, instagram_link: profile?.instagram_link }}
             onSubmit={async (values, action) => {
                 console.log(values, 'values')
                 setEditSocialNetwork(false)

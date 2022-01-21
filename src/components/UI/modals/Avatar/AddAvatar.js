@@ -3,6 +3,9 @@ import {Avatar, Button} from "@mui/material";
 import {makeStyles} from "@material-ui/core";
 import upload from "../../../../assets/image/upload.png";
 import {LightTooltip} from "../../../../globalStyles/LightTooltip";
+import {HtmlTooltip} from "../../../../globalStyles/ HtmlTooltip";
+import Typography from "@mui/material/Typography";
+import {Upload} from "../../../../assets/svg/Upload";
 
 const useAvatarStyles = makeStyles({
     fileInput:{
@@ -63,7 +66,24 @@ export const AddAvatar = ({avatarPreview, setAvatarPreview}) => {
                     }}
                 />
                 <label htmlFor="raised-button-file">
-                    <LightTooltip title="Нажмите, чтобы изменить картинку" placement="bottom" arrow>
+                    {/*<LightTooltip title="Нажмите, чтобы изменить картинку" placement="bottom" arrow>*/}
+                    <HtmlTooltip arrow
+                        title={
+                            <React.Fragment>
+                                <img
+                                        style={{marginRight:10,
+                                            lightingColor:"#000",
+                                            width: '15px',
+                                            height: '15px'}}
+                                        alt="upload"
+                                        src={upload}
+                                />
+
+                                <Typography variant={"h6"}
+                                    style={{fontSize:12}} color="inherit">Обновить фото профиля</Typography>
+                            </React.Fragment>
+                        }
+                    >
                     <Button
                         component="span"
                         className={
@@ -82,7 +102,8 @@ export const AddAvatar = ({avatarPreview, setAvatarPreview}) => {
                             :<img src={upload} style={{width:20,height:20}}/>
                         }
                     </Button>
-                    </LightTooltip>
+                    {/*</LightTooltip>*/}
+                    </HtmlTooltip>
                         </label>
             </div>
         </>

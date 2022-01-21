@@ -13,33 +13,33 @@ import {useProfileCardStyles} from "../../../../../globalStyles/ProfileCardStyle
 
 const SocialNetworksData = ({ setEditSocialNetwork, editSocialNetwork }) => {
   const classes = useProfileCardStyles();
-  const {user} = useSelector(state => state.auth);
+  const {profile} = useSelector(state => state.profile);
    return (
     <Card sx={{ boxShadow: 2 }} className={classes.root}>
       <Box className={classes.orderSubBlockSpaceBetween}>
         <Typography variant={"h6"}>Привязанные соцсети</Typography>
           <IconButton onClick={() => setEditSocialNetwork(true)}>
             <PenSvg />
-          </IconButton>  
+          </IconButton>
       </Box>
       <Box style={{ background: "#808080", height: 2, marginBottom: "10px" }} />
       <Box style={{ display: "flex", alignItems: "center", marginBottom: 15 }}>
         <Avatar src={VK} style={{ marginRight: 25 }} variant="rounded" />
         <Box>
           <Typography variant={"h6"}>Вконтакте</Typography>
-            {user.fasebook_link ? <Link variant={"h5"} style={{ margin: 0 }}>
-                {user.fasebook_link}
+            {profile?.fasebook_link ? <Link variant={"h5"} style={{ margin: 0 }}>
+                {profile?.fasebook_link}
             </Link> : <Typography variant={"h5"} style={{ margin: 0 }}>
                 не привязана
             </Typography>}
         </Box>
       </Box>
       <Box style={{ display: "flex", alignItems: "center" }}>
-        <Avatar src={instagram} style={{ marginRight: 25 }} variant="rounded" />   
+        <Avatar src={instagram} style={{ marginRight: 25 }} variant="rounded" />
           <Box>
             <Typography variant={"h6"}>Инстаграм</Typography>
-              {user.instagram_link ? <Link variant={"h5"} style={{ margin: 0 }}>
-                  {user.instagram_link}
+              {profile?.instagram_link ? <Link variant={"h5"} style={{ margin: 0 }}>
+                  {profile?.instagram_link}
               </Link> : <Typography variant={"h5"} style={{ margin: 0 }}>
                   не привязана
               </Typography>}
