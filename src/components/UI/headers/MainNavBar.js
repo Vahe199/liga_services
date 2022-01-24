@@ -22,6 +22,7 @@ import {changeStatus} from "../../../store/reducers/AuthReducer";
 import Avatar from "@mui/material/Avatar";
 import {getProfilePageData} from "../../../store/actions/ProfileDataActions";
 import {makeStyles} from "@material-ui/core";
+import {getExecutorPageData} from "../../../store/actions/ExecutorDataActions";
 
 
 const useNavStyles = makeStyles({
@@ -99,9 +100,10 @@ export const MainNavBar = () => {
     const {status, user, auth} = useSelector(state => state.auth);
     const {success,profile} = useSelector(state => state.profile);
     const dispatch = useDispatch();
-    const changePage = () => {
+    const changePage = async () => {
         if(status === 'client'){
-            dispatch(changeStatus('executor'))
+            await dispatch(getExecutorPageData())
+            await dispatch(changeStatus('executor'))
             navigate('/', { replace: true })
         }else {
             dispatch(changeStatus('client'))

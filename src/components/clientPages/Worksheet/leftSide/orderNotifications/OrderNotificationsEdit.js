@@ -5,8 +5,10 @@ import {useInfoCardStyles} from "../../../../../globalStyles/InfoCardStyles";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import {FormControlLabel, RadioGroup} from "@mui/material";
-import {Radio} from "@material-ui/icons";
+import {FormControlLabel, Radio, RadioGroup} from "@mui/material";
+import {useDispatch} from "react-redux";
+import {updateNotifications} from "../../../../../store/actions/ProfileDataActions";
+import {changeGettingNotifications} from "../../../../../store/reducers/ProfileDataReducer";
 
 const radio = {
     color: "#4B9A2D",
@@ -15,16 +17,25 @@ const radio = {
     },
 }
 
-const OrderNotificationsEdit = ({notificationsOrder, setNotificationOrders}) => {
+const OrderNotificationsEdit = ({geting_notification, setOpenToaster, setNotificationOrders}) => {
     const classes = useInfoCardStyles();
-    const [value, setValue] = React.useState('На почту и по СМС');
+    const [value, setValue] = React.useState(geting_notification);
+    const dispatch = useDispatch();
+
+    const changeNotification = async () => {
+        await dispatch(updateNotifications({'geting_notification': value}))
+        await setOpenToaster(true)
+        await dispatch(changeGettingNotifications(value))
+        setNotificationOrders(false)
+    }
+
     return (
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
             <Box className={classes.orderSubBlockSpaceBetween}>
-                <Typography variant={"h6"}>Увидомления по заказам</Typography>             
-                    <IconButton onClick={() => setNotificationOrders(false)}>
+                <Typography variant={"h6"}>Увидомления по заказам</Typography>
+                    <IconButton onClick={changeNotification}>
                         <FileSVG color={'#808080'} />
-                    </IconButton> 
+                    </IconButton>
             </Box>
             <Box style={{background:"#808080", height:2}}/>
            <RadioGroup
@@ -39,7 +50,7 @@ const OrderNotificationsEdit = ({notificationsOrder, setNotificationOrders}) => 
                     <FormControlLabel value="На почту" control={<Radio sx={radio} size={"small"}/>} label="На почту" />
                     <FormControlLabel value="по СМС" control={<Radio sx={radio} size={"small"}/>} label="по СМС" />
 
-                </RadioGroup> 
+                </RadioGroup>
         </Card>
     )
 };

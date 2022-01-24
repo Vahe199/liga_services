@@ -31,6 +31,7 @@ export const Registration = createAsyncThunk(
 export const Login = createAsyncThunk(
     'auth/login',
     async (data, thunkAPI) => {
+        debugger
         try{
             const response= await instance.post(`v1/user/login`, data)
             localStorage.setItem('token', response?.data?.access_token);

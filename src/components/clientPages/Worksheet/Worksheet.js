@@ -8,7 +8,7 @@ import EditPersonalData from "./rightSide/EditPersonalData";
 import CustomerReviews from "./rightSide/CustomerReviews";
 import ModalPersonalData from "../../UI/modals/ModalPersonalData";
 import {makeStyles} from "@material-ui/core";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import DistrictsAndAddresses from "./rightSide/onlyExecutor/districtsAndAddresses/DistrictsAndAddresses";
 import Box from "@mui/material/Box";
 import ExperienceBlock from "./rightSide/onlyExecutor/ExperienceBlock/ExperienceBlock";
@@ -17,6 +17,8 @@ import EducationBlock from "./rightSide/onlyExecutor/educationBlock/EducationBlo
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import ModalLogOut from "../../UI/modals/ModalLogOut";
+import {getProfilePageData} from "../../../store/actions/ProfileDataActions";
+import Toaster from "../../UI/toaster/Toaster";
 
 const useAncetaStyles = makeStyles({
     root:{
@@ -37,6 +39,8 @@ const useAncetaStyles = makeStyles({
 export const Worksheet = () =>{
     const classes = useAncetaStyles()
     const {status} = useSelector(state => state.auth)
+    const {profile, error, message, successWork} = useSelector(state => state.profile)
+    const {executor} = useSelector(state => state.executor)
     const [editPersonallyData, setEditPersonallyData] = useState(false);
     const [editSocialNetwork, setEditSocialNetwork] = useState(false);
     const [notificationsOrder, setNotificationOrders] = useState(false);
@@ -46,18 +50,30 @@ export const Worksheet = () =>{
     const [editPortfolio, setEditPortfolio] = useState(false);
     const [editEducationBlock, setEditEducationBlock] = useState(false);
     const [openLogOutModal, setOpenLogOutModal] = useState(false);
+    const [openToaster, setOpenToaster] = useState(false);
 
+    useEffect(() => {
+        console.log(executor[0], 'executor')
+    }, [])
 
     return(
         <Box className={classes.root}>
+            <Toaster error={error} success={successWork} message={message} open={openToaster} setOpen={setOpenToaster}/>
             <Container maxWidth={'lg'}>
                 <ModalLogOut open={openLogOutModal} setOpen={setOpenLogOutModal}/>
                 <ModalPersonalData showModal={showModal} setShowModal={setShowModal}/>
             <Grid container spacing={1}>
                 <Grid item sm={12} lg={4}>
-                    <ProfileStatus setShowModal={setShowModal}/>
-                    <SocialNetworks setEditSocialNetwork={setEditSocialNetwork} editSocialNetwork={editSocialNetwork}/>
-                    <OrderNotifications notificationsOrder={notificationsOrder} setNotificationOrders={setNotificationOrders} />
+                    <ProfileStatus profile={profile} setShowModal={setShowModal}/>
+                    <SocialNetworks profile={profile}
+                                    openToaster={openToaster}
+                                    setOpenToaster={setOpenToaster}
+                                    setEditSocialNetwork={setEditSocialNetwork}
+                                    editSocialNetwork={editSocialNetwork}/>
+                    <OrderNotifications profile={profile}
+                                        openToaster={openToaster}
+                                        setOpenToaster={setOpenToaster}
+                                        notificationsOrder={notificationsOrder} setNotificationOrders={setNotificationOrders} />
                     <ProfileActions setOpenLogOutModal={setOpenLogOutModal} />
                 </Grid>
                 <Grid item sm={12} lg={8}>
@@ -73,9 +89,9 @@ export const Worksheet = () =>{
                         <ExperienceBlock editExperienceBlock={editExperienceBlock} setEditExperienceBlock={setEditExperienceBlock} />
                         <Portfolio editPortfolio={editPortfolio} setEditPortfolio={setEditPortfolio} />
                         <EducationBlock editEducationBlock={editEducationBlock} setEditEducationBlock={setEditEducationBlock} />
+                        <CustomerReviews />
                     </Box>
                     }
-                    <CustomerReviews />
                 </Grid>
             </Grid>
             </Container>

@@ -15,3 +15,33 @@ export const getProfilePageData = createAsyncThunk(
         }
     }
 )
+
+export const updateSocLink = createAsyncThunk(
+    'profile/updateSocLink',
+    async (data,thunkAPI) => {
+        debugger
+        try {
+            const response = await instance.post("v1/user/update-socLink", data)
+            return response.data
+        } catch (e) {
+            console.log(e.response, 'register error')
+            return thunkAPI.rejectWithValue('Что то пошло не так')
+            // return thunkAPI.rejectWithValue('Что то пошло не так')
+        }
+    }
+)
+
+export const updateNotifications = createAsyncThunk(
+    'profile/updateNotifications',
+    async (data,thunkAPI) => {
+        debugger
+        try {
+            const response = await instance.post("v1/user/update-notification", data)
+            return response.data
+        } catch (e) {
+            console.log(e.response, 'register error')
+            return thunkAPI.rejectWithValue('Что то пошло не так')
+            // return thunkAPI.rejectWithValue('Что то пошло не так')
+        }
+    }
+)
