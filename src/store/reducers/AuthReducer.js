@@ -4,7 +4,7 @@ import {ForgetPassword, Login, Logouts, Registration} from "../actions/AuthActio
 const initialState = {
     auth: false,
     authStatus: false,
-    status: 'executor',
+    status: 'client',
     user: {},
     load: false,
     error: '',

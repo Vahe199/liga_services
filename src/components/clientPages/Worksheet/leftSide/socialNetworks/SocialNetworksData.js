@@ -11,7 +11,7 @@ import {useSelector} from "react-redux";
 import {Link} from "@mui/material";
 import {useProfileCardStyles} from "../../../../../globalStyles/ProfileCardStyles";
 
-const SocialNetworksData = ({ setEditSocialNetwork, editSocialNetwork }) => {
+const SocialNetworksData = ({ setEditSocialNetwork }) => {
   const classes = useProfileCardStyles();
   const {profile} = useSelector(state => state.profile);
    return (

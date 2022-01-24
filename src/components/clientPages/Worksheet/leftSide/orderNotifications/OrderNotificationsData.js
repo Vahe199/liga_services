@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Card from "@mui/material/Card";
 import {useInfoCardStyles} from "../../../../../globalStyles/InfoCardStyles";
 import PenSvg from "../../../../../assets/svg/Profile/PenSvg";
@@ -7,8 +7,9 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 
-const OrderNotificationsData = ({notificationsOrder, setNotificationOrders}) => {
+const OrderNotificationsData = ({geting_notification, setNotificationOrders}) => {
   const classes = useInfoCardStyles();
+
   return (
     <Card sx={{ boxShadow: 2 }} className={classes.root}>
       <Box className={classes.orderSubBlockSpaceBetween}>
@@ -20,7 +21,7 @@ const OrderNotificationsData = ({notificationsOrder, setNotificationOrders}) => 
       <CustomDivider />
       <Box>
         <Typography variant={"h5"}>Способ получения увидомления</Typography>
-        <Typography>На почту и по СМС</Typography>
+        <Typography>{geting_notification}</Typography>
       </Box>
     </Card>
   );

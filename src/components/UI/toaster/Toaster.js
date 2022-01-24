@@ -12,7 +12,7 @@ const Toaster = ({open, setOpen, message, error, success}) => {
     const status = success ? 'success' : 'error';
 
     useEffect(() => {
-        console.log(success, 'success', message, 'message')
+        console.log(message, 'message')
     }, [message, error, success, status])
 
     //console.log(status)
