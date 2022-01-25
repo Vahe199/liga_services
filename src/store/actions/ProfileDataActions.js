@@ -35,7 +35,7 @@ export const updateSocLink = createAsyncThunk(
     async (data,thunkAPI) => {
         debugger
         try {
-            const response = await instance.post("v1/user/update-socLink", data)
+            const response = await instance.post("v1/user/update-soclink", data)
             return response.data
         } catch (e) {
             console.log(e.response, 'register error')
