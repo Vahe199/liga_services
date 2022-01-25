@@ -108,7 +108,10 @@ const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
                                                             <Box style={{width: '350px'}}>
                                                                 <RangeDatePicker
                                                                     value={work.date}
-                                                                    fun={(newValue) => setFieldValue(fieldName, newValue)}
+                                                                    fun={(newValue) => {
+                                                                        console.log( new Date(newValue[0]),"newValue")
+                                                                        setFieldValue(fieldName, newValue)
+                                                                    }}
                                                                 />
 
                                                             </Box>
