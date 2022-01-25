@@ -13,23 +13,28 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import CustomDivider from "../../../../../UI/customDivider/CustomDivider";
+import CustomSelect from "../../../../../UI/selects/CustomSelect";
+import {DelBtnSvg} from "../../../../../../assets/svg/Profile/DelBtnSvg";
 
 const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
     const classes = useInfoCardStyles();
 
 
-        const saveData = () => {
-            setTimeout(() => {
-                setEditExperienceBlock(false)
-            }, 2000)
-        }
+    const saveData = () => {
+        setTimeout(() => {
+            setEditExperienceBlock(false)
+        }, 2000)
+    }
 
     return (
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
             <Formik
                 initialValues={{
-                    categories: [
-
+                    categoriesList: [
+                        {
+                            categories: '',
+                            subCategories: [],
+                        },
                     ],
                     subCategories: [
 
@@ -53,75 +58,103 @@ const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
                   }) => (
                     <form onSubmit={handleSubmit}>
                         <Box
-                             style={{display: 'flex', alignItems: 'flex-start'}}>
+                            style={{display: 'flex', alignItems: 'flex-start'}}>
                             <Typography className={classes.title}>
                                 Специальность и опыт
                             </Typography>
 
-                                <Button type={"submit"}  onClick={saveData}
-                                        size={"small"} style={{cursor: "pointer", padding: '0 0 7px 20px'}}>
-                                    <FileSVG color={'#808080'}/>
-                                </Button>
+                            <Button type={"submit"}  onClick={saveData}
+                                    size={"small"} style={{cursor: "pointer", padding: '0 0 7px 20px'}}>
+                                <FileSVG color={'#808080'}/>
+                            </Button>
 
                         </Box>
                         <CustomDivider />
-                            <Box>
-                                <FieldArray name={'categories'}>
-                                    {({push, remove}) => (
-                                        <CategoriesListEdit handleChange={(e) => push({item: e.target.value})}
-                                                            placeholder={'Выбрать категории'}
-                                                            arr={values.categories}
-                                                            remove={remove}
-                                        />
-                                    )}
-                                </FieldArray>
-                            </Box>
-                            <Box>
-                                <FieldArray name={'subCategories'}>
-                                    {({push, remove}) => (
-                                        <CategoriesList handleChange={(e) => push({item: e.target.value})}
-                                                        placeholder={'Выбрать подкатегории'}
-                                                        arr={values.subCategories}
-                                                        remove={remove}
-                                        />
-                                    )}
-                                </FieldArray>
-                            </Box>
+                        <Box>
+                            <FieldArray name={'categoriesList'}>
+                                {({push, remove}) => (
+                                        <Box style={{display: 'flex', flexWrap: 'wrap'}}>
+                                            {values.subCategories.map((item, index) => (
+                                                    <Box>
+                                                        <Box style={{marginBottom: '40px'}} className={classes.singleInput}>
+                                                            <CustomSelect handleChange={handleChange}
+                                                                          placeholder={'Выбрать категории'} mt={20}/>
+                                                        </Box>
+                                                        {item.item !== '' ?
+                                                            <Box key={index} className={classes.categoriesBackGround}>
+                                                                <Typography variant={'h4'}>{item.item}</Typography>
+                                                                <Box onClick={() => remove(index)}
+                                                                     className={classes.delBtn}>
+                                                                    <DelBtnSvg/>
+                                                                </Box>
+                                                            </Box> : ''}
+
+                                                        <Box style={{marginBottom: '40px'}} className={classes.singleInput}>
+                                                            <CustomSelect handleChange={handleChange}
+                                                                          placeholder={'Выбрать подкатегории'} mt={20}/>
+                                                        </Box>
+                                                        {item.item !== '' ?
+                                                            <Box key={index} className={classes.categoriesBackGround}>
+                                                                <Typography variant={'h4'}>{item.item}</Typography>
+                                                                <Box onClick={() => remove(index)}
+                                                                     className={classes.delBtn}>
+                                                                    <DelBtnSvg/>
+                                                                </Box>
+                                                            </Box> : ''}
+                                                        {values.categories.length > index + 1 ? <div onClick={() => remove(index)}>
+                                                                <TrashSvg/>
+                                                            </div>
+                                                            : <AddButton fun={() => push({categories: ''})}/>}
+                                                    </Box>
+                                                )
+                                            )}
+                                        </Box>
+                                )}
+                            </FieldArray>
+                        </Box>
+                        {/*<Box>*/}
+                        {/*    <FieldArray name={'subCategories'}>*/}
+                        {/*        {({push, remove}) => (*/}
+                        {/*            <CategoriesList handleChange={(e) => push({item: e.target.value})}*/}
+                        {/*                            placeholder={'Выбрать подкатегории'}*/}
+                        {/*                            arr={values.subCategories}*/}
+                        {/*                            remove={remove}*/}
+                        {/*            />*/}
+                        {/*        )}*/}
+                        {/*    </FieldArray>*/}
+                        {/*</Box>*/}
                         <Box>
                             <FieldArray name={'workPlace'}>
                                 {({push, remove}) => (
                                     <Box>
                                         {values.workPlace.map((work, index) => {
-                                            const fieldName = `workPlace[${index}].date`;
+                                                const fieldName = `workPlace[${index}].date`;
 
-                                            return(
-                                                <Box key={index}>
-                                                    <Box style={{marginBottom: '20px'}}>
-                                                        <Box style={{display: 'flex', flexWrap: 'wrap'}}>
-                                                            <Box className={classes.singleInput}>
-                                                                <CustomInput placeholder={'Место работы'}
-                                                                             name={`workPlace[${index}].place`}
-                                                                             value={work.place}
-                                                                             handleChange={handleChange}
-                                                                />
-                                                            </Box>
-                                                            <Box style={{width: '350px'}}>
-                                                                <RangeDatePicker
-                                                                    value={work.date}
-                                                                    fun={(newValue) => {
-                                                                        console.log( new Date(newValue[0]),"newValue")
-                                                                        setFieldValue(fieldName, newValue)
-                                                                    }}
-                                                                />
+                                                return(
+                                                    <Box key={index}>
+                                                        <Box style={{marginBottom: '20px'}}>
+                                                            <Box style={{display: 'flex', flexWrap: 'wrap'}}>
+                                                                <Box className={classes.singleInput}>
+                                                                    <CustomInput placeholder={'Место работы'}
+                                                                                 name={`workPlace[${index}].place`}
+                                                                                 value={work.place}
+                                                                                 handleChange={handleChange}
+                                                                    />
+                                                                </Box>
+                                                                <Box style={{width: '350px'}}>
+                                                                    <RangeDatePicker
+                                                                        value={work.date}
+                                                                        fun={(newValue) => setFieldValue(fieldName, newValue)}
+                                                                    />
 
+                                                                </Box>
                                                             </Box>
+                                                            {values.workPlace.length > index +1 ?<div onClick={() => remove(index)}>
+                                                                    <TrashSvg/>
+                                                                </div>
+                                                                : <AddButton fun={() => push({place: '', date: [null,null]})}/>}
                                                         </Box>
-                                                        {values.workPlace.length > index +1 ?<div onClick={() => remove(index)}>
-                                                            <TrashSvg/>
-                                                            </div>
-                                                        : <AddButton fun={() => push({place: '', date: [null,null]})}/>}
-                                                    </Box>
-                                                </Box>)
+                                                    </Box>)
                                             }
                                         )}
                                     </Box>
