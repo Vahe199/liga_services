@@ -4,14 +4,33 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import CustomDivider from "../../../UI/customDivider/CustomDivider";
 import IconButton from "@mui/material/IconButton";
+import {useDispatch} from "react-redux";
+import {getCompletedTasks, getNotAppliedTasks} from "../../../../store/actions/TaskActions";
 
 
 const MyOrdersBlock = ({setShowForm}) => {
     const [btnSelected, setBtnSelected] = useState(1);
-    const arr = ['Не откликнувшые заказы', 'Заказы в работе', 'Завершенные заказы', 'История заказов']
+    const dispatch = useDispatch();
+    const arr = ['Не откликнувшые заказы',
+                'Заказы в работе',
+                'Завершенные заказы',
+                'История заказов']
+
+    const showOrders = async (index) => {
+        setBtnSelected(index + 1)
+        switch (index) {
+            case 0:
+                dispatch(getNotAppliedTasks())
+                break;
+            case 2:
+                dispatch(getCompletedTasks())
+                break;
+        }
+        setShowForm(false)
+    }
 
     useEffect(() => {
-        console.log(btnSelected, 'btnSelected')
+
     }, [])
     return (
         <Box>
@@ -23,10 +42,7 @@ const MyOrdersBlock = ({setShowForm}) => {
             <CustomDivider />
 
             {arr.map((item, index) =>
-                <Box key={index} onClick={() => {
-                    setBtnSelected(index + 1)
-                    setShowForm(false)
-                }} style={{display:'flex'}}>
+                <Box key={index} onClick={() => showOrders(index)} style={{display:'flex'}}>
                     <p style={{fontWeight: btnSelected === index + 1 ? '500' : '400', color: '#000000', margin: 0, whiteSpace:'nowrap', fontSize: '18px'}}>
                         {item}
                     </p>

@@ -1,5 +1,4 @@
 import React from "react";
-import { review } from "../../../../utils/data/review2/Review2";
 import Box from "@mui/material/Box";
 import CustomDivider from "../../../UI/customDivider/CustomDivider";
 import Typography from "@mui/material/Typography";
@@ -45,14 +44,14 @@ const useStyles = makeStyles({
     },
 })
 
-const CustomerReviews = () => {
+const CustomerReviews = ({reviews}) => {
     const classes = useStyles();
   return (
     <Card className={classes.root}>
       <Typography variant={'h3'}>
         Отзывы клиентов
       </Typography>
-      {review.map((item, index) => (
+      {reviews.map((item, index) => (
         <Box style={{marginBottom: '20px'}} key={index}>
             <CustomDivider />
           <Box style={{ display: "flex", alignItems: "center", marginBottom: '20px' }}>
@@ -60,19 +59,15 @@ const CustomerReviews = () => {
               style={{ width: "70px", height: "70px", marginTop: "10px" }}
             />
             <Box style={{ paddingLeft: "20px" }}>
-              <Typography style={{marginBottom: '10px'}} variant={'h4'}>{item.name}</Typography>
-              <Rating readOnly size={'small'} style={{color: '#FFF066'}} />
+              <Typography style={{marginBottom: '10px'}} variant={'h4'}>{item.user_id.name}</Typography>
+              <Rating defaultValue={item.executor_star_count_to_employer} readOnly size={'small'} style={{color: '#FFF066'}} />
             </Box>
           </Box>
           <Typography style={{marginBottom: '10px'}} variant={'h6'}>
-            Даже самое хмурое питерское утро может стать необыкновенно приятным,
-            если завтракать в "Название". Большой полезный завтрак не только
-            очень красиво, но еще и оооочень вкусно и сытно. А с десертами
-            беда...невозможно остановиться на одном (выбор широкий, и все очень
-            вкусные) И такое чудесное облако в интерьере!
+              {item.employer_review_to_executor}
           </Typography>
           <Typography variant={'h5'}>Баллы</Typography>
-            <Rating style={{color: '#FFF066', marginBottom: '30px'}} />
+            <Rating readOnly defaultValue={item.employer_star_count_to_executor} style={{color: '#FFF066', marginBottom: '30px'}} />
         </Box>
       ))}
     </Card>
