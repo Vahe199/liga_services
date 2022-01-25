@@ -52,10 +52,6 @@ export const Worksheet = () =>{
     const [openLogOutModal, setOpenLogOutModal] = useState(false);
     const [openToaster, setOpenToaster] = useState(false);
 
-    useEffect(() => {
-        console.log(executor[0], 'executor')
-    }, [])
-
     return(
         <Box className={classes.root}>
             <Toaster error={error} success={successWork} message={message} open={openToaster} setOpen={setOpenToaster}/>
@@ -89,7 +85,7 @@ export const Worksheet = () =>{
                         <ExperienceBlock editExperienceBlock={editExperienceBlock} setEditExperienceBlock={setEditExperienceBlock} />
                         <Portfolio editPortfolio={editPortfolio} setEditPortfolio={setEditPortfolio} />
                         <EducationBlock editEducationBlock={editEducationBlock} setEditEducationBlock={setEditEducationBlock} />
-                        <CustomerReviews />
+                        <CustomerReviews reviews={executor[0].reitings} />
                     </Box>
                     }
                 </Grid>

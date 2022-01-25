@@ -16,3 +16,31 @@ export const AddNewTask = createAsyncThunk(
     }
 )
 
+export const getCompletedTasks = createAsyncThunk(
+    'task/getCompletedTasks',
+    async (_,thunkAPI) => {
+        debugger
+        try {
+            const response = await instance.get("v1/user/completed-tasks")
+            return response.data
+        } catch (e) {
+            console.log(e.response, 'register error')
+            return thunkAPI.rejectWithValue('Что то пошло не так')
+        }
+    }
+)
+
+export const getNotAppliedTasks = createAsyncThunk(
+    'task/getNotAppliedTasks',
+    async (_,thunkAPI) => {
+        debugger
+        try {
+            const response = await instance.get("v1/user/not-applied-task")
+            return response.data
+        } catch (e) {
+            console.log(e.response, 'register error')
+            return thunkAPI.rejectWithValue('Что то пошло не так')
+        }
+    }
+)
+
