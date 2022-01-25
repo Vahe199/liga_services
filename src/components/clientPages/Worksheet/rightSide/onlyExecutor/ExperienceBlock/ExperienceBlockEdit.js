@@ -33,11 +33,8 @@ const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
                     categoriesList: [
                         {
                             categories: '',
-                            subCategories: [],
+                            subCategories: '',
                         },
-                    ],
-                    subCategories: [
-
                     ],
                     workPlace: [
                         {
@@ -70,41 +67,37 @@ const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
 
                         </Box>
                         <CustomDivider />
-                        <Box>
+                        <Box style={{marginBottom: '20px'}}>
                             <FieldArray name={'categoriesList'}>
                                 {({push, remove}) => (
-                                        <Box style={{display: 'flex', flexWrap: 'wrap'}}>
-                                            {values.subCategories.map((item, index) => (
+                                        <Box>
+                                            {values.categoriesList.map((item, index) => (
                                                     <Box>
                                                         <Box style={{marginBottom: '40px'}} className={classes.singleInput}>
                                                             <CustomSelect handleChange={handleChange}
+                                                                          name={`categoriesList[${index}].categories`}
                                                                           placeholder={'Выбрать категории'} mt={20}/>
                                                         </Box>
-                                                        {item.item !== '' ?
-                                                            <Box key={index} className={classes.categoriesBackGround}>
-                                                                <Typography variant={'h4'}>{item.item}</Typography>
-                                                                <Box onClick={() => remove(index)}
-                                                                     className={classes.delBtn}>
-                                                                    <DelBtnSvg/>
-                                                                </Box>
-                                                            </Box> : ''}
+                                                        {item.categories !== '' ? <Box style={{width: '20%'}}
+                                                              className={classes.categoriesBackGround}>
+                                                            <Typography variant={'h4'}>{item.categories}</Typography>
+                                                        </Box> : ''}
 
                                                         <Box style={{marginBottom: '40px'}} className={classes.singleInput}>
                                                             <CustomSelect handleChange={handleChange}
-                                                                          placeholder={'Выбрать подкатегории'} mt={20}/>
+                                                                          name={`categoriesList[${index}].subCategories`}
+                                                                          placeholder={'Выбрать подкатегории'}
+                                                                          mt={20}/>
                                                         </Box>
-                                                        {item.item !== '' ?
-                                                            <Box key={index} className={classes.categoriesBackGround}>
-                                                                <Typography variant={'h4'}>{item.item}</Typography>
-                                                                <Box onClick={() => remove(index)}
-                                                                     className={classes.delBtn}>
-                                                                    <DelBtnSvg/>
-                                                                </Box>
-                                                            </Box> : ''}
-                                                        {values.categories.length > index + 1 ? <div onClick={() => remove(index)}>
+                                                        {item.subCategories !== '' ? <Box style={{width: '20%'}}
+                                                                                       className={classes.categoriesBackGround}>
+                                                            <Typography variant={'h4'}>{item.subCategories}</Typography>
+                                                        </Box> : ''}
+
+                                                        {values.categoriesList.length > index + 1 ? <div onClick={() => remove(index)}>
                                                                 <TrashSvg/>
                                                             </div>
-                                                            : <AddButton fun={() => push({categories: ''})}/>}
+                                                            : <AddButton fun={() => push({categories: '', subCategories: ''})}/>}
                                                     </Box>
                                                 )
                                             )}
@@ -149,7 +142,7 @@ const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
 
                                                                 </Box>
                                                             </Box>
-                                                            {values.workPlace.length > index +1 ?<div onClick={() => remove(index)}>
+                                                            {values.workPlace.length > index + 1 ?<div onClick={() => remove(index)}>
                                                                     <TrashSvg/>
                                                                 </div>
                                                                 : <AddButton fun={() => push({place: '', date: [null,null]})}/>}

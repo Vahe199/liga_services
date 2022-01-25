@@ -17,6 +17,11 @@ const profileDataSlice = createSlice({
     initialState,
     reducers: {
         resetProfile: () => initialState,
+        resetPartReducer(state) {
+            state.successWork = false
+            state.error = false
+            state.message = ''
+        },
         changeGettingNotifications: (state, action) => {
             state.profile.geting_notification = action.payload
         }
