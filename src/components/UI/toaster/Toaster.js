@@ -7,13 +7,15 @@ const Alert = React.forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-const Toaster = ({open, setOpen, message, error,success}) => {
-
-    // useEffect(() => {
-    //     console.log(message, error)
-    // }, [message, error])
+const Toaster = ({open, setOpen, message, error, success}) => {
 
     const status = success ? 'success' : 'error';
+
+    useEffect(() => {
+        console.log(message, 'message')
+    }, [message, error, success, status])
+
+    //console.log(status)
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -33,8 +35,8 @@ const Toaster = ({open, setOpen, message, error,success}) => {
                       autoHideDuration={6000}
                       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
                       onClose={handleClose}>
-                <Alert onClose={handleClose} severity={status} sx={{ width: '100%' }}>
-                    {message}
+                <Alert onClose={handleClose} severity={success ? 'success' : 'error'} sx={{ width: '100%' }}>
+                    {error ? "Произашло какое то ошибка" : message}
                 </Alert>
             </Snackbar>
         </Stack>

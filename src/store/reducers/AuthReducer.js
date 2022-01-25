@@ -1,17 +1,21 @@
 import {createSlice} from "@reduxjs/toolkit"
-import {Login, Logouts, Registration} from "../actions/AuthActions";
+import {ForgetPassword, Login, Logouts, Registration} from "../actions/AuthActions";
 
 const initialState = {
     auth: false,
     authStatus: false,
-    status: 'executor',
+    status: 'client',
     user: {},
     load: false,
     error: '',
     message: "",
     loadAuth: false,
     errorAuth: '',
-    success:false
+    success: false,
+    successWork: false,
+    messageForget: '',
+    loadForget: false,
+    forgetErrorError: false,
 
 }
 
@@ -25,6 +29,8 @@ const authSlice = createSlice({
         resetAuth(state) {
             state.success = false
             state.error = false
+            state.forgetPassword = false
+            state.successWork = false
         }
     },
     extraReducers: {
@@ -35,7 +41,7 @@ const authSlice = createSlice({
             state.loadAuth = false
             state.message = action.payload.message
             state.error = false
-            state.success = true
+            state.successWork = true
         },
         [Registration.rejected]: (state, action) => {
             state.loadAuth = false
@@ -68,7 +74,20 @@ const authSlice = createSlice({
             state.error = action.payload
             state.auth = false
         },
-
+        [ForgetPassword.pending]: (state) => {
+            state.loadForget = true
+        },
+        [ForgetPassword.fulfilled]: (state, action) => {
+            state.loadForget = false
+            state.message = action.payload.message
+            state.successWork = true
+            state.forgetErrorError = false
+        },
+        [ForgetPassword.rejected]: (state, action) => {
+            state.loadForget = false
+            state.message = action.payload
+            state.forgetErrorError = true
+        },
     }
 
 })

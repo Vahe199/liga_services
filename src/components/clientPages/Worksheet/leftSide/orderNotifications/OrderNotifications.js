@@ -3,11 +3,12 @@ import OrderNotificationsEdit from "./OrderNotificationsEdit";
 import OrderNotificationsData from "./OrderNotificationsData";
 
 
-const OrderNotifications = ({notificationsOrder, setNotificationOrders}) => {
+const OrderNotifications = ({notificationsOrder, openToaster, setOpenToaster, setNotificationOrders, profile}) => {
+    const {geting_notification} = profile
     return (
         <>
-            {notificationsOrder ? <OrderNotificationsEdit setNotificationOrders={setNotificationOrders}/>
-                : <OrderNotificationsData setNotificationOrders={setNotificationOrders}/>}
+            {notificationsOrder ? <OrderNotificationsEdit setOpenToaster={setOpenToaster} notificationsOrder={geting_notification} setNotificationOrders={setNotificationOrders}/>
+                : <OrderNotificationsData geting_notification={geting_notification} setNotificationOrders={setNotificationOrders} profile={profile}/>}
         </>
     )
 };

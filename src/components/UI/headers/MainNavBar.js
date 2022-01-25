@@ -9,7 +9,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import {makeStyles} from "@material-ui/core";
 import {styled} from '@mui/material/styles';
 import Logo from "../../../assets/image/logoSmall.png"
 import UserSvg from "../../../assets/svg/header/UserSvg";
@@ -22,6 +21,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {changeStatus} from "../../../store/reducers/AuthReducer";
 import Avatar from "@mui/material/Avatar";
 import {getProfilePageData} from "../../../store/actions/ProfileDataActions";
+import {makeStyles} from "@material-ui/core";
+import {getExecutorPageData} from "../../../store/actions/ExecutorDataActions";
+
 
 const useNavStyles = makeStyles({
     root: {
@@ -98,9 +100,10 @@ export const MainNavBar = () => {
     const {status, user, auth} = useSelector(state => state.auth);
     const {success,profile} = useSelector(state => state.profile);
     const dispatch = useDispatch();
-    const changePage = () => {
+    const changePage = async () => {
         if(status === 'client'){
-            dispatch(changeStatus('executor'))
+            await dispatch(getExecutorPageData())
+            await dispatch(changeStatus('executor'))
             navigate('/', { replace: true })
         }else {
             dispatch(changeStatus('client'))

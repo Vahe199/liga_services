@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
@@ -6,6 +6,9 @@ import HeaderModal from './blocks/HeaderModal';
 import CustomInput from "../customInput/CustomInput";
 import {Formik} from "formik";
 import {ForgetEmailValidation} from "../../../utils/validation/ForgetEmailValidation";
+import {useDispatch} from "react-redux";
+import {ForgetPassword} from "../../../store/actions/AuthActions";
+import BlueButton from "../CustomButtons/BlueButton";
 import {useStyles} from "../../../globalStyles/ModalStyles";
 
 
@@ -18,18 +21,14 @@ const style = {
     bgcolor: 'background.paper',
     boxShadow: 24,
     borderRadius: '10px',
+    border: 'none',
     p: 3,
 };
 
-const ModalForget = ({open, setOpen}) => {
+const ModalForget = ({open, setOpen, setOpenToaster, load}) => {
     const handleClose = () => setOpen(false);
     const classes = useStyles();
-    const [value, setValue] = useState('');
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(e.target.value)
-    }
+    const dispatch = useDispatch();
     
     return (
         <div>
@@ -44,8 +43,11 @@ const ModalForget = ({open, setOpen}) => {
                     <Box className={classes.root}>
                         <Formik initialValues={{email: ""}}
                                 validationSchema={ForgetEmailValidation}
-                                onSubmit={(values) => {
+                                onSubmit={ async (values) => {
                                     console.log(values, 'values')
+                                    await dispatch(ForgetPassword(values))
+                                    handleClose()
+                                    setOpenToaster(true);
                                 }}
                         >
                             {({
@@ -69,10 +71,15 @@ const ModalForget = ({open, setOpen}) => {
                                             />
                                         </Box>
                                         <Box className={classes.footer}>
-                                            <Box style={{width:'50%',display:'flex',justifyContent:'space-between' }}>
-                                                <Button onClick={handleSubmit} variant={'contained'} style={{ cursor: 'pointer'}}>Да</Button>
-
-                                                <Button onClick={handleClose} className={classes.exitModal}>Нет</Button>
+                                            <Box style={{width:'50%', alignItems: 'center', display:'flex',justifyContent:'space-between' }}>
+                                                {/*<Button onClick={handleSubmit} variant={'contained'} style={{ cursor: 'pointer'}}>Да</Button>*/}
+                                                <BlueButton
+                                                    action={handleSubmit}
+                                                    load={load}
+                                                    label={"Да"}
+                                                    //width={'100px'}
+                                                />
+                                                <Button onClick={handleClose} >Нет</Button>
                                             </Box>
                                         </Box>
                                     </Box>

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useProfileCardStyles} from "../../../../globalStyles/ProfileCardStyles";
 import SuccessSVG from "../../../../assets/svg/Profile/SuccessSVG";
 import InfoSVG from "../../../../assets/svg/Profile/InfoSVG";
@@ -10,12 +10,18 @@ import ProgressLine from "../../../UI/progressLine/ProgressLine";
 import {LightTooltip} from "../../../../globalStyles/LightTooltip";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import moment from "moment";
+import russianLocale from "moment/locale/ru";
 
 
-const ProfileStatus = ({setShowModal}) => {
+const ProfileStatus = ({setShowModal, profile}) => {
     const classes = useProfileCardStyles();
-    const {status,user} = useSelector(state => state.auth);
     const [avatarPreview, setAvatarPreview] = useState();
+    const {email, created_at, status, phone_status, img_path, name} = profile;
+
+    useEffect(() => {
+        console.log(moment(created_at).format('LL'))
+    }, [])
 
     return (
         <Card sx={{boxShadow: 2}} className={classes.root}>
@@ -31,7 +37,7 @@ const ProfileStatus = ({setShowModal}) => {
 
                 <Box>
                     <div  style={{display: "flex", alignItems: "center"}}>
-                        <Typography variant={"h6"}>Елена</Typography>
+                        <Typography variant={"h6"}>{name}</Typography>
                         <InfoSVG size={8} color={"#4B9A2D"} margin={"-5px 0 0 5px"}/>
                     </div>
                     <Box style={{display: "flex", alignItems: "center", flexWrap: 'wrap'}}>
@@ -43,22 +49,23 @@ const ProfileStatus = ({setShowModal}) => {
             </Box>
             <Typography variant={"h5"}
                         component="div">
-                <SuccessSVG/>
-                Эл. почта подтверждена
+                {email ? <><SuccessSVG/>
+                    Эл. почта подтверждена</>  : <><InfoSVG /> Эл. почта не подтверждена </> }
+
             </Typography>
             <LightTooltip title="Нажмите, чтобы подтвердить номер телефона" placement="bottom-start" arrow>
             <Typography variant={"h5"} component="div" className={classes.textBtn}
                         onClick={() => setShowModal(true)}>
-                <InfoSVG/>
-                Номер не подтвержден
+                {phone_status ? <><SuccessSVG/>
+                    Номер подтвержден</>  : <><InfoSVG /> Номер не подтвержден </> }
             </Typography>
             </LightTooltip>
             <Typography variant={"h5"} component="div" >
-                <InfoSVG/>
-                Профиль не подтвержден
+                {status ? <><SuccessSVG/>
+                    Профиль подтвержден</>  : <><InfoSVG /> Профиль не подтвержден </> }
             </Typography>
             {status === 'executor' && <ProgressLine persent={67}/>}
-            <Typography variant="caption" style={{fontStyle:"italic", color:"#808080"}}>В лиге с12 марта 2019</Typography>
+            <Typography variant="caption" style={{fontStyle:"italic", color:"#808080"}}>В лиге с {moment(created_at).format('LL')}</Typography>
         </Card>
     );
 };

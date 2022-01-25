@@ -1,5 +1,4 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import axios from "axios";
 import {instance} from "../api/api";
 
 // const token = localStorage.getItem('token') ? localStorage.getItem('token') : null;
@@ -32,6 +31,7 @@ export const Registration = createAsyncThunk(
 export const Login = createAsyncThunk(
     'auth/login',
     async (data, thunkAPI) => {
+        debugger
         try{
             const response= await instance.post(`v1/user/login`, data)
             localStorage.setItem('token', response?.data?.access_token);
@@ -48,6 +48,7 @@ export const Login = createAsyncThunk(
 export const Logouts = createAsyncThunk(
     'auth/logout',
     async ( thunkAPI) => {
+        debugger
         try{
             const response= await instance.post("v1/user/logout")
              localStorage.removeItem('token');
@@ -56,6 +57,36 @@ export const Logouts = createAsyncThunk(
         catch (e) {
             console.log(e.message)
             return thunkAPI.rejectWithValue('404 error')
+        }
+    }
+)
+
+export const ForgetPassword = createAsyncThunk(
+    'auth/forgetPassword',
+    async (data, thunkAPI) => {
+        debugger
+        try {
+            const response = await instance.post("v1/user/forgot", data)
+            return response.data
+        }
+        catch (e) {
+            console.log(e.message)
+            return thunkAPI.rejectWithValue(e)
+        }
+    }
+)
+
+export const ResetPassword = createAsyncThunk(
+    'auth/resetPassword',
+    async (data, thunkAPI) => {
+        debugger
+        try {
+            const response = await instance.post("v1/user/reset", data)
+            return response.data
+        }
+        catch (e) {
+            console.log(e.message)
+            return thunkAPI.rejectWithValue(e)
         }
     }
 )

@@ -9,11 +9,10 @@ import Toaster from "../../UI/toaster/Toaster";
 import BlueButton from "../../UI/CustomButtons/BlueButton";
 import {useNavigate} from "react-router-dom";
 import Typography from "@mui/material/Typography";
-import { GreenArrowSvg } from '../../../assets/svg/intro/GreenArrowSvg';
+import {GreenArrowSvg} from '../../../assets/svg/intro/GreenArrowSvg';
 import {resetAuth} from "../../../store/reducers/AuthReducer";
 import {Registration} from "../../../store/actions/AuthActions";
 import {useStyles} from "../../../globalStyles/AuthStyles";
-
 
 
 const RegistrationPage = () => {
@@ -21,7 +20,7 @@ const RegistrationPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const {success, error, message, errorAuth, loadAuth} = useSelector(state => state.auth);
+    const {error, message, loadAuth, successWork} = useSelector(state => state.auth);
     //toaster
     const [openToaster, setOpenToaster] = useState(false);
     const formikRef = useRef({});
@@ -30,14 +29,15 @@ const RegistrationPage = () => {
         if (error) {
             setOpenToaster(true)
             dispatch(resetAuth())
-
         }
-        if (success) {
-            navigate("/")
-            formikRef.current.resetForm();
-            dispatch(resetAuth())
+        if (successWork) {
+            setOpenToaster(true)
+            setTimeout(() => {
+                navigate("/login")
+                dispatch(resetAuth())
+            }, 2000)
         }
-    }, [success, error, message]);
+    }, [error, message, successWork]);
 
     const HandleSvg = () => {
         navigate('/');
@@ -48,7 +48,7 @@ const RegistrationPage = () => {
             <Box style={{position: 'absolute'}}>
                 <Toaster open={openToaster}
                          message={message}
-                         error={errorAuth}
+                         success={successWork}
                          setOpen={setOpenToaster} />
             </Box>
             <Box>
@@ -67,9 +67,8 @@ const RegistrationPage = () => {
                     innerRef={formikRef}
                     initialValues={{ name: '', phonenumber: '', email: '', password: '', password_confirmation: '' }}
                     validationSchema={AuthValidation}
-                    onSubmit={ async (values) => {
-                        await dispatch(Registration(values))
-
+                    onSubmit={  (values) => {
+                         dispatch(Registration(values))
                     }}
                 >
                     {({

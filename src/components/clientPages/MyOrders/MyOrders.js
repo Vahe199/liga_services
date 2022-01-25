@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {makeStyles} from "@material-ui/core";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -11,6 +11,8 @@ import MyOrdersBlock from "./blocks/MyOrdersBlock";
 import AddNewOrderForm from "./blocks/AddNewOrderForm";
 import CustomDatePicker from "../../UI/datePicker/CustomDatePicker";
 import Typography from "@mui/material/Typography";
+import {useDispatch} from "react-redux";
+import {getCompletedTasks, getNotAppliedTasks} from "../../../store/actions/TaskActions";
 
 export const useMyOrdersStyles = makeStyles({
     root:{
@@ -205,6 +207,12 @@ export const MyOrders = () => {
     const classes = useMyOrdersStyles()
     const [valueTime, setValueTime] = useState(new Date());
     const [showForm, setShowForm] = useState(false);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getNotAppliedTasks())
+    }, [])
+
     return(
         <Box className={classes.root}>
             <Container maxWidth={'lg'}>

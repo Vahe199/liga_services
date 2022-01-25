@@ -2,13 +2,16 @@ import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import AuthReducer from "./reducers/AuthReducer";
 import TaskReducer from "./reducers/TaskReducer";
 import ProfileDataReducer from "./reducers/ProfileDataReducer";
+import ExecutorDataReducer from "./reducers/ExecutorDataReducer";
 
 
 const rootReducer = combineReducers({
     auth: AuthReducer,
     task: TaskReducer,
-    profile: ProfileDataReducer
+    profile: ProfileDataReducer,
+    executor: ExecutorDataReducer
 })
+
 //MIDDLEWARE
 const localStorageMiddleware = ({ getState }) => {
     return next => action => {
