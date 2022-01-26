@@ -23,6 +23,7 @@ import Avatar from "@mui/material/Avatar";
 import {getProfilePageData} from "../../../store/actions/ProfileDataActions";
 import {makeStyles} from "@material-ui/core";
 import {getExecutorPageData} from "../../../store/actions/ExecutorDataActions";
+import {getHeaderData} from "../../../store/actions/HeaderActions";
 
 
 const useNavStyles = makeStyles({
@@ -133,6 +134,7 @@ export const MainNavBar = () => {
   useEffect(()=>{
       if(auth && !success) {
           dispatch(getProfilePageData())
+          dispatch(getHeaderData())
       }
   },[])
 

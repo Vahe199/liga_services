@@ -40,7 +40,7 @@ export const useStyles = makeStyles({
 
 
 
-const ModalCategories = ({setItems, data, setShowModal,category, showModal}) => {
+const ModalCategories = ({category}) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -59,13 +59,13 @@ const ModalCategories = ({setItems, data, setShowModal,category, showModal}) => 
             {(popupState) => (
                 <div className={classes.boxBtn}  onMouseLeave={handleRemove} onMouseEnter={handleClick}>
                     <Button  sx={{ boxShadow: '3' }} m={5} className={classes.btn}>
-                        {category.name}
+                        {category.category_name}
                     </Button>
                     <Popper id={id} open={open} anchorEl={anchorEl} transition>
                         {({ TransitionProps }) => (
                             <Fade {...TransitionProps} timeout={350}>
                                 <Paper className={classes.modalContainer}>
-                                    {category.subCategories.map((item, i) =>(<Typography style={{padding: '4px', fontWeight: '500'}} key={i} sx={{p: 2}}>{item}</Typography>))}
+                                    {category.subcategories.map((item, i) =>(<Typography style={{padding: '4px', fontWeight: '500'}} key={i} sx={{p: 2}}>{item.subcategory_name}</Typography>))}
                                 </Paper>
                             </Fade>
                         )}

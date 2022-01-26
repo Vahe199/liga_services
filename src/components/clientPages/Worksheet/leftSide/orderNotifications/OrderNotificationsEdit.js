@@ -8,7 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import {FormControlLabel, Radio, RadioGroup} from "@mui/material";
 import {useDispatch} from "react-redux";
 import {updateNotifications} from "../../../../../store/actions/ProfileDataActions";
-import {changeGettingNotifications} from "../../../../../store/reducers/ProfileDataReducer";
+import {changeGettingNotifications, resetPartReducer} from "../../../../../store/reducers/ProfileDataReducer";
 
 const radio = {
     color: "#4B9A2D",
@@ -26,6 +26,7 @@ const OrderNotificationsEdit = ({geting_notification, setOpenToaster, setNotific
         await dispatch(updateNotifications({'geting_notification': value}))
         await setOpenToaster(true)
         await dispatch(changeGettingNotifications(value))
+        //await dispatch(resetPartReducer())
         setNotificationOrders(false)
     }
 
