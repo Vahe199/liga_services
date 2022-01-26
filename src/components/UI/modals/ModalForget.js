@@ -29,7 +29,7 @@ const ModalForget = ({open, setOpen, setOpenToaster, load}) => {
     const handleClose = () => setOpen(false);
     const classes = useStyles();
     const dispatch = useDispatch();
-    
+
     return (
         <div>
             <Modal
@@ -44,7 +44,7 @@ const ModalForget = ({open, setOpen, setOpenToaster, load}) => {
                         <Formik initialValues={{email: ""}}
                                 validationSchema={ForgetEmailValidation}
                                 onSubmit={ async (values) => {
-                                    console.log(values, 'values')
+                                    //console.log(values, 'values')
                                     await dispatch(ForgetPassword(values))
                                     handleClose()
                                     setOpenToaster(true);

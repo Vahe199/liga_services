@@ -49,7 +49,7 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                             initialValues={{ service_type: '', service_name: '', address: '', description: '', file: '', time_from: '', time_to: '' }}
                             validationSchema={AddTaskValidation}
                             onSubmit={async (values, action) => {
-                                console.log(values, 'values')
+                                //console.log(values, 'values')
                                 setOpen(true)
                                 action.resetForm()
                             }}

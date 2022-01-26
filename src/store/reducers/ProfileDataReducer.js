@@ -26,8 +26,9 @@ const profileDataSlice = createSlice({
             state.profile.geting_notification = action.payload
         },
         changeSocLinks: (state, action) => {
-            state.profile.fasebook_link = action.payload.face
-            state.profile.instagram_link = action.payload
+            console.log(state, 'action')
+            //state.profile.fasebook_link = action.payload.fasebook_link
+            ///state.profile.instagram_link = action.payload.instagram_link
         }
     },
     extraReducers: {
@@ -52,13 +53,13 @@ const profileDataSlice = createSlice({
         [updateSocLink.fulfilled]: (state, action) => {
             state.load = false
             state.error = false
-            state.message = action.payload
+            state.message = action.payload.fasebook.message
             state.successWork = true
         },
         [updateSocLink.rejected]: (state, action) => {
             state.load = false
-            state.error = action.payload.message
-            state.message = ''
+            state.error = true
+            state.message = action.payload
             state.successWork = false
         },
         [updateNotifications.pending]: (state) => {
@@ -80,5 +81,5 @@ const profileDataSlice = createSlice({
 
 })
 
-export const {resetProfile, changeGettingNotifications, resetPartReducer} = profileDataSlice.actions
+export const {resetProfile, changeGettingNotifications, changeSocLinks, resetPartReducer} = profileDataSlice.actions
 export default profileDataSlice.reducer

@@ -47,7 +47,7 @@ const ModalPersonalData = ({showModal, setShowModal}) => {
             setShowTimer(false)
             setCurrentCount(180)
         }else {
-            console.log(newPas,"new");
+            //console.log(newPas,"new");
             setShowTimer(false)
             setCurrentCount(180)
         }

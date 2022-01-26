@@ -56,7 +56,7 @@ const ModalWallet = ({showModal, setShowModal}) => {
                 <Formik
                     initialValues={{ count: '', pay: value }}
                     onSubmit={(values, action) => {
-                        console.log(values, 'values')
+                        //console.log(values, 'values')
                         setShowModal(true)
                         action.resetForm()
                     }}

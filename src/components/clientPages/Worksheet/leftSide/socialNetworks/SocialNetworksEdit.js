@@ -12,6 +12,7 @@ import IconButton from "@mui/material/IconButton";
 import Avatar from "@mui/material/Avatar";
 import {useDispatch, useSelector} from "react-redux";
 import {updateSocLink} from "../../../../../store/actions/ProfileDataActions";
+import {changeSocLinks} from "../../../../../store/reducers/ProfileDataReducer";
 
 const SocialNetworksEdit = ({setEditSocialNetwork, setOpenToaster}) => {
   const classes = useProfileCardStyles();
@@ -25,6 +26,7 @@ const SocialNetworksEdit = ({setEditSocialNetwork, setOpenToaster}) => {
             fasebook_link,
             instagram_link
         }))
+        //await dispatch(changeSocLinks(fasebook_link, instagram_link))
         setFacebookLink('')
         setinstagramLink('')
         await setOpenToaster(true)

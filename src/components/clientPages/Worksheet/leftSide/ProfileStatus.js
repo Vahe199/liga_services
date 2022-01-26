@@ -20,7 +20,7 @@ const ProfileStatus = ({setShowModal, profile}) => {
     const {email, created_at, status, phone_status, img_path, name} = profile;
 
     useEffect(() => {
-        console.log(moment(created_at).format('LL'))
+        //console.log(moment(created_at).format('LL'))
     }, [])
 
     return (

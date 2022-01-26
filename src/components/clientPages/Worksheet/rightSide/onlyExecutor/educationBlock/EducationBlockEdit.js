@@ -25,7 +25,7 @@ const EducationBlockEdit = ({editEducationBlock, setEditEducationBlock}) => {
                 initialValues={{ education_type: [], education_name: '', description: '', file: ''}}
                 onSubmit={async (values, action) => {
                     setEditEducationBlock(false)
-                    console.log(values, 'values')
+                    //console.log(values, 'values')
                     action.resetForm()
                 }}
             >
