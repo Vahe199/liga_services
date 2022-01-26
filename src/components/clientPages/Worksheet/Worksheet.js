@@ -38,6 +38,7 @@ const useAncetaStyles = makeStyles({
 
 export const Worksheet = () =>{
     const classes = useAncetaStyles()
+    const dispatch = useDispatch()
     const {status} = useSelector(state => state.auth)
     const {profile, error, message, successWork} = useSelector(state => state.profile)
     const {executor} = useSelector(state => state.executor)
@@ -51,6 +52,9 @@ export const Worksheet = () =>{
     const [editEducationBlock, setEditEducationBlock] = useState(false);
     const [openLogOutModal, setOpenLogOutModal] = useState(false);
     const [openToaster, setOpenToaster] = useState(false);
+    // useEffect(()=>{
+    //     dispatch(getProfilePageData())
+    // },[])
 
     return(
         <Box className={classes.root}>

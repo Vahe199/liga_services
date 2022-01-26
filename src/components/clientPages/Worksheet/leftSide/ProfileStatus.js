@@ -5,20 +5,17 @@ import InfoSVG from "../../../../assets/svg/Profile/InfoSVG";
 import Card from "@mui/material/Card";
 import Rating from "@mui/material/Rating";
 import {AddAvatar} from "../../../UI/modals/Avatar/AddAvatar";
-import {useSelector} from "react-redux";
 import ProgressLine from "../../../UI/progressLine/ProgressLine";
 import {LightTooltip} from "../../../../globalStyles/LightTooltip";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import moment from "moment";
-import russianLocale from "moment/locale/ru";
 
 
 const ProfileStatus = ({setShowModal, profile}) => {
     const classes = useProfileCardStyles();
-    const [avatarPreview, setAvatarPreview] = useState();
-    const {email, created_at, status, phone_status, img_path, name} = profile;
-
+    const {email, created_at, status, phone_status, name,img_path} = profile;
+    const [avatarPreview, setAvatarPreview] = useState(img_path);
     useEffect(() => {
         //console.log(moment(created_at).format('LL'))
     }, [])

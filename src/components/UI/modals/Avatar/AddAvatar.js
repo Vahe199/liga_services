@@ -7,7 +7,7 @@ import {HtmlTooltip} from "../../../../globalStyles/ HtmlTooltip";
 import Typography from "@mui/material/Typography";
 import Upload from "../../../../assets/image/upload1.png";
 import {choosesAvatarData} from "../../../../store/actions/ProfileDataActions";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 const useAvatarStyles = makeStyles({
     fileInput: {
@@ -58,7 +58,10 @@ const useAvatarStyles = makeStyles({
 
 export const AddAvatar = ({avatarPreview, setAvatarPreview}) => {
     const classes = useAvatarStyles()
+    const {profile} = useSelector(state => state.profile);
     const [open, setOpen] = React.useState(false);
+    const [avatar, setAvatar] = React.useState("");
+    const [val, setVal] = React.useState("");
 const dispatch = useDispatch()
     const handleTooltipClose = () => {
         setOpen(false);
@@ -68,9 +71,12 @@ const dispatch = useDispatch()
         setOpen(false);
     };
 
-    const choosesAvatar = (val) => {
-        dispatch(choosesAvatarData({"img_path":val}))
-        debugger
+    const choosesAvatar = async () => {
+       let formData = new FormData();
+        formData.append("img_path", avatar);
+       await dispatch(choosesAvatarData(formData))
+        setOpen(false);
+       setVal("")
     }
     return (
         <>
@@ -99,8 +105,8 @@ const dispatch = useDispatch()
                                                          if (fileReader.readyState === 2) {
                                                              // setFieldValue("photo", e.target.files[0]);
                                                              setAvatarPreview(fileReader.result);
-                                                              // choosesAvatar(e.target.files);
-                                                              choosesAvatar(fileReader.result);
+                                                             setAvatar(e.target.files[0]);
+                                                             setVal(fileReader.result);
                                                          }
                                                      };
                                                      if (e.target.files[0]) {
@@ -121,9 +127,13 @@ const dispatch = useDispatch()
                                                           color="inherit">Обновить фото
                                                  профиля</Typography>
                                          </div>
-                                         <Button sx={{textTransform: "none"}} onClick={()=>setOpen(!open)}
+                                         <Button sx={{textTransform: "none"}} onClick={()=> {
+                                             setOpen(!open)
+                                             setVal("")
+
+                                         }}
                                                  color={"error"}> Закрыть</Button>
-                                         {avatarPreview && <Button onClick={changeAvatar}
+                                         {val && <Button onClick={choosesAvatar}
                                              sx={{textTransform: "none"}}
                                          color={"success"}> Отправить</Button> }
 
@@ -141,8 +151,8 @@ const dispatch = useDispatch()
                     >
                         {avatarPreview ?
                             <Avatar
-                                alt="Remy Sharp"
-                                src={avatarPreview ? avatarPreview : upload}
+                                alt="Avatar"
+                                src={val ? val : `${process.env.REACT_APP_IMG_API}${profile.img_path}`}
                                 className={classes.fileInputAvatar}
                                 style={{marginRight: 10, width: '60px', height: '60px'}}
                             />

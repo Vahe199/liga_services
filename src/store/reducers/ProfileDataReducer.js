@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit"
-import {getProfilePageData, updateNotifications, updateSocLink} from "../actions/ProfileDataActions";
+import {choosesAvatarData, getProfilePageData, updateNotifications, updateSocLink} from "../actions/ProfileDataActions";
 
 const initialState = {
     status: 'executor',
@@ -45,6 +45,22 @@ const profileDataSlice = createSlice({
             state.error = true
             state.profile = {}
             state.message = action.payload
+        },
+        [choosesAvatarData.pending]: (state) => {
+            state.load = true
+        },
+        [choosesAvatarData.fulfilled]: (state, action) => {
+            state.load = false
+            state.error = false
+            state.profile.img_path = action.payload.img_name
+            state.message = action.payload.message
+            state.successWork = true
+        },
+        [choosesAvatarData.rejected]: (state, action) => {
+            state.load = false
+            state.error = true
+            state.message = action.payload
+            state.successWork = false
         },
         [updateSocLink.pending]: (state) => {
             state.load = true
