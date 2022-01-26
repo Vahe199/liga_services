@@ -1,4 +1,4 @@
-import {object, ref, string} from "yup";
+import {object, string} from "yup";
 
 export const ForgetEmailValidation = object().shape({
     email: string()

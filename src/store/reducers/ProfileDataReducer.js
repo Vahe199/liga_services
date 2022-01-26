@@ -17,7 +17,7 @@ const profileDataSlice = createSlice({
     initialState,
     reducers: {
         resetProfile: () => initialState,
-        resetPartReducer: (state) => {
+        resetPartReducer(state) {
             state.successWork = false
             state.error = false
             state.message = ''
@@ -26,9 +26,8 @@ const profileDataSlice = createSlice({
             state.profile.geting_notification = action.payload
         },
         changeSocLinks: (state, action) => {
-            console.log(state, 'action')
-            //state.profile.fasebook_link = action.payload.fasebook_link
-            ///state.profile.instagram_link = action.payload.instagram_link
+            state.profile.fasebook_link = action.payload.fasebook_link
+            state.profile.instagram_link = action.payload.instagram_link
         }
     },
     extraReducers: {
@@ -53,13 +52,13 @@ const profileDataSlice = createSlice({
         [updateSocLink.fulfilled]: (state, action) => {
             state.load = false
             state.error = false
-            state.message = action.payload.fasebook.message
+            state.message = action.payload.facebook.message
             state.successWork = true
         },
         [updateSocLink.rejected]: (state, action) => {
             state.load = false
             state.error = true
-            state.message = action.payload
+            state.message = action.payload.facebook.message
             state.successWork = false
         },
         [updateNotifications.pending]: (state) => {
@@ -81,5 +80,5 @@ const profileDataSlice = createSlice({
 
 })
 
-export const {resetProfile, changeGettingNotifications, changeSocLinks, resetPartReducer} = profileDataSlice.actions
+export const {resetProfile, changeGettingNotifications, changeSocLinks} = profileDataSlice.actions
 export default profileDataSlice.reducer

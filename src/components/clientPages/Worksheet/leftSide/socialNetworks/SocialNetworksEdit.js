@@ -26,7 +26,7 @@ const SocialNetworksEdit = ({setEditSocialNetwork, setOpenToaster}) => {
             fasebook_link,
             instagram_link
         }))
-        //await dispatch(changeSocLinks(fasebook_link, instagram_link))
+        await dispatch(changeSocLinks({instagram_link, fasebook_link}))
         setFacebookLink('')
         setinstagramLink('')
         await setOpenToaster(true)

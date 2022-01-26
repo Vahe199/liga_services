@@ -27,8 +27,8 @@ const AddNewOrderForm = () => {
             initialValues={{
                 category_name: '', subcategory_name: '',
                 subCategories: '', task_description: '',
-                task_img: '', region: '', address: '', task_starttime: '',
-                task_finishtime: '', task_location: value
+                task_img: [], region: '', address: '', task_starttime: '',
+                task_finishtime: '', task_location: value, title: '', price_from: '', price_to: ''
             }}
             //validationSchema={() => AddNewOrderValidation(value)}
             onSubmit={async (values, action) => {
@@ -42,7 +42,6 @@ const AddNewOrderForm = () => {
                   errors,
                   touched,
                   handleChange,
-                  handleBlur,
                   handleSubmit,
                   setFieldValue
               }) => (
@@ -51,12 +50,12 @@ const AddNewOrderForm = () => {
                         <Grid  item sm={12} lg={6}>
                             <Box style={{marginBottom: '50px'}}>
                                 <CustomSelect
-                                    name={'category_name'}
+                                    name={'title'}
                                     label={'Название'}
                                     handleChange={handleChange}
-                                    value={values.category_name}
-                                    touched={touched.category_name}
-                                    error={errors.category_name}
+                                    value={values.title}
+                                    touched={touched.title}
+                                    error={errors.title}
                                     mt={0}
                                 />
                             </Box>
@@ -175,23 +174,23 @@ const AddNewOrderForm = () => {
                                 {/*/>*/}
                             </Box>
                             <CustomInputIcon
-                                name={'payment_from'}
+                                name={'price_from'}
                                 label={'Оплата'}
-                                value={values.payment_from}
+                                value={values.price_from}
                                 handleChange={handleChange}
-                                touched={touched.payment_from}
-                                error={errors.payment_from}
+                                touched={touched.price_from}
+                                error={errors.price_from}
                                 icon={'Руб.'}
                                 placeholder={'От'}
                                 width={'60%'}
                             />
                             <CustomInputIcon
-                                name={'payment_to'}
+                                name={'price_to'}
                                 label={'Оплата'}
-                                value={values.payment_to}
+                                value={values.price_to}
                                 handleChange={handleChange}
-                                touched={touched.payment_to}
-                                error={errors.payment_to}
+                                touched={touched.price_to}
+                                error={errors.price_to}
                                 icon={'Руб.'}
                                 placeholder={'До'}
                                 width={'60%'}
