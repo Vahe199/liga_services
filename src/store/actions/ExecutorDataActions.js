@@ -4,7 +4,6 @@ import {instance} from "../api/api";
 export const getExecutorPageData = createAsyncThunk(
     'executor/getExecutorPageData',
     async (_,thunkAPI) => {
-        debugger
         try {
             const response = await instance.get("v1/user/show-executor-profile")
             return response.data

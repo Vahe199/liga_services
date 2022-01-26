@@ -31,7 +31,6 @@ export const Registration = createAsyncThunk(
 export const Login = createAsyncThunk(
     'auth/login',
     async (data, thunkAPI) => {
-        debugger
         try{
             const response= await instance.post(`v1/user/login`, data)
             localStorage.setItem('token', response?.data?.access_token);
@@ -48,10 +47,10 @@ export const Login = createAsyncThunk(
 export const Logouts = createAsyncThunk(
     'auth/logout',
     async ( thunkAPI) => {
-        debugger
         try{
             const response= await instance.post("v1/user/logout")
-             localStorage.removeItem('token');
+             // localStorage.removeItem('token');
+            localStorage.clear()
             return response.data
         }
         catch (e) {
@@ -64,7 +63,6 @@ export const Logouts = createAsyncThunk(
 export const ForgetPassword = createAsyncThunk(
     'auth/forgetPassword',
     async (data, thunkAPI) => {
-        debugger
         try {
             const response = await instance.post("v1/user/forgot", data)
             return response.data
@@ -79,7 +77,6 @@ export const ForgetPassword = createAsyncThunk(
 export const ResetPassword = createAsyncThunk(
     'auth/resetPassword',
     async (data, thunkAPI) => {
-        debugger
         try {
             const response = await instance.post("v1/user/reset", data)
             return response.data

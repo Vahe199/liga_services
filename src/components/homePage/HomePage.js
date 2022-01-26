@@ -16,7 +16,7 @@ const HomePage = () => {
   const {category, our_checked_specialists, review} = header;
   const dispatch = useDispatch()
   useEffect(()=>{
-      if(successWork) {
+      if(!successWork) {
           dispatch(getHeaderData())
       }
   },[])
