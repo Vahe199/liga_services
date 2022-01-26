@@ -5,17 +5,21 @@ import PresentHistory from "./blocks/presentHistory/PresentHistory";
 import CategoriesBlock from "./blocks/CategoriesBlock/CategoriesBlock";
 import TrustedExperts from "./blocks/trustedExperts/TrustedExperts";
 import Reviews from "./blocks/reviews/Reviews";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {getHeaderData} from "../../store/actions/HeaderActions";
 
 
 const HomePage = () => {
   const categoriesRef = useRef();
   const {auth} = useSelector(state => state.auth);
-  const {header} = useSelector(state => state.header);
+  const {header,successWork} = useSelector(state => state.header);
   const {category, our_checked_specialists, review} = header;
+  const dispatch = useDispatch()
   useEffect(()=>{
-
-  })
+      if(successWork) {
+          dispatch(getHeaderData())
+      }
+  },[])
   return (
     <div style={{marginTop: auth ? '90px': '0'}}>
       <Container maxWidth="lg">

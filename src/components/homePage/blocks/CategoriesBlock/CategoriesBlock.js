@@ -44,7 +44,7 @@ const CategoriesBlock = ({categoriesRef, category=[]}) => {
 
 
     return (
-        <Box ref={categoriesRef} style={{background: 'rgba(62, 87, 108, 0.3)'}}>
+        <Box ref={categoriesRef} style={{background: 'rgba(62, 87, 108, 0.3)',paddingBottom: 50}}>
             <Container maxWidth="xl">
                 <MainTitle mb={'75px'}>Категории услуг</MainTitle>
                 <Box className={classes.container}>

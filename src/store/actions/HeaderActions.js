@@ -4,7 +4,6 @@ import {instance} from "../api/api";
 export const getHeaderData = createAsyncThunk(
     'header/getHeaderData',
     async (_,thunkAPI) => {
-        debugger
         try {
             const response = await instance.get("v1/pages/header")
             return response.data
