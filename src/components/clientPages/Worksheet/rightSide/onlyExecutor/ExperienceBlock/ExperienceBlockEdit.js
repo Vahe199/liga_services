@@ -13,8 +13,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import CustomDivider from "../../../../../UI/customDivider/CustomDivider";
-import CustomSelect from "../../../../../UI/selects/CustomSelect";
-import {DelBtnSvg} from "../../../../../../assets/svg/Profile/DelBtnSvg";
 
 const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
     const classes = useInfoCardStyles();
@@ -30,11 +28,11 @@ const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
             <Formik
                 initialValues={{
-                    categoriesList: [
-                        {
-                            categories: '',
-                            subCategories: '',
-                        },
+                    categories: [
+
+                    ],
+                    subCategories: [
+
                     ],
                     workPlace: [
                         {
@@ -44,7 +42,7 @@ const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
                     ],
                 }}
                 onSubmit={async (values, action) => {
-                    //console.log(values, 'values')
+                    console.log(values, 'values')
                 }}
             >
                 {({
@@ -67,55 +65,28 @@ const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
 
                         </Box>
                         <CustomDivider />
-                        <Box style={{marginBottom: '20px'}}>
-                            <FieldArray name={'categoriesList'}>
+                        <Box>
+                            <FieldArray name={'categories'}>
                                 {({push, remove}) => (
-                                        <Box>
-                                            {values.categoriesList.map((item, index) => (
-                                                    <Box>
-                                                        <Box style={{marginBottom: '40px'}} className={classes.singleInput}>
-                                                            <CustomSelect handleChange={handleChange}
-                                                                          name={`categoriesList[${index}].categories`}
-                                                                          placeholder={'Выбрать категории'} mt={20}/>
-                                                        </Box>
-                                                        {item.categories !== '' ? <Box style={{width: '20%'}}
-                                                              className={classes.categoriesBackGround}>
-                                                            <Typography variant={'h4'}>{item.categories}</Typography>
-                                                        </Box> : ''}
-
-                                                        <Box style={{marginBottom: '40px'}} className={classes.singleInput}>
-                                                            <CustomSelect handleChange={handleChange}
-                                                                          name={`categoriesList[${index}].subCategories`}
-                                                                          placeholder={'Выбрать подкатегории'}
-                                                                          mt={20}/>
-                                                        </Box>
-                                                        {item.subCategories !== '' ? <Box style={{width: '20%'}}
-                                                                                       className={classes.categoriesBackGround}>
-                                                            <Typography variant={'h4'}>{item.subCategories}</Typography>
-                                                        </Box> : ''}
-
-                                                        {values.categoriesList.length > index + 1 ? <div onClick={() => remove(index)}>
-                                                                <TrashSvg/>
-                                                            </div>
-                                                            : <AddButton fun={() => push({categories: '', subCategories: ''})}/>}
-                                                    </Box>
-                                                )
-                                            )}
-                                        </Box>
+                                    <CategoriesListEdit handleChange={(e) => push({item: e.target.value})}
+                                                        placeholder={'Выбрать категории'}
+                                                        arr={values.categories}
+                                                        remove={remove}
+                                    />
                                 )}
                             </FieldArray>
                         </Box>
-                        {/*<Box>*/}
-                        {/*    <FieldArray name={'subCategories'}>*/}
-                        {/*        {({push, remove}) => (*/}
-                        {/*            <CategoriesList handleChange={(e) => push({item: e.target.value})}*/}
-                        {/*                            placeholder={'Выбрать подкатегории'}*/}
-                        {/*                            arr={values.subCategories}*/}
-                        {/*                            remove={remove}*/}
-                        {/*            />*/}
-                        {/*        )}*/}
-                        {/*    </FieldArray>*/}
-                        {/*</Box>*/}
+                        <Box>
+                            <FieldArray name={'subCategories'}>
+                                {({push, remove}) => (
+                                    <CategoriesList handleChange={(e) => push({item: e.target.value})}
+                                                    placeholder={'Выбрать подкатегории'}
+                                                    arr={values.subCategories}
+                                                    remove={remove}
+                                    />
+                                )}
+                            </FieldArray>
+                        </Box>
                         <Box>
                             <FieldArray name={'workPlace'}>
                                 {({push, remove}) => (
@@ -142,7 +113,7 @@ const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
 
                                                                 </Box>
                                                             </Box>
-                                                            {values.workPlace.length > index + 1 ?<div onClick={() => remove(index)}>
+                                                            {values.workPlace.length > index +1 ?<div onClick={() => remove(index)}>
                                                                     <TrashSvg/>
                                                                 </div>
                                                                 : <AddButton fun={() => push({place: '', date: [null,null]})}/>}
