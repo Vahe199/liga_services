@@ -27,7 +27,7 @@ export const useStyles = makeStyles({
     },
 });
 
-const Reviews = ({review}) => {
+const Reviews = ({review=[]}) => {
     const classes = useStyles();
     return (
         <>

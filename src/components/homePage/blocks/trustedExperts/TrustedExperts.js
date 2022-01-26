@@ -33,7 +33,7 @@ export const useStyles = makeStyles({
     },
 });
 
-const TrustedExperts = ({our_checked_specialists}) => {
+const TrustedExperts = ({our_checked_specialists =[]}) => {
     const classes = useStyles();
     return (
         <>

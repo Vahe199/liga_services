@@ -39,7 +39,7 @@ export const useStyles = makeStyles({
     }
 });
 
-const CategoriesBlock = ({categoriesRef, category}) => {
+const CategoriesBlock = ({categoriesRef, category=[]}) => {
     const classes = useStyles();
 
 

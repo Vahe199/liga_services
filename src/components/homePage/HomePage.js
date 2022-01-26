@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, {useEffect, useRef} from "react";
 import Container from "@mui/material/Container";
 import Intro from "./blocks/intro/Intro";
 import PresentHistory from "./blocks/presentHistory/PresentHistory";
@@ -13,6 +13,9 @@ const HomePage = () => {
   const {auth} = useSelector(state => state.auth);
   const {header} = useSelector(state => state.header);
   const {category, our_checked_specialists, review} = header;
+  useEffect(()=>{
+
+  })
   return (
     <div style={{marginTop: auth ? '90px': '0'}}>
       <Container maxWidth="lg">
