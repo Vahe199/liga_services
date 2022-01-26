@@ -39,10 +39,8 @@ export const useStyles = makeStyles({
     }
 });
 
-const CategoriesBlock = ({categoriesRef}) => {
+const CategoriesBlock = ({categoriesRef, category}) => {
     const classes = useStyles();
-    const [items, setItems] = useState([]);
-    const [showModal, setShowModal] = useState(false);
 
 
     return (
@@ -50,14 +48,9 @@ const CategoriesBlock = ({categoriesRef}) => {
             <Container maxWidth="xl">
                 <MainTitle mb={'75px'}>Категории услуг</MainTitle>
                 <Box className={classes.container}>
-                    {categories.map((category,i) =>
+                    {category.map((category, i) =>
                             <ModalCategories key={i}
-                                setShowModal={setShowModal}
-                                showModal={showModal}
-                                setItems={setItems}
-                                category={category}
-                                data={items}/>
-
+                                category={category}/>
                     )}
                 </Box>
             </Container>

@@ -3,13 +3,15 @@ import AuthReducer from "./reducers/AuthReducer";
 import TaskReducer from "./reducers/TaskReducer";
 import ProfileDataReducer from "./reducers/ProfileDataReducer";
 import ExecutorDataReducer from "./reducers/ExecutorDataReducer";
+import headerReducer from "./reducers/HeaderReducer";
 
 
 const rootReducer = combineReducers({
     auth: AuthReducer,
     task: TaskReducer,
     profile: ProfileDataReducer,
-    executor: ExecutorDataReducer
+    executor: ExecutorDataReducer,
+    header: headerReducer
 })
 
 //MIDDLEWARE

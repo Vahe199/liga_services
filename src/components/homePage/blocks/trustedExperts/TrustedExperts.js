@@ -10,6 +10,7 @@ import MainTitle from "../../../UI/titles/MainTitles";
 import RatingBlock from "../../../UI/ratingBlock/RatingBlock";
 import Typography from "@mui/material/Typography";
 import {makeStyles} from "@material-ui/core";
+import image from '../../../../assets/image/VK.png'
 
 export const useStyles = makeStyles({
     card: {
@@ -32,29 +33,29 @@ export const useStyles = makeStyles({
     },
 });
 
-const TrustedExperts = () => {
+const TrustedExperts = ({our_checked_specialists}) => {
     const classes = useStyles();
     return (
         <>
             <MainTitle mt={'75px'} mb={'75px'}>Наши Провереные Специалисты</MainTitle>
             <Grid container spacing={6} justifyContent="center"
                   alignItems="center" mb={'100px'}>
-                {trustedExperts.map((expert, index) =>
+                {our_checked_specialists.map((expert, index) =>
                     <Grid key={index} item sm={8} md={6} lg={4} >
                         <Card sx={{
                             ':hover': {
                                 boxShadow: 20
                             }
                         }} className={classes.card} style={{borderRadius: '30px'}}>
-                            <Avatar mb={'24px'} style={{height: '108px', width: '108px'}} />
+                            <Avatar src={expert.users.img_path} mb={'24px'} style={{height: '108px', width: '108px'}} />
                             <CardContent>
                                 <Typography noWrap mb={'15px'} gutterBottom style={{fontSize: '30px', fontWeight: '500', textAlign: 'center'}} color={'#49942B'}>
-                                    {expert.name}
+                                    {expert.users.name}
                                 </Typography>
                                 <Typography noWrap mb={'9px'} style={{fontSize: '18px', textAlign: 'center'}} color={'#808080'} gutterBottom>
                                     Была в сети сегодня в 15:07
                                 </Typography>
-                                <RatingBlock reviews={350} />
+                                <RatingBlock reviews={expert.total_reiting} />
                                 <Typography mb={'24px'} style={{fontSize: '20px', fontWeight: '500',textAlign: 'center'}}>
                                     {expert.special}
                                 </Typography>

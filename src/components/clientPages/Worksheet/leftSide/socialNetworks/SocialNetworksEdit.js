@@ -27,6 +27,7 @@ const SocialNetworksEdit = ({setEditSocialNetwork, setOpenToaster}) => {
         }))
         setFacebookLink('')
         setinstagramLink('')
+        await setOpenToaster(true)
         await setEditSocialNetwork(false)
     }
 
