@@ -29,7 +29,7 @@ const PortfolioEdit = ({editPortfolio, setEditPortfolio}) => {
                             file: ''
                         }}
                         onSubmit={async (values, action) => {
-                            console.log(values, 'values')
+                            //console.log(values, 'values')
                             action.resetForm()
                         }}
                     >

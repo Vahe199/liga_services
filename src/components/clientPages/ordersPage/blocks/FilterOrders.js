@@ -41,7 +41,7 @@ const FilterOrders = ({setShowFilterBlock, showFilterBlock}) => {
                     region: '', place_work: value, payment_from: '', payment_to: ''
                 }}
                 onSubmit={async (values, action) => {
-                    console.log(values, 'values')
+                    //console.log(values, 'values')
                 }}
             >
                 {({

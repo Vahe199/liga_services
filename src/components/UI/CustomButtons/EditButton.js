@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 const EditButton = ({condition, editFun, handleSubmit}) => {
 
     useEffect(() => {
-        console.log(condition)
+        //console.log(condition)
     }, [condition])
 
     const submit = () => {

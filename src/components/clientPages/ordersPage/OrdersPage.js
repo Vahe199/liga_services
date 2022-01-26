@@ -16,7 +16,7 @@ const OrdersPage = () => {
 
     const deleteOrder = (id) => {
         setShowOrders((prev) => orders.filter((item) => id !== item.id));
-        console.log(id)
+        //console.log(id)
     }
 
     useEffect(() => {

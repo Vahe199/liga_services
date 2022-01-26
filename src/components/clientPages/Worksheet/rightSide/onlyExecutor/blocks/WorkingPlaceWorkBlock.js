@@ -24,7 +24,7 @@ const WorkingPlaceWorkBlock = ({condition, setValueTime, valueTime}) => {
                     ],
                 }}
                 onSubmit={async (values, action) => {
-                    console.log(values, 'values')
+                    //console.log(values, 'values')
                     action.resetForm()
                 }}
             >

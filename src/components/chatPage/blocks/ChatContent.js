@@ -10,7 +10,7 @@ const ChatContent = ({messagesData, chatRef}) => {
 
     useEffect(() => {
         chatRef.current.scrollIntoView();
-        console.log(chatRef)
+        //console.log(chatRef)
     }, [messagesData])
 
     const MessageText = ({item}) => {
