@@ -16,6 +16,23 @@ export const getProfilePageData = createAsyncThunk(
     }
 )
 
+export const choosesAvatarData = createAsyncThunk(
+    'profile/choosesAvatar',
+    async (data,thunkAPI) => {
+        debugger
+        try {
+            const response = await instance.post("v1/user/update-avatar",data)
+            debugger
+            return response.data
+        } catch (e) {
+            console.log(e.response, 'avatar error')
+            debugger
+            return thunkAPI.rejectWithValue('Что то пошло не так')
+            // return thunkAPI.rejectWithValue('Что то пошло не так')
+        }
+    }
+)
+
 export const getProfileLogo = createAsyncThunk(
     'profile/getProfileLogo',
     async (_,thunkAPI) => {

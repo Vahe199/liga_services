@@ -6,6 +6,8 @@ import {LightTooltip} from "../../../../globalStyles/LightTooltip";
 import {HtmlTooltip} from "../../../../globalStyles/ HtmlTooltip";
 import Typography from "@mui/material/Typography";
 import Upload from "../../../../assets/image/upload1.png";
+import {choosesAvatarData} from "../../../../store/actions/ProfileDataActions";
+import {useDispatch} from "react-redux";
 
 const useAvatarStyles = makeStyles({
     fileInput: {
@@ -57,7 +59,7 @@ const useAvatarStyles = makeStyles({
 export const AddAvatar = ({avatarPreview, setAvatarPreview}) => {
     const classes = useAvatarStyles()
     const [open, setOpen] = React.useState(false);
-
+const dispatch = useDispatch()
     const handleTooltipClose = () => {
         setOpen(false);
     };
@@ -65,6 +67,11 @@ export const AddAvatar = ({avatarPreview, setAvatarPreview}) => {
     const changeAvatar = () => {
         setOpen(false);
     };
+
+    const choosesAvatar = (val) => {
+        dispatch(choosesAvatarData({"img_path":val}))
+        debugger
+    }
     return (
         <>
             <div style={{paddingRight: '10px'}}>
@@ -92,6 +99,8 @@ export const AddAvatar = ({avatarPreview, setAvatarPreview}) => {
                                                          if (fileReader.readyState === 2) {
                                                              // setFieldValue("photo", e.target.files[0]);
                                                              setAvatarPreview(fileReader.result);
+                                                              // choosesAvatar(e.target.files);
+                                                              choosesAvatar(fileReader.result);
                                                          }
                                                      };
                                                      if (e.target.files[0]) {

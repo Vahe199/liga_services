@@ -293,7 +293,7 @@ export const MainNavBar = () => {
               </IconButton>
 
                 <IconButton>
-                    {profile?.img_path ?<Avatar src={profile?.img_path}/>
+                    {profile?.img_path ?<Avatar src={`${process.env.REACT_APP_IMG_API}${profile?.img_path}`}/>
                         :<UserSvg/>}
 
                 </IconButton>
