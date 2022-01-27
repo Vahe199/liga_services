@@ -5,18 +5,19 @@ import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-const CategoriesList = ({arr, handleChange, placeholder, remove}) => {
+const CategoriesList = ({arr=[], arraySelect=[], handleChange, placeholder, remove}) => {
     const classes = useInfoCardStyles();
+    console.log(arr, 'arr', arraySelect, 'arraySelect')
     return (
         <Box>
             <Box style={{marginBottom: '40px'}} className={classes.singleInput}>
-                <CustomSelect handleChange={handleChange}
+                <CustomSelect handleChange={(val)=> handleChange(val)} arr={arr}
                               placeholder={placeholder} mt={20}/>
             </Box>
 
 
             <Box style={{display: 'flex', flexWrap: 'wrap'}}>
-                {arr.map((item, index) => (
+                {arraySelect.map((item, index) => (
 
                     item.item !== '' ? <Box key={index} className={classes.categoriesBackGround}>
                         <Typography variant={'h4'}>{item.item}</Typography>

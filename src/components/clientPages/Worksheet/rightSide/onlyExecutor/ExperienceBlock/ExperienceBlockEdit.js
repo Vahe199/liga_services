@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
 import Card from "@mui/material/Card";
 import {FieldArray, Formik} from "formik";
@@ -13,11 +13,25 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import CustomDivider from "../../../../../UI/customDivider/CustomDivider";
+import {useSelector} from "react-redux";
 
 const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
     const classes = useInfoCardStyles();
+const {header} = useSelector(state => state.header)
+const {category} = header;
+const [index, setIndex] = useState(0)
+const newCategory = [...category].map((option) => ({
+    key: option.id,
+    value: option. category_name ? option. category_name : "",
+    label: option. category_name,
+}));
 
-
+const newSubCategories = [...category[index]?.subcategories].map((option) => ({
+    key: option.id,
+    value: option.subcategory_name ? option.subcategory_name : "",
+    label: option.subcategory_name,
+}));
+    console.log(newSubCategories,"newSubCategories")
     const saveData = () => {
         setTimeout(() => {
             setEditExperienceBlock(false)
@@ -68,10 +82,14 @@ const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
                         <Box>
                             <FieldArray name={'categories'}>
                                 {({push, remove}) => (
-                                    <CategoriesListEdit handleChange={(e) => push({item: e.target.value})}
+                                    <CategoriesListEdit handleChange={(val) => {
+                                        setIndex(val[1])
+                                         push({item: val[0]})
+                                    }}
                                                         placeholder={'Выбрать категории'}
-                                                        arr={values.categories}
+                                                        arr={newCategory}
                                                         remove={remove}
+                                                        arraySelect={values.categories}
                                     />
                                 )}
                             </FieldArray>
@@ -79,10 +97,15 @@ const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
                         <Box>
                             <FieldArray name={'subCategories'}>
                                 {({push, remove}) => (
-                                    <CategoriesList handleChange={(e) => push({item: e.target.value})}
+                                    <CategoriesList
+
+                                                    handleChange={(val) => {
+                                                        push({item: val[0]})
+                                                    }}
                                                     placeholder={'Выбрать подкатегории'}
-                                                    arr={values.subCategories}
+                                                    arr={newSubCategories}
                                                     remove={remove}
+                                                    arraySelect={values.subCategories}
                                     />
                                 )}
                             </FieldArray>

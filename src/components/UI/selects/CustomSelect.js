@@ -57,23 +57,21 @@ export const useStyles = makeStyles({
 
 
 
-const CustomSelect = ({label, handleChange, placeholder, value, name, touched, error, mt}) => {
+const CustomSelect = ({label, handleChange, placeholder, value, name, touched, error, mt, arr=[]}) => {
     const classes = useStyles();
     return (
         <Box className={classes.root}>
             <p style={{marginTop: mt}} className={classes.inputText}>{label}</p>
             <FormControl style={{height: '10px', marginBottom: '10px'}} fullWidth>
                 <Select
-                    onChange={handleChange}
+                    onChange={(e)=>handleChange(e.target.value)}
                     value={value}
                     name={name}
                     error={Boolean(touched && error)}
                     defaultValue={placeholder}
                 >
                     <MenuItem disabled value={placeholder}>{placeholder}</MenuItem>
-                    <MenuItem value={'Ten'}>Ten</MenuItem>
-                    <MenuItem value={'Twenty'}>Twenty</MenuItem>
-                    <MenuItem value={'Thirty'}>Thirty</MenuItem>
+                    {arr.map((item, i)=><MenuItem key={i} value={[item?.value,i]}>{item?.label}</MenuItem>)}
                 </Select>
                 {touched && error && <FormHelperText style={{color: '#F44336', paddingLeft: '15px'}}>{error}</FormHelperText>}
             </FormControl>
