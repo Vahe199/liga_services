@@ -7,7 +7,6 @@ import Box from "@mui/material/Box";
 
 const CategoriesList = ({arr=[], arraySelect=[], handleChange, placeholder, remove}) => {
     const classes = useInfoCardStyles();
-    console.log(arr, 'arr', arraySelect, 'arraySelect')
     return (
         <Box>
             <Box style={{marginBottom: '40px'}} className={classes.singleInput}>

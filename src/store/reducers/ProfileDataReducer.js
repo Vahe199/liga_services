@@ -1,5 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit"
-import {choosesAvatarData, getProfilePageData, updateNotifications, updateSocLink} from "../actions/ProfileDataActions";
+import {
+    choosesAvatarData,
+    choosesProfessionData,
+    getProfilePageData,
+    updateNotifications,
+    updateSocLink
+} from "../actions/ProfileDataActions";
 
 const initialState = {
     status: 'executor',
@@ -57,6 +63,20 @@ const profileDataSlice = createSlice({
             state.successWork = true
         },
         [choosesAvatarData.rejected]: (state, action) => {
+            state.load = false
+            state.error = true
+            state.message = action.payload
+            state.successWork = false
+        },
+        [choosesProfessionData.pending]: (state) => {
+            state.load = true
+        },
+        [choosesProfessionData.fulfilled]: (state, action) => {
+            state.load = false
+            state.error = false
+            state.successWork = true
+        },
+        [choosesProfessionData.rejected]: (state, action) => {
             state.load = false
             state.error = true
             state.message = action.payload

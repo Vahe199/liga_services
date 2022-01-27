@@ -29,6 +29,23 @@ export const choosesAvatarData = createAsyncThunk(
     }
 )
 
+export const choosesProfessionData = createAsyncThunk(
+    'profile/professionData',
+    async (data,thunkAPI) => {
+        debugger
+        try {
+            const response = await instance.post("v1/user/profession-and-experience",data)
+            return response.data
+
+        } catch (e) {
+            console.log(e.response, 'professionData error')
+            debugger
+            return thunkAPI.rejectWithValue('Что то пошло не так')
+            // return thunkAPI.rejectWithValue('Что то пошло не так')
+        }
+    }
+)
+
 export const getProfileLogo = createAsyncThunk(
     'profile/getProfileLogo',
     async (_,thunkAPI) => {

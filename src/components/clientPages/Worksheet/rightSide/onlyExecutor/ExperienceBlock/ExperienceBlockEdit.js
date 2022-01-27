@@ -13,13 +13,17 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import CustomDivider from "../../../../../UI/customDivider/CustomDivider";
-import {useSelector} from "react-redux";
-
+import {useDispatch, useSelector} from "react-redux";
+import moment from "moment";
+import {choosesProfessionData} from "../../../../../../store/actions/ProfileDataActions";
 const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
     const classes = useInfoCardStyles();
+    const dispatch = useDispatch()
 const {header} = useSelector(state => state.header)
 const {category} = header;
 const [index, setIndex] = useState(0)
+const [removeIndex, setRemoveIndex] = useState(-1)
+const [workingDate, setWorkingDate] = useState([null,null])
 const newCategory = [...category].map((option) => ({
     key: option.id,
     value: option. category_name ? option. category_name : "",
@@ -31,7 +35,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
     value: option.subcategory_name ? option.subcategory_name : "",
     label: option.subcategory_name,
 }));
-    console.log(newSubCategories,"newSubCategories")
+
     const saveData = () => {
         setTimeout(() => {
             setEditExperienceBlock(false)
@@ -42,21 +46,23 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
             <Formik
                 initialValues={{
-                    categories: [
+                    category: [
 
                     ],
-                    subCategories: [
+                    subcategory: [
 
                     ],
-                    workPlace: [
+                    working_experiance: [
                         {
-                            place: '',
-                            date: [null, null],
+                            working_place: '',
+                            working_duration: "",
                         },
                     ],
                 }}
                 onSubmit={async (values, action) => {
-                    console.log(values, 'values')
+                    // console.log(values,"values")
+                     console.log({ "profession_and_experience":[{...values}]}, 'values')
+                    dispatch(choosesProfessionData({ "profession_and_experience":[values]}))
                 }}
             >
                 {({
@@ -72,7 +78,8 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                                 Специальность и опыт
                             </Typography>
 
-                            <Button type={"submit"}  onClick={saveData}
+                            <Button type={"submit"}
+                                    // onClick={saveData}
                                     size={"small"} style={{cursor: "pointer", padding: '0 0 7px 20px'}}>
                                 <FileSVG color={'#808080'}/>
                             </Button>
@@ -80,42 +87,49 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                         </Box>
                         <CustomDivider />
                         <Box>
-                            <FieldArray name={'categories'}>
+                            <FieldArray name={'category'}>
                                 {({push, remove}) => (
                                     <CategoriesListEdit handleChange={(val) => {
                                         setIndex(val[1])
-                                         push({item: val[0]})
+                                         push({"category_name": val[0]})
                                     }}
                                                         placeholder={'Выбрать категории'}
                                                         arr={newCategory}
-                                                        remove={remove}
-                                                        arraySelect={values.categories}
+                                                        remove={(val)=> {
+                                                            setRemoveIndex(val)
+                                                            remove(val)
+                                                        }}
+                                                        arraySelect={[...values.category].map((optin)=>({
+                                                            item:optin?.category_name
+                                                        }))}
                                     />
                                 )}
                             </FieldArray>
                         </Box>
                         <Box>
-                            <FieldArray name={'subCategories'}>
+                            <FieldArray name={'subcategory'}>
                                 {({push, remove}) => (
                                     <CategoriesList
 
                                                     handleChange={(val) => {
-                                                        push({item: val[0]})
+                                                        push({"subcategory_name": val[0]})
                                                     }}
                                                     placeholder={'Выбрать подкатегории'}
                                                     arr={newSubCategories}
                                                     remove={remove}
-                                                    arraySelect={values.subCategories}
+                                                    arraySelect={[...values.subcategory].map((option)=>({
+                                                        item:option?.subcategory_name
+                                                    }))}
                                     />
                                 )}
                             </FieldArray>
                         </Box>
                         <Box>
-                            <FieldArray name={'workPlace'}>
+                            <FieldArray name={'working_experiance'}>
                                 {({push, remove}) => (
                                     <Box>
-                                        {values.workPlace.map((work, index) => {
-                                                const fieldName = `workPlace[${index}].date`;
+                                        {values.working_experiance.map((work, index) => {
+                                                const fieldName = `working_experiance[${index}].working_duration`;
 
                                                 return(
                                                     <Box key={index}>
@@ -123,23 +137,28 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                                                             <Box style={{display: 'flex', flexWrap: 'wrap'}}>
                                                                 <Box className={classes.singleInput}>
                                                                     <CustomInput placeholder={'Место работы'}
-                                                                                 name={`workPlace[${index}].place`}
-                                                                                 value={work.place}
+                                                                                 name={`working_experiance[${index}].working_place`}
+                                                                                 value={work.working_place}
                                                                                  handleChange={handleChange}
                                                                     />
                                                                 </Box>
                                                                 <Box style={{width: '350px'}}>
                                                                     <RangeDatePicker
-                                                                        value={work.date}
-                                                                        fun={(newValue) => setFieldValue(fieldName, newValue)}
+                                                                        value={workingDate}
+                                                                        fun={(newValue) => {
+                                                                            let tim =moment(newValue[1]).diff(moment(newValue[0]), 'months', true);
+                                                                           let date = parseFloat(tim.toFixed(1))
+                                                                            setWorkingDate(newValue)
+                                                                             setFieldValue(fieldName, `${date} месяц`)
+                                                                        }}
                                                                     />
 
                                                                 </Box>
                                                             </Box>
-                                                            {values.workPlace.length > index +1 ?<div onClick={() => remove(index)}>
+                                                            {values.working_experiance.length > index +1 ?<div onClick={() => remove(index)}>
                                                                     <TrashSvg/>
                                                                 </div>
-                                                                : <AddButton fun={() => push({place: '', date: [null,null]})}/>}
+                                                                : <AddButton fun={() => push({working_place: '', working_duration: ""})}/>}
                                                         </Box>
                                                     </Box>)
                                             }
