@@ -9,6 +9,7 @@ const CustomInputAddFile = ({value, handleChange, name, svg, label}) => {
                 type="file"
                 name={name}
                 value={value}
+                multiple
                 onChange={handleChange}
                 id="icon-button-file"
                 accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import CustomDatePicker from "../../../UI/datePicker/CustomDatePicker";
@@ -14,26 +14,34 @@ import {useMyOrdersStyles} from "../MyOrders";
 import {FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
 import {useDispatch} from "react-redux";
 import {AddNewTask} from "../../../../store/actions/TaskActions";
+import {AddNewOrderValidation} from "../../../../utils/validation/AddNewOrderValidation";
 
 
 const AddNewOrderForm = () => {
     const classes = useMyOrdersStyles();
     const [value, setValue] = useState('remotely');
     const dispatch = useDispatch();
+    const [files, setFiles] = useState([])
+
+    const handleFile = (e) => {
+        setFiles(e)
+    };
+
+
 
 
     return (
         <Formik
             initialValues={{
-                category_name: '', subcategory_name: '',
-                subCategories: '', task_description: '',
+                category_name: '', subcategory_name: '', task_description: '',
                 task_img: [], region: '', address: '', task_starttime: '',
                 task_finishtime: '', task_location: value, title: '', price_from: '', price_to: ''
             }}
             //validationSchema={() => AddNewOrderValidation(value)}
             onSubmit={async (values, action) => {
-                //console.log(values, 'values')
-                dispatch(AddNewTask(values))
+                console.log(values, 'values')
+                //console.log(files, 'ref.current')
+                //dispatch(AddNewTask(values))
                 action.resetForm()
             }}
         >
@@ -48,35 +56,36 @@ const AddNewOrderForm = () => {
                 <form onSubmit={handleSubmit}>
                     <Grid container spacing={4} >
                         <Grid  item sm={12} lg={6}>
-                            <Box style={{marginBottom: '50px'}}>
-                                <CustomSelect
+                            <Box>
+                                <CustomInput
                                     name={'title'}
                                     label={'Название'}
                                     handleChange={handleChange}
                                     value={values.title}
                                     touched={touched.title}
                                     error={errors.title}
-                                    mt={0}
                                 />
                             </Box>
                             <Box style={{marginBottom: '40px'}}>
                                 <CustomSelect
-                                    name={'subcategory_name'}
+                                    name={'category_name'}
                                     label={'Категория услуг*'}
                                     handleChange={handleChange}
+                                    value={values.category_name}
+                                    touched={touched.category_name}
+                                    error={errors.category_name}
+                                />
+                            </Box>
+                            <Box style={{marginBottom: '40px'}}>
+                                <CustomSelect
+                                    label={'Подкатегория*'}
+                                    name={'subcategory_name'}
                                     value={values.subcategory_name}
+                                    handleChange={handleChange}
                                     touched={touched.subcategory_name}
                                     error={errors.subcategory_name}
                                 />
                             </Box>
-                            <CustomInput
-                                label={'Подкатегория*'}
-                                name={'subCategories'}
-                                value={values.subCategories}
-                                handleChange={handleChange}
-                                touched={touched.subCategories}
-                                error={errors.subCategories}
-                            />
                             <CustomInput
                                 label={'Описание'}
                                 name={'task_description'}
@@ -95,7 +104,7 @@ const AddNewOrderForm = () => {
                                     svg={<DownloadSvg />}
                                 />
                             </Box>
-                            {value === 'client' && <Box>
+                            {value === 'client' && <Box style={{marginTop: '20px'}}>
                                 <CustomInput
                                     label={'Регион'}
                                     name={'region'}
@@ -130,19 +139,19 @@ const AddNewOrderForm = () => {
                                         name="task_location"
                                     >
                                         <FormControlLabel control={<Radio classes={{root: classes.radio, checked: classes.checked}}
-                                              style={{color: '#4B9A2D'}} size={'small'} onChange={(e) => {
+                                                                          style={{color: '#4B9A2D'}} size={'small'} onChange={(e) => {
                                             setValue('remotely')
-                                           setFieldValue('task_location', e.target.value)
+                                            setFieldValue('task_location', e.target.value)
                                         }} value="remotely" />} label="Дистанционно" />
                                         <FormControlLabel  control={<Radio  onChange={(e) => {
                                             setValue('executor')
                                             setFieldValue('task_location', e.target.value)
                                         }} classes={{root: classes.radio, checked: classes.checked}} style={{color: '#4B9A2D'}} size={'small'}   value="executor" />} label="У исполнителя" />
                                         <FormControlLabel  control={<Radio classes={{root: classes.radio, checked: classes.checked}} style={{color: '#4B9A2D'}}  size={'small'}
-                                             onChange={(e) => {
-                                                 setValue('client')
-                                            setFieldValue('task_location', e.target.value)
-                                        }} value="client" />} label="У клиента" />
+                                                                           onChange={(e) => {
+                                                                               setValue('client')
+                                                                               setFieldValue('task_location', e.target.value)
+                                                                           }} value="client" />} label="У клиента" />
                                     </RadioGroup>
                                 </FormControl>
                             </Box>
