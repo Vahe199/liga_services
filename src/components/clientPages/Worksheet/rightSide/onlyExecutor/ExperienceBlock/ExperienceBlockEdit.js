@@ -46,13 +46,13 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
             <Formik
                 initialValues={{
-                    category: [
+                    executor_categories: [
 
                     ],
-                    subcategory: [
+                    executor_subcategories: [
 
                     ],
-                    working_experiance: [
+                    executor_profile_work_experiences: [
                         {
                             working_place: '',
                             working_duration: "",
@@ -87,7 +87,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                         </Box>
                         <CustomDivider />
                         <Box>
-                            <FieldArray name={'category'}>
+                            <FieldArray name={'executor_categories'}>
                                 {({push, remove}) => (
                                     <CategoriesListEdit handleChange={(val) => {
                                         setIndex(val[1])
@@ -99,7 +99,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                                                             setRemoveIndex(val)
                                                             remove(val)
                                                         }}
-                                                        arraySelect={[...values.category].map((optin)=>({
+                                                        arraySelect={[...values.executor_categories].map((optin)=>({
                                                             item:optin?.category_name
                                                         }))}
                                     />
@@ -107,7 +107,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                             </FieldArray>
                         </Box>
                         <Box>
-                            <FieldArray name={'subcategory'}>
+                            <FieldArray name={'executor_subcategories'}>
                                 {({push, remove}) => (
                                     <CategoriesList
 
@@ -117,7 +117,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                                                     placeholder={'Выбрать подкатегории'}
                                                     arr={newSubCategories}
                                                     remove={remove}
-                                                    arraySelect={[...values.subcategory].map((option)=>({
+                                                    arraySelect={[...values.executor_subcategories].map((option)=>({
                                                         item:option?.subcategory_name
                                                     }))}
                                     />
@@ -125,11 +125,11 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                             </FieldArray>
                         </Box>
                         <Box>
-                            <FieldArray name={'working_experiance'}>
+                            <FieldArray name={'executor_profile_work_experiences'}>
                                 {({push, remove}) => (
                                     <Box>
-                                        {values.working_experiance.map((work, index) => {
-                                                const fieldName = `working_experiance[${index}].working_duration`;
+                                        {values.executor_profile_work_experiences.map((work, index) => {
+                                                const fieldName = `executor_profile_work_experiences[${index}].working_duration`;
 
                                                 return(
                                                     <Box key={index}>
@@ -137,7 +137,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                                                             <Box style={{display: 'flex', flexWrap: 'wrap'}}>
                                                                 <Box className={classes.singleInput}>
                                                                     <CustomInput placeholder={'Место работы'}
-                                                                                 name={`working_experiance[${index}].working_place`}
+                                                                                 name={`executor_profile_work_experiences[${index}].working_place`}
                                                                                  value={work.working_place}
                                                                                  handleChange={handleChange}
                                                                     />
@@ -155,7 +155,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
 
                                                                 </Box>
                                                             </Box>
-                                                            {values.working_experiance.length > index +1 ?<div onClick={() => remove(index)}>
+                                                            {values.executor_profile_work_experiences.length > index +1 ?<div onClick={() => remove(index)}>
                                                                     <TrashSvg/>
                                                                 </div>
                                                                 : <AddButton fun={() => push({working_place: '', working_duration: ""})}/>}
