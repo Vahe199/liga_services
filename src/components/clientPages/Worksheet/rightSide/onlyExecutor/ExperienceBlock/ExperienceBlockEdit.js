@@ -110,7 +110,6 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                             <FieldArray name={'subcategory'}>
                                 {({push, remove}) => (
                                     <CategoriesList
-
                                                     handleChange={(val) => {
                                                         push({"subcategory_name": val[0]})
                                                     }}

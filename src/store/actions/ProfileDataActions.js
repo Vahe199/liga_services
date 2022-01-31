@@ -5,7 +5,7 @@ export const getProfilePageData = createAsyncThunk(
     'profile/getProfilePageData',
     async (_,thunkAPI) => {
         try {
-            const response = await instance.get("v1/user/show-profile-page")
+            const response = await instance.get("v1/user/profile-page")
             return response.data
         } catch (e) {
             console.log(e.response, 'register error')
