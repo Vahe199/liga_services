@@ -11,8 +11,9 @@ import MyOrdersBlock from "./blocks/MyOrdersBlock";
 import AddNewOrderForm from "./blocks/AddNewOrderForm";
 import CustomDatePicker from "../../UI/datePicker/CustomDatePicker";
 import Typography from "@mui/material/Typography";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {getCompletedTasks, getNotAppliedTasks} from "../../../store/actions/TaskActions";
+import Toaster from "../../UI/toaster/Toaster";
 
 export const useMyOrdersStyles = makeStyles({
     root:{
@@ -206,7 +207,9 @@ export const useMyOrdersStyles = makeStyles({
 export const MyOrders = () => {
     const classes = useMyOrdersStyles()
     const [valueTime, setValueTime] = useState(new Date());
-    const [showForm, setShowForm] = useState(false);
+    const [showForm, setShowForm] = useState(true);
+    const {load, error, successWork, message} = useSelector(state => state.task)
+    const [openToaster, setOpenToaster] = useState(false)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -216,6 +219,7 @@ export const MyOrders = () => {
     return(
         <Box className={classes.root}>
             <Container maxWidth={'lg'}>
+                <Toaster error={error} success={successWork} message={message} open={openToaster} setOpen={setOpenToaster}/>
                 <Grid container spacing={1} >
                     <Grid  item  sm={12}  lg={4}>
                         <Card>
@@ -240,7 +244,7 @@ export const MyOrders = () => {
                                     <OrderBlock order={order}/>
                                 </Card>
                             )}
-                        </Box> : <Card> <AddNewOrderForm /> </Card>}
+                        </Box> : <Card> <AddNewOrderForm setOpenToaster={setOpenToaster} /> </Card>}
 
                     </Grid>
                 </Grid>

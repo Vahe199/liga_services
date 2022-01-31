@@ -17,15 +17,11 @@ import {AddNewTask} from "../../../../store/actions/TaskActions";
 import {AddNewOrderValidation} from "../../../../utils/validation/AddNewOrderValidation";
 
 
-const AddNewOrderForm = () => {
+const AddNewOrderForm = ({setOpenToaster}) => {
     const classes = useMyOrdersStyles();
     const [value, setValue] = useState('remotely');
     const dispatch = useDispatch();
-    const [files, setFiles] = useState([])
 
-    const handleFile = (e) => {
-        setFiles(e)
-    };
 
 
 
@@ -33,16 +29,15 @@ const AddNewOrderForm = () => {
     return (
         <Formik
             initialValues={{
-                category_name: '', subcategory_name: '', task_description: '',
-                task_img: [], region: '', address: '', task_starttime: '',
+                category_name: '', subcategory_name: '', task_description: '', region: '', address: '', task_img: [], task_starttime: '',
                 task_finishtime: '', task_location: value, title: '', price_from: '', price_to: ''
             }}
-            //validationSchema={() => AddNewOrderValidation(value)}
+            validationSchema={AddNewOrderValidation}
             onSubmit={async (values, action) => {
                 console.log(values, 'values')
-                //console.log(files, 'ref.current')
-                //dispatch(AddNewTask(values))
-                action.resetForm()
+                //await dispatch(AddNewTask(values))
+               // await setOpenToaster(true)
+                //action.resetForm()
             }}
         >
             {({
@@ -96,13 +91,34 @@ const AddNewOrderForm = () => {
                                 textArea={true}
                             />
                             <Box>
-                                <CustomInputAddFile
-                                    name={'task_img'}
-                                    value={values.task_img}
-                                    handleChange={handleChange}
-                                    label={'Прикрепить файл'}
-                                    svg={<DownloadSvg />}
+                                {/*<input*/}
+                                {/*    type={'file'}*/}
+                                {/*    //name={'task_img'}*/}
+                                {/*    onChange={(e) => {*/}
+                                {/*        setFieldValue('task_img', e.target.files)*/}
+                                {/*    }}*/}
+                                {/*    multiple*/}
+                                {/*/>*/}
+                                <input
+                                    color="primary"
+                                    type="file"
+                                    multiple
+                                    onChange={(e) => {
+                                        setFieldValue('task_img', e.target.files)
+                                    }}
+                                    id="icon-button-file"
+                                    accept="image/*,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                    style={{ display: 'none' }}
                                 />
+                                <label style={{display: 'flex', marginTop: '10px', justifyContent: 'flex-start', alignItems: 'center'}} htmlFor="icon-button-file">
+                                    <DownloadSvg />
+                                    <p style={{fontSize: '15px', margin: 0, paddingLeft: '20px', color: '#000'}}>Прикрепить файл</p>
+                                </label>
+                                {touched.task_img && errors.task_img && <p style={{
+                                    fontSize: '15px',
+                                    color: '#F44336',
+                                    margin: '5px 0 0 0',
+                                }}>{errors.task_img}</p>}
                             </Box>
                             {value === 'client' && <Box style={{marginTop: '20px'}}>
                                 <CustomInput
@@ -182,17 +198,17 @@ const AddNewOrderForm = () => {
 
                                 {/*/>*/}
                             </Box>
-                            <CustomInputIcon
-                                name={'price_from'}
-                                label={'Оплата'}
-                                value={values.price_from}
-                                handleChange={handleChange}
-                                touched={touched.price_from}
-                                error={errors.price_from}
-                                icon={'Руб.'}
-                                placeholder={'От'}
-                                width={'60%'}
-                            />
+                                <CustomInputIcon
+                                    name={'price_from'}
+                                    label={'Оплата'}
+                                    value={values.price_from}
+                                    handleChange={handleChange}
+                                    touched={touched.price_from}
+                                    error={errors.price_from}
+                                    icon={'Руб.'}
+                                    placeholder={'От'}
+                                    width={'60%'}
+                                />
                             <CustomInputIcon
                                 name={'price_to'}
                                 label={'Оплата'}

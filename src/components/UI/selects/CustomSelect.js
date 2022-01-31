@@ -75,7 +75,7 @@ const CustomSelect = ({label, handleChange, placeholder, value, name, touched, e
                     <MenuItem value={'Twenty'}>Twenty</MenuItem>
                     <MenuItem value={'Thirty'}>Thirty</MenuItem>
                 </Select>
-                {touched && error && <FormHelperText style={{color: '#F44336', paddingLeft: '15px'}}>{error}</FormHelperText>}
+                {touched && error && <FormHelperText style={{color: '#F44336', paddingLeft: '15px', position: 'absolute', right: 0, top: '-20px'}}>{error}</FormHelperText>}
             </FormControl>
         </Box>
     )
