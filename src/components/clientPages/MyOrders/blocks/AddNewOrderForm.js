@@ -12,7 +12,7 @@ import CustomInputIcon from "../../../UI/customInput/CustomInputIcon";
 import BlueButton from "../../../UI/CustomButtons/BlueButton";
 import {useMyOrdersStyles} from "../MyOrders";
 import {FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {AddNewTask} from "../../../../store/actions/TaskActions";
 import {AddNewOrderValidation} from "../../../../utils/validation/AddNewOrderValidation";
 
@@ -22,8 +22,22 @@ const AddNewOrderForm = ({setOpenToaster}) => {
     const [value, setValue] = useState('remotely');
     const dispatch = useDispatch();
 
+    const {header} = useSelector(state => state.header)
+    const {category} = header;
+    const [index, setIndex] = useState(0)
+    const [removeIndex, setRemoveIndex] = useState(-1)
+    const [workingDate, setWorkingDate] = useState([null,null])
+    const newCategory = [...category].map((option) => ({
+        key: option.id,
+        value: option. category_name ? option. category_name : "",
+        label: option. category_name,
+    }));
 
-
+    const newSubCategories = [...category[index]?.subcategories].map((option) => ({
+        key: option.id,
+        value: option.subcategory_name ? option.subcategory_name : "",
+        label: option.subcategory_name,
+    }));
 
 
     return (
@@ -59,24 +73,28 @@ const AddNewOrderForm = ({setOpenToaster}) => {
                                     value={values.title}
                                     touched={touched.title}
                                     error={errors.title}
+
                                 />
                             </Box>
                             <Box style={{marginBottom: '40px'}}>
                                 <CustomSelect
                                     name={'category_name'}
                                     label={'Категория услуг*'}
-                                    handleChange={handleChange}
+                                    handleChange={(val) => {
+                                        setFieldValue('category_name', val)
+                                    }}
                                     value={values.category_name}
                                     touched={touched.category_name}
                                     error={errors.category_name}
+                                    arr={newCategory}
                                 />
                             </Box>
                             <Box style={{marginBottom: '40px'}}>
                                 <CustomSelect
                                     label={'Подкатегория*'}
                                     name={'subcategory_name'}
-                                    value={values.subcategory_name}
                                     handleChange={handleChange}
+                                    value={values.subcategory_name}
                                     touched={touched.subcategory_name}
                                     error={errors.subcategory_name}
                                 />

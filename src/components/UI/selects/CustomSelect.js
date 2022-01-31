@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import MenuItem from "@mui/material/MenuItem";
 import {makeStyles} from "@material-ui/core";
 import Box from "@mui/material/Box";
@@ -59,6 +59,13 @@ export const useStyles = makeStyles({
 
 const CustomSelect = ({label, handleChange, placeholder, value, name, touched, error, mt, arr=[]}) => {
     const classes = useStyles();
+
+    const renderMenuItems = () => {
+        return arr.map((item, i) => (
+            <MenuItem key={item.i} value={[item?.value,i]}>{item?.label}</MenuItem>
+        ))
+    }
+
     return (
         <Box className={classes.root}>
             <p style={{marginTop: mt}} className={classes.inputText}>{label}</p>
@@ -69,7 +76,9 @@ const CustomSelect = ({label, handleChange, placeholder, value, name, touched, e
                     name={name}
                     error={Boolean(touched && error)}
                     defaultValue={placeholder}
+
                 >
+                    {/*{renderMenuItems()}*/}
                     <MenuItem disabled value={placeholder}>{placeholder}</MenuItem>
                     {arr.map((item, i)=><MenuItem key={i} value={[item?.value,i]}>{item?.label}</MenuItem>)}
                 </Select>
@@ -79,4 +88,4 @@ const CustomSelect = ({label, handleChange, placeholder, value, name, touched, e
     )
 }
 
-export default CustomSelect;
+export default memo(CustomSelect);
