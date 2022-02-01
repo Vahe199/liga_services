@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React, {memo, useEffect, useRef, useState} from 'react';
 import MenuItem from "@mui/material/MenuItem";
 import {makeStyles} from "@material-ui/core";
 import Box from "@mui/material/Box";
@@ -59,28 +59,36 @@ export const useStyles = makeStyles({
 
 const CustomSelect = ({label, handleChange, placeholder, value, name, touched, error, mt, arr=[]}) => {
     const classes = useStyles();
+    const [selectedValue, setSelectedValue] = useState('');
 
-    const renderMenuItems = () => {
-        return arr.map((item, i) => (
-            <MenuItem key={item.i} value={[item?.value,i]}>{item?.label}</MenuItem>
-        ))
+    const renderValue = () => {
+        return selectedValue && selectedValue[0];
     }
+
+    useEffect(() => {
+        console.log(selectedValue, 'selectedValue')
+    }, [selectedValue])
+
 
     return (
         <Box className={classes.root}>
             <p style={{marginTop: mt}} className={classes.inputText}>{label}</p>
             <FormControl style={{height: '10px', marginBottom: '10px'}} fullWidth>
                 <Select
-                    onChange={(e)=>handleChange(e.target.value)}
+                    onChange={(e, i)=> {
+                        handleChange(e.target.value)
+                        setSelectedValue(e.target.value)
+                    }}
                     value={value}
                     name={name}
                     error={Boolean(touched && error)}
                     defaultValue={placeholder}
+                    renderValue={() => renderValue()}
 
                 >
                     {/*{renderMenuItems()}*/}
                     <MenuItem disabled value={placeholder}>{placeholder}</MenuItem>
-                    {arr.map((item, i)=><MenuItem key={i} value={[item?.value,i]}>{item?.label}</MenuItem>)}
+                    {arr.map((item, i)=><MenuItem  key={i} value={[item?.value,i]}>{item?.label}</MenuItem>)}
                 </Select>
                 {touched && error && <FormHelperText style={{color: '#F44336', paddingLeft: '15px', position: 'absolute', right: 0, top: '-20px'}}>{error}</FormHelperText>}
             </FormControl>
