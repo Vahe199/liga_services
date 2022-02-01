@@ -57,17 +57,8 @@ export const useStyles = makeStyles({
 
 
 
-const CustomSelect = ({label, handleChange, placeholder, value, name, touched, error, mt, arr=[]}) => {
+const CustomSelect = ({label, setIndex = () => {}, handleChange, placeholder, value, name, touched, error, mt, arr=[]}) => {
     const classes = useStyles();
-    const [selectedValue, setSelectedValue] = useState('');
-
-    const renderValue = () => {
-        return selectedValue && selectedValue[0];
-    }
-
-    useEffect(() => {
-        console.log(selectedValue, 'selectedValue')
-    }, [selectedValue])
 
 
     return (
@@ -77,18 +68,15 @@ const CustomSelect = ({label, handleChange, placeholder, value, name, touched, e
                 <Select
                     onChange={(e, i)=> {
                         handleChange(e.target.value)
-                        setSelectedValue(e.target.value)
                     }}
                     value={value}
                     name={name}
                     error={Boolean(touched && error)}
                     defaultValue={placeholder}
-                    renderValue={() => renderValue()}
 
                 >
-                    {/*{renderMenuItems()}*/}
                     <MenuItem disabled value={placeholder}>{placeholder}</MenuItem>
-                    {arr.map((item, i)=><MenuItem  key={i} value={[item?.value,i]}>{item?.label}</MenuItem>)}
+                    {arr.map((item, i)=><MenuItem onClick={()=>setIndex(i)} key={i} value={item?.value}>{item?.label}</MenuItem>)}
                 </Select>
                 {touched && error && <FormHelperText style={{color: '#F44336', paddingLeft: '15px', position: 'absolute', right: 0, top: '-20px'}}>{error}</FormHelperText>}
             </FormControl>

@@ -90,8 +90,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                             <FieldArray name={'executor_categories'}>
                                 {({push, remove}) => (
                                     <CategoriesListEdit handleChange={(val) => {
-                                        setIndex(val[1])
-                                         push({"category_name": val[0]})
+                                         push({"category_name": val})
                                     }}
                                                         placeholder={'Выбрать категории'}
                                                         arr={newCategory}
@@ -99,6 +98,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                                                             setRemoveIndex(val)
                                                             remove(val)
                                                         }}
+                                                        setIndex={setIndex}
                                                         arraySelect={[...values.executor_categories].map((optin)=>({
                                                             item:optin?.category_name
                                                         }))}
@@ -111,7 +111,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                                 {({push, remove}) => (
                                     <CategoriesList
                                                     handleChange={(val) => {
-                                                        push({"subcategory_name": val[0]})
+                                                        push({"subcategory_name": val})
                                                     }}
                                                     placeholder={'Выбрать подкатегории'}
                                                     arr={newSubCategories}

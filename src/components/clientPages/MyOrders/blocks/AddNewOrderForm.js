@@ -40,6 +40,8 @@ const AddNewOrderForm = ({setOpenToaster}) => {
     }));
 
 
+
+
     return (
         <Formik
             initialValues={{
@@ -83,6 +85,7 @@ const AddNewOrderForm = ({setOpenToaster}) => {
                                     handleChange={(val) => {
                                         setFieldValue('category_name', val)
                                     }}
+                                    setIndex={setIndex}
                                     value={values.category_name}
                                     touched={touched.category_name}
                                     error={errors.category_name}
@@ -93,10 +96,13 @@ const AddNewOrderForm = ({setOpenToaster}) => {
                                 <CustomSelect
                                     label={'Подкатегория*'}
                                     name={'subcategory_name'}
-                                    handleChange={handleChange}
+                                    handleChange={(val) => {
+                                        setFieldValue('subcategory_name', val)
+                                    }}
                                     value={values.subcategory_name}
                                     touched={touched.subcategory_name}
                                     error={errors.subcategory_name}
+                                    arr={newSubCategories}
                                 />
                             </Box>
                             <CustomInput
