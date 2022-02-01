@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import HeaderModal from "./blocks/HeaderModal";
@@ -9,13 +9,14 @@ import CustomDatePicker from "../datePicker/CustomDatePicker";
 import CustomInput from "../customInput/CustomInput";
 import CustomSelect from "../selects/CustomSelect";
 import CustomInputAddFile from "../customInputAddFile/CustomInputAddFile";
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {AddNewTask} from "../../../store/actions/TaskActions";
 import Grid from "@mui/material/Grid";
 import BlueButton from "..//CustomButtons/BlueButton";
 import {FormControl, FormControlLabel, FormLabel, Radio, RadioGroup} from "@mui/material";
 import CustomInputIcon from "../customInput/CustomInputIcon";
 import { makeStyles } from '@material-ui/core';
+import {AddNewOrderValidation} from "../../../utils/validation/AddNewOrderValidation";
 
 export const useStyles = makeStyles({
     root:{
@@ -228,6 +229,20 @@ const ModalNewTask = ({showModal, setShowModal}) => {
     const classes = useStyles();
     const [value, setValue] = React.useState('remotely');
     const dispatch = useDispatch();
+    const {header} = useSelector(state => state.header)
+    const {category} = header;
+    const [index, setIndex] = useState(0)
+    const newCategory = [...category].map((option) => ({
+        key: option.id,
+        value: option. category_name ? option. category_name : "",
+        label: option. category_name,
+    }));
+
+    const newSubCategories = [...category[index]?.subcategories].map((option) => ({
+        key: option.id,
+        value: option.subcategory_name ? option.subcategory_name : "",
+        label: option.subcategory_name,
+    }));
 
     return (
         <div>
@@ -243,13 +258,21 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                     <Box className={classes.root}>
                         <HeaderModal title={'Оставить новое задание'} close={handleClose} />
                         <Formik
-            initialValues={{
-                category_name: '', subcategory_name: '',
-                subCategories: '', task_description: '',
-                task_img: [], region: '', address: '', task_starttime: '',
-                task_finishtime: '', task_location: value, title: '', price_from: '', price_to: ''
-            }}
-            //validationSchema={() => AddNewOrderValidation(value)}
+                            initialValues={{
+                                category_name: '',
+                                subcategory_name: '',
+                                task_description: '',
+                                region: '',
+                                address: '',
+                                task_img: [],
+                                task_starttime: '',
+                                task_finishtime: '',
+                                task_location: value,
+                                title: '',
+                                price_from: '',
+                                price_to: ''
+                            }}
+            validationSchema={AddNewOrderValidation}
             onSubmit={async (values, action) => {
                 //console.log(values, 'values')
                 dispatch(AddNewTask(values))
@@ -267,8 +290,8 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                 <form onSubmit={handleSubmit}>
                     <Grid container spacing={4} >
                         <Grid  item sm={12} md={7}>
-                            <Box style={{marginBottom: '50px'}}>
-                                <CustomSelect
+                            <Box>
+                                <CustomInput
                                     name={'title'}
                                     label={'Название'}
                                     handleChange={handleChange}
@@ -280,21 +303,28 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                             </Box>
                             <Box style={{marginBottom: '40px'}}>
                                 <CustomSelect
-                                    name={'subcategory_name'}
+                                    name={'category_name'}
                                     label={'Категория услуг*'}
-                                    handleChange={handleChange}
-                                    value={values.subcategory_name}
-                                    touched={touched.subcategory_name}
-                                    error={errors.subcategory_name}
+                                    handleChange={(val) => {
+                                        setFieldValue('category_name', val)
+                                    }}
+                                    setIndex={setIndex}
+                                    value={values.category_name}
+                                    touched={touched.category_name}
+                                    error={errors.category_name}
+                                    arr={newCategory}
                                 />
                             </Box>
                             <CustomInput
                                 label={'Подкатегория*'}
-                                name={'subCategories'}
-                                value={values.subCategories}
-                                handleChange={handleChange}
-                                touched={touched.subCategories}
-                                error={errors.subCategories}
+                                name={'subcategory_name'}
+                                value={values.subcategory_name}
+                                handleChange={(val) => {
+                                    setFieldValue('subcategory_name', val)
+                                }}
+                                touched={touched.subcategory_name}
+                                error={errors.subcategory_name}
+                                arr={newSubCategories}
                             />
                             <CustomInput
                                 label={'Описание'}
@@ -306,35 +336,29 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                 textArea={true}
                             />
                             <Box>
-                                <CustomInputAddFile
-                                    name={'task_img'}
-                                    value={values.task_img}
-                                    handleChange={handleChange}
-                                    label={'Прикрепить файл'}
-                                    svg={<DownloadSvg />}
+                                <input
+                                    color="primary"
+                                    type="file"
+                                    multiple
+                                    onChange={(e) => {
+                                        setFieldValue('task_img', e.target.files)
+                                    }}
+                                    id="icon-button-file"
+                                    accept=".png, .jpg, .jpeg, .gif, .csv, .txt, .pdf."
+                                    style={{ display: 'none' }}
                                 />
+                                <label style={{display: 'flex', marginTop: '10px', justifyContent: 'flex-start', alignItems: 'center'}} htmlFor="icon-button-file">
+                                    <DownloadSvg />
+                                    <p style={{fontSize: '15px', margin: 0, paddingLeft: '20px', color: '#000'}}>Прикрепить файл</p>
+                                </label>
+                                {touched.task_img && errors.task_img && <p style={{
+                                    fontSize: '15px',
+                                    color: '#F44336',
+                                    margin: '5px 0 0 0',
+                                }}>{errors.task_img}</p>}
                             </Box>
-                            {/* {value === 'client' && <Box>
-                                <CustomInput
-                                    label={'Регион'}
-                                    name={'region'}
-                                    value={values.region}
-                                    handleChange={handleChange}
-                                    touched={touched.region}
-                                    error={errors.region}
-                                />
-                                <CustomInput
-                                    label={'Адрес'}
-                                    name={'address'}
-                                    value={values.address}
-                                    handleChange={handleChange}
-                                    touched={touched.address}
-                                    error={errors.address}
-                                />
-                            </Box>} */}
-
                             <Box style={{marginTop: value === 'client' ? '10px' : '10px'}}>
-                                <BlueButton action={handleSubmit} label={'Профиль исполнителя'} />
+                                <BlueButton action={handleSubmit} label={'Оформить заказ'} />
                                 {/*<Button onClick={handleSubmit} variant={'outlined'}>Профиль исполнителя</Button>*/}
                             </Box>
 
@@ -383,14 +407,7 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                     touched={touched.task_finishtime}
                                     errors={errors.task_finishtime}
                                 />
-                                {/*<RangeDatePicker*/}
-                                {/*    value={values.time_to}*/}
-                                {/*    name={'time_to'}*/}
-                                {/*    touched={touched.time_to}*/}
-                                {/*    errors={errors.time_to}*/}
-                                {/*    fun={(newValue) => setFieldValue('time_to', newValue)}*/}
 
-                                {/*/>*/}
                             </Box>
                             <CustomInputIcon
                                 name={'price_from'}

@@ -8,7 +8,7 @@ import {useDispatch} from "react-redux";
 import {getCompletedTasks, getNotAppliedTasks} from "../../../../store/actions/TaskActions";
 
 
-const MyOrdersBlock = ({setShowForm}) => {
+const MyOrdersBlock = ({setShowForm, setTitle}) => {
     const [btnSelected, setBtnSelected] = useState(1);
     const dispatch = useDispatch();
     const arr = ['Не откликнувшые заказы',
@@ -16,7 +16,8 @@ const MyOrdersBlock = ({setShowForm}) => {
                 'Завершенные заказы',
                 'История заказов']
 
-    const showOrders = async (index) => {
+    const showOrders = async (item, index) => {
+        setTitle(item)
         setBtnSelected(index + 1)
         switch (index) {
             case 0:
@@ -42,7 +43,7 @@ const MyOrdersBlock = ({setShowForm}) => {
             <CustomDivider />
 
             {arr.map((item, index) =>
-                <Box key={index} onClick={() => showOrders(index)} style={{display:'flex'}}>
+                <Box key={index} onClick={() => showOrders(item, index)} style={{display:'flex'}}>
                     <p style={{fontWeight: btnSelected === index + 1 ? '500' : '400', color: '#000000', margin: 0, whiteSpace:'nowrap', fontSize: '18px'}}>
                         {item}
                     </p>
