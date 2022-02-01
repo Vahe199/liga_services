@@ -25,8 +25,6 @@ const AddNewOrderForm = ({setOpenToaster}) => {
     const {header} = useSelector(state => state.header)
     const {category} = header;
     const [index, setIndex] = useState(0)
-    const [removeIndex, setRemoveIndex] = useState(-1)
-    const [workingDate, setWorkingDate] = useState([null,null])
     const newCategory = [...category].map((option) => ({
         key: option.id,
         value: option. category_name ? option. category_name : "",
@@ -45,13 +43,30 @@ const AddNewOrderForm = ({setOpenToaster}) => {
     return (
         <Formik
             initialValues={{
-                category_name: '', subcategory_name: '', task_description: '', region: '', address: '', task_img: [], task_starttime: '',
-                task_finishtime: '', task_location: value, title: '', price_from: '', price_to: ''
+                category_name: '',
+                subcategory_name: '',
+                task_description: '',
+                region: '',
+                address: '',
+                task_img: [],
+                task_starttime: '',
+                task_finishtime: '',
+                task_location: value,
+                title: '',
+                price_from: '',
+                price_to: ''
             }}
             validationSchema={AddNewOrderValidation}
             onSubmit={async (values, action) => {
                 console.log(values, 'values')
-                //await dispatch(AddNewTask(values))
+                // const formData = new FormData()
+                // Object.entries(values).forEach((item) => {
+                //     const key = item[0];
+                //     const value = item[1];
+                //     formData.append(key, value);
+                // });
+
+                await dispatch(AddNewTask(values))
                // await setOpenToaster(true)
                 //action.resetForm()
             }}
@@ -66,7 +81,7 @@ const AddNewOrderForm = ({setOpenToaster}) => {
               }) => (
                 <form onSubmit={handleSubmit}>
                     <Grid container spacing={4} >
-                        <Grid  item sm={12} lg={6}>
+                        <Grid style={{width: '100%'}}  item sm={12} lg={6}>
                             <Box>
                                 <CustomInput
                                     name={'title'}
@@ -75,7 +90,6 @@ const AddNewOrderForm = ({setOpenToaster}) => {
                                     value={values.title}
                                     touched={touched.title}
                                     error={errors.title}
-
                                 />
                             </Box>
                             <Box style={{marginBottom: '40px'}}>
@@ -131,7 +145,7 @@ const AddNewOrderForm = ({setOpenToaster}) => {
                                         setFieldValue('task_img', e.target.files)
                                     }}
                                     id="icon-button-file"
-                                    accept="image/*,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                    accept=".png, .jpg, .jpeg, .gif, .csv, .txt, .pdf."
                                     style={{ display: 'none' }}
                                 />
                                 <label style={{display: 'flex', marginTop: '10px', justifyContent: 'flex-start', alignItems: 'center'}} htmlFor="icon-button-file">
