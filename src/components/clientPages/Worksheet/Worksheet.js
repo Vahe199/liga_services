@@ -40,7 +40,7 @@ export const Worksheet = () =>{
     const classes = useAncetaStyles()
     const dispatch = useDispatch()
     const {status} = useSelector(state => state.auth)
-    const {profile, error, message, successWork} = useSelector(state => state.profile)
+    const {user, error, message, successWork} = useSelector(state => state.profile)
     const {executor} = useSelector(state => state.executor)
     const [editPersonallyData, setEditPersonallyData] = useState(false);
     const [editSocialNetwork, setEditSocialNetwork] = useState(false);
@@ -64,13 +64,13 @@ export const Worksheet = () =>{
                 <ModalPersonalData showModal={showModal} setShowModal={setShowModal}/>
             <Grid container spacing={1}>
                 <Grid item sm={12} lg={4}>
-                    <ProfileStatus profile={profile} setShowModal={setShowModal}/>
-                    <SocialNetworks profile={profile}
+                    <ProfileStatus profile={user} setShowModal={setShowModal}/>
+                    <SocialNetworks profile={user}
                                     openToaster={openToaster}
                                     setOpenToaster={setOpenToaster}
                                     setEditSocialNetwork={setEditSocialNetwork}
                                     editSocialNetwork={editSocialNetwork}/>
-                    <OrderNotifications profile={profile}
+                    <OrderNotifications profile={user}
                                         openToaster={openToaster}
                                         setOpenToaster={setOpenToaster}
                                         notificationsOrder={notificationsOrder} setNotificationOrders={setNotificationOrders} />

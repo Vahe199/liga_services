@@ -20,7 +20,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import {useDispatch, useSelector} from "react-redux";
 import {changeStatus} from "../../../store/reducers/AuthReducer";
 import Avatar from "@mui/material/Avatar";
-import {getProfilePageData} from "../../../store/actions/ProfileDataActions";
+import {getProfilePageData, getЕxecutorProfilePageData} from "../../../store/actions/ProfileDataActions";
 import {makeStyles} from "@material-ui/core";
 import {getExecutorPageData} from "../../../store/actions/ExecutorDataActions";
 
@@ -97,16 +97,18 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     justifyContent: 'flex-end',
 }));
 export const MainNavBar = () => {
-    const {status, user, auth} = useSelector(state => state.auth);
-    const {success,profile} = useSelector(state => state.profile);
+    const {status, users, auth} = useSelector(state => state.auth);
+    const {success,user} = useSelector(state => state.profile);
     const dispatch = useDispatch();
     const changePage = async () => {
         if(status === 'client'){
             await dispatch(getExecutorPageData())
             await dispatch(changeStatus('executor'))
+            await dispatch(getЕxecutorProfilePageData())
             navigate('/', { replace: true })
         }else {
             dispatch(changeStatus('client'))
+            await dispatch(getProfilePageData())
             navigate('/', { replace: true })
         }
     }
@@ -242,7 +244,8 @@ export const MainNavBar = () => {
                           variant="contained">Профиль заказчика</Button>}
               <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
                   <IconButton>
-                    <UserSvg/>
+                      {user?.img_path ?<Avatar src={`${process.env.REACT_APP_IMG_API}${user?.img_path}`}/>
+                          :<UserSvg/>}
                   </IconButton>
                   <IconButton
                       onClick={handleOpenUserMenu}
@@ -270,7 +273,7 @@ export const MainNavBar = () => {
                           direction={{ xs: 'column', sm: 'column' }}
                           // spacing={{ xs: 1, sm: 2, md: 4 }}
                       >
-                          <Typography  sx={{color:"#000",ml:2}}>{user?.user_name}</Typography>
+                          <Typography  sx={{color:"#000",ml:2}}>{users?.user_name}</Typography>
                           <IconButton>
                               <MessageSvg/>
                           </IconButton>
@@ -291,11 +294,11 @@ export const MainNavBar = () => {
               </IconButton>
 
                 <IconButton>
-                    {profile?.img_path ?<Avatar src={`${process.env.REACT_APP_IMG_API}${profile?.img_path}`}/>
+                    {user?.img_path ?<Avatar src={`${process.env.REACT_APP_IMG_API}${user?.img_path}`}/>
                         :<UserSvg/>}
 
                 </IconButton>
-                <Typography  sx={{color:"#000",ml:2}}>{user?.user_name}</Typography>
+                <Typography  sx={{color:"#000",ml:2}}>{users?.user_name}</Typography>
             </Box>
           </Toolbar>
         </Container>

@@ -16,10 +16,14 @@ import CustomDivider from "../../../../../UI/customDivider/CustomDivider";
 import {useDispatch, useSelector} from "react-redux";
 import moment from "moment";
 import {choosesProfessionData} from "../../../../../../store/actions/ProfileDataActions";
+import get from "lodash/get";
+import pick from "lodash/pick";
+
 const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
     const classes = useInfoCardStyles();
     const dispatch = useDispatch()
 const {header} = useSelector(state => state.header)
+const {profile} = useSelector(state => state.profile)
 const {category} = header;
 const [index, setIndex] = useState(0)
 const [removeIndex, setRemoveIndex] = useState(-1)
@@ -42,23 +46,25 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
         }, 2000)
     }
 
+    const initialValues = {
+        executor_categories: get(profile, "executor_categories", [{id:"",category_name:"",executor_profile_id:""}]).map(
+            (categories) =>
+                pick(categories, ["category_name"])
+        ),
+        executor_subcategories: get(profile, "executor_subcategories", [{id:"",executor_profile_id:"",subcategory_name:""}]).map(
+            (subcategories) =>
+                pick(subcategories, ["subcategory_name"])
+        ),
+        executor_profile_work_experiences: get(profile, "executor_profile_work_experiences", [{working_place:"",working_duration:""}]).map(
+            (work) =>
+                pick(work, ["working_place","working_duration"])
+        ),
+    }
+    console.log(initialValues,"initialValues")
     return (
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
             <Formik
-                initialValues={{
-                    executor_categories: [
-
-                    ],
-                    executor_subcategories: [
-
-                    ],
-                    executor_profile_work_experiences: [
-                        {
-                            working_place: '',
-                            working_duration: "",
-                        },
-                    ],
-                }}
+                initialValues={initialValues}
                 onSubmit={async (values, action) => {
                     // console.log(values,"values")
                      console.log({ "profession_and_experience":[{...values}]}, 'values')

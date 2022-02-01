@@ -13,7 +13,7 @@ import {useProfileCardStyles} from "../../../../../globalStyles/ProfileCardStyle
 
 const SocialNetworksData = ({ setEditSocialNetwork }) => {
   const classes = useProfileCardStyles();
-  const {profile} = useSelector(state => state.profile);
+  const {user} = useSelector(state => state.profile);
    return (
     <Card sx={{ boxShadow: 2 }} className={classes.root}>
       <Box className={classes.orderSubBlockSpaceBetween}>
@@ -27,8 +27,8 @@ const SocialNetworksData = ({ setEditSocialNetwork }) => {
         <Avatar src={VK} style={{ marginRight: 25 }} variant="rounded" />
         <Box>
           <Typography variant={"h6"}>Вконтакте</Typography>
-            {profile?.fasebook_link ? <Link variant={"h5"} style={{ margin: 0 }}>
-                {profile?.fasebook_link}
+            {user?.fasebook_link ? <Link variant={"h5"} style={{ margin: 0 }}>
+                {user?.fasebook_link}
             </Link> : <Typography variant={"h5"} style={{ margin: 0 }}>
                 не привязана
             </Typography>}
@@ -38,8 +38,8 @@ const SocialNetworksData = ({ setEditSocialNetwork }) => {
         <Avatar src={instagram} style={{ marginRight: 25 }} variant="rounded" />
           <Box>
             <Typography variant={"h6"}>Инстаграм</Typography>
-              {profile?.instagram_link ? <Link variant={"h5"} style={{ margin: 0 }}>
-                  {profile?.instagram_link}
+              {user?.instagram_link ? <Link variant={"h5"} style={{ margin: 0 }}>
+                  {user?.instagram_link}
               </Link> : <Typography variant={"h5"} style={{ margin: 0 }}>
                   не привязана
               </Typography>}

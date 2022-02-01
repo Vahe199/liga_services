@@ -16,10 +16,10 @@ import {changeSocLinks} from "../../../../../store/reducers/ProfileDataReducer";
 
 const SocialNetworksEdit = ({setEditSocialNetwork, setOpenToaster}) => {
   const classes = useProfileCardStyles();
-    const {profile} = useSelector(state => state.profile);
+    const {user} = useSelector(state => state.profile);
     const dispatch = useDispatch();
-    const [fasebook_link, setFacebookLink] = useState(profile?.fasebook_link)
-    const [instagram_link, setinstagramLink] = useState(profile?.instagram_link)
+    const [fasebook_link, setFacebookLink] = useState(user?.fasebook_link)
+    const [instagram_link, setinstagramLink] = useState(user?.instagram_link)
 
     const changeMyProfiles = async () => {
         await dispatch(updateSocLink({

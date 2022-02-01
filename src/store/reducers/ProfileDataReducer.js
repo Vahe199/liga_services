@@ -3,6 +3,7 @@ import {
     choosesAvatarData,
     choosesProfessionData,
     getProfilePageData,
+    getЕxecutorProfilePageData,
     updateNotifications,
     updateSocLink
 } from "../actions/ProfileDataActions";
@@ -10,6 +11,7 @@ import {
 const initialState = {
     status: 'executor',
     profile: {},
+    user:{},
     load: false,
     error: '',
     message: "",
@@ -41,12 +43,31 @@ const profileDataSlice = createSlice({
             state.load = true
         },
         [getProfilePageData.fulfilled]: (state, action) => {
+            debugger
             state.load = false
-            state.profile = action.payload
+            state.profile = {}
+            state.user = action.payload.user
             state.error = false
             state.success = true
         },
         [getProfilePageData.rejected]: (state, action) => {
+            state.load = false
+            state.error = true
+            state.profile = {}
+            state.message = action.payload
+        },
+        [getЕxecutorProfilePageData.pending]: (state) => {
+            state.load = true
+        },
+        [getЕxecutorProfilePageData.fulfilled]: (state, action) => {
+            debugger
+            state.load = false
+            state.profile = action.payload.data[0]
+            state.user = action.payload.data[0].user
+            state.error = false
+            state.success = true
+        },
+        [getЕxecutorProfilePageData.rejected]: (state, action) => {
             state.load = false
             state.error = true
             state.profile = {}
@@ -58,7 +79,7 @@ const profileDataSlice = createSlice({
         [choosesAvatarData.fulfilled]: (state, action) => {
             state.load = false
             state.error = false
-            state.profile.img_path = action.payload.img_name
+            state.user.img_path = action.payload.img_name
             state.message = action.payload.message
             state.successWork = true
         },
@@ -73,6 +94,7 @@ const profileDataSlice = createSlice({
         },
         [choosesProfessionData.fulfilled]: (state, action) => {
             state.load = false
+            state.profile = action.payload.data[0]
             state.error = false
             state.successWork = true
         },

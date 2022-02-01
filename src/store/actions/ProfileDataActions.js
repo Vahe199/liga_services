@@ -14,6 +14,19 @@ export const getProfilePageData = createAsyncThunk(
         }
     }
 )
+export const getЕxecutorProfilePageData = createAsyncThunk(
+    'profile/getЕxecutorProfilePageData',
+    async (_,thunkAPI) => {
+        try {
+            const response = await instance.get("v1/user/show-executor-profile")
+            return response.data
+        } catch (e) {
+            console.log(e.response, 'register error')
+            return thunkAPI.rejectWithValue('Что то пошло не так')
+            // return thunkAPI.rejectWithValue('Что то пошло не так')
+        }
+    }
+)
 
 export const choosesAvatarData = createAsyncThunk(
     'profile/choosesAvatar',
@@ -32,14 +45,12 @@ export const choosesAvatarData = createAsyncThunk(
 export const choosesProfessionData = createAsyncThunk(
     'profile/professionData',
     async (data,thunkAPI) => {
-        debugger
         try {
             const response = await instance.post("v1/user/profession-and-experience",data)
             return response.data
 
         } catch (e) {
             console.log(e.response, 'professionData error')
-            debugger
             return thunkAPI.rejectWithValue('Что то пошло не так')
             // return thunkAPI.rejectWithValue('Что то пошло не так')
         }
@@ -65,9 +76,11 @@ export const updateSocLink = createAsyncThunk(
     async (data,thunkAPI) => {
         try {
             const response = await instance.post("v1/user/update-soclink", data)
+            debugger
             return response.data
         } catch (e) {
             console.log(e.response, 'register error')
+            debugger
             return thunkAPI.rejectWithValue('Что то пошло не так')
             // return thunkAPI.rejectWithValue('Что то пошло не так')
         }

@@ -5,7 +5,7 @@ const initialState = {
     auth: false,
     authStatus: false,
     status: 'client',
-    user: {},
+    users: {},
     load: false,
     error: '',
     message: "",
@@ -53,7 +53,7 @@ const authSlice = createSlice({
         },
         [Login.fulfilled]: (state, action) => {
             state.load = false
-            state.user = action.payload.user
+            state.users = action.payload.user
             state.error = false
             state.auth = true
             state.success = true

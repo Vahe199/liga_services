@@ -58,7 +58,7 @@ const useAvatarStyles = makeStyles({
 
 export const AddAvatar = ({avatarPreview, setAvatarPreview}) => {
     const classes = useAvatarStyles()
-    const {profile} = useSelector(state => state.profile);
+    const {user} = useSelector(state => state.profile);
     const [open, setOpen] = React.useState(false);
     const [avatar, setAvatar] = React.useState("");
     const [val, setVal] = React.useState("");
@@ -135,7 +135,7 @@ const dispatch = useDispatch()
                                                  color={"error"}> Закрыть</Button>
                                          {val && <Button onClick={choosesAvatar}
                                              sx={{textTransform: "none"}}
-                                         color={"success"}> Отправить</Button> }
+                                         color={"success"}>Сохранить</Button> }
 
                                      </label>
                                  </React.Fragment>
@@ -152,7 +152,7 @@ const dispatch = useDispatch()
                         {avatarPreview ?
                             <Avatar
                                 alt="Avatar"
-                                src={val ? val : `${process.env.REACT_APP_IMG_API}${profile.img_path}`}
+                                src={val ? val : `${process.env.REACT_APP_IMG_API}${user.img_path}`}
                                 className={classes.fileInputAvatar}
                                 style={{marginRight: 10, width: '60px', height: '60px'}}
                             />
