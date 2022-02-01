@@ -207,9 +207,10 @@ export const useMyOrdersStyles = makeStyles({
 export const MyOrders = () => {
     const classes = useMyOrdersStyles()
     const [valueTime, setValueTime] = useState(new Date());
-    const [showForm, setShowForm] = useState(true);
+    const [showForm, setShowForm] = useState(false);
     const {load, error, successWork, message} = useSelector(state => state.task)
     const [openToaster, setOpenToaster] = useState(false)
+    const [title, setTitle] = useState('Не откликнувшые заказы');
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -228,14 +229,14 @@ export const MyOrders = () => {
                             <AddNewOrderBlock setShowForm={setShowForm} />
                         </Card>
                         <Card>
-                            <MyOrdersBlock setShowForm={setShowForm} />
+                            <MyOrdersBlock setTitle={setTitle} setShowForm={setShowForm} />
                         </Card>
                     </Grid>
 
                     <Grid  item sm={12} lg={8}>
                         {!showForm ? <Box>
                             <Box className={classes.header}>
-                                <Typography variant={'h4'}>Завершенные заказы</Typography>
+                                <Typography variant={'h4'}>{title}</Typography>
                                 <Box className={classes.datePickerBox}>
                                     <CustomDatePicker value={valueTime} fun={(val)=>setValueTime(val)}/>
                                 </Box>
