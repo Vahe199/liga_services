@@ -153,8 +153,6 @@ export const MainNavBar = () => {
     setAnchorElUser(null);
   };
 
-
-
   return (<div className={classes.root}>
       <AppBar sx={{ boxShadow: 3}}>
         <Container maxWidth="lg">

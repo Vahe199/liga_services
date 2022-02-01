@@ -31,6 +31,7 @@ const executorDataSlice = createSlice({
             state.executor = {}
             state.message = action.payload
         },
+
     }
 })
 
