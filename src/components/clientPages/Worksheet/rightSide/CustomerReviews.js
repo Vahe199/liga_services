@@ -14,7 +14,7 @@ const useStyles = makeStyles({
             borderRadius: '10px',
             boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.15)",
             padding: '30px',
-            margin: '20px',
+            margin: '10px',
             paddingBottom: '20px',
             height: 'auto',
         },

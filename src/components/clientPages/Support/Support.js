@@ -19,7 +19,7 @@ const useStyles = makeStyles({
             marginBottom: '20px',
             boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.15)",
             padding: '30px',
-            margin: '20px',
+            margin: '10px',
         },
         "& .MuiTypography-h4":{
             fontWeight: 500,

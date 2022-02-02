@@ -64,7 +64,7 @@ export const useStyles = makeStyles({
         //cardItem
         "& .MuiCard-root": {
             borderRadius: '10px',
-            margin: '20px',
+            margin: '10px',
             boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.15)",
             padding: '30px',
             '@media (max-width: 450px)' : {
