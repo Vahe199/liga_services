@@ -278,7 +278,7 @@ export const MainNavBar = () => {
                               <MessageSvg/>
                           </IconButton>
                           <IconButton>
-                              <NotificationSvg/>
+                              <NotificationSvg />
                           </IconButton>
                       </Stack>
                   </Menu>
