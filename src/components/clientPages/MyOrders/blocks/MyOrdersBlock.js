@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {ArrowSvg} from "../../../../assets/svg/ArrowSvg";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -12,12 +12,15 @@ const MyOrdersBlock = ({setShowForm, setTitle}) => {
     const [btnSelected, setBtnSelected] = useState(1);
     const dispatch = useDispatch();
     const arr = ['Не откликнувшые заказы',
+                'Откликнувшиеся исполнители',
                 'Заказы в работе',
-                'Завершенные заказы',
-                'История заказов']
+                'Завершенные заказы']
 
     const showOrders = async (item, index) => {
-        setTitle(item)
+        setTitle({
+            subtitle: item,
+            index: index
+        })
         setBtnSelected(index + 1)
         switch (index) {
             case 0:
@@ -30,9 +33,6 @@ const MyOrdersBlock = ({setShowForm, setTitle}) => {
         setShowForm(false)
     }
 
-    useEffect(() => {
-
-    }, [])
     return (
         <Box>
             <Box>

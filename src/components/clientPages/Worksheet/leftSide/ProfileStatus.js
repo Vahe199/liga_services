@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {useProfileCardStyles} from "../../../../globalStyles/ProfileCardStyles";
 import SuccessSVG from "../../../../assets/svg/Profile/SuccessSVG";
 import InfoSVG from "../../../../assets/svg/Profile/InfoSVG";
@@ -10,15 +10,14 @@ import {LightTooltip} from "../../../../globalStyles/LightTooltip";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import moment from "moment";
+import 'moment/locale/ru';
 
 
 const ProfileStatus = ({setShowModal, profile}) => {
     const classes = useProfileCardStyles();
     const {email, created_at, status, phone_status, name,img_path} = profile;
     const [avatarPreview, setAvatarPreview] = useState(img_path);
-    useEffect(() => {
-        //console.log(moment(created_at).format('LL'))
-    }, [])
+
 
     return (
         <Card sx={{boxShadow: 2}} className={classes.root}>
