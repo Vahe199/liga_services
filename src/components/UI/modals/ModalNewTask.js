@@ -62,7 +62,7 @@ export const useStyles = makeStyles({
         },
         //cardItem
         "& .MuiCard-root": {
-            borderRadius: '20px',
+            borderRadius: '10px',
             margin: '20px',
             boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.15)",
             padding: '30px',
@@ -224,14 +224,14 @@ const ModalNewTask = ({showModal, setShowModal}) => {
     const [open, setOpen] = React.useState(false);
 
     const handleClose = () => setShowModal(false);
-    
+
     const classes = useStyles();
     const [value, setValue] = React.useState('remotely');
     const dispatch = useDispatch();
 
     return (
         <div>
-            <Modal 
+            <Modal
                 open={showModal}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"

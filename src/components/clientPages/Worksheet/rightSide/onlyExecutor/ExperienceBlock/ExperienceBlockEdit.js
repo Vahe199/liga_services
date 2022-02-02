@@ -26,7 +26,6 @@ const {header} = useSelector(state => state.header)
 const {profile} = useSelector(state => state.profile)
 const {category} = header;
 const [index, setIndex] = useState(0)
-const [removeIndex, setRemoveIndex] = useState(-1)
 const [workingDate, setWorkingDate] = useState([null,null])
 const newCategory = [...category].map((option) => ({
     key: option.id,
@@ -43,7 +42,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
     const saveData = () => {
         setTimeout(() => {
             setEditExperienceBlock(false)
-        }, 2000)
+        }, 1000)
     }
 
     const initialValues = {
@@ -60,7 +59,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                 pick(work, ["working_place","working_duration"])
         ),
     }
-    console.log(initialValues,"initialValues")
+
     return (
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
             <Formik
@@ -68,7 +67,8 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                 onSubmit={async (values, action) => {
                     // console.log(values,"values")
                      console.log({ "profession_and_experience":[{...values}]}, 'values')
-                    dispatch(choosesProfessionData({ "profession_and_experience":[values]}))
+                   await dispatch(choosesProfessionData({ "profession_and_experience":[values]}))
+                    saveData()
                 }}
             >
                 {({
@@ -86,7 +86,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
 
                             <Button type={"submit"}
                                     // onClick={saveData}
-                                    size={"small"} style={{cursor: "pointer", padding: '0 0 7px 20px'}}>
+                                    size={"small"} style={{cursor: "pointer",minWidth:0, marginLeft:25}}>
                                 <FileSVG color={'#808080'}/>
                             </Button>
 
@@ -101,7 +101,6 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                                                         placeholder={'Выбрать категории'}
                                                         arr={newCategory}
                                                         remove={(val)=> {
-                                                            setRemoveIndex(val)
                                                             remove(val)
                                                         }}
                                                         setIndex={setIndex}

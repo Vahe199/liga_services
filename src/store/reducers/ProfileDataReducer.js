@@ -43,7 +43,6 @@ const profileDataSlice = createSlice({
             state.load = true
         },
         [getProfilePageData.fulfilled]: (state, action) => {
-            debugger
             state.load = false
             state.profile = {}
             state.user = action.payload.user
@@ -60,7 +59,6 @@ const profileDataSlice = createSlice({
             state.load = true
         },
         [getЕxecutorProfilePageData.fulfilled]: (state, action) => {
-            debugger
             state.load = false
             state.profile = action.payload.data[0]
             state.user = action.payload.data[0].user
@@ -111,6 +109,7 @@ const profileDataSlice = createSlice({
             state.load = false
             state.error = false
             state.message = action.payload.facebook.message
+            state.user = action.payload.user
             state.successWork = true
         },
         [updateSocLink.rejected]: (state, action) => {

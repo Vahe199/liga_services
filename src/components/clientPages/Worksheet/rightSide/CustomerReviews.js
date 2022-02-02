@@ -11,7 +11,7 @@ import {Rating} from "@mui/material";
 const useStyles = makeStyles({
     root: {
         "& .MuiCard-root": {
-            borderRadius: '20px',
+            borderRadius: '10px',
             boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.15)",
             padding: '30px',
             margin: '20px',

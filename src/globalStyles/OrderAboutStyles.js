@@ -7,7 +7,7 @@ export const useOrderAboutStyles = makeStyles({
         marginBottom: '70px',
         backgroundColor: '#e1e3e5',
         "& .MuiCard-root": {
-            borderRadius: '20px',
+            borderRadius: '10px',
             marginBottom: '20px',
             boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.15)",
             padding: '30px',

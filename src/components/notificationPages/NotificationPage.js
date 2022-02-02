@@ -26,7 +26,7 @@ const useStyles = makeStyles({
       marginTop: 15,
     },
     "& .MuiCard-root": {
-      borderRadius: "20px",
+      borderRadius: "10px",
       margin: "20px",
       boxShadow: "4px 4px 10px rgba(0, 0, 0, 0.15)",
       padding: "30px",

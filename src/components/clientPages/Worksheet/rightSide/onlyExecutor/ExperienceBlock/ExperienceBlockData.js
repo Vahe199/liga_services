@@ -10,21 +10,18 @@ import {useSelector} from "react-redux";
 
 const ExperienceBlockData = ({editExperienceBlock, setEditExperienceBlock}) => {
     const classes = useInfoCardStyles();
-    const {profile={}} = useSelector(state => state.profile)
-    const categoriesShowList = [...profile?.executor_categories].map((option)=>({
-        key:option.id,
-        item:option.category_name
+    const {profile} = useSelector(state => state.profile)
+    const {executor_categories=[],executor_subcategories=[],executor_profile_work_experiences=[]} = profile
+    const categoriesShowList = [...executor_categories].map((option)=>({
+        key:option?.id,
+        item:option?.category_name
     }))
 
-    const subcategoriesShowList = [...profile?.executor_subcategories].map((option)=>({
-        key:option.id,
-        item:option.subcategory_name
+    const subcategoriesShowList = [...executor_subcategories].map((option)=>({
+        key:option?.id,
+        item:option?.subcategory_name
     }))
-    const workShowList = [...profile?.executor_profile_work_experiences].map((option,i)=>({
-        key:i,
-        place:option.working_place,
-        duration:option.working_duration
-    }))
+
       return (
         <Card sx={{boxShadow: 2}} className={classes.root}>
             <Box
@@ -57,16 +54,16 @@ const ExperienceBlockData = ({editExperienceBlock, setEditExperienceBlock}) => {
                     Опыт работы
                 </Typography>
                 <Box>
-                    { [...profile?.executor_profile_work_experiences].map((option,i)=>(
+                    { [...executor_profile_work_experiences].map((option,i)=>(
                         <Box style={{display: 'flex', flexWrap: 'wrap'}}>
                             <Typography style={{marginRight: '40px'}} variant={'h6'}>
-                                {option.working_place}
+                                {option?.working_place}
                             </Typography>
                             {/*<Typography style={{marginRight: '10px'}} variant={"h3"}>*/}
                             {/*    От*/}
                             {/*</Typography>*/}
                             <Typography style={{marginRight: '10px'}} variant={"h6"}>
-                                {option.working_duration}
+                                {option?.working_duration}
                             </Typography>
                             {/*<Typography style={{marginRight: '10px'}} variant={"h3"}>*/}
                             {/*    До*/}
