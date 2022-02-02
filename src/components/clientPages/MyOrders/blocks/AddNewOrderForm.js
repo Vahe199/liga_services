@@ -178,7 +178,7 @@ const AddNewOrderForm = ({setOpenToaster}) => {
                             </Box>}
 
                             <Box style={{marginTop: value === 'client' ? '10px' : '10px'}}>
-                                <BlueButton action={handleSubmit} label={'Профиль исполнителя'} />
+                                <BlueButton action={handleSubmit} label={'Оформить заказ'} />
                                 {/*<Button onClick={handleSubmit} variant={'outlined'}>Профиль исполнителя</Button>*/}
                             </Box>
 

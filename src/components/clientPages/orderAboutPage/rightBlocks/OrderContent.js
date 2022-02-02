@@ -9,6 +9,7 @@ import CustomImageList from "../../../UI/customimagelist/CustomImageList";
 import Button from "@mui/material/Button";
 import OrderContentForm from "../../ordersPage/blocks/OrderContentForm";
 import Typography from "@mui/material/Typography";
+import MapYandex from '../../../UI/map/Map'
 
 
 const OrderContent = ({meeting, setShowModal}) => {
@@ -47,7 +48,7 @@ const OrderContent = ({meeting, setShowModal}) => {
                 </Box>}
             </Box>
             {meeting === 'noDistant' && <Box>
-                <img style={{width: '100%'}} src={mapImage}/>
+                <MapYandex />
             </Box>}
             <CustomDivider />
             <Typography style={{marginBottom: '10px'}} variant={'h2'}>
