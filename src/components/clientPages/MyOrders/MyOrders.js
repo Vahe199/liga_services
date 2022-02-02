@@ -5,7 +5,6 @@ import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
 import Box from "@mui/material/Box";
 import OrderBlock from "./blocks/OrderBlock";
-import {OrdersData} from "../../../utils/data/orders/OrdersData";
 import AddNewOrderBlock from "./blocks/AddNewOrderBlock";
 import MyOrdersBlock from "./blocks/MyOrdersBlock";
 import AddNewOrderForm from "./blocks/AddNewOrderForm";
@@ -25,17 +24,17 @@ export const useMyOrdersStyles = makeStyles({
         "& .MuiTypography-h4":{
             fontWeight: 500,
             fontSize:20,
-            whiteSpace: 'noWrap',
+            //whiteSpace: 'noWrap',//TODO
         },
         "& .MuiTypography-h5":{
             fontWeight: 500,
             fontSize:17,
-            whiteSpace: 'noWrap',
+            //whiteSpace: 'noWrap',//TODO
         },
         "& .MuiTypography-h6":{
             color: "#808080",
             fontSize: 14,
-            whiteSpace: 'noWrap',
+            //whiteSpace: 'noWrap',//TODO
             fontWeight: 400,
         },
         '& .MuiTypography-body1': {
@@ -203,19 +202,71 @@ export const useMyOrdersStyles = makeStyles({
             padding: '0'
         },
     },
+    singleBlock: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+    },
+    orderSubBlockSpaceBetween2: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+    },
+    inLineBlock: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        width: '30%',
+        '@media (max-width: 800px)' : {
+            width: '100%',
+        },
+    },
+    inLineBlock2: {
+        width: '50%',
+        '@media (max-width: 800px)' : {
+            width: '100%',
+        },
+    },
+    inLineStyle: {
+        textAlign: 'right',
+        '@media (max-width: 800px)' : {
+            textAlign: 'left',
+        },
+    },
 })
 export const MyOrders = () => {
     const classes = useMyOrdersStyles()
     const [valueTime, setValueTime] = useState(new Date());
     const [showForm, setShowForm] = useState(false);
-    const {load, error, successWork, message} = useSelector(state => state.task)
+    const {load, error, completedTasks, notAppliedTasks, successWork, message} = useSelector(state => state.task)
     const [openToaster, setOpenToaster] = useState(false)
-    const [title, setTitle] = useState('Не откликнувшые заказы');
+    const [title, setTitle] = useState({
+        subTitle: 'Не откликнувшые заказы',
+        index: 0
+    });
+    const [orders, setOrders] = useState(notAppliedTasks)
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getNotAppliedTasks())
     }, [])
+
+    useEffect(() => {
+        console.log('start')
+        switch (title.index) {
+            case 0:
+                setOrders(notAppliedTasks)
+                //console.log(title.index, 'title.index')
+                break;
+            case 3:
+                setOrders(completedTasks)
+                //console.log(title.index, 'title.index')
+                break;
+        }
+        //console.log(orders, 'orders')
+    }, [title.index])
+
+
+
 
 
 
@@ -236,13 +287,13 @@ export const MyOrders = () => {
                     <Grid  item sm={12} lg={8}>
                         {!showForm ? <Box>
                             <Box className={classes.header}>
-                                <Typography variant={'h4'}>{title}</Typography>
+                                <Typography variant={'h4'}>{title.subTitle}</Typography>
                                 <Box className={classes.datePickerBox}>
                                     <CustomDatePicker value={valueTime} fun={(val)=>setValueTime(val)}/>
                                 </Box>
 
                             </Box>
-                            {OrdersData.map((order, index) =>
+                            {orders.map((order, index) =>
                                 <Card key={index}>
                                     <OrderBlock order={order}/>
                                 </Card>
