@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import {DownLoad2Svg} from "../../../../assets/svg/client/DownLoad2Svg";
@@ -11,18 +11,31 @@ import CustomDivider from "../../../UI/customDivider/CustomDivider";
 import {TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
+import moment from "moment";
+import NotAppliedOrderBlock from "./NotAppliedOrderBlock";
 
 
 const OrderBlock = ({order}) => {
     const classes = useMyOrdersStyles();
     const [reviewField, setShowReviewField] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
+
+    const task_starttime = moment(order.task_starttime).toDate();
+    const task_finishtime = moment(order.task_finishtime).toDate();
+
+
+    useEffect(() => {
+        //console.log(order, 'order')
+    }, [order])
+
     return (
+        order.status === 'false' ? <NotAppliedOrderBlock starTime={task_starttime} finishTime={task_finishtime} order={order} /> :
         <Box>
             <Box className={classes.orderSubBlockSpaceBetween}>
                 <Box>
                     <Typography variant={'h5'}>
-                        Категория: {order.status}
+                        Заказ № {order.id} Категория: {order.category_name}
+
                     </Typography>
                 </Box>
 
@@ -37,8 +50,8 @@ const OrderBlock = ({order}) => {
 
             <Box className={classes.orderSubBlockSpaceBetween}>
                 <Box className={classes.wrapBox}>
-                    <Typography variant={'h4'}>Создание Сайтов</Typography>
-                    <Typography style={{fontSize: '20px'}} color={'#5A7287'}>от 10000 руб.</Typography>
+                    <Typography variant={'h4'}>{order.title}</Typography>
+                    <Typography style={{fontSize: '20px'}} color={'#5A7287'}>от {order.price_from} руб.</Typography>
                 </Box>
                 <Box className={classes.wrapBox}>
                     <Typography variant={'h5'}> Место встречи </Typography>
