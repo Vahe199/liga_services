@@ -9,7 +9,7 @@ import moment from "moment";
 const NotAppliedOrderDetails = ({order, starTime, finishTime, setShowDetails}) => {
     const classes = useMyOrdersStyles();
     return (
-        <Box>
+        <Box onClick={() => setShowDetails(0)}>
             <Box className={classes.orderSubBlockSpaceBetween}>
                 <Box>
                     <Typography variant={'h5'}>

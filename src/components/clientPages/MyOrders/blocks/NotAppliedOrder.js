@@ -31,7 +31,7 @@ const NotAppliedOrder = ({order, starTime, finishTime, setShowDetails}) => {
             <Box style={{marginBottom: '20px'}} className={order.status !== 'none' ? classes.orderSubBlockSpaceBetween : classes.singleBlock}>
                 {order.status !== 'none' && <Box className={classes.wrapBox}>
                     <Typography variant={'h4'}>{order.title}</Typography>
-                    <Typography variant={'20px'} color={'#5A7287'}>от {order.price_from} руб.</Typography>
+                    <Typography style={{fontSize: '20px'}} color={'#5A7287'}>от {order.price_from} руб.</Typography>
                 </Box>}
                 <Box className={classes.wrapBox}>
                     <Typography variant={'h5'}>Категория</Typography>

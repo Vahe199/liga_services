@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {makeStyles} from "@material-ui/core";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
@@ -13,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import {useDispatch, useSelector} from "react-redux";
 import {getCompletedTasks, getNotAppliedTasks} from "../../../store/actions/TaskActions";
 import Toaster from "../../UI/toaster/Toaster";
+import {makeStyles} from "@material-ui/core";
 
 export const useMyOrdersStyles = makeStyles({
     root:{
@@ -237,7 +237,7 @@ export const MyOrders = () => {
     const classes = useMyOrdersStyles()
     const [valueTime, setValueTime] = useState(new Date());
     const [showForm, setShowForm] = useState(false);
-    const {load, error, completedTasks, notAppliedTasks, successWork, message} = useSelector(state => state.task)
+    const {status, error, completedTasks, notAppliedTasks, respondedTasks, inProcessTasks, successWork, message} = useSelector(state => state.task)
     const [openToaster, setOpenToaster] = useState(false)
     const [title, setTitle] = useState({
         subTitle: 'Не откликнувшые заказы',
@@ -255,11 +255,19 @@ export const MyOrders = () => {
         switch (title.index) {
             case 0:
                 setOrders(notAppliedTasks)
-                //console.log(title.index, 'title.index')
+                //console.log(orders, 'order')
+                break;
+            case 1:
+                setOrders(respondedTasks)
+                //console.log(orders, 'order')
+                break;
+            case 2:
+                setOrders(inProcessTasks)
+                //console.log(orders, 'order')
                 break;
             case 3:
                 setOrders(completedTasks)
-                //console.log(title.index, 'title.index')
+                //console.log(orders, 'order')
                 break;
         }
         //console.log(orders, 'orders')
@@ -295,7 +303,7 @@ export const MyOrders = () => {
                             </Box>
                             {orders.map((order, index) =>
                                 <Card key={index}>
-                                    <OrderBlock order={order}/>
+                                    <OrderBlock status={status} order={order}/>
                                 </Card>
                             )}
                         </Box> : <Card> <AddNewOrderForm setOpenToaster={setOpenToaster} /> </Card>}
