@@ -12,8 +12,9 @@ import Avatar from "@mui/material/Avatar";
 import {OnlineSvg} from "../../../../assets/svg/Profile/OnlineSvg";
 import {useMyOrdersStyles} from "../MyOrders";
 import moment from "moment";
+import {ArrowSvg} from "../../../../assets/svg/ArrowSvg";
 
-const CustomOrders = ({order, setShowDetails, finishTime, startTime, status}) => {
+const CustomOrders = ({order, setShowDetails, status}) => {
     const classes = useMyOrdersStyles();
     const [reviewField, setShowReviewField] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
@@ -23,11 +24,14 @@ const CustomOrders = ({order, setShowDetails, finishTime, startTime, status}) =>
     }, [])
 
     return (
-        <Box onClick={() => setShowDetails(order.id)}>
+        <Box>
             <Box className={classes.orderSubBlockSpaceBetween}>
-                <Box>
+                <Box style={{display: 'flex', alignItems: 'center'}}>
                     <Typography variant={'h5'}>
                         Заказ № {order.id} Категория: {order.category_name}
+                    </Typography>
+                    <Typography onClick={() => setShowDetails(order.id)} style={{cursor: 'pointer', paddingLeft: '5px'}} variant={'h6'}>
+                        Подробнее
                     </Typography>
                 </Box>
 
