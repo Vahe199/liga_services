@@ -54,9 +54,9 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
             (subcategories) =>
                 pick(subcategories, ["subcategory_name"])
         ),
-        executor_profile_work_experiences: get(profile, "executor_profile_work_experiences", [{working_place:"",working_duration:""}]).map(
+        executor_profile_work_experiences: get(profile, "executor_profile_work_experiences", [{working_place:"",recruitment_data:"",dismissal_data:""}]).map(
             (work) =>
-                pick(work, ["working_place","working_duration"])
+                pick(work, ["working_place","recruitment_data","dismissal_data"])
         ),
     }
 
@@ -67,7 +67,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                 onSubmit={async (values, action) => {
                     // console.log(values,"values")
                      console.log({ "profession_and_experience":[{...values}]}, 'values')
-                   await dispatch(choosesProfessionData({ "profession_and_experience":[values]}))
+                    await dispatch(choosesProfessionData({ "profession_and_experience":[values]}))
                     saveData()
                 }}
             >
@@ -134,7 +134,10 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                                     <Box>
                                         {values.executor_profile_work_experiences.map((work, index) => {
                                                 const fieldName = `executor_profile_work_experiences[${index}].working_duration`;
-
+                                            const recruitment_data=`executor_profile_work_experiences[${index}].recruitment_data`;
+                                            const dismissal_data=`executor_profile_work_experiences[${index}].dismissal_data`;
+                                            let date_r = values.executor_profile_work_experiences[index].recruitment_data;
+                                            let date_d = values.executor_profile_work_experiences[index].dismissal_data;
                                                 return(
                                                     <Box key={index}>
                                                         <Box style={{marginBottom: '20px'}}>
@@ -148,12 +151,11 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                                                                 </Box>
                                                                 <Box style={{width: '350px'}}>
                                                                     <RangeDatePicker
-                                                                        value={workingDate}
+                                                                        value={[date_r, date_d]}
                                                                         fun={(newValue) => {
-                                                                            let tim =moment(newValue[1]).diff(moment(newValue[0]), 'months', true);
-                                                                           let date = parseFloat(tim.toFixed(1))
                                                                             setWorkingDate(newValue)
-                                                                             setFieldValue(fieldName, `${date} месяц`)
+                                                                              setFieldValue(recruitment_data,newValue[0] ? moment(newValue[0]).format("YYYY-MM-DD") : "")
+                                                                              setFieldValue(dismissal_data,newValue[1] ? moment(newValue[1]).format("YYYY-MM-DD") : "")
                                                                         }}
                                                                     />
 
@@ -162,7 +164,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                                                             {values.executor_profile_work_experiences.length > index +1 ?<div onClick={() => remove(index)}>
                                                                     <TrashSvg/>
                                                                 </div>
-                                                                : <AddButton fun={() => push({working_place: '', working_duration: ""})}/>}
+                                                                : <AddButton fun={() => push({working_place:"",recruitment_data:"",dismissal_data:""})}/>}
                                                         </Box>
                                                     </Box>)
                                             }
