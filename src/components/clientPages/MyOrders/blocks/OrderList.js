@@ -3,9 +3,7 @@ import CustomOrders from "./CustomOrders";
 import NotAppliedOrder from "./NotAppliedOrder";
 
 const OrderList = ({order, startTime, finishTime, setShowDetails, status}) => {
-    useEffect(() => {
-        console.log(status, 'status')
-    }, [status])
+
     return (
         status === 'notApplied' ? <NotAppliedOrder starTime={startTime}
                                                     setShowDetails={setShowDetails}

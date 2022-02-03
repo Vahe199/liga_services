@@ -17,13 +17,9 @@ const taskSlice = createSlice({
         successWork: false,
         message: '',
         completedTasks: [],
-        isCompletedTasks: false,
         notAppliedTasks: [],
-        isNotAppliedTasks: false,
         respondedTasks: [],
-        isRespondedTasks: false,
         inProcessTasks: [],
-        isProcessTasks: false,
         status: 'notApplied'
     },
     reducers: {

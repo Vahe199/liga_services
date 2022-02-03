@@ -251,7 +251,11 @@ export const MyOrders = () => {
     }, [])
 
     useEffect(() => {
-        console.log('start')
+        console.log(status, 'status')
+    }, [status])
+
+    useEffect(() => {
+        console.log(typeof title.subtitle, 'start')
         switch (title.index) {
             case 0:
                 setOrders(notAppliedTasks)
@@ -295,9 +299,9 @@ export const MyOrders = () => {
                     <Grid  item sm={12} lg={8}>
                         {!showForm ? <Box>
                             <Box className={classes.header}>
-                                <Typography variant={'h4'}>{title.subTitle}</Typography>
+                                <Typography variant={'h4'}>{title?.subTitle}</Typography>
                                 <Box className={classes.datePickerBox}>
-                                    <CustomDatePicker value={valueTime} fun={(val)=>setValueTime(val)}/>
+                                    <CustomDatePicker value={valueTime} fun={(val) => setValueTime(val)}/>
                                 </Box>
 
                             </Box>
