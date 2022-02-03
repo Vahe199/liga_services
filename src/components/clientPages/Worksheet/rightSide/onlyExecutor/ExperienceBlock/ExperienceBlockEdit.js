@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
 import Card from "@mui/material/Card";
 import {FieldArray, Formik} from "formik";
@@ -18,12 +18,13 @@ import moment from "moment";
 import {choosesProfessionData} from "../../../../../../store/actions/ProfileDataActions";
 import get from "lodash/get";
 import pick from "lodash/pick";
+import {resetPartReducer} from "../../../../../../store/reducers/ProfileDataReducer";
 
-const ExperienceBlockEdit = ({ setEditExperienceBlock}) => {
+const ExperienceBlockEdit = ({ setEditExperienceBlock, setOpenToaster}) => {
     const classes = useInfoCardStyles();
     const dispatch = useDispatch()
 const {header} = useSelector(state => state.header)
-const {profile} = useSelector(state => state.profile)
+const {profile, successWork, error} = useSelector(state => state.profile)
 const {category} = header;
 const [index, setIndex] = useState(0)
 const [workingDate, setWorkingDate] = useState([null,null])
@@ -32,6 +33,22 @@ const newCategory = [...category].map((option) => ({
     value: option. category_name ? option. category_name : "",
     label: option. category_name,
 }));
+useEffect(()=>{
+    console.log(successWork, error, "successWork, error")
+    if(successWork){
+           setEditExperienceBlock(false)
+        setOpenToaster(true)
+        setTimeout(()=>{
+           dispatch(resetPartReducer())
+        },7000)
+    }
+    if(error){
+        setOpenToaster(true)
+        setTimeout(()=>{
+            dispatch(resetPartReducer())
+        },7000)
+    }
+},[successWork, error])
 
 const newSubCategories = [...category[index]?.subcategories].map((option) => ({
     key: option.id,
@@ -39,11 +56,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
     label: option.subcategory_name,
 }));
 
-    const saveData = () => {
-        setTimeout(() => {
-            setEditExperienceBlock(false)
-        }, 1000)
-    }
+
 
     const initialValues = {
         executor_categories: get(profile, "executor_categories", [{id:"",category_name:"",executor_profile_id:""}]).map(
@@ -65,10 +78,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
             <Formik
                 initialValues={initialValues}
                 onSubmit={async (values, action) => {
-                    // console.log(values,"values")
-                     console.log({ "profession_and_experience":[{...values}]}, 'values')
                     await dispatch(choosesProfessionData({ "profession_and_experience":[values]}))
-                    saveData()
                 }}
             >
                 {({
@@ -85,7 +95,6 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                             </Typography>
 
                             <Button type={"submit"}
-                                    // onClick={saveData}
                                     size={"small"} style={{cursor: "pointer",minWidth:0, marginLeft:25}}>
                                 <FileSVG color={'#808080'}/>
                             </Button>

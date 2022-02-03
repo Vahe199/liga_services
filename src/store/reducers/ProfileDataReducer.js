@@ -25,7 +25,7 @@ const profileDataSlice = createSlice({
     initialState,
     reducers: {
         resetProfile: () => initialState,
-        resetPartReducer(state) {
+        resetPartReducer: (state) => {
             state.successWork = false
             state.error = false
             state.message = ''
@@ -95,6 +95,7 @@ const profileDataSlice = createSlice({
             state.profile = action.payload.data[0]
             state.error = false
             state.successWork = true
+            state.message = "Профессия и опыт успешно обновлены"
         },
         [choosesProfessionData.rejected]: (state, action) => {
             state.load = false
@@ -137,5 +138,5 @@ const profileDataSlice = createSlice({
 
 })
 
-export const {resetProfile, changeGettingNotifications, changeSocLinks} = profileDataSlice.actions
+export const {resetProfile, changeGettingNotifications, changeSocLinks,resetPartReducer} = profileDataSlice.actions
 export default profileDataSlice.reducer

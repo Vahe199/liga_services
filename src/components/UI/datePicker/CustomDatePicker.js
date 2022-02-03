@@ -12,6 +12,7 @@ export const useStyles = makeStyles({
     root: {
         color: '#000',
         backgroundColor: '#fff',
+        borderRadius:10,
         '& > .MuiPickerDTToolbar-toolbar.MuiToolbar-root': {
         },
         '& .MuiOutlinedInput-root': {

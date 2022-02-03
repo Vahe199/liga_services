@@ -306,7 +306,9 @@ export const MyOrders = () => {
                                     <OrderBlock status={status} order={order}/>
                                 </Card>
                             )}
-                        </Box> : <Card> <AddNewOrderForm setOpenToaster={setOpenToaster} /> </Card>}
+                        </Box> : <Card>
+                            <AddNewOrderForm setOpenToaster={setOpenToaster} />
+                        </Card>}
 
                     </Grid>
                 </Grid>

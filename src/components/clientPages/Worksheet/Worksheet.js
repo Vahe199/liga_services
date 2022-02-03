@@ -86,7 +86,9 @@ export const Worksheet = () =>{
                             editAddress={editAddress}
                             setEditAddress={setEditAddress}
                         />
-                        <ExperienceBlock editExperienceBlock={editExperienceBlock} setEditExperienceBlock={setEditExperienceBlock} />
+                        <ExperienceBlock editExperienceBlock={editExperienceBlock}
+                                         setOpenToaster={setOpenToaster}
+                                         setEditExperienceBlock={setEditExperienceBlock} />
                         <Portfolio editPortfolio={editPortfolio} setEditPortfolio={setEditPortfolio} />
                         <EducationBlock editEducationBlock={editEducationBlock} setEditEducationBlock={setEditEducationBlock} />
                         <CustomerReviews reviews={executor[0].reitings} />

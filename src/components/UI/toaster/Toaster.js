@@ -30,9 +30,9 @@ const Toaster = ({open, setOpen, message, error, success}) => {
     }, [status])
 
     return (
-        <Stack spacing={2} sx={{ width: '100%' }}>
-            <Snackbar open={open}
-                      autoHideDuration={6000}
+        <Stack spacing={2} sx={{ width: '100%'}}>
+            <Snackbar open={open} style={{top:95}}
+                       autoHideDuration={5000}
                       anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
                       onClose={handleClose}>
                 <Alert onClose={handleClose} severity={success ? 'success' : 'error'} sx={{ width: '100%' }}>
