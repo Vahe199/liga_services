@@ -35,10 +35,10 @@ const MyOrdersBlock = ({setShowForm, setTitle}) => {
                 dispatch(getRespondedTasks())
                 break;
             case 2:
-                dispatch(getRespondedTasks())
+                dispatch(getInProcessTasks())
                 break;
             case 3:
-                dispatch(getInProcessTasks())
+                dispatch(getCompletedTasks())
                 break;
         }
         setShowForm(false)

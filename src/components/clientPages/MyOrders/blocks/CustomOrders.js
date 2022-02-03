@@ -57,7 +57,7 @@ const CustomOrders = ({order, setShowDetails, finishTime, startTime, status}) =>
                             <Box className={classes.wrapBox}>
                                 <Typography variant={'h6'}>Исполнитель</Typography>
                                 <Typography variant={'h5'}>
-                                    {order.status === 'UnResponded' ? 'Нету' : `${order.name} ${order.surName}`}
+                                    name
                                 </Typography>
                             </Box>
                             <Box className={classes.wrapBox}>

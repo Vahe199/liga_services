@@ -5,18 +5,21 @@ import CustomDivider from "../../../UI/customDivider/CustomDivider";
 import {useMyOrdersStyles} from "../MyOrders";
 import moment from 'moment';
 import 'moment/locale/ru';
+import {ArrowSvg} from "../../../../assets/svg/ArrowSvg";
+import IconButton from "@mui/material/IconButton";
 
 
 const NotAppliedOrder = ({order, starTime, finishTime, setShowDetails}) => {
     const classes = useMyOrdersStyles();
 
     return (
-        <Box onClick={() => setShowDetails(order.id)}>
+        <Box>
             <Box className={classes.orderSubBlockSpaceBetween}>
                 <Box>
                     <Typography variant={'h5'}>
                         Заказ № {order.id},  Категория: {order.category_name}
                     </Typography>
+
                 </Box>
 
                 <Box>

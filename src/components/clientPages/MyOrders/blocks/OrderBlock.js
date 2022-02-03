@@ -14,9 +14,6 @@ const OrderBlock = ({order, status}) => {
     const finsih_time = moment(task_finishtime).format(`DD MMM (ddd)`)
 
 
-    // useEffect(() => {
-    //     console.log(status, 'status')
-    // }, [showDetails])
 
     return (
         showDetails === order.id ? <NotAppliedOrderDetails setShowDetails={setShowDetails}
