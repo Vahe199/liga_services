@@ -5,7 +5,12 @@ import Typography from "@mui/material/Typography";
 import CustomDivider from "../../../UI/customDivider/CustomDivider";
 import IconButton from "@mui/material/IconButton";
 import {useDispatch} from "react-redux";
-import {getCompletedTasks, getNotAppliedTasks} from "../../../../store/actions/TaskActions";
+import {
+    getCompletedTasks,
+    getInProcessTasks,
+    getNotAppliedTasks,
+    getRespondedTasks
+} from "../../../../store/actions/TaskActions";
 
 
 const MyOrdersBlock = ({setShowForm, setTitle}) => {
@@ -26,8 +31,14 @@ const MyOrdersBlock = ({setShowForm, setTitle}) => {
             case 0:
                 dispatch(getNotAppliedTasks())
                 break;
+            case 1:
+                dispatch(getRespondedTasks())
+                break;
             case 2:
-                dispatch(getCompletedTasks())
+                dispatch(getRespondedTasks())
+                break;
+            case 3:
+                dispatch(getInProcessTasks())
                 break;
         }
         setShowForm(false)

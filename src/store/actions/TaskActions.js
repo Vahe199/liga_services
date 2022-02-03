@@ -5,11 +5,10 @@ export const AddNewTask = createAsyncThunk(
     'task/addNewTask',
     async (data, thunkAPI) => {
         debugger
-        try{
+        try {
             const response = await instance.post('v1/user/create-new-task', data)
             return response.data
-        }
-        catch (e) {
+        } catch (e) {
             console.log(e.response, 'register error')
             return thunkAPI.rejectWithValue('Что то пошло не так')
         }
@@ -18,7 +17,7 @@ export const AddNewTask = createAsyncThunk(
 
 export const getCompletedTasks = createAsyncThunk(
     'task/getCompletedTasks',
-    async (_,thunkAPI) => {
+    async (_, thunkAPI) => {
         try {
             const response = await instance.get("v1/user/completed-tasks")
             return response.data
@@ -31,7 +30,7 @@ export const getCompletedTasks = createAsyncThunk(
 
 export const getNotAppliedTasks = createAsyncThunk(
     'task/getNotAppliedTasks',
-    async (_,thunkAPI) => {
+    async (_, thunkAPI) => {
         try {
             const response = await instance.get("v1/user/not-applied-task")
             return response.data
@@ -41,4 +40,31 @@ export const getNotAppliedTasks = createAsyncThunk(
         }
     }
 )
+
+export const getRespondedTasks = createAsyncThunk(
+    'task/getRespondedTasks',
+    async (_, thunkAPI) => {
+        try {
+            const response = await instance.get("v1/user/responded-executor")
+            return response.data
+        } catch (e) {
+            console.log(e.response, 'register error')
+            return thunkAPI.rejectWithValue('Что то пошло не так')
+        }
+    }
+)
+
+export const getInProcessTasks = createAsyncThunk(
+    'task/getInProcessTasks',
+    async (_, thunkAPI) => {
+        try {
+            const response = await instance.get("v1/user/in-process-task")
+            return response.data
+        } catch (e) {
+            console.log(e.response, 'register error')
+            return thunkAPI.rejectWithValue('Что то пошло не так')
+        }
+    }
+)
+
 
