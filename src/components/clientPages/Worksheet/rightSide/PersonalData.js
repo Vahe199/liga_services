@@ -5,11 +5,13 @@ import PenSvg from "../../../../assets/svg/Profile/PenSvg";
 import {useSelector} from "react-redux";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import moment from "moment";
 
 
 const PersonalData = ({setEditPersonallyData}) => {
     const classes = useInfoCardStyles();
     const {status} = useSelector(state => state.auth)
+    const {user} = useSelector(state => state.profile)
     return (
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
             <Box style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
@@ -27,25 +29,20 @@ const PersonalData = ({setEditPersonallyData}) => {
                     Пол
                 </Typography>
             <Typography variant={'h6'}>
-                    Женский
+                {user?.gender}
             </Typography>
             <Typography variant={"h5"}>
                     Дата рождения
             </Typography>
               <Typography variant={'h6'}>
-                  17/08/1990
+                  {moment(user?.birth_date ? user?.birth_date : "01/01/2022").format("DD/MM/YYYY")}
               </Typography>
             {status === 'executor' && <Box>
                 <Typography style={{marginBottom: '10px'}} variant={"h5"}>
                     Обо мне
                 </Typography>
                 <Typography>
-                    Равным образом новая модель организационной деятельности играет важную роль в формировании систем
-                    массового участия. Товарищи! рамки и место обучения кадров требуют определения и уточнения
-                    соответствующий условий активизации. Равным образом сложившаяся структура организации представляет
-                    собой интересный эксперимент проверки позиций, занимаемых участниками в отношении.
-                    Равным образом сложившаяся структура организации представляет собой интересный эксперимент проверки
-                    позиций, занимаемых участниками в отношении.
+                    {user?.about_me ? user?.about_me : "" }
                 </Typography>
             </Box>}
 
