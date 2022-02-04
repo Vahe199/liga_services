@@ -3,31 +3,34 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import {makeStyles} from "@material-ui/core";
 import {CircularProgress} from "@mui/material";
+import {theme} from "../../../utils/Theme";
 
 
-const useStyles = makeStyles({
-    root: {
+const useStyles = makeStyles(theme => ({
+    root: props => ({
         "& .MuiButton-contained": {
             textTransform: "none",
-            backgroundColor: '#445E77 !important',
+            backgroundColor: `${props.backgroundColor} !important`,
             fontWeight: 500,
             borderRadius: '10px',
             //width: '160px',
         },
         '& .MuiButton-root': {
             "& .Mui-disabled":{
-                backgroundColor: '#f08000 !important'
+                backgroundColor: `${props.backgroundColor} !important`
             }
         },
         "& .Mui-disabled": {
-            backgroundColor: '#445e77c4 !important',
+            //backgroundColor: '#445e77c4 !important',
+            backgroundColor: `${props.disabledColor} !important`,
             color:"#fff !important"
         }
-    },
-});
+    }),
+}));
 
-const BlueButton = ({load, action, label, width}) => {
-    const classes = useStyles();
+const BlueButton = ({load, action, label, width, backgroundColor, disabledColor}) => {
+    const styleProps = { backgroundColor, disabledColor };
+    const classes = useStyles(styleProps);
     return (
         <Box className={classes.root} sx={{ m: 1}}>
             <Button
