@@ -99,7 +99,7 @@ const dispatch = useDispatch()
                                                  multiple
                                                  type="file"
                                                  onChange={(e) => {
-                                                     console.log(e,"fileReader")
+                                                     //console.log(e,"fileReader")
                                                      const fileReader = new FileReader();
                                                      fileReader.onload = () => {
                                                          if (fileReader.readyState === 2) {
