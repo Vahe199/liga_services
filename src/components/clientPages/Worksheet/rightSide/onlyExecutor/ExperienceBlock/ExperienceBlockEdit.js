@@ -66,7 +66,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
             (subcategories) =>
                 pick(subcategories, ["subcategory_name"])
         ),
-        executor_profile_work_experiences: profile?.executor_profile_work_experiences.length > 0  ? get(profile, "executor_profile_work_experiences", [{working_place:"",recruitment_data:"",dismissal_data:""}]).map(
+        executor_profile_work_experiences: profile?.executor_profile_work_experiences?.length > 0  ? get(profile, "executor_profile_work_experiences", [{working_place:"",recruitment_data:"",dismissal_data:""}]).map(
             (work) =>
                 pick(work, ["working_place","recruitment_data","dismissal_data"])
         ): [{working_place:"",recruitment_data:"",dismissal_data:""}],
