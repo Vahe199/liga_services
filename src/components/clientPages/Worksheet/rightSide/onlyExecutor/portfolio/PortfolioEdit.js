@@ -13,9 +13,12 @@ import CustomDivider from "../../../../../UI/customDivider/CustomDivider";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import {updatePortfolioData} from "../../../../../../store/actions/ProfileDataActions";
+import {useDispatch} from "react-redux";
 
 const PortfolioEdit = ({editPortfolio, setEditPortfolio}) => {
     const classes = useInfoCardStyles();
+    const dispatch = useDispatch()
     return (
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
                 <Box>
@@ -30,7 +33,8 @@ const PortfolioEdit = ({editPortfolio, setEditPortfolio}) => {
                         }}
                         onSubmit={async (values, action) => {
                             //console.log(values, 'values')
-                            action.resetForm()
+                            dispatch(updatePortfolioData(values))
+                            // action.resetForm()
                         }}
                     >
                         {({
