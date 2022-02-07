@@ -9,14 +9,11 @@ import moment from "moment";
 const NotAppliedOrderDetails = ({order, starTime, finishTime, setShowDetails}) => {
     const classes = useMyOrdersStyles();
     return (
-        <Box onClick={() => setShowDetails(0)}>
+        <Box>
             <Box className={classes.orderSubBlockSpaceBetween}>
-                <Box style={{display: 'flex', alignItems: 'center'}}>
+                <Box>
                     <Typography variant={'h5'}>
                         Заказ № {order.id},  Категория: {order.category_name}
-                    </Typography>
-                    <Typography onClick={() => setShowDetails(order.id)} style={{cursor: 'pointer', paddingLeft: '5px'}} variant={'h6'}>
-                        Свернуть
                     </Typography>
                 </Box>
 
@@ -74,6 +71,13 @@ const NotAppliedOrderDetails = ({order, starTime, finishTime, setShowDetails}) =
                 {order.task_description}
             </Typography>
             {/*<CustomImageList imageData={imageData} />*/}
+            <Box style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '10px'}}>
+                <Box>
+                    <Typography onClick={() => setShowDetails(0)} style={{cursor: 'pointer', paddingLeft: '5px'}} variant={'h6'}>
+                        Свернуть
+                    </Typography>
+                </Box>
+            </Box>
             <Box className={classes.orderSubBlockSpaceBetween}>
                 <Box>
                     <Typography style={{color: '#4C9B2D'}}>
