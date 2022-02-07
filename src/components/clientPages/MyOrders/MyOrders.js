@@ -244,7 +244,9 @@ export const MyOrders = () => {
     const classes = useMyOrdersStyles()
     const [valueTime, setValueTime] = useState(new Date());
     const [showForm, setShowForm] = useState(false);
-    const {status, load, error, completedTasks, notAppliedTasks, respondedTasks, inProcessTasks, successWork, message} = useSelector(state => state.task)
+
+    const {status, load, error, completedTasks, notAppliedTasks=[], respondedTasks, inProcessTasks, successWork, message} = useSelector(state => state.task)
+
     const [openToaster, setOpenToaster] = useState(false)
     const [title, setTitle] = useState({
         subTitle: 'Не откликнувшые заказы',
@@ -258,7 +260,7 @@ export const MyOrders = () => {
     }, [])
 
     useEffect(() => {
-        //console.log(status, 'status')
+
     }, [status])
 
     useEffect(() => {
@@ -316,13 +318,15 @@ export const MyOrders = () => {
                             </Box>
 
                             </Box>
+
                         {orders.map((order, index) =>
                             orders?.length !== 0 ? <Card key={index}>
                                     <OrderBlock openToaster={openToaster}
                                                 setOpenToaster={setOpenToaster}
                                                 status={status}
                                                 order={order}/>
-                            </Card> : <p>vfsvddvs</p>
+                            </Card> : <p>~</p>
+
                             )}
                             </Box> : <Card>
                             <AddNewOrderForm setOpenToaster={setOpenToaster} />

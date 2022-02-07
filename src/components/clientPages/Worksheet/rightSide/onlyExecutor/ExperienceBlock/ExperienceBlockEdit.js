@@ -34,7 +34,6 @@ const newCategory = [...category].map((option) => ({
     label: option. category_name,
 }));
 useEffect(()=>{
-    console.log(successWork, error, "successWork, error")
     if(successWork){
            setEditExperienceBlock(false)
         setOpenToaster(true)

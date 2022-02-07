@@ -4,30 +4,48 @@ import {useEditCardStyles} from "../styles/EditCardStyles";
 import CustomDatePicker from "../../../UI/datePicker/CustomDatePicker";
 import Card from "@mui/material/Card";
 import {FileSVG} from "../../../../assets/svg/Profile/FileSVG";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import CustomInput from "../../../UI/customInput/CustomInput";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import {FormControlLabel, Radio, RadioGroup} from "@mui/material";
 import Stack from "@mui/material/Stack";
-
+import {updatePersonalData} from "../../../../store/actions/ProfileDataActions";
+import moment from "moment"
 
 const EditPersonalData = ({setEditPersonallyData}) => {
     const classes =useEditCardStyles()
+    const dispatch = useDispatch()
     const {status} = useSelector(state => state.auth);
-    const [value, setValue] = React.useState('Женский');
-    const [data, setData] = React.useState(new Date());
+    const {user} = useSelector(state => state.profile);
+    const [gender, setGender] = React.useState(user?.gender);
+    const [data, setData] = React.useState(user?.birth_date);
+    const [about, setAbout] = useState(user?.about_me ? user?.about_me : "");
     const [save, setSave] = useState(false);
+    const executorData = {
+        gender:gender,
+        birth_date:moment(data).format("YYYY-MM-DD"),
+        about_me:about
+    }
+    const clientData = {
+        gender:gender,
+        birth_date:moment(data).format("YYYY-MM-DD")
+    }
+    const sendData = status === 'executor' ? executorData : clientData
+    const sendPersonalData = () => {
+        setTimeout(()=>{
+            setSave(!save)
+            setEditPersonallyData(false)
+        },2000)
+         dispatch(updatePersonalData(sendData))
+    }
     return (
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
             <Box style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
                 <Typography className={classes.title}>
                     Личные данные
                 </Typography>
-                <div onClick={() => {
-                    setSave(!save)
-                    setEditPersonallyData(false)
-                }} style={{cursor: "pointer", padding: '0 0 7px 20px'}}>
+                <div onClick={sendPersonalData} style={{cursor: "pointer", padding: '0 0 7px 20px'}}>
                     <FileSVG color={save? "#4b9a2d" : "#808080"}/>
                 </div>
             </Box>
@@ -40,8 +58,8 @@ const EditPersonalData = ({setEditPersonallyData}) => {
             <RadioGroup
                 aria-label="gender"
                 name="controlled-radio-buttons-group"
-                value={value}
-                onChange={(e)=>setValue(e.target.value)}
+                value={gender}
+                onChange={(e)=>setGender(e.target.value)}
             >
                 <Stack
                     direction={{xs: 'column', sm: 'row'}}
@@ -70,7 +88,7 @@ const EditPersonalData = ({setEditPersonallyData}) => {
                 <Typography mb={1} variant={"h5"}>
                     Обо мне
                 </Typography>
-                <CustomInput placeholder={'Обо мне'}/>
+                <CustomInput placeholder={'Обо мне'} value={about} handleChange={(e)=> setAbout(e.target.value)}/>
             </Box>}
 
 

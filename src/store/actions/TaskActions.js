@@ -32,6 +32,7 @@ export const getCompletedTasks = createAsyncThunk(
 export const getNotAppliedTasks = createAsyncThunk(
     'task/getNotAppliedTasks',
     async (_, thunkAPI) => {
+        debugger
         try {
             const response = await instance.get("v1/user/not-applied-task")
             return response.data
