@@ -38,6 +38,14 @@ const AddNewOrderForm = ({setOpenToaster}) => {
         label: option.subcategory_name,
     }));
 
+    const FILE_SIZE = 160 * 1024;
+    const SUPPORTED_FORMATS = [
+        "image/jpg",
+        "image/jpeg",
+        "image/gif",
+        "image/png"
+    ];
+
 
 
 
@@ -57,7 +65,7 @@ const AddNewOrderForm = ({setOpenToaster}) => {
                 price_from: '',
                 price_to: ''
             }}
-            validationSchema={AddNewOrderValidation}
+            validationSchema={() => AddNewOrderValidation(FILE_SIZE, SUPPORTED_FORMATS)}
             onSubmit={async (values, action) => {
 
 
@@ -140,7 +148,7 @@ const AddNewOrderForm = ({setOpenToaster}) => {
                                         setFieldValue('task_img', e.target.files)
                                     }}
                                     id="icon-button-file"
-                                    accept=".png, .jpg, .jpeg, .gif, .csv, .txt, .pdf."
+                                    //accept=".png, .jpg, .jpeg, .gif, .csv, .txt, .pdf."
                                     style={{ display: 'none' }}
                                 />
                                 <label style={{display: 'flex', marginTop: '10px', justifyContent: 'flex-start', alignItems: 'center'}} htmlFor="icon-button-file">
