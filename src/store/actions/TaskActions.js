@@ -59,6 +59,7 @@ export const getRespondedTasks = createAsyncThunk(
 export const getInProcessTasks = createAsyncThunk(
     'task/getInProcessTasks',
     async (_, thunkAPI) => {
+        debugger
         try {
             const response = await instance.get("v1/user/in-process-task")
             return response.data
@@ -68,5 +69,36 @@ export const getInProcessTasks = createAsyncThunk(
         }
     }
 )
+
+export const selectExecutor = createAsyncThunk(
+    'task/selectExecutor',
+    async (data, thunkAPI) => {
+        try {
+            const response = await instance.post("v1/user/select-task-executor", data)
+            return response.data
+        } catch (e) {
+            console.log(e.response, 'register error')
+            return thunkAPI.rejectWithValue('Что то пошло не так')
+        }
+    }
+)
+
+export const finishTask = createAsyncThunk(
+    'task/finishTask',
+    async (data, thunkAPI) => {
+        debugger
+        try {
+            const response = await instance.post("v1/user/employer-complate-task", data)
+            return response.data
+        } catch (e) {
+            console.log(e.response, 'register error')
+            return thunkAPI.rejectWithValue('Что то пошло не так')
+        }
+    }
+)
+
+
+
+
 
 

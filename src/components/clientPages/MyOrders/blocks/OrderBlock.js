@@ -4,7 +4,7 @@ import NotAppliedOrderDetails from "./NotAppliedOrderDetails";
 import OrderList from "./OrderList";
 
 
-const OrderBlock = ({order, status}) => {
+const OrderBlock = ({order, status, openToaster, setOpenToaster}) => {
 
 
     const task_starttime = moment(order.task_starttime).toDate();
@@ -21,6 +21,8 @@ const OrderBlock = ({order, status}) => {
                                                            finishTime={finsih_time}
                                                            order={order}  />
             : <OrderList order={order}
+                         openToaster={openToaster}
+                         setOpenToaster={setOpenToaster}
                          status={status}
                          finishTime={finsih_time}
                          setShowDetails={setShowDetails}

@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import {useDispatch, useSelector} from "react-redux";
 import {getCompletedTasks, getNotAppliedTasks} from "../../../store/actions/TaskActions";
 import Toaster from "../../UI/toaster/Toaster";
+import Spinner from "../../UI/spinner/Spinner";
 import {makeStyles} from "@material-ui/core";
 
 export const useMyOrdersStyles = makeStyles({
@@ -46,6 +47,12 @@ export const useMyOrdersStyles = makeStyles({
         "& .MuiButton-contained": {
             backgroundColor: '#4B9A2D',
             borderRadius: '10px',
+            height: '40px',
+            fontSize: '12px',
+            fontWeight: 500,
+            '@media (max-width: 365px)' : {
+                marginBottom: '10px'
+            },
         },
         "& .MuiButton-outlined": {
             background: "#445E77",
@@ -237,7 +244,9 @@ export const MyOrders = () => {
     const classes = useMyOrdersStyles()
     const [valueTime, setValueTime] = useState(new Date());
     const [showForm, setShowForm] = useState(false);
-    const {status, error, completedTasks, notAppliedTasks=[], respondedTasks, inProcessTasks, successWork, message} = useSelector(state => state.task)
+
+    const {status, load, error, completedTasks, notAppliedTasks=[], respondedTasks, inProcessTasks, successWork, message} = useSelector(state => state.task)
+
     const [openToaster, setOpenToaster] = useState(false)
     const [title, setTitle] = useState({
         subTitle: 'Не откликнувшые заказы',
@@ -251,11 +260,11 @@ export const MyOrders = () => {
     }, [])
 
     useEffect(() => {
-        console.log(orders, 'status')
+
     }, [status])
 
     useEffect(() => {
-        console.log(typeof title.subtitle, 'start')
+        //console.log(typeof title.subtitle, 'start')
         switch (title.index) {
             case 0:
                 setOrders(notAppliedTasks)
@@ -266,7 +275,11 @@ export const MyOrders = () => {
                 //console.log(orders, 'order')
                 break;
             case 2:
-                setOrders(inProcessTasks)
+                if(Array.isArray(inProcessTasks)){
+                    setOrders(inProcessTasks)
+                }else{
+                    setOrders([])
+                }
                 //console.log(orders, 'order')
                 break;
             case 3:
@@ -274,10 +287,8 @@ export const MyOrders = () => {
                 //console.log(orders, 'order')
                 break;
         }
-        //console.log(orders, 'orders')
+        //console.log(orders.length > 0, 'orders')
     }, [title.index])
-
-
 
 
 
@@ -297,22 +308,29 @@ export const MyOrders = () => {
                     </Grid>
 
                     <Grid  item sm={12} lg={8}>
-                        {!showForm ? <Box>
+                        {load ? <Spinner percentLeft={'60%'}
+                                            mediaPercentLeft={'50%'}
+                                            top={'150px'} /> : !showForm ? <Box>
                             <Box className={classes.header}>
-                                <Typography variant={'h4'}>{title?.subTitle}</Typography>
-                                <Box className={classes.datePickerBox}>
-                                    <CustomDatePicker value={valueTime} fun={(val) => setValueTime(val)}/>
-                                </Box>
+                            <Typography variant={'h4'}>{title?.subTitle}</Typography>
+                            <Box className={classes.datePickerBox}>
+                            <CustomDatePicker value={valueTime} fun={(val) => setValueTime(val)}/>
+                            </Box>
 
                             </Box>
-                            {orders?.map((order, index) =>
-                                <Card key={index}>
-                                    <OrderBlock status={status} order={order}/>
-                                </Card>
+
+                        {orders.map((order, index) =>
+                            orders?.length !== 0 ? <Card key={index}>
+                                    <OrderBlock openToaster={openToaster}
+                                                setOpenToaster={setOpenToaster}
+                                                status={status}
+                                                order={order}/>
+                            </Card> : <p>~</p>
+
                             )}
-                        </Box> : <Card>
+                            </Box> : <Card>
                             <AddNewOrderForm setOpenToaster={setOpenToaster} />
-                        </Card>}
+                            </Card>}
 
                     </Grid>
                 </Grid>

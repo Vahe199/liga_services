@@ -2,11 +2,11 @@ import {createSlice} from "@reduxjs/toolkit"
 import {Login} from "../actions/AuthActions";
 import {updateNotifications} from "../actions/ProfileDataActions";
 import {
-    AddNewTask,
+    AddNewTask, finishTask,
     getCompletedTasks,
     getInProcessTasks,
     getNotAppliedTasks,
-    getRespondedTasks
+    getRespondedTasks, selectExecutor
 } from "../actions/TaskActions";
 
 const taskSlice = createSlice({
@@ -14,6 +14,7 @@ const taskSlice = createSlice({
     initialState: {
         error: false,
         load: false,
+        loadBtn: false,
         successWork: false,
         message: '',
         completedTasks: [],
@@ -23,7 +24,11 @@ const taskSlice = createSlice({
         status: 'notApplied'
     },
     reducers: {
-
+        resetPartReducer: (state) => {
+            state.successWork = false
+            state.error = false
+            state.message = ''
+        },
     },
     extraReducers: {
         [getCompletedTasks.pending]: (state) => {
@@ -81,23 +86,55 @@ const taskSlice = createSlice({
             state.load = false
             state.error = true
         },
+        //create task
         [AddNewTask.pending]: (state) => {
-            state.load = true
+            state.loadBtn = true
         },
         [AddNewTask.fulfilled]: (state, action) => {
-            state.load = false
+            state.loadBtn = false
             state.error = false
             state.successWork = true
-            state.message = action.payload.message
+            state.message = 'Заказ успешно добавлен'
         },
         [AddNewTask.rejected]: (state, action) => {
-            state.load = false
+            state.loadBtn = false
             state.error = true
-            state.message = action.payload.message
+            state.message = 'Что то пошло не так'
+        },
+        //select executor
+        [selectExecutor.pending]: (state) => {
+            state.loadBtn = true
+        },
+        [selectExecutor.fulfilled]: (state, action) => {
+            state.loadBtn = false
+            state.error = false
+            state.message = 'Исполнитель успешно вибран'
+            state.successWork = true
+        },
+        [selectExecutor.rejected]: (state, action) => {
+            state.loadBtn = false
+            state.error = true
+            state.message = 'Что то пошло не так'
+        },
+        //finish task
+        [finishTask.pending]: (state) => {
+            state.loadBtn = true
+        },
+        [finishTask.fulfilled]: (state, action) => {
+            state.loadBtn = false
+            state.error = false
+            state.message = 'Вы успешно завершили'
+            state.successWork = true
+        },
+        [finishTask.rejected]: (state, action) => {
+            state.loadBtn = false
+            state.error = true
+            state.message = 'Что то пошло не так'
         },
     }
 
 })
 
+export const {resetPartReducer} = taskSlice.actions
 
 export default taskSlice.reducer

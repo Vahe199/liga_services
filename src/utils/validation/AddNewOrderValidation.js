@@ -39,6 +39,16 @@ export const AddNewOrderValidation = () => object().shape({
         .min(3, 'Номер телефона должен быть 11 символов')
         .max(18, 'Номер телефона должен быть 11 символов'),
     task_img: array().of(mixed().nullable(true).required('Обязательное поле')).min(1, 'В поле должно быть хотя бы 1 элемента.').nullable()
+        // .test("fileSize", "The file is too large", (value) => {
+        //     return value && value[0].sienter code hereze <= 2000000;
+        // })
+        // .test("type", "Only the following formats are accepted: .jpeg, .jpg, .bmp, .pdf and .doc", (value) => {
+        //     return value && (
+        //         value[0].type === "image/jpeg" ||
+        //         value[0].type === "image/bmp" ||
+        //         value[0].type === "image/png" ||
+        //         value[0].type === 'application/pdf' ||
+        //         value[0].type === "application/msword"
+        //     );
 });
-
 

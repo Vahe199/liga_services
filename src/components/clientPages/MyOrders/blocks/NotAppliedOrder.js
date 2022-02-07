@@ -15,11 +15,13 @@ const NotAppliedOrder = ({order, starTime, finishTime, setShowDetails}) => {
     return (
         <Box>
             <Box className={classes.orderSubBlockSpaceBetween}>
-                <Box>
+                <Box style={{display: 'flex', alignItems: 'center'}}>
                     <Typography variant={'h5'}>
                         Заказ № {order.id},  Категория: {order.category_name}
                     </Typography>
-
+                    <Typography onClick={() => setShowDetails(order.id)} style={{cursor: 'pointer', paddingLeft: '5px'}} variant={'h6'}>
+                        Подробнее
+                    </Typography>
                 </Box>
 
                 <Box>

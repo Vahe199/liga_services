@@ -20,6 +20,7 @@ import {AddNewOrderValidation} from "../../../../utils/validation/AddNewOrderVal
 const AddNewOrderForm = ({setOpenToaster}) => {
     const classes = useMyOrdersStyles();
     const [value, setValue] = useState('remotely');
+    const {loadBtn} = useSelector(state => state.task)
     const dispatch = useDispatch();
 
     const {header} = useSelector(state => state.header)
@@ -58,13 +59,7 @@ const AddNewOrderForm = ({setOpenToaster}) => {
             }}
             validationSchema={AddNewOrderValidation}
             onSubmit={async (values, action) => {
-                console.log(values, 'values')
-                // const formData = new FormData()
-                // Object.entries(values).forEach((item) => {
-                //     const key = item[0];
-                //     const value = item[1];
-                //     formData.append(key, value);
-                // });
+
 
                 await dispatch(AddNewTask(values))
                // await setOpenToaster(true)
@@ -178,7 +173,11 @@ const AddNewOrderForm = ({setOpenToaster}) => {
                             </Box>}
 
                             <Box style={{marginTop: value === 'client' ? '10px' : '10px'}}>
-                                <BlueButton action={handleSubmit} label={'Оформить заказ'} />
+                                <BlueButton action={handleSubmit}
+                                            backgroundColor={'#445E77'}
+                                            disabledColor={'#445e77c4'}
+                                            load={loadBtn}
+                                            label={'Оформить заказ'} />
                                 {/*<Button onClick={handleSubmit} variant={'outlined'}>Профиль исполнителя</Button>*/}
                             </Box>
 

@@ -10,30 +10,79 @@ import IconButton from "@mui/material/IconButton";
 import MessengerSvg from "../../../../assets/svg/MessengerSvg";
 import Avatar from "@mui/material/Avatar";
 import {OnlineSvg} from "../../../../assets/svg/Profile/OnlineSvg";
-import {useMyOrdersStyles} from "../MyOrders";
 import moment from "moment";
+import {useDispatch, useSelector} from "react-redux";
+import {finishTask, selectExecutor} from "../../../../store/actions/TaskActions";
+import {useMyOrdersStyles} from "../MyOrders";
+import {resetPartReducer} from "../../../../store/reducers/TaskReducer";
+import BlueButton from "../../../UI/CustomButtons/BlueButton";
 
-const CustomOrders = ({order, setShowDetails, finishTime, startTime, status}) => {
+const CustomOrders = ({order, setShowDetails, status, openToaster, setOpenToaster}) => {
     const classes = useMyOrdersStyles();
     const [reviewField, setShowReviewField] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
+    const dispatch = useDispatch()
+    const {loadBtn} = useSelector(state => state.task)
+
+    const chooseExecutor = async (task_id, execuro_id) => {
+        //console.log(task_id, 'task_id', execuro_id, 'execuro_id')
+        await dispatch(selectExecutor({
+            "select_task_executor": [
+                {
+                    "task_id": task_id,
+                    "executor_profile_id": execuro_id
+                }
+            ]
+        }))
+        setOpenToaster(true)
+        setTimeout(() => {
+            dispatch(resetPartReducer())
+        }, 7000)
+
+    }
+
+    const completedTask = async (task_id) => {
+        await dispatch(finishTask({
+            "employercomplatetask":[
+                {
+                    "task_id": task_id
+                }
+            ]
+        }))
+        setOpenToaster(true)
+        setTimeout(() => {
+            dispatch(resetPartReducer())
+        }, 7000)
+    }
+
+
+    // {
+    //     "employercomplatetask":[
+    //     {"task_id":49
+    //
+    //     }
+    // ]
+    // }
 
     useEffect(() => {
-        console.log(status, 'statusinOrder')
+        //console.log(status, 'statusinOrder')
     }, [])
 
     return (
-        <Box onClick={() => setShowDetails(order.id)}>
+        <Box>
             <Box className={classes.orderSubBlockSpaceBetween}>
-                <Box>
+                <Box style={{display: 'flex', alignItems: 'center'}}>
                     <Typography variant={'h5'}>
-                        Заказ № {order.id} Категория: {order.category_name}
+                        Заказ № {order?.id} Категория: {order?.category_name}
+                    </Typography>
+                    <Typography onClick={() => setShowDetails(order?.id)} style={{cursor: 'pointer', paddingLeft: '5px'}} variant={'h6'}>
+                        Подробнее
                     </Typography>
                 </Box>
 
                 <Box>
                     <Typography variant={'h6'}>
-                        Дата: {moment(order.created_at).format(`DD MMM (ddd)`)}
+                        Дата: {moment(order?.created_at).format(`DD MMM (ddd)`)}
                     </Typography>
                 </Box>
 
@@ -42,12 +91,12 @@ const CustomOrders = ({order, setShowDetails, finishTime, startTime, status}) =>
 
             <Box className={classes.orderSubBlockSpaceBetween}>
                 <Box className={classes.wrapBox}>
-                    <Typography variant={'h4'}>{order.title}</Typography>
+                    <Typography variant={'h4'}>{order?.title}</Typography>
                     <Typography style={{fontSize: '20px'}} color={'#5A7287'}>от {order.price_from} руб.</Typography>
                 </Box>
                 <Box className={classes.wrapBox}>
                     <Typography variant={'h5'}> Место встречи </Typography>
-                    <Typography className={classes.wrapRight} variant={'h6'}> {order.task_location === 'remotely' ? order.task_location : order.address} </Typography>
+                    <Typography className={classes.wrapRight} variant={'h6'}> {order?.task_location === 'remotely' ? order?.task_location : order?.address} </Typography>
                 </Box>
             </Box>
 
@@ -89,15 +138,15 @@ const CustomOrders = ({order, setShowDetails, finishTime, startTime, status}) =>
                         </Box>
                         <Box className={classes.orderSubBlockSpaceBetween}>
                             <Box>
-                                {order.status === 'history' && <Box style={{width: '50%'}}>
+                                {status === 'completed' && <Box style={{width: '50%'}}>
                                     <Typography variant={'h6'}>Ваш отзыв</Typography>
                                     <Typography variant={'h5'}>Я довольна</Typography>
                                 </Box>}
-                                {order.status !== 'onWorked' && <Typography variant={'h6'}>Баллы</Typography>}
-                                {order.status !== 'onWorked' && <Rating style={{color: "#FFF066"}} name="half-rating-read" defaultValue={4}
-                                                                        readOnly={order.status === 'history'} precision={0.5}/>}
+                                {status === 'completed' && <Typography variant={'h6'}>Баллы</Typography>}
+                                {status === 'completed' && <Rating style={{color: "#FFF066"}} name="half-rating-read" defaultValue={4}
+                                                                        readOnly={status === 'completed'} precision={0.5}/>}
                                 <Box>
-                                    {order.status === 'finished' && <Box>
+                                    {status === 'completed' && <Box>
                                         {reviewField && <Box className={classes.boxInput}>
                                             <TextField
                                                 variant={"outlined"}
@@ -111,15 +160,17 @@ const CustomOrders = ({order, setShowDetails, finishTime, startTime, status}) =>
                                             Оставить отзыв
                                         </Button>
                                     </Box>}
-                                    {order.status === 'onWorked' && <Button color="success" variant="contained">
-                                        Завершить работу
-                                    </Button>}
+                                    {status === 'inProcess' && <BlueButton action={() => completedTask(order?.id)}
+                                                                           backgroundColor={'#4B9A2D'}
+                                                                           load={loadBtn}
+                                                                           label={'Завершить работу'}>
+                                    </BlueButton>}
 
                                 </Box>
                             </Box>
                             <Box>
                                 <Box style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
-                                    {order.status !== 'history' && <><IconButton>
+                                    {status !== 'completed' && <><IconButton>
                                         <MessengerSvg/>
                                     </IconButton>
                                         <Typography style={{textAlign: 'end', whiteSpace: 'nowrap'}} variant={'h6'}>
@@ -182,10 +233,10 @@ const CustomOrders = ({order, setShowDetails, finishTime, startTime, status}) =>
                                             </Box>
                                         </Box>
                                     </Box>
-                                    <Box style={{display: 'flex'}}>
-                                        <Typography variant={'h6'}>Специальность:</Typography>
-                                        <Typography style={{paddingLeft: '5px'}} variant={'h4'}>Маникюр</Typography>
-                                    </Box>
+                                    {/*<Box style={{display: 'flex'}}>*/}
+                                    {/*    <Typography variant={'h6'}>Специальность:</Typography>*/}
+                                    {/*    <Typography style={{paddingLeft: '5px'}} variant={'h4'}>Маникюр</Typography>*/}
+                                    {/*</Box>*/}
                                 </Box>
                                 <Box style={{margin: '10px 0'}}>
                                     <Typography style={{whiteSpace: 'pre-wrap'}} variant={'h6'}>{executor.offer_to_employer}</Typography>
@@ -201,15 +252,20 @@ const CustomOrders = ({order, setShowDetails, finishTime, startTime, status}) =>
                                     </Box>
                                 </Box>
                                 <Box style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
-                                    <Box style={{paddingRight: '50px'}}>
+                                    <Box style={{paddingRight: '50px', display: 'flex', alignItems: 'center'}}>
                                     <span style={{paddingRight: '10px'}}>
-                                        <Button color="success" variant={'contained'}>Выбрать</Button>
+                                        <BlueButton
+                                            label={'Выбрать'}
+                                            load={loadBtn}
+                                            disabledColor={'#4B9A2D'}
+                                            backgroundColor={'#4B9A2D'}
+                                            action={() => chooseExecutor(executor.task_id, executor.executor_profile_id)} />
                                     </span>
                                         <Button style={{backgroundColor: '#E54C51'}} variant={'contained'}>Отказатся</Button>
                                     </Box>
                                     <Box>
                                         <Box style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
-                                            {order.status !== 'history' && <><IconButton>
+                                            {status !== 'completed' && <><IconButton>
                                                 <MessengerSvg/>
                                             </IconButton>
                                                 <Typography style={{textAlign: 'end', whiteSpace: 'nowrap'}} variant={'h6'}>

@@ -115,7 +115,7 @@ export const MainNavBar = () => {
 
 
     useEffect(() => {
-        console.log(status, 'status')
+        //console.log(status, 'status')
     }, [status])
  const navigate = useNavigate()
   const classes = useNavStyles()
