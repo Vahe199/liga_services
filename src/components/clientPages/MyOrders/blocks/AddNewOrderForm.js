@@ -65,7 +65,7 @@ const AddNewOrderForm = ({setOpenToaster}) => {
                 price_from: '',
                 price_to: ''
             }}
-            validationSchema={() => AddNewOrderValidation(FILE_SIZE, SUPPORTED_FORMATS)}
+            validationSchema={AddNewOrderValidation}
             onSubmit={async (values, action) => {
 
 
