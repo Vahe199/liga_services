@@ -298,7 +298,6 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                     value={values.title}
                                     touched={touched.title}
                                     error={errors.title}
-                                    mt={0}
                                 />
                             </Box>
                             <Box style={{marginBottom: '40px'}}>
@@ -315,17 +314,19 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                     arr={newCategory}
                                 />
                             </Box>
-                            <CustomInput
-                                label={'Подкатегория*'}
-                                name={'subcategory_name'}
-                                value={values.subcategory_name}
-                                handleChange={(val) => {
-                                    setFieldValue('subcategory_name', val)
-                                }}
-                                touched={touched.subcategory_name}
-                                error={errors.subcategory_name}
-                                arr={newSubCategories}
-                            />
+                            <Box style={{marginBottom: '40px'}}>
+                                <CustomSelect
+                                    label={'Подкатегория*'}
+                                    name={'subcategory_name'}
+                                    handleChange={(val) => {
+                                        setFieldValue('subcategory_name', val)
+                                    }}
+                                    value={values.subcategory_name}
+                                    touched={touched.subcategory_name}
+                                    error={errors.subcategory_name}
+                                    arr={newSubCategories}
+                                />
+                            </Box>
                             <CustomInput
                                 label={'Описание'}
                                 name={'task_description'}
@@ -358,7 +359,8 @@ const ModalNewTask = ({showModal, setShowModal}) => {
                                 }}>{errors.task_img}</p>}
                             </Box>
                             <Box style={{marginTop: value === 'client' ? '10px' : '10px'}}>
-                                <BlueButton action={handleSubmit} label={'Оформить заказ'} />
+                                <BlueButton disabledColor={'#445E77'}
+                                            backgroundColor={'#445E77'} action={handleSubmit} label={'Оформить заказ'} />
                                 {/*<Button onClick={handleSubmit} variant={'outlined'}>Профиль исполнителя</Button>*/}
                             </Box>
 

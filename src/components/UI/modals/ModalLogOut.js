@@ -50,7 +50,7 @@ const ModalLogOut = ({open, setOpen}) => {
                             <Box className={classes.footer}>
                                 {/* <p style={{textAlign: 'center', fontSize: '24px'}}>Вы действительно хотите выйди ? </p> */}
                                 <Box style={{width:'50%', alignItems: 'center', display:'flex',justifyContent:'space-between' }}>
-                                    <BlueButton load={load} label={'Вход'} variant={'contained'} action={logOut}  />
+                                    <BlueButton load={load} label={'Выход'} variant={'contained'} action={logOut}  />
 
                                     <Button onClick={handleClose} className={classes.exitModal}>Нет</Button>
                                 </Box>
