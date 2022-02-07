@@ -4,6 +4,7 @@ import TaskReducer from "./reducers/TaskReducer";
 import ProfileDataReducer from "./reducers/ProfileDataReducer";
 import ExecutorDataReducer from "./reducers/ExecutorDataReducer";
 import headerReducer from "./reducers/HeaderReducer";
+import TaskExecutorReducer from "./reducers/TaskExecutorReducer";
 
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
     task: TaskReducer,
     profile: ProfileDataReducer,
     executor: ExecutorDataReducer,
-    header: headerReducer
+    header: headerReducer,
+    taskExecutor: TaskExecutorReducer
 })
 
 //MIDDLEWARE

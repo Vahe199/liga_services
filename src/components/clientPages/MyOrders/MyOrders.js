@@ -14,6 +14,7 @@ import {getCompletedTasks, getNotAppliedTasks} from "../../../store/actions/Task
 import Toaster from "../../UI/toaster/Toaster";
 import Spinner from "../../UI/spinner/Spinner";
 import {makeStyles} from "@material-ui/core";
+import moment from "moment";
 
 export const useMyOrdersStyles = makeStyles({
     root:{
@@ -243,9 +244,9 @@ export const useMyOrdersStyles = makeStyles({
 export const MyOrders = () => {
     const classes = useMyOrdersStyles()
     const [valueTime, setValueTime] = useState(new Date());
-    const [showForm, setShowForm] = useState(false);
+    const [showForm, setShowForm] = useState(true);
 
-    const {status, load, error, completedTasks, notAppliedTasks=[], respondedTasks, inProcessTasks, successWork, message} = useSelector(state => state.task)
+    const {status, load, error, completedTasks, notAppliedTasks = [], respondedTasks, inProcessTasks, successWork, message} = useSelector(state => state.task)
 
     const [openToaster, setOpenToaster] = useState(false)
     const [title, setTitle] = useState({
@@ -253,41 +254,55 @@ export const MyOrders = () => {
         index: 0
     });
     const [orders, setOrders] = useState(notAppliedTasks)
+    const [newOrders, setNewOrders] = useState(orders)
     const dispatch = useDispatch();
+
+
 
     useEffect(() => {
         dispatch(getNotAppliedTasks())
+        console.log(orders, 'orders', newOrders, 'newOrders')
     }, [])
 
     useEffect(() => {
+        //console.log(moment(valueTime).format("YYYY-MM-DD"), orders)
+        //let momentDate = orders
+        //console.log(newOrders, 'orders')
+        setNewOrders((item) => newOrders.filter(item => {
+            return moment(item.created_at).format("YYYY-MM-DD") === moment(valueTime).format("YYYY-MM-DD")
+        }))
+       // console.log(newOrders, 'filterOrders')
+    }, [valueTime])
 
+
+    useEffect(() => {
+        //console.log(valueTime, notAppliedTasks, 'valueTime')
     }, [status])
 
     useEffect(() => {
-        //console.log(typeof title.subtitle, 'start')
         switch (title.index) {
             case 0:
                 setOrders(notAppliedTasks)
-                //console.log(orders, 'order')
+                setNewOrders(notAppliedTasks)
                 break;
             case 1:
                 setOrders(respondedTasks)
-                //console.log(orders, 'order')
+                setNewOrders(respondedTasks)
                 break;
             case 2:
                 if(Array.isArray(inProcessTasks)){
                     setOrders(inProcessTasks)
+                    setNewOrders(inProcessTasks)
                 }else{
                     setOrders([])
+                    setNewOrders([])
                 }
-                //console.log(orders, 'order')
                 break;
             case 3:
                 setOrders(completedTasks)
-                //console.log(orders, 'order')
+                setNewOrders(completedTasks)
                 break;
         }
-        //console.log(orders.length > 0, 'orders')
     }, [title.index])
 
 
@@ -314,13 +329,13 @@ export const MyOrders = () => {
                             <Box className={classes.header}>
                             <Typography variant={'h4'}>{title?.subTitle}</Typography>
                             <Box className={classes.datePickerBox}>
-                            <CustomDatePicker value={valueTime} fun={(val) => setValueTime(val)}/>
+                            <CustomDatePicker orders={orders} removeData={(val)=>setNewOrders(val)} value={valueTime} fun={(val) => setValueTime(val)}/>
                             </Box>
 
                             </Box>
 
-                        {orders.map((order, index) =>
-                            orders?.length !== 0 ? <Card key={index}>
+                        {newOrders?.map((order, index) =>
+                                newOrders?.length !== 0 ? <Card key={index}>
                                     <OrderBlock openToaster={openToaster}
                                                 setOpenToaster={setOpenToaster}
                                                 status={status}

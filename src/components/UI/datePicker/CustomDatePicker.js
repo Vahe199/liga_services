@@ -44,7 +44,7 @@ export const useStyles = makeStyles({
     }
 });
 
-const CustomDatePicker = ({value, name, fun, touched, errors}) => {
+const CustomDatePicker = ({value, name, orders = [], removeData, fun, touched, errors}) => {
     const [open,setOpen] = useState(false)
     const classes = useStyles();
 
@@ -72,7 +72,10 @@ const CustomDatePicker = ({value, name, fun, touched, errors}) => {
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="end">
-                                    <IconButton onClick={(e) => setOpen(!open)} >
+                                    <IconButton  onClick={(e) => {
+                                        setOpen(!open)
+                                        removeData(orders)
+                                    }} >
                                         <img src={Calendar} height={20} width={20}/>
                                     </IconButton>
                                 </InputAdornment>
