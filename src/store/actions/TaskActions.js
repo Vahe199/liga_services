@@ -18,7 +18,6 @@ export const AddNewTask = createAsyncThunk(
 export const getCompletedTasks = createAsyncThunk(
     'task/getCompletedTasks',
     async (_, thunkAPI) => {
-        debugger
         try {
             const response = await instance.get("v1/user/completed-tasks")
             return response.data
@@ -32,7 +31,6 @@ export const getCompletedTasks = createAsyncThunk(
 export const getNotAppliedTasks = createAsyncThunk(
     'task/getNotAppliedTasks',
     async (_, thunkAPI) => {
-        debugger
         try {
             const response = await instance.get("v1/user/not-applied-task")
             return response.data

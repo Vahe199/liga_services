@@ -12,8 +12,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import FormControl from "@material-ui/core/FormControl";
-import {FormControlLabel, RadioGroup} from "@mui/material";
-import {Radio} from "@material-ui/icons";
+import {FormControlLabel, Radio, RadioGroup} from "@mui/material";
 
 
 const FilterOrders = ({setShowFilterBlock, showFilterBlock}) => {

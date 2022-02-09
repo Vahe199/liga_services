@@ -15,7 +15,6 @@ import moment from "moment";
 const OrderAboutPage = () => {
     const classes = useOrderAboutStyles()
     const [showModal, setShowModal] = useState(false);
-    const params = useParams();
     const location = useLocation();
     const {meeting} = location.state;
     const state = location.state

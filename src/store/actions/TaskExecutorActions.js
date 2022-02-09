@@ -13,3 +13,16 @@ export const getAllTasks = createAsyncThunk(
         }
     }
 )
+
+export const clickOnTask = createAsyncThunk(
+    'taskExecutor/clickOnTask',
+    async (data, thunkAPI) => {
+        try {
+            const response = await instance.post("v1/user/click-on-task", data)
+            return response.data
+        } catch (e) {
+            console.log(e.response, 'register error')
+            return thunkAPI.rejectWithValue('Что то пошло не так')
+        }
+    }
+)

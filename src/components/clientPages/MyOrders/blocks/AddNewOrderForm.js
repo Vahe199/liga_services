@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import CustomDatePicker from "../../../UI/datePicker/CustomDatePicker";
 import {DownloadSvg} from "../../../../assets/svg/DownloadSvg";
-import {Formik} from "formik";
+import {FieldArray, Formik} from "formik";
 import CustomSelect from "../../../UI/selects/CustomSelect";
 import CustomInputAddFile from "../../../UI/customInputAddFile/CustomInputAddFile";
 import CustomInput from "../../../UI/customInput/CustomInput";
@@ -48,7 +48,6 @@ const AddNewOrderForm = ({setOpenToaster}) => {
 
 
 
-
     return (
         <Formik
             initialValues={{
@@ -68,7 +67,7 @@ const AddNewOrderForm = ({setOpenToaster}) => {
             validationSchema={AddNewOrderValidation}
             onSubmit={async (values, action) => {
 
-
+                //console.log(values, 'values')
                 await dispatch(AddNewTask(values))
                // await setOpenToaster(true)
                 //action.resetForm()
@@ -132,6 +131,56 @@ const AddNewOrderForm = ({setOpenToaster}) => {
                                 textArea={true}
                             />
                             <Box>
+                                {/*<FieldArray name={'task_img'}>*/}
+                                {/*    {({push}) => (*/}
+                                {/*        <Box>*/}
+                                {/*            <input*/}
+                                {/*                color="primary"*/}
+                                {/*                //name={`task_img`}*/}
+                                {/*                type="file"*/}
+                                {/*                multiple*/}
+                                {/*                // onChange={(e) => {*/}
+                                {/*                //     setFieldValue(`task_img`, e.target.files)*/}
+                                {/*                // }}*/}
+                                {/*                //onChange={(e) => push(e.target.files[0])}*/}
+
+                                {/*                onChange={(e) => {*/}
+                                {/*                    //setArrFiles(e.target.files)*/}
+                                {/*                    //setFieldValue('task_img', e.target.files)*/}
+                                {/*                    for(let i = 0; i <= e.target.files.length; i++){*/}
+                                {/*                        setArrFiles(e.target.files[i])*/}
+                                {/*                        //setFieldValue(`task_img${index}`, e.target.files[i])*/}
+                                {/*                        //handleChange(i)*/}
+                                {/*                        //push(e.target.files[i])*/}
+                                {/*                        //push(e.target.files[i])*/}
+                                {/*                        //console.log(e.target.files[i], "e.target.files")*/}
+                                {/*                        // arrayHelpers.insert(i)*/}
+                                {/*                    }*/}
+                                {/*                }}*/}
+                                {/*                // onChange={(e) => {*/}
+                                {/*                //     // setFieldValue('task_img',e.target.files[0])*/}
+                                {/*                //     for(let i; i <= e.target.files.length; i++){*/}
+                                {/*                //         //push(e.target.files[i])*/}
+                                {/*                //         console.log(e.target.files[i], "e.target.files")*/}
+                                {/*                //     }*/}
+                                {/*                //     //console.log(e.target.files, "e.target.files")*/}
+                                {/*                // }}*/}
+                                {/*                id="icon-button-file"*/}
+                                {/*                accept=".png, .jpg, .jpeg, .gif, .csv, .txt, .pdf"*/}
+                                {/*                style={{ display: 'none' }}*/}
+                                {/*            />*/}
+                                {/*            <label style={{display: 'flex', marginTop: '10px', justifyContent: 'flex-start', alignItems: 'center'}} htmlFor="icon-button-file">*/}
+                                {/*                <DownloadSvg />*/}
+                                {/*                <p style={{fontSize: '15px', margin: 0, paddingLeft: '20px', color: '#000'}}>Прикрепить файл</p>*/}
+                                {/*            </label>*/}
+                                {/*            {touched.task_img && errors.task_img && <p style={{*/}
+                                {/*                fontSize: '15px',*/}
+                                {/*                color: '#F44336',*/}
+                                {/*                margin: '5px 0 0 0',*/}
+                                {/*            }}>{errors.task_img}</p>}*/}
+                                {/*        </Box>*/}
+                                {/*    )}*/}
+                                {/*</FieldArray>*/}
                                 {/*<input*/}
                                 {/*    type={'file'}*/}
                                 {/*    //name={'task_img'}*/}
@@ -148,7 +197,7 @@ const AddNewOrderForm = ({setOpenToaster}) => {
                                         setFieldValue('task_img', e.target.files)
                                     }}
                                     id="icon-button-file"
-                                    //accept=".png, .jpg, .jpeg, .gif, .csv, .txt, .pdf."
+                                    accept=".png, .jpg, .jpeg, .gif, .csv, .txt, .pdf"
                                     style={{ display: 'none' }}
                                 />
                                 <label style={{display: 'flex', marginTop: '10px', justifyContent: 'flex-start', alignItems: 'center'}} htmlFor="icon-button-file">
