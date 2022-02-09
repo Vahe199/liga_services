@@ -1,7 +1,7 @@
 import React from 'react';
 import Box from "@mui/material/Box";
 
-const CustomInputAddFile = ({value, handleChange, name, svg, label,accept =                 accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+const CustomInputAddFile = ({value, handleChange, name, svg, label,accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                             }) => {
     return (
         <Box>
