@@ -1,6 +1,29 @@
 import {array, boolean, mixed, object, string} from "yup";
 import * as yup from "yup";
+export function checkIfFilesAreTooBig(files) {
+    let valid = true
+    if (files) {
+        files.map(file => {
+            const size = file.size / 1024 / 1024
+            if (size > 10) {
+                valid = false
+            }
+        })
+    }
+    return valid
+}
 
+export function checkIfFilesAreCorrectType(files) {
+    let valid = true
+    if (files) {
+        files.map(file => {
+            if (!['application/pdf', 'image/jpeg', 'image/png'].includes(file.type)) {
+                valid = false
+            }
+        })
+    }
+    return valid
+}
 export const AddNewOrderValidation = () => object().shape({
 
     category_name: string().required('Обязательное поле'),
@@ -38,20 +61,29 @@ export const AddNewOrderValidation = () => object().shape({
         .matches(/^[0-9]+$/, "Толко число")
         .min(3, 'Номер телефона должен быть 11 символов')
         .max(18, 'Номер телефона должен быть 11 символов'),
-    task_img: array().of(mixed()
-        //.nullable(true)
-        .test("fileSize", "The file is too large", (value) => {
-            return value && value.size <= 1000;
+    // task_img: array().of(mixed()
+    //     //.nullable(true)
+    //     .test("fileSize", "The file is too large", (value) => {
+    //         return value && value.size <= 1000;
+    //     })
+    //     .test("type", "Only the following formats are accepted: .jpeg, .jpg, .bmp, .pdf and .doc", (value) => {
+    //         return value && (
+    //             value.type === "image/jpeg" ||
+    //             value.type === "image/bmp" ||
+    //             value.type === "image/png" ||
+    //             value.type === 'application/pdf' ||
+    //             value.type === "application/msword"
+    //         )
+    //     })
+    //     .required('Обязательное поле')).min(1, 'В поле должно быть хотя бы 1 элемента.').nullable()
+    task_img: array().required().min(1, 'vdsvdv').nullable().of(mixed()
+        .test('fileType', 'Unsupported File Format', function (value) {
+            const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
+            return SUPPORTED_FORMATS.includes(value.type)
         })
-        .test("type", "Only the following formats are accepted: .jpeg, .jpg, .bmp, .pdf and .doc", (value) => {
-            return value && (
-                value.type === "image/jpeg" ||
-                value.type === "image/bmp" ||
-                value.type === "image/png" ||
-                value.type === 'application/pdf' ||
-                value.type === "application/msword"
-            )
-        })
-        .required('Обязательное поле')).min(1, 'В поле должно быть хотя бы 1 элемента.').nullable()
+        .test('fileSize', "File Size is too large", value => {
+            const sizeInBytes = 1000;//0.5MB
+            return value.size <= sizeInBytes;
+        }))
 
 })

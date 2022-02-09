@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit"
-import {getAllTasks} from "../actions/TaskExecutorActions";
+import {clickOnTask, getAllTasks} from "../actions/TaskExecutorActions";
 
 const taskExecutorSlice = createSlice({
     name: "taskExecutor",
@@ -31,6 +31,21 @@ const taskExecutorSlice = createSlice({
         [getAllTasks.rejected]: (state, action) => {
             state.load = false
             state.error = true
+        },
+        //click on Tasks
+        [clickOnTask.pending]: (state) => {
+            state.loadBtn = true
+        },
+        [clickOnTask.fulfilled]: (state, action) => {
+            state.loadBtn = false
+            state.error = false
+            state.successWork = true
+            state.message = 'Вы выбрали данную работу'
+        },
+        [clickOnTask.rejected]: (state, action) => {
+            state.loadBtn = false
+            state.error = true
+            state.message = 'Что то пошло не так'
         },
     }
 

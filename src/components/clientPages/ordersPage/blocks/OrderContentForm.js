@@ -17,11 +17,11 @@ const OrderContentForm = ({setShowModal}) => {
     const classes = useOrderAboutStyles();
     return (
         <Formik
-            initialValues={{ payment_from: '', payment_to: '', agree: 'N',offer: '', time: [null, null] }}
+            initialValues={{ service_price_from: '', offer_to_employer: '', service_price_to: '', }}
             onSubmit={(values, action) => {
                 console.log(values, 'values')
-                setShowModal(true)
-                action.resetForm()
+                //setShowModal(true)
+                //action.resetForm()
             }}
         >
             {({
@@ -48,8 +48,8 @@ const OrderContentForm = ({setShowModal}) => {
                                 <Box style={{display: 'flex', margin: '10px 0'}}>
                                     <Box style={{paddingRight: '10px'}}>
                                         <CustomInputIcon
-                                            name={'payment_from'}
-                                            value={values.payment_from}
+                                            name={'service_price_from'}
+                                            value={values.service_price_from}
                                             handleChange={handleChange}
                                             placeholder={'От'}
                                             width={'70%'}
@@ -94,9 +94,9 @@ const OrderContentForm = ({setShowModal}) => {
                                 Предложение заказчику
                             </Typography>
                             <CustomInput
-                                name={'offer'}
+                                name={'offer_to_employer'}
                                 textArea={true}
-                                value={values.offer}
+                                value={values.offer_to_employer}
                                 handleChange={handleChange}
                             />
                         </Box>

@@ -44,7 +44,7 @@ export const useStyles = makeStyles({
     }
 });
 
-const CustomDatePicker = ({value, name, orders = [], removeData, fun, touched, errors}) => {
+const CustomDatePicker = ({value, name, orders = [], removeData = () => {}, fun, touched, errors}) => {
     const [open,setOpen] = useState(false)
     const classes = useStyles();
 

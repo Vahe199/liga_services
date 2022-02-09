@@ -21,10 +21,10 @@ const OrderExecutorBlock = ({order, index, deleteOrder}) => {
     const finsih_time = moment(task_finishtime).format(`DD MMM (ddd)`)
 
     return (
-        <Box onClick={() => navigate(`/orderAboutPage/${order.id}`, {state: order})}>
-            <Box className={classes.orderSubBlockSpaceBetween}>
+        <Box>
+            <Box style={{flexWrap: 'wrap'}} className={classes.orderSubBlockSpaceBetween}>
                 <Box style={{display: 'flex', alignItems: 'center'}}>
-                    <Box style={{paddingRight: '5px'}}>
+                    <Box onClick={() => navigate(`/orderAboutPage/${order.id}`, {state: order})} style={{paddingRight: '5px'}}>
                         {order?.users?.img_path ? <Avatar src={`${process.env.REACT_APP_IMG_API}${order?.users?.img_path}`}/>
                             : <UserSvg />}
                     </Box>
@@ -37,7 +37,7 @@ const OrderExecutorBlock = ({order, index, deleteOrder}) => {
                 </Box>
                 <Box style={{display: 'flex', alignItems: 'center'}}>
                     <Typography variant={'h5'}>{timeFromNow}</Typography>
-                    <Box onClick={() => deleteOrder(index)} style={{paddingLeft: '10px', cursor: 'pointer'}}>
+                    <Box style={{paddingLeft: '10px', cursor: 'pointer'}}>
                         <DeleteSvg />
                     </Box>
                 </Box>
@@ -50,7 +50,7 @@ const OrderExecutorBlock = ({order, index, deleteOrder}) => {
                     <Typography variant={'h3'} color={'#5A7287'}>от {order?.price_from} руб.</Typography>
                 </Box>}
                 <Box className={classes.wrapBox}>
-                    <Typography variant={'h2'}>Категория</Typography>
+                    <Typography className={classes.wrapRight} variant={'h2'}>Категория</Typography>
                     <Typography className={classes.wrapRight} variant={'h5'}>{order?.category_name}</Typography>
                 </Box>
             </Box>

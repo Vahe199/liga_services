@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import FilterOrders from "./blocks/FilterOrders";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import {OrderExecutor} from "../../../utils/data/orders/OrderExecutor";
 import OrderExecutorBlock from "./blocks/OrderExecutorBlock";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -18,10 +17,10 @@ const OrdersPage = () => {
     const {tasks, load, successWork} = useSelector(state => state.taskExecutor)
     //const reverseTask = tasks.reverse()
     const [showFilterBlock, setShowFilterBlock] = useState(true);
-    const [orders, setShowOrders] = useState(OrderExecutor);
+    const [orders, setShowOrders] = useState('');
 
     const deleteOrder = (id) => {
-        setShowOrders((prev) => orders.filter((item) => id !== item.id));
+        //setShowOrders((prev) => orders.filter((item) => id !== item.id));
         //console.log(id)
     }
 
