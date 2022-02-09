@@ -12,7 +12,7 @@ import Typography from "@mui/material/Typography";
 import MapYandex from '../../../UI/map/Map'
 
 
-const OrderContent = ({meeting, setShowModal}) => {
+const OrderContent = ({setShowModal, state, finsih_time, start_time}) => {
     const classes = useOrderAboutStyles();
     const [showForm, setShowForm] = useState(false);
     return (
@@ -20,15 +20,15 @@ const OrderContent = ({meeting, setShowModal}) => {
             <Box style={{marginBottom: '20px'}} className={classes.orderSubBlockSpaceBetween2}>
                 <Box className={classes.inLineBlock2}>
                     <Typography variant={'h1'}>
-                        Создание Сайтов. Помочь адаптировать скрипт для выгрузки Kibana (изначальный скрипт через Phyton, request) к новой выгрузке
+                        {state?.title ? state?.title : 'Нету'}
                     </Typography>
                 </Box>
                 <Box className={classes.inLineBlock}>
                         <Typography color={'#808080'} className={classes.inLineStyle} variant={'h4'}>Категория</Typography>
                         <Typography className={classes.inLineStyle}  variant={'h2'}>
-                            Дистанционно
+                            {state?.task_location}
                         </Typography>
-                        <Typography color={'#5A7287'} className={classes.inLineStyle}  variant={'h3'}>от 10000 руб.</Typography>
+                        <Typography color={'#5A7287'} className={classes.inLineStyle}  variant={'h3'}>от {state?.price_from} руб.</Typography>
                 </Box>
             </Box>
             <CustomDivider />
@@ -38,16 +38,15 @@ const OrderContent = ({meeting, setShowModal}) => {
                         Место встречи
                     </Typography>
                     <Typography variant={'h2'}>
-                        {meeting === 'noDistant' ? 'У клиента' : 'Дистанционно'}
+                        {state?.task_location === 'client' ? 'У клиента' : 'Дистанционно'}
                     </Typography>
                 </Box>
-                {meeting === 'noDistant' && <Box style={{alignSelf: 'flex-end'}}>
-                    <Typography color={'#808080'} className={classes.inLineStyle} variant={'h4'}>г. Москва, Любанский
-                        проезд, подъезд 3 квартира 42
+                {state?.task_location === 'client' && <Box style={{alignSelf: 'flex-end'}}>
+                    <Typography color={'#808080'} className={classes.inLineStyle} variant={'h4'}>{state?.address}
                     </Typography>
                 </Box>}
             </Box>
-            {meeting === 'noDistant' && <Box>
+            {state?.task_location === 'remotely' && <Box>
                 <MapYandex />
             </Box>}
             <CustomDivider />
@@ -55,17 +54,16 @@ const OrderContent = ({meeting, setShowModal}) => {
                 Когда
             </Typography>
             <Typography color={'#808080'} variant={'h4'}>
-                15 нояб.(пн) - 30 дек. (чт), можно предложить свои даты
+                {start_time} - {finsih_time} можно предложить свои даты
             </Typography>
             <CustomDivider />
             <Typography style={{marginBottom: '10px'}} variant={'h2'}>
                 Описание
             </Typography>
             <Typography color={'#808080'} variant={'h4'}>
-                Единый центр услуг - это удобный, динамично развивающийся Единый Сервис Красноярского края, который позволяет быстро и безопасно находить надёжных исполнителей для решения любых задач, услуг и поручений!
-                Мы собрали для вас в одно место, опытных, проверенных, специалистов своего дела! Теперь каждый может вызвать любого специалиста по одному единому номеру!
+                {state?.task_description}
             </Typography>
-            <CustomImageList imageData={imageData} />
+            <CustomImageList imageData={state?.image_tasks} />
             {!showForm && <Box style={{display: 'flex', justifyContent: 'center', margin: '20px 0'}}>
                 <Button style={{width: '200px'}} onClick={() => setShowForm(true)} variant={'contained'}>
                     Откликнуться

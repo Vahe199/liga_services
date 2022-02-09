@@ -6,8 +6,9 @@ import {
     getCompletedTasks,
     getInProcessTasks,
     getNotAppliedTasks,
-    getRespondedTasks, selectExecutor
+    getRespondedTasks, rejectExecutor, selectExecutor
 } from "../actions/TaskActions";
+import {getAllTasks} from "../actions/TaskExecutorActions";
 
 const taskSlice = createSlice({
     name: "task",
@@ -21,7 +22,7 @@ const taskSlice = createSlice({
         notAppliedTasks: [],
         respondedTasks: [],
         inProcessTasks: [],
-        status: 'notApplied'
+        status: 'notApplied',
     },
     reducers: {
         resetPartReducer: (state) => {
@@ -127,6 +128,21 @@ const taskSlice = createSlice({
             state.successWork = true
         },
         [finishTask.rejected]: (state, action) => {
+            state.loadBtn = false
+            state.error = true
+            state.message = 'Что то пошло не так'
+        },
+        //reject executor
+        [rejectExecutor.pending]: (state) => {
+            state.loadBtn = true
+        },
+        [rejectExecutor.fulfilled]: (state, action) => {
+            state.loadBtn = false
+            state.error = false
+            state.message = 'Вы удалили данного исполнителя'
+            state.successWork = true
+        },
+        [rejectExecutor.rejected]: (state, action) => {
             state.loadBtn = false
             state.error = true
             state.message = 'Что то пошло не так'

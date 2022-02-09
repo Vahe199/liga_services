@@ -12,7 +12,7 @@ import Avatar from "@mui/material/Avatar";
 import {OnlineSvg} from "../../../../assets/svg/Profile/OnlineSvg";
 import moment from "moment";
 import {useDispatch, useSelector} from "react-redux";
-import {finishTask, selectExecutor} from "../../../../store/actions/TaskActions";
+import {finishTask, rejectExecutor, selectExecutor} from "../../../../store/actions/TaskActions";
 import {useMyOrdersStyles} from "../MyOrders";
 import {resetPartReducer} from "../../../../store/reducers/TaskReducer";
 import BlueButton from "../../../UI/CustomButtons/BlueButton";
@@ -55,28 +55,30 @@ const CustomOrders = ({order, setShowDetails, status, openToaster, setOpenToaste
         }, 7000)
     }
 
+    const reject_executor = async (task_id, profile_id) => {
+        await dispatch(rejectExecutor({
+            "reject_task_executor":[
+                {
+                    "task_id": task_id,
+                    "executor_profile_id": profile_id
+                }
+            ]
 
-    // {
-    //     "employercomplatetask":[
-    //     {"task_id":49
-    //
-    //     }
-    // ]
-    // }
 
-    useEffect(() => {
-        //console.log(status, 'statusinOrder')
-    }, [])
+        }))
+        setOpenToaster(true)
+        setTimeout(() => {
+            dispatch(resetPartReducer())
+        }, 7000)
+    }
+
 
     return (
         <Box>
             <Box className={classes.orderSubBlockSpaceBetween}>
-                <Box style={{display: 'flex', alignItems: 'center'}}>
+                <Box>
                     <Typography variant={'h5'}>
                         Заказ № {order?.id} Категория: {order?.category_name}
-                    </Typography>
-                    <Typography onClick={() => setShowDetails(order?.id)} style={{cursor: 'pointer', paddingLeft: '5px'}} variant={'h6'}>
-                        Подробнее
                     </Typography>
                 </Box>
 
@@ -184,24 +186,24 @@ const CustomOrders = ({order, setShowDetails, status, openToaster, setOpenToaste
                     </Box>
 
                     <Box style={{display: "flex", justifyContent: "flex-end", alignItems: "flex-end"}}>
-                        <Typography onClick={() => setShowInfo(!showInfo)} style={{cursor: 'pointer'}} variant={'h6'}>
-                            {showInfo ? 'Свернуть' : 'Подробнее'}
+                        <Typography onClick={() => setShowDetails(order.id)} style={{cursor: 'pointer', paddingLeft: '5px'}} variant={'h6'}>
+                            Подробнее
                         </Typography>
                     </Box>
 
-                    {showInfo && <Box>
-                        <CustomDivider />
-                        <Box style={{}}>
-                            <Typography style={{cursor: 'pointer', whiteSpace: 'pre-wrap'}} variant={'h6'}>
-                                Единый центр услуг - это удобный, динамично развивающийся Единый Сервис Красноярского края,
-                                который позволяет быстро и безопасно находить надёжных исполнителей для решения любых задач,
-                                услуг и поручений!
-                            </Typography>
-                            <Typography style={{cursor: 'pointer'}} variant={'h6'}>
-                                Подробнее
-                            </Typography>
-                        </Box>
-                    </Box>}
+                    {/*{showInfo && <Box>*/}
+                    {/*    <CustomDivider />*/}
+                    {/*    <Box style={{}}>*/}
+                    {/*        <Typography style={{cursor: 'pointer', whiteSpace: 'pre-wrap'}} variant={'h6'}>*/}
+                    {/*            Единый центр услуг - это удобный, динамично развивающийся Единый Сервис Красноярского края,*/}
+                    {/*            который позволяет быстро и безопасно находить надёжных исполнителей для решения любых задач,*/}
+                    {/*            услуг и поручений!*/}
+                    {/*        </Typography>*/}
+                    {/*        <Typography style={{cursor: 'pointer'}} variant={'h6'}>*/}
+                    {/*            Подробнее*/}
+                    {/*        </Typography>*/}
+                    {/*    </Box>*/}
+                    {/*</Box>}*/}
                 </> :
                 <Box>
                     {order?.click_on_tasks?.map((executor, index) => {
@@ -261,7 +263,13 @@ const CustomOrders = ({order, setShowDetails, status, openToaster, setOpenToaste
                                             backgroundColor={'#4B9A2D'}
                                             action={() => chooseExecutor(executor.task_id, executor.executor_profile_id)} />
                                     </span>
-                                        <Button style={{backgroundColor: '#E54C51'}} variant={'contained'}>Отказатся</Button>
+                                        <BlueButton
+                                            label={'Отказатся'}
+                                            load={loadBtn}
+                                            disabledColor={'#E54C51'}
+                                            backgroundColor={'#E54C51'}
+                                            action={() => reject_executor(executor.task_id, executor.executor_profile_id)} />
+                                        {/*<Button style={{backgroundColor: '#E54C51'}} variant={'contained'}>Отказатся</Button>*/}
                                     </Box>
                                     <Box>
                                         <Box style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
