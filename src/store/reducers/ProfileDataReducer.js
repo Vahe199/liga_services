@@ -4,7 +4,7 @@ import {
     choosesProfessionData,
     getProfilePageData,
     getЕxecutorProfilePageData,
-    updateNotifications, updatePersonalData,
+    updateNotifications, updatePersonalData, updatePortfolioData,
     updateSocLink
 } from "../actions/ProfileDataActions";
 
@@ -142,8 +142,25 @@ const profileDataSlice = createSlice({
             state.error = false
             state.user = action.payload.user[0]
             state.successWork = true
+            state.message = "Личные данные успешно обновлены"
         },
         [updatePersonalData.rejected]: (state, action) => {
+            state.load = false
+            state.error = true
+            state.message = action.payload
+            state.successWork = false
+        },
+        [updatePortfolioData.pending]: (state) => {
+            state.load = true
+        },
+        [updatePortfolioData.fulfilled]: (state, action) => {
+            state.load = false
+            state.error = false
+            state.profile = action.payload.data[0]
+            state.successWork = true
+            state.message = "Данные портфеля успешно обновлены"
+        },
+        [updatePortfolioData.rejected]: (state, action) => {
             state.load = false
             state.error = true
             state.message = action.payload

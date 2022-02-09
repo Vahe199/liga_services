@@ -1,5 +1,9 @@
 export const imageData = [
-    
+
+    {
+      img: "https://images.unsplash.com/photo-1567306301408-9b74779a11af",
+      title: "Tomato basil",
+    },
     {
       img: "https://images.unsplash.com/photo-1567306301408-9b74779a11af",
       title: "Tomato basil",

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
 import Card from "@mui/material/Card";
 import CustomImageList from "../../../../../UI/customimagelist/CustomImageList";
@@ -14,26 +14,59 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import {updatePortfolioData} from "../../../../../../store/actions/ProfileDataActions";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import get from "lodash/get";
+import pick from "lodash/pick";
+import {resetPartReducer} from "../../../../../../store/reducers/ProfileDataReducer";
 
-const PortfolioEdit = ({editPortfolio, setEditPortfolio}) => {
+const PortfolioEdit = ({editPortfolio, setEditPortfolio,setOpenToaster}) => {
     const classes = useInfoCardStyles();
     const dispatch = useDispatch()
+    const {profile ={},successWork, error} = useSelector(state => state.profile)
+    useEffect(()=>{
+        if(successWork){
+            setEditPortfolio(false)
+            setOpenToaster(true)
+            setTimeout(()=>{
+                dispatch(resetPartReducer())
+            },7000)
+        }
+        if(error){
+            setOpenToaster(true)
+            setTimeout(()=>{
+                dispatch(resetPartReducer())
+            },7000)
+        }
+    },[successWork, error])
+    const initialValues = {
+        executor_portfolios: get(profile, "executor_portfolios", [{
+            id: "",
+            portfoliopic_base: "",
+            executor_profile_id: ""
+        }]).map(
+            (portfolio) =>
+                pick(portfolio, ["portfoliopic_base"])
+        ),
+        executor_portfolio_links: profile?.executor_portfolio_links?.length > 0  ? get(profile, "executor_portfolio_links", [{id:"",executor_profile_id:"",executor_portfolio_links:""}]).map(
+            (link) =>
+                pick(link, ["portfolio_link"])
+        ): [{portfolio_link:""}],
+    }
     return (
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
                 <Box>
                     <Formik
-                        initialValues={{
-                            link: [
-                                {
-                                    link: '',
-                                },
-                            ],
-                            file: ''
-                        }}
+                        initialValues={initialValues}
                         onSubmit={async (values, action) => {
-                            //console.log(values, 'values')
-                            dispatch(updatePortfolioData(values))
+                            console.log(values, 'values')
+                            let formData = new FormData();
+
+                            Object.entries(values).forEach((item) => {
+                                const key = get(item, "[0]", "");
+                                const value = get(item, "[1]", "");
+                                formData.append(`${key}[]`,value)
+                            });
+                              dispatch(updatePortfolioData(values))
                             // action.resetForm()
                         }}
                     >
@@ -49,7 +82,8 @@ const PortfolioEdit = ({editPortfolio, setEditPortfolio}) => {
                                     <Typography className={classes.title}>
                                         Портфолио
                                     </Typography>
-                                    <Button type={"submit"} onClick={() => setEditPortfolio(false)}
+                                    <Button type={"submit"}
+                                            // onClick={() => setEditPortfolio(false)}
                                             size={"small"} sx={{minWidth:0,padding:0,marginLeft:5}}>
                                         <FileSVG color={'#808080'}/>
                                     </Button>
@@ -59,31 +93,28 @@ const PortfolioEdit = ({editPortfolio, setEditPortfolio}) => {
                                 <Typography variant={"h5"}>
                                     Фотографии
                                 </Typography>
-                                <CustomImageList imageData={imageData} />
-                                <Box style={{marginBottom: '10px'}}>
-                                    <CustomInputAddFile
-                                        svg={<AddButton
-                                            name={'file'}
-                                            value={values.file}
-                                            handleChange={handleChange} />}
-                                    />
-                                </Box>
+                                <FieldArray name={'executor_portfolios'}>
+                                    {({push, remove}) => (
+                                <CustomImageList imageData={values.executor_portfolios} push={(val) => push(val)} remove={remove}
+                                                />
 
-                                <FieldArray name={'link'}>
+                                    )}
+                                </FieldArray>
+                                <FieldArray name={'executor_portfolio_links'}>
                                     {({push, remove}) => (
                                         <Box>
-                                            {values.link.map((l, index) =>
+                                            {values.executor_portfolio_links?.map((l, index) =>
                                                 <Box key={index}>
 
                                                 <CustomInput
-                                                    name={`link[${index}].l`}
-                                                    value={l.link}
-                                                    handleChange={handleChange}
+                                                    name={`executor_portfolio_links[${index}].portfolio_link`}
+                                                    value={l.portfolio_link}
+                                                    handleChange={(val)=>setFieldValue(`executor_portfolio_links[${index}].portfolio_link`,val)}
                                                 />
-                                                    {values.link.length > index + 1 ? <div onClick={() => remove(index)}>
+                                                    {values.executor_portfolio_links.length > index + 1 ? <div onClick={() => remove(index)}>
                                                             <TrashSvg/>
                                                         </div>
-                                                        : <AddButton fun={() => push({link: ''})}/>}
+                                                        : <AddButton fun={() => push({portfolio_link:""})}/>}
                                                 </Box>
                                             )}
 

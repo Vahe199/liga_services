@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useEditCardStyles} from "../styles/EditCardStyles";
 import CustomDatePicker from "../../../UI/datePicker/CustomDatePicker";
 import Card from "@mui/material/Card";
@@ -12,16 +12,17 @@ import {FormControlLabel, Radio, RadioGroup} from "@mui/material";
 import Stack from "@mui/material/Stack";
 import {updatePersonalData} from "../../../../store/actions/ProfileDataActions";
 import moment from "moment"
+import {resetPartReducer} from "../../../../store/reducers/ProfileDataReducer";
 
-const EditPersonalData = ({setEditPersonallyData}) => {
+const EditPersonalData = ({setEditPersonallyData,setOpenToaster}) => {
     const classes =useEditCardStyles()
     const dispatch = useDispatch()
     const {status} = useSelector(state => state.auth);
-    const {user} = useSelector(state => state.profile);
+    const {user,successWork,error} = useSelector(state => state.profile);
     const [gender, setGender] = React.useState(user?.gender);
     const [data, setData] = React.useState(user?.birth_date);
     const [about, setAbout] = useState(user?.about_me ? user?.about_me : "");
-    const [save, setSave] = useState(false);
+
     const executorData = {
         gender:gender,
         birth_date:moment(data).format("YYYY-MM-DD"),
@@ -33,12 +34,23 @@ const EditPersonalData = ({setEditPersonallyData}) => {
     }
     const sendData = status === 'executor' ? executorData : clientData
     const sendPersonalData = () => {
-        setTimeout(()=>{
-            setSave(!save)
-            setEditPersonallyData(false)
-        },2000)
          dispatch(updatePersonalData(sendData))
     }
+    useEffect(()=>{
+        if(successWork){
+            setEditPersonallyData(false)
+            setOpenToaster(true)
+            setTimeout(()=>{
+                dispatch(resetPartReducer())
+            },7000)
+        }
+        if(error){
+            setOpenToaster(true)
+            setTimeout(()=>{
+                dispatch(resetPartReducer())
+            },7000)
+        }
+    },[successWork, error])
     return (
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
             <Box style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
@@ -46,7 +58,7 @@ const EditPersonalData = ({setEditPersonallyData}) => {
                     Личные данные
                 </Typography>
                 <div onClick={sendPersonalData} style={{cursor: "pointer", padding: '0 0 7px 20px'}}>
-                    <FileSVG color={save? "#4b9a2d" : "#808080"}/>
+                    <FileSVG color={"#808080"}/>
                 </div>
             </Box>
 

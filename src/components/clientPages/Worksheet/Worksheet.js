@@ -77,7 +77,7 @@ export const Worksheet = () =>{
                     <ProfileActions setOpenLogOutModal={setOpenLogOutModal} />
                 </Grid>
                 <Grid item sm={12} lg={8}>
-                    {editPersonallyData ? <EditPersonalData setEditPersonallyData={setEditPersonallyData}
+                    {editPersonallyData ? <EditPersonalData setOpenToaster={setOpenToaster} setEditPersonallyData={setEditPersonallyData}
                         />
                        : <PersonalData setEditPersonallyData={setEditPersonallyData}/>}
                     {status === 'executor' &&
@@ -89,7 +89,8 @@ export const Worksheet = () =>{
                         <ExperienceBlock editExperienceBlock={editExperienceBlock}
                                          setOpenToaster={setOpenToaster}
                                          setEditExperienceBlock={setEditExperienceBlock} />
-                        <Portfolio editPortfolio={editPortfolio} setEditPortfolio={setEditPortfolio} />
+                        <Portfolio editPortfolio={editPortfolio} setEditPortfolio={setEditPortfolio}
+                                   setOpenToaster={setOpenToaster}/>
                         <EducationBlock editEducationBlock={editEducationBlock} setEditEducationBlock={setEditEducationBlock} />
                         <CustomerReviews reviews={executor[0].reitings} />
                     </Box>

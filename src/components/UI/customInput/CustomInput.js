@@ -91,7 +91,7 @@ const CustomInput = ({label,
                 autoComplete={'off'}
                 value={value}
                 style={{width: '100%'}}
-                onChange={handleChange}
+                onChange={(e) =>handleChange(e.target.value)}
                 rows={textArea ? 2 : 0}
                 error={Boolean(touched && error)}
                 helperText={touched && error}

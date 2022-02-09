@@ -2,16 +2,30 @@ import React, {useEffect, useState} from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import {makeStyles} from "@material-ui/core";
-
-
+import Button from "@mui/material/Button";
+import IconButton from '@mui/material/IconButton';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import {CloseSvg} from "../../../assets/svg/CloseSvg";
 export const useStyles = makeStyles({
   img: {
-      width: '100%',
-    },
+    "& .MuiImageListItem-img":{
+      width:168,
+      height:113,
+    }
   },
-);
+  addBtn:{
+    width:168,
+      height:113,
+      backgroundColor:"lightgray",
+      fontSize:40,
+      fontWeight:300,
+    "&:hover": {
+      background: '#C4C4C4',
+    }
+  }
+});
 
-const CustomImageList = ({imageData}) => {
+const CustomImageList = ({imageData=[], remove,push,editPortfolio = true}) => {
   const breakpoints = {
     xs: 0,
     sm: 600,
@@ -45,12 +59,65 @@ const CustomImageList = ({imageData}) => {
   }, []);
   const classes = useStyles();
   return (
-    <ImageList cols={columns} >
-      {imageData.map((item,i) => (
-        <ImageListItem key={i}>
-          <img src={`${item.img}`} alt={item.title} />
+    <ImageList cols={columns} className={classes.img}>
+      {imageData?.map((item,i) => (
+        <ImageListItem key={i} >
+          <img
+               src={item?.portfoliopic_base}
+               srcSet={item?.portfoliopic_base}
+               alt={"title"}
+               loading="lazy"/>
+          {editPortfolio && <ImageListItemBar
+              sx={{
+                background:
+                    'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
+                    'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+              }}
+              title={item.title}
+              position="top"
+              actionIcon={
+                <IconButton onClick={()=>remove(i)}
+                    sx={{ color: 'white' }}
+                >
+                 <CloseSvg color={"#fff"} size={12}/>
+                </IconButton>
+              }
+              actionPosition="right"
+          />}
         </ImageListItem>
       ))}
+        {editPortfolio && <ImageListItem>
+            <input
+                name={"photo"}
+                accept="image/*"
+                style={{display: "none"}}
+                id="raised-button-file"
+                multiple
+                type="file"
+                onChange={(e) => {
+                    const fileReader = new FileReader();
+                    fileReader.onload = () => {
+                        if (fileReader.readyState === 2) {
+                            // setFieldValue("photo", e.target.files[0]);
+                            //   push(fileReader.result)
+                            push({portfoliopic_base:fileReader.result})
+                            // console.log(fileReader.result, "e.target.files[0]")
+                            // setAvatarPreview(fileReader.result);
+                        }
+                    };
+                    if (e.target.files[0]) {
+                        fileReader.readAsDataURL(e.target.files[0]);
+                    }
+                }}
+            />
+            <label htmlFor="raised-button-file">
+                <Button className={classes.addBtn}
+                        component="span"
+                >
+                    +
+                </Button>
+            </label>
+        </ImageListItem>}
     </ImageList>
   );
 };

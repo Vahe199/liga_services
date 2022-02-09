@@ -1,7 +1,8 @@
 import React from 'react';
 import Box from "@mui/material/Box";
 
-const CustomInputAddFile = ({value, handleChange, name, svg, label}) => {
+const CustomInputAddFile = ({value, handleChange, name, svg, label,accept =                 accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                            }) => {
     return (
         <Box>
             <input
@@ -12,7 +13,7 @@ const CustomInputAddFile = ({value, handleChange, name, svg, label}) => {
                 multiple
                 onChange={handleChange}
                 id="icon-button-file"
-                accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                accept={accept}
                 style={{ display: 'none' }}
             />
             <label style={{display: 'flex', marginTop: '10px', justifyContent: 'flex-start', alignItems: 'center'}} htmlFor="icon-button-file">
