@@ -19,7 +19,7 @@ const OrderContentForm = ({setShowModal}) => {
         <Formik
             initialValues={{ service_price_from: '', offer_to_employer: '', service_price_to: '', }}
             onSubmit={(values, action) => {
-                console.log(values, 'values')
+                //console.log(values, 'values')
                 //setShowModal(true)
                 //action.resetForm()
             }}

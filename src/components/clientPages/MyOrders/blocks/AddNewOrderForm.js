@@ -47,7 +47,6 @@ const AddNewOrderForm = ({setOpenToaster}) => {
     ];
 
 
-
     return (
         <Formik
             initialValues={{
@@ -88,7 +87,7 @@ const AddNewOrderForm = ({setOpenToaster}) => {
                                 <CustomInput
                                     name={'title'}
                                     label={'Название'}
-                                    handleChange={handleChange}
+                                    handleChange={(val) => setFieldValue('title', val)}
                                     value={values.title}
                                     touched={touched.title}
                                     error={errors.title}
@@ -125,7 +124,7 @@ const AddNewOrderForm = ({setOpenToaster}) => {
                                 label={'Описание'}
                                 name={'task_description'}
                                 value={values.task_description}
-                                handleChange={handleChange}
+                                handleChange={(val) => setFieldValue('task_description', val)}
                                 touched={touched.task_description}
                                 error={errors.task_description}
                                 textArea={true}
@@ -215,7 +214,7 @@ const AddNewOrderForm = ({setOpenToaster}) => {
                                     label={'Регион'}
                                     name={'region'}
                                     value={values.region}
-                                    handleChange={handleChange}
+                                    handleChange={(val) => setFieldValue('region', val)}
                                     touched={touched.region}
                                     error={errors.region}
                                 />
@@ -223,14 +222,18 @@ const AddNewOrderForm = ({setOpenToaster}) => {
                                     label={'Адрес'}
                                     name={'address'}
                                     value={values.address}
-                                    handleChange={handleChange}
+                                    handleChange={(val) => setFieldValue('address', val)}
                                     touched={touched.address}
                                     error={errors.address}
                                 />
                             </Box>}
 
                             <Box style={{marginTop: value === 'client' ? '10px' : '10px'}}>
-                                <BlueButton action={handleSubmit}
+                                <BlueButton action={() => {
+                                    handleSubmit();
+                                    console.log(errors, 'errors')
+                                    console.log(values, 'values')
+                                }}
                                             backgroundColor={'#445E77'}
                                             disabledColor={'#445e77c4'}
                                             load={loadBtn}

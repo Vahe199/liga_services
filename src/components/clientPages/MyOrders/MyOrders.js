@@ -261,7 +261,7 @@ export const MyOrders = () => {
 
     useEffect(() => {
         dispatch(getNotAppliedTasks())
-        console.log(orders, 'orders', newOrders, 'newOrders')
+        //console.log(orders, 'orders', newOrders, 'newOrders')
     }, [])
 
     useEffect(() => {

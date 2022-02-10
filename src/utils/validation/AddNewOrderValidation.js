@@ -17,7 +17,7 @@ export function checkIfFilesAreCorrectType(files) {
     let valid = true
     if (files) {
         files.map(file => {
-            if (!['application/pdf', 'image/jpeg', 'image/png'].includes(file.type)) {
+            if (!['image/jpeg', 'image/png'].includes(file.type)) {
                 valid = false
             }
         })
@@ -76,14 +76,23 @@ export const AddNewOrderValidation = () => object().shape({
     //         )
     //     })
     //     .required('Обязательное поле')).min(1, 'В поле должно быть хотя бы 1 элемента.').nullable()
-    task_img: array().required().min(1, 'vdsvdv').nullable().of(mixed()
-        .test('fileType', 'Unsupported File Format', function (value) {
-            const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
-            return SUPPORTED_FORMATS.includes(value.type)
-        })
-        .test('fileSize', "File Size is too large", value => {
-            const sizeInBytes = 1000;//0.5MB
-            return value.size <= sizeInBytes;
-        }))
+    // task_img: array().required().min(1, 'vdsvdv').nullable().of(mixed()
+    //     .test('fileType', 'Unsupported File Format', function (value) {
+    //         const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
+    //         return SUPPORTED_FORMATS.includes(value.type)
+    //     })
+    //     .test('fileSize', "File Size is too large", value => {
+    //         const sizeInBytes = 1000;//0.5MB
+    //         return value.size <= sizeInBytes;
+    //     }))
+
+    task_img: array()
+            .min(1, 'В поле должно быть хотя бы 1 элемента.')
+            .test('is-correct-file', 'VALIDATION_FIELD_FILE_BIG', checkIfFilesAreTooBig)
+            .test(
+                'is-big-file',
+                'VALIDATION_FIELD_FILE_WRONG_TYPE',
+                checkIfFilesAreCorrectType
+            ),
 
 })
