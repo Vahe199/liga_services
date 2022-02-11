@@ -91,7 +91,7 @@ export const Worksheet = () =>{
                                          setEditExperienceBlock={setEditExperienceBlock} />
                         <Portfolio editPortfolio={editPortfolio} setEditPortfolio={setEditPortfolio}
                                    setOpenToaster={setOpenToaster}/>
-                        <EducationBlock editEducationBlock={editEducationBlock} setEditEducationBlock={setEditEducationBlock} />
+                        <EducationBlock setOpenToaster={setOpenToaster} editEducationBlock={editEducationBlock} setEditEducationBlock={setEditEducationBlock} />
                         <CustomerReviews reviews={executor[0].reitings} />
                     </Box>
                     }
