@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit"
 import {Login} from "../actions/AuthActions";
 import {updateNotifications} from "../actions/ProfileDataActions";
 import {
-    AddNewTask, deleteTask, finishTask,
+    AddNewTask, createRating, deleteTask, finishTask,
     getCompletedTasks,
     getInProcessTasks,
     getNotAppliedTasks,
@@ -16,6 +16,7 @@ const taskSlice = createSlice({
         error: false,
         load: false,
         loadBtn: false,
+        rejectLoadBtn: false,
         successWork: false,
         message: '',
         completedTasks: [],
@@ -66,7 +67,7 @@ const taskSlice = createSlice({
         [getRespondedTasks.fulfilled]: (state, action) => {
             state.load = false
             state.error = false
-            state.respondedTasks = action.payload.message
+            state.respondedTasks = action.payload
             state.status = 'applied'
         },
         [getRespondedTasks.rejected]: (state, action) => {
@@ -117,6 +118,21 @@ const taskSlice = createSlice({
             state.error = true
             state.message = 'Что то пошло не так'
         },
+        //reject executor
+        [rejectExecutor.pending]: (state) => {
+            state.rejectLoadBtn = true
+        },
+        [rejectExecutor.fulfilled]: (state, action) => {
+            state.rejectLoadBtn = false
+            state.error = false
+            state.message = 'Исполнитель успешно удален'
+            state.successWork = true
+        },
+        [rejectExecutor.rejected]: (state, action) => {
+            state.rejectLoadBtn = false
+            state.error = true
+            state.message = 'Что то пошло не так'
+        },
         //finish task
         [finishTask.pending]: (state) => {
             state.loadBtn = true
@@ -139,13 +155,28 @@ const taskSlice = createSlice({
         [deleteTask.fulfilled]: (state, action) => {
             state.loadBtn = false
             state.error = false
-            state.message = 'Вы удалили данного исполнителя'
+            state.message = action.payload.message
             state.successWork = true
         },
         [deleteTask.rejected]: (state, action) => {
             state.loadBtn = false
             state.error = true
-            state.message = 'Что то пошло не так'
+            state.message = action.payload.message
+        },
+        //create rating
+        [createRating.pending]: (state) => {
+            state.loadBtn = true
+        },
+        [createRating.fulfilled]: (state, action) => {
+            state.loadBtn = false
+            state.error = false
+            state.message = action.payload.message
+            state.successWork = true
+        },
+        [createRating.rejected]: (state, action) => {
+            state.loadBtn = false
+            state.error = true
+            state.message = action.payload.message
         },
     }
 

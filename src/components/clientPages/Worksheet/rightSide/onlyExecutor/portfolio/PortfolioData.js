@@ -30,7 +30,7 @@ const PortfolioData = ({editPortfolio, setEditPortfolio}) => {
             <Typography variant={"h5"}>
                 Фотографии
             </Typography>
-            <CustomImageList imageData={executor_portfolios} editPortfolio={editPortfolio} />
+            <CustomImageList imageData={executor_portfolios} show={editPortfolio} />
             <Typography variant={"h5"}>
                 Ссылки
             </Typography>
