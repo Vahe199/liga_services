@@ -3,7 +3,7 @@ import {
     choosesAvatarData,
     choosesProfessionData,
     getProfilePageData,
-    getЕxecutorProfilePageData,
+    getЕxecutorProfilePageData, updateAddressesData, updateExecutorData,
     updateNotifications, updatePersonalData, updatePortfolioData,
     updateSocLink
 } from "../actions/ProfileDataActions";
@@ -161,6 +161,38 @@ const profileDataSlice = createSlice({
             state.message = "Данные портфеля успешно обновлены"
         },
         [updatePortfolioData.rejected]: (state, action) => {
+            state.load = false
+            state.error = true
+            state.message = action.payload
+            state.successWork = false
+        },
+        [updateExecutorData.pending]: (state) => {
+            state.load = true
+        },
+        [updateExecutorData.fulfilled]: (state, action) => {
+            state.load = false
+            state.error = false
+            state.profile = action.payload.data[0]
+            state.successWork = true
+            state.message = "Данные образование и сертификаты успешно обновлены"
+        },
+        [updateExecutorData.rejected]: (state, action) => {
+            state.load = false
+            state.error = true
+            state.message = action.payload
+            state.successWork = false
+        },
+        [updateAddressesData.pending]: (state) => {
+            state.load = true
+        },
+        [updateAddressesData.fulfilled]: (state, action) => {
+            state.load = false
+            state.error = false
+            state.profile = action.payload.data[0]
+            state.successWork = true
+            state.message = "Данные районы и адреса успешно обновлены"
+        },
+        [updateAddressesData.rejected]: (state, action) => {
             state.load = false
             state.error = true
             state.message = action.payload

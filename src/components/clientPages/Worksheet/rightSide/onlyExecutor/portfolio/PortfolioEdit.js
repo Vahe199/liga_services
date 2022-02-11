@@ -95,7 +95,7 @@ const PortfolioEdit = ({editPortfolio, setEditPortfolio,setOpenToaster}) => {
                                 </Typography>
                                 <FieldArray name={'executor_portfolios'}>
                                     {({push, remove}) => (
-                                <CustomImageList imageData={values.executor_portfolios} push={(val) => push(val)} remove={remove}
+                                <CustomImageList imageData={values.executor_portfolios} push={(val) => push({portfoliopic_base: val})} remove={remove}
                                                 />
 
                                     )}

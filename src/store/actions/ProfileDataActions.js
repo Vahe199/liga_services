@@ -128,3 +128,31 @@ export const updatePortfolioData = createAsyncThunk(
         }
     }
 )
+export const updateExecutorData = createAsyncThunk(
+    'profile/updateExecutorData',
+    async (data,thunkAPI) => {
+        try {
+            const response = await instance.post("v1/user/education-and-certificate", data)
+            return response.data
+        } catch (e) {
+            console.log(e.response, 'register error')
+            return thunkAPI.rejectWithValue('Что то пошло не так')
+            // return thunkAPI.rejectWithValue('Что то пошло не так')
+        }
+    }
+)
+export const updateAddressesData = createAsyncThunk(
+    'profile/updateAddressesData',
+    async (data,thunkAPI) => {
+        try {
+            const response = await instance.post("v1/user/region-address ", data)
+            debugger
+            return response.data
+        } catch (e) {
+            console.log(e.response, 'register error')
+            debugger
+            return thunkAPI.rejectWithValue('Что то пошло не так')
+            // return thunkAPI.rejectWithValue('Что то пошло не так')
+        }
+    }
+)

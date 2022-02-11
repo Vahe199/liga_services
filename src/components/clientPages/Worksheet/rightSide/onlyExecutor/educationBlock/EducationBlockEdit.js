@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
 import Card from "@mui/material/Card";
 import CustomInput from "../../../../../UI/customInput/CustomInput";
@@ -8,24 +8,58 @@ import CustomInputAddFile from "../../../../../UI/customInputAddFile/CustomInput
 import AddButton from "../../../../../UI/CustomButtons/AddButton";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import FormControl from "@mui/material/FormControl";
 import Button from "@mui/material/Button";
 import {FileSVG} from "../../../../../../assets/svg/Profile/FileSVG";
 import CustomDivider from "../../../../../UI/customDivider/CustomDivider";
-import {Formik} from "formik";
-import {Checkbox, FormControlLabel, FormGroup} from "@mui/material";
+import {FieldArray, Formik} from "formik";
+import {Checkbox, FormControlLabel, FormGroup, FormLabel,FormControl, Radio, RadioGroup} from "@mui/material";
+import {updateExecutorData} from "../../../../../../store/actions/ProfileDataActions";
+import {useDispatch, useSelector} from "react-redux";
+import {resetPartReducer} from "../../../../../../store/reducers/ProfileDataReducer";
+import get from "lodash/get";
+import pick from "lodash/pick";
 
-
-const EducationBlockEdit = ({editEducationBlock, setEditEducationBlock}) => {
+const EducationBlockEdit = ({editEducationBlock, setEditEducationBlock,setOpenToaster}) => {
     const classes = useInfoCardStyles();
-
+    const dispatch = useDispatch()
+    const {profile ={},successWork, error} = useSelector(state => state.profile)
+    useEffect(()=>{
+        if(successWork){
+            setEditEducationBlock(false)
+            setOpenToaster(true)
+            setTimeout(()=>{
+                dispatch(resetPartReducer())
+            },7000)
+        }
+        if(error){
+            setOpenToaster(true)
+            setTimeout(()=>{
+                dispatch(resetPartReducer())
+            },7000)
+        }
+    },[successWork, error])
+    const initialValues = {
+        executor_educations: get(profile, "executor_educations", [{
+            id: "",
+            education_type: "",
+            education_place: ""
+        }]).map(
+            (education) =>
+                pick(education, ["education_type","education_place"])
+        ),
+        executor_education_certificates:get(profile, "executor_education_certificates", [{id:"",certificate_base:""}]).map(
+            (certificates) =>
+                pick(certificates, ["certificate_base"])
+        )
+    }
     return (
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
             <Formik
-                initialValues={{ education_type: [], education_name: '', description: '', file: ''}}
+                initialValues={initialValues}
                 onSubmit={async (values, action) => {
-                    setEditEducationBlock(false)
-                    //console.log(values, 'values')
+                    // setEditEducationBlock(false)
+                    console.log(values, 'values')
+                    dispatch(updateExecutorData(values))
                     action.resetForm()
                 }}
             >
@@ -47,7 +81,7 @@ const EducationBlockEdit = ({editEducationBlock, setEditEducationBlock}) => {
                                 </Typography>
                                 <Button type={handleSubmit}
                                         //onClick={() => setEditEducationBlock(false)}
-                                        size={"small"} style={{cursor: "pointer", padding: '0 0 7px 20px'}}>
+                                        size={"small"} sx={{minWidth:0,padding:0,marginLeft:5}}>
                                     <FileSVG color={'#808080'}/>
                                 </Button>
                             </Box>
@@ -56,46 +90,39 @@ const EducationBlockEdit = ({editEducationBlock, setEditEducationBlock}) => {
                                 Образование
                             </Typography>
                             <Box>
-                                <FormControl component="fieldset" variant="standard">
-                                    <FormGroup row>
+                                <FormControl component="fieldset">
+                                    <FormLabel style={{margin: '-15px 0 10px 0'}} className={classes.inputText}
+                                               component="legend">Место выполнения работы</FormLabel>
+                                    <RadioGroup
+                                        aria-label="gender"
+                                        defaultValue={`${values.executor_educations[0].education_type}`}
+                                        name="executor_educations[0].education_type"
+                                        style={{display: "flex", flexDirection: "row"}}
+                                    >
                                         <FormControlLabel
-                                            control={
-                                                <Checkbox style ={{
-                                                    color: '#4B9A2D'
-                                                }} size="small"
-                                                          value={values.education_type}
-                                                          onChange={handleChange} name="initial" />
-                                            }
-                                            label={<Typography style={{fontWeight: '500'}} variant={'h4'}>Начальное общее</Typography>}
-                                        />
+                                            control={<Radio classes={{root: classes.radio, checked: classes.checked}}
+                                                            style={{color: '#4B9A2D'}} size={'small'} onChange={(e) => {
+                                                setFieldValue('executor_educations[0].education_type', e.target.value)
+                                            }} value="Начальное общее"/>} label="Начальное общее"/>
+                                        <FormControlLabel control={<Radio onChange={(e) => {
+                                            setFieldValue('executor_educations[0].education_type', e.target.value)
+                                        }} classes={{root: classes.radio, checked: classes.checked}}
+                                                                          style={{color: '#4B9A2D'}} size={'small'}
+                                                                          value="Основное общее"/>}
+                                                          label="Основное общее"/>
                                         <FormControlLabel
-                                            control={
-                                                <Checkbox style ={{
-                                                    color: '#4B9A2D'
-                                                }} size="small"
-                                                          value={values.education_type} onChange={handleChange} name="basic" />
-                                            }
-                                            label={<Typography style={{fontWeight: '500'}} variant={'h4'}>Основное общее</Typography>}
-                                        />
+                                            control={<Radio classes={{root: classes.radio, checked: classes.checked}}
+                                                            style={{color: '#4B9A2D'}} size={'small'}
+                                                            onChange={(e) => {
+                                                                setFieldValue('executor_educations[0].education_type', e.target.value)
+                                                            }} value="Среднее общее"/>} label="Среднее общее"/>
                                         <FormControlLabel
-                                            control={
-                                                <Checkbox style ={{
-                                                    color: '#4B9A2D'
-                                                }}  size="small"
-                                                          value={values.education_type} onChange={handleChange} name="average" />
-                                            }
-                                            label={<Typography style={{fontWeight: '500'}} variant={'h4'}>Среднее общее</Typography>}
-                                        />
-                                        <FormControlLabel
-                                            control={
-                                                <Checkbox style ={{
-                                                    color: '#4B9A2D'
-                                                }} size="small"
-                                                          value={values.education_type} onChange={handleChange} name="higher" />
-                                            }
-                                            label={<Typography style={{fontWeight: '500'}} variant={'h4'}>Высшее</Typography>}
-                                        />
-                                    </FormGroup>
+                                            control={<Radio classes={{root: classes.radio, checked: classes.checked}}
+                                                            style={{color: '#4B9A2D'}} size={'small'}
+                                                            onChange={(e) => {
+                                                                setFieldValue('executor_educations[0].education_type', e.target.value)
+                                                            }} value="Высшее"/>} label="Высшее"/>
+                                    </RadioGroup>
                                 </FormControl>
                             </Box>
                             <Typography variant={"h5"}>
@@ -104,22 +131,21 @@ const EducationBlockEdit = ({editEducationBlock, setEditEducationBlock}) => {
 
                             <Box className={classes.singleInput}>
                                 <CustomInput
-                                    name={'education_name'}
-                                    value={values.education_name}
-                                    handleChange={handleChange}
+                                    name={'executor_educations[0].education_place'}
+                                    value={values.executor_educations[0].education_place}
+                                    handleChange={(val)=>setFieldValue('executor_educations[0].education_place',val)}
                                 />
                             </Box>
                             <Typography variant={"h5"}>
                                 Сертификаты
                             </Typography>
-                            <CustomImageList imageData={imageData} />
+                            <FieldArray name={'executor_education_certificates'}>
+                                {({push, remove}) => (
+                                    <CustomImageList education={true} imageData={values.executor_education_certificates} push={(val) => push({certificate_base: val})} remove={remove}
+                                    />
 
-                            <CustomInputAddFile
-                                name={'file'}
-                                value={values.file}
-                                handleChange={handleChange}
-                                svg={<AddButton />}
-                            />
+                                )}
+                            </FieldArray>
                         </Box>
                     </form>
                 )}

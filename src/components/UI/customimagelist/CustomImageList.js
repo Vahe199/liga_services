@@ -25,7 +25,9 @@ export const useStyles = makeStyles({
   }
 });
 
-const CustomImageList = ({imageData=[], remove,push,show = true}) => {
+
+const CustomImageList = ({imageData=[], remove,push,editPortfolio = true,education = false}) => {
+
   const breakpoints = {
     xs: 0,
     sm: 600,
@@ -33,7 +35,7 @@ const CustomImageList = ({imageData=[], remove,push,show = true}) => {
     lg: 1280,
     xl: 1920
   }
-
+  console.log(imageData,"imageData")
   const getColumns = (width) => {
     if (width < breakpoints.sm) {
       return 1
@@ -63,8 +65,8 @@ const CustomImageList = ({imageData=[], remove,push,show = true}) => {
       {imageData?.map((item,i) => (
         <ImageListItem key={i} >
           <img
-               src={item?.portfoliopic_base}
-               srcSet={item?.portfoliopic_base}
+               src={education ? item?.certificate_base : item?.portfoliopic_base}
+               srcSet={education ? item?.certificate_base : item?.portfoliopic_base}
                alt={"title"}
                loading="lazy"/>
           {show && <ImageListItemBar
@@ -73,7 +75,6 @@ const CustomImageList = ({imageData=[], remove,push,show = true}) => {
                     'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
                     'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
               }}
-              title={item.title}
               position="top"
               actionIcon={
                 <IconButton onClick={()=>remove(i)}
@@ -100,7 +101,7 @@ const CustomImageList = ({imageData=[], remove,push,show = true}) => {
                         if (fileReader.readyState === 2) {
                             // setFieldValue("photo", e.target.files[0]);
                             //   push(fileReader.result)
-                            push({portfoliopic_base:fileReader.result})
+                            push(fileReader.result)
                             // console.log(fileReader.result, "e.target.files[0]")
                             // setAvatarPreview(fileReader.result);
                         }

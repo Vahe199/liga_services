@@ -36,6 +36,20 @@ export const useInfoCardStyles = makeStyles({
             height: '10px',
         },
     },
+    radio: {
+        '&$checked': {
+            color: '#4B9A2D'
+        },
+    },
+    checked: {},
+    inputText: {
+        fontSize: '15px',
+        textAlign: 'left',
+        width: '100%',
+        marginTop: '15px',
+        marginBottom: '4px',
+        color: '#000000',
+    },
     titleWrap:{
         display: "flex",
         justifyContent: "space-between",
