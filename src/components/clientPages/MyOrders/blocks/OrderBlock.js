@@ -17,6 +17,7 @@ const OrderBlock = ({order, status, openToaster, setOpenToaster}) => {
 
     return (
         showDetails === order.id ? <NotAppliedOrderDetails setShowDetails={setShowDetails}
+                                                           setOpenToaster={setOpenToaster}
                                                            starTime={start_time}
                                                            finishTime={finsih_time}
                                                            order={order}  />

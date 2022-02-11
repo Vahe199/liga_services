@@ -7,10 +7,31 @@ import moment from 'moment';
 import 'moment/locale/ru';
 import {ArrowSvg} from "../../../../assets/svg/ArrowSvg";
 import IconButton from "@mui/material/IconButton";
+import {deleteTask, selectExecutor} from "../../../../store/actions/TaskActions";
+import {useDispatch} from "react-redux";
+import {resetPartReducer} from "../../../../store/reducers/TaskReducer";
+import {choosesAvatarData} from "../../../../store/actions/ProfileDataActions";
 
 
 const NotAppliedOrder = ({order, starTime, finishTime, setShowDetails}) => {
     const classes = useMyOrdersStyles();
+    const dispatch = useDispatch()
+
+
+    const remove = async (id) => {
+        //console.log(task_id, 'task_id', execuro_id, 'execuro_id')
+        let formData = new FormData();
+        formData.append("_method", 'delete');
+        //await dispatch(choosesAvatarData(formData))
+        //await dispatch(deleteTask())
+        //setOpenToaster(true)
+        console.log(id, formData)
+        // setTimeout(() => {
+        //     dispatch(resetPartReducer())
+        // }, 7000)
+
+    }
+
 
     return (
         <Box>
@@ -76,7 +97,7 @@ const NotAppliedOrder = ({order, starTime, finishTime, setShowDetails}) => {
                 </Box>
 
                 <Box>
-                    <Typography style={{color: '#E54C51', cursor: 'pointer'}} >
+                    <Typography onClick={() => remove(order.id)} style={{color: '#E54C51', cursor: 'pointer'}} >
                         Удалить
                     </Typography>
                 </Box>

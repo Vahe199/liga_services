@@ -40,12 +40,12 @@ const taskExecutorSlice = createSlice({
             state.loadBtn = false
             state.error = false
             state.successWork = true
-            state.message = 'Вы выбрали данную работу'
+            state.message = action.payload.message
         },
         [clickOnTask.rejected]: (state, action) => {
             state.loadBtn = false
             state.error = true
-            state.message = 'Что то пошло не так'
+            state.message = action.payload.message
         },
     }
 

@@ -6,7 +6,7 @@ import {useMyOrdersStyles} from "../MyOrders";
 import MapYandex from "../../../UI/map/Map";
 import moment from "moment";
 
-const NotAppliedOrderDetails = ({order, starTime, finishTime, setShowDetails}) => {
+const NotAppliedOrderDetails = ({order, starTime, finishTime, setOpenToaster, setShowDetails}) => {
     const classes = useMyOrdersStyles();
     return (
         <Box>

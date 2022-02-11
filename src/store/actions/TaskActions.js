@@ -106,6 +106,19 @@ export const rejectExecutor = createAsyncThunk(
     }
 )
 
+export const deleteTask = createAsyncThunk(
+    'task/deleteTask',
+    async (data, thunkAPI) => {
+        try {
+            const response = await instance.post(`v1/user/task/${data.id}/delete`, data)
+            return response.data
+        } catch (e) {
+            console.log(e.response, 'register error')
+            return thunkAPI.rejectWithValue('Что то пошло не так')
+        }
+    }
+)
+
 
 
 
