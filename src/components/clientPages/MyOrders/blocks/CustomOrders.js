@@ -72,7 +72,6 @@ const CustomOrders = ({order, setShowDetails, status, openToaster, setOpenToaste
         }, 7000)
     }
 
-
     return (
         <Box>
             <Box className={classes.orderSubBlockSpaceBetween}>
@@ -141,8 +140,8 @@ const CustomOrders = ({order, setShowDetails, status, openToaster, setOpenToaste
                         <Box className={classes.orderSubBlockSpaceBetween}>
                             <Box>
                                 {status === 'completed' && <Box style={{width: '50%'}}>
-                                    <Typography variant={'h6'}>Ваш отзыв</Typography>
-                                    <Typography variant={'h5'}>Я довольна</Typography>
+                                    <Typography style={{whiteSpace: 'nowrap'}} variant={'h6'}>Ваш отзыв</Typography>
+                                    <Typography style={{whiteSpace: 'nowrap'}} variant={'h5'}>Я довольна</Typography>
                                 </Box>}
                                 {status === 'completed' && <Typography variant={'h6'}>Баллы</Typography>}
                                 {status === 'completed' && <Rating style={{color: "#FFF066"}} name="half-rating-read" defaultValue={4}

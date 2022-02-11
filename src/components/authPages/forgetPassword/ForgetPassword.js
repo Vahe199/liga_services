@@ -56,6 +56,7 @@ const ForgetPasswordPage = () => {
                           touched,
                           handleChange,
                           handleSubmit,
+                          setFieldValue
                       }) => (
                         <form onSubmit={handleSubmit}>
                             <Box className={classes.subContainer}>
@@ -65,7 +66,7 @@ const ForgetPasswordPage = () => {
                                     name={"password"}
                                     type={'password'}
                                     value={values.password}
-                                    handleChange={handleChange}
+                                    handleChange={(val) => setFieldValue('password', val)}
                                     touched={touched.password}
                                     error={errors.password}
                                 />
@@ -75,7 +76,7 @@ const ForgetPasswordPage = () => {
                                     type={'password'}
                                     name={"password_confirmation"}
                                     value={values.password_confirmation}
-                                    handleChange={handleChange}
+                                    handleChange={(val) => setFieldValue('password_confirmation', val)}
                                     touched={touched.password_confirmation}
                                     error={errors.password_confirmation}
 

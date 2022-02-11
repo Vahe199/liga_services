@@ -90,7 +90,7 @@ const LoginPage = () => {
                                     width={"70%"}
                                     name={"email"}
                                     value={values.email}
-                                    handleChange={handleChange}
+                                    handleChange={(val) => setFieldValue('email', val)}
                                     touched={touched.email}
                                     error={errors.email}
                                 />
@@ -100,7 +100,7 @@ const LoginPage = () => {
                                     name={"password"}
                                     type={'password'}
                                     value={values.password}
-                                    handleChange={handleChange}
+                                    handleChange={(val) => setFieldValue('password', val)}
                                     touched={touched.password}
                                     error={errors.password}
 

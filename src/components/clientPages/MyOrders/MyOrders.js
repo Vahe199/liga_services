@@ -244,7 +244,7 @@ export const useMyOrdersStyles = makeStyles({
 export const MyOrders = () => {
     const classes = useMyOrdersStyles()
     const [valueTime, setValueTime] = useState(new Date());
-    const [showForm, setShowForm] = useState(true);
+    const [showForm, setShowForm] = useState(false);
 
     const {status, load, error, completedTasks, notAppliedTasks = [], respondedTasks, inProcessTasks, successWork, message} = useSelector(state => state.task)
 
@@ -271,7 +271,7 @@ export const MyOrders = () => {
         setNewOrders((item) => newOrders.filter(item => {
             return moment(item.created_at).format("YYYY-MM-DD") === moment(valueTime).format("YYYY-MM-DD")
         }))
-       // console.log(newOrders, 'filterOrders')
+        console.log(newOrders, 'filterOrders')
     }, [valueTime])
 
 

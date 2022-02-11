@@ -77,6 +77,7 @@ const RegistrationPage = () => {
                           touched,
                           handleChange,
                           handleSubmit,
+                          setFieldValue
                       }) => (
                         <form onSubmit={handleSubmit}>
                             <Box className={classes.subContainer}>
@@ -85,7 +86,7 @@ const RegistrationPage = () => {
                                     width={'70%'}
                                     name={'name'}
                                     value={values.name}
-                                    handleChange={handleChange}
+                                    handleChange={(val) => setFieldValue('name', val)}
                                     touched={touched.name}
                                     error={errors.name}
                                     mb={0}
@@ -95,7 +96,7 @@ const RegistrationPage = () => {
                                     width={'70%'}
                                     name={'phonenumber'}
                                     value={values.phonenumber}
-                                    handleChange={handleChange}
+                                    handleChange={(val) => setFieldValue('phonenumber', val)}
                                     touched={touched.phonenumber}
                                     error={errors.phonenumber}
                                     mb={0}
@@ -105,7 +106,7 @@ const RegistrationPage = () => {
                                     width={'70%'}
                                     name={'email'}
                                     value={values.email}
-                                    handleChange={handleChange}
+                                    handleChange={(val) => setFieldValue('email', val)}
                                     touched={touched.email}
                                     error={errors.email}
                                     mb={0}
@@ -115,7 +116,7 @@ const RegistrationPage = () => {
                                     width={'70%'}
                                     name={'password'}
                                     value={values.password}
-                                    handleChange={handleChange}
+                                    handleChange={(val) => setFieldValue('password', val)}
                                     touched={touched.password}
                                     error={errors.password}
                                     mb={0}
@@ -125,7 +126,7 @@ const RegistrationPage = () => {
                                     width={'70%'}
                                     name={'password_confirmation'}
                                     value={values.password_confirmation}
-                                    handleChange={handleChange}
+                                    handleChange={(val) => setFieldValue('password_confirmation', val)}
                                     touched={touched.password_confirmation}
                                     error={errors.password_confirmation}
                                     mb={0}

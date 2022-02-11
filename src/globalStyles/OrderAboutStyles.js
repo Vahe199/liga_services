@@ -21,7 +21,7 @@ export const useOrderAboutStyles = makeStyles({
         "& .MuiTypography-h2":{
             fontSize: 22,
             fontWeight: 500,
-            display: 'flex',
+            //display: 'flex',
         },
         "& .MuiTypography-h3":{
             fontSize: 24,

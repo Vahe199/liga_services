@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit"
 import {Login} from "../actions/AuthActions";
 import {updateNotifications} from "../actions/ProfileDataActions";
 import {
-    AddNewTask, finishTask,
+    AddNewTask, deleteTask, finishTask,
     getCompletedTasks,
     getInProcessTasks,
     getNotAppliedTasks,
@@ -132,17 +132,17 @@ const taskSlice = createSlice({
             state.error = true
             state.message = 'Что то пошло не так'
         },
-        //reject executor
-        [rejectExecutor.pending]: (state) => {
+        //delete task
+        [deleteTask.pending]: (state) => {
             state.loadBtn = true
         },
-        [rejectExecutor.fulfilled]: (state, action) => {
+        [deleteTask.fulfilled]: (state, action) => {
             state.loadBtn = false
             state.error = false
             state.message = 'Вы удалили данного исполнителя'
             state.successWork = true
         },
-        [rejectExecutor.rejected]: (state, action) => {
+        [deleteTask.rejected]: (state, action) => {
             state.loadBtn = false
             state.error = true
             state.message = 'Что то пошло не так'

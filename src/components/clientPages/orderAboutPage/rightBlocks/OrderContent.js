@@ -12,9 +12,10 @@ import Typography from "@mui/material/Typography";
 import MapYandex from '../../../UI/map/Map'
 
 
-const OrderContent = ({setShowModal, state, finsih_time, start_time}) => {
+const OrderContent = ({setShowModal, state, finsih_time, start_time, setOpenToaster}) => {
     const classes = useOrderAboutStyles();
     const [showForm, setShowForm] = useState(false);
+    console.log(state)
     return (
         <Card>
             <Box style={{marginBottom: '20px'}} className={classes.orderSubBlockSpaceBetween2}>
@@ -69,7 +70,7 @@ const OrderContent = ({setShowModal, state, finsih_time, start_time}) => {
                     Откликнуться
                 </Button>
             </Box>}
-            {showForm && <OrderContentForm setShowModal={setShowModal} />}
+            {showForm && <OrderContentForm setOpenToaster={setOpenToaster} state={state} setShowModal={setShowModal} />}
         </Card>
     )
 
