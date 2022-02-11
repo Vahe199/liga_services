@@ -25,7 +25,7 @@ export const useStyles = makeStyles({
   }
 });
 
-const CustomImageList = ({imageData=[], remove,push,editPortfolio = true}) => {
+const CustomImageList = ({imageData=[], remove,push,show = true}) => {
   const breakpoints = {
     xs: 0,
     sm: 600,
@@ -67,7 +67,7 @@ const CustomImageList = ({imageData=[], remove,push,editPortfolio = true}) => {
                srcSet={item?.portfoliopic_base}
                alt={"title"}
                loading="lazy"/>
-          {editPortfolio && <ImageListItemBar
+          {show && <ImageListItemBar
               sx={{
                 background:
                     'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
@@ -86,7 +86,7 @@ const CustomImageList = ({imageData=[], remove,push,editPortfolio = true}) => {
           />}
         </ImageListItem>
       ))}
-        {editPortfolio && <ImageListItem>
+        {show && <ImageListItem>
             <input
                 name={"photo"}
                 accept="image/*"

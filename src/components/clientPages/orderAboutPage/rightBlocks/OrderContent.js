@@ -15,7 +15,7 @@ import MapYandex from '../../../UI/map/Map'
 const OrderContent = ({setShowModal, state, finsih_time, start_time, setOpenToaster}) => {
     const classes = useOrderAboutStyles();
     const [showForm, setShowForm] = useState(false);
-    console.log(state)
+    console.log(state, 'state')
     return (
         <Card>
             <Box style={{marginBottom: '20px'}} className={classes.orderSubBlockSpaceBetween2}>
@@ -64,7 +64,7 @@ const OrderContent = ({setShowModal, state, finsih_time, start_time, setOpenToas
             <Typography color={'#808080'} variant={'h4'}>
                 {state?.task_description}
             </Typography>
-            <CustomImageList imageData={state?.image_tasks} />
+            <CustomImageList imageData={state?.image_tasks} show={false} />
             {!showForm && <Box style={{display: 'flex', justifyContent: 'center', margin: '20px 0'}}>
                 <Button style={{width: '200px'}} onClick={() => setShowForm(true)} variant={'contained'}>
                     Откликнуться

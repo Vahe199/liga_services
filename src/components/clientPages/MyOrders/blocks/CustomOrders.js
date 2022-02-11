@@ -17,12 +17,12 @@ import {useMyOrdersStyles} from "../MyOrders";
 import {resetPartReducer} from "../../../../store/reducers/TaskReducer";
 import BlueButton from "../../../UI/CustomButtons/BlueButton";
 
-const CustomOrders = ({order, setShowDetails, status, openToaster, setOpenToaster}) => {
+const CustomOrders = ({order, setShowDetails, status, rejectLoadBtn, setOpenToaster}) => {
     const classes = useMyOrdersStyles();
     const [reviewField, setShowReviewField] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
     const dispatch = useDispatch()
-    const {loadBtn} = useSelector(state => state.task)
+    const {loadBtn, л} = useSelector(state => state.task)
 
     const chooseExecutor = async (task_id, execuro_id) => {
         //console.log(task_id, 'task_id', execuro_id, 'execuro_id')
@@ -264,7 +264,7 @@ const CustomOrders = ({order, setShowDetails, status, openToaster, setOpenToaste
                                     </span>
                                         <BlueButton
                                             label={'Отказатся'}
-                                            load={loadBtn}
+                                            load={rejectLoadBtn}
                                             disabledColor={'#E54C51'}
                                             backgroundColor={'#E54C51'}
                                             action={() => reject_executor(executor.task_id, executor.executor_profile_id)} />

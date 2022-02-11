@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import Box from "@mui/material/Box";
-import {useLocation, useParams} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import ProfileShow from "./leftBlocks/ProfileShow";
 import AdditionalFiles from "./leftBlocks/AdditionalFiles";
 import ResponseAmount from "./leftBlocks/ResponseAmount";

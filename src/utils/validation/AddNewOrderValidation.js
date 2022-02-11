@@ -86,7 +86,7 @@ export const AddNewOrderValidation = () => object().shape({
     //         return value.size <= sizeInBytes;
     //     }))
 
-    task_img: array()
+    task_img: array().nullable()
             .min(1, 'В поле должно быть хотя бы 1 элемента.')
             .test('is-correct-file', 'VALIDATION_FIELD_FILE_BIG', checkIfFilesAreTooBig)
             .test(

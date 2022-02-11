@@ -246,7 +246,7 @@ export const MyOrders = () => {
     const [valueTime, setValueTime] = useState(new Date());
     const [showForm, setShowForm] = useState(false);
 
-    const {status, load, error, completedTasks, notAppliedTasks = [], respondedTasks, inProcessTasks, successWork, message} = useSelector(state => state.task)
+    const {status, load, error, rejectLoadBtn, completedTasks, notAppliedTasks = [], respondedTasks, inProcessTasks, successWork, message} = useSelector(state => state.task)
 
     const [openToaster, setOpenToaster] = useState(false)
     const [title, setTitle] = useState({
@@ -265,18 +265,15 @@ export const MyOrders = () => {
     }, [])
 
     useEffect(() => {
-        //console.log(moment(valueTime).format("YYYY-MM-DD"), orders)
-        //let momentDate = orders
-        //console.log(newOrders, 'orders')
         setNewOrders((item) => newOrders.filter(item => {
             return moment(item.created_at).format("YYYY-MM-DD") === moment(valueTime).format("YYYY-MM-DD")
         }))
-        console.log(newOrders, 'filterOrders')
+       // console.log(newOrders, 'filterOrders')
     }, [valueTime])
 
 
     useEffect(() => {
-        //console.log(valueTime, notAppliedTasks, 'valueTime')
+      //  console.log(status)
     }, [status])
 
     useEffect(() => {
@@ -337,6 +334,7 @@ export const MyOrders = () => {
                         {newOrders?.map((order, index) =>
                                 newOrders?.length !== 0 ? <Card key={index}>
                                     <OrderBlock openToaster={openToaster}
+                                                rejectLoadBtn={rejectLoadBtn}
                                                 setOpenToaster={setOpenToaster}
                                                 status={status}
                                                 order={order}/>
