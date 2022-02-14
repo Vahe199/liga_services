@@ -13,3 +13,28 @@ export const getHeaderData = createAsyncThunk(
         }
     }
 )
+
+export const getRegionData = createAsyncThunk(
+    'header/gtRegionData',
+    async (_,thunkAPI) => {
+        try {
+            const response = await instance.get("v1/pages/regions")
+            return response.data
+        } catch (e) {
+            console.log(e.response, 'register error')
+            return thunkAPI.rejectWithValue('Что то пошло не так')
+        }
+    }
+)
+export const getRayonData = createAsyncThunk(
+    'header/getRayonData',
+    async (_,thunkAPI) => {
+        try {
+            const response = await instance.get("v1/pages/rayons")
+            return response.data
+        } catch (e) {
+            console.log(e.response, 'register error')
+            return thunkAPI.rejectWithValue('Что то пошло не так')
+        }
+    }
+)

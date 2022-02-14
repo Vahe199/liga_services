@@ -28,6 +28,7 @@ export const useStyles = makeStyles({
 
 const CustomImageList = ({imageData=[], remove,push, show = true,education = false}) => {
 
+
   const breakpoints = {
     xs: 0,
     sm: 600,

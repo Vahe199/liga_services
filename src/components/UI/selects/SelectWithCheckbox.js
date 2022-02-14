@@ -73,21 +73,24 @@ const useStyles = makeStyles( ({
     }
 }));
 
-const SelectWithCheckbox = ({options}) => {
+const SelectWithCheckbox = ({options,setSelectedData, value}) => {
     const classes = useStyles();
-    const [selected, setSelected] = useState([]);
-    const isAllSelected =
-        options.length > 0 && selected.length === options.length;
+    const newSelected = [...value].map(function(elem){
+        return elem.executorwork_region;
+    })
+    const [selected, setSelected] = useState(newSelected);
+    const isAllSelected = options.length > 0 && selected.length === options.length;
 
     const handleChange = (event) => {
         const value = event.target.value;
+        setSelectedData(value)
         if (value[value.length - 1] === "all") {
             setSelected(selected.length === options.length ? [] : options);
             return;
         }
         setSelected(value);
     };
-
+    console.log(options,"options")
     return (
         <FormControl className={classes.root}>
             <Select
@@ -116,7 +119,7 @@ const SelectWithCheckbox = ({options}) => {
                         primary="Выбрать все"
                     />
                 </MenuItem>
-                {options.map((option,i) => (
+                {options?.map((option,i) => (
                     <MenuItem key={i} value={option}>
                         <ListItemIcon>
                             <Checkbox checked={selected.indexOf(option) > -1} />
