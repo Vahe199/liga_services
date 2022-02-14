@@ -12,17 +12,47 @@ import Avatar from "@mui/material/Avatar";
 import {OnlineSvg} from "../../../../assets/svg/Profile/OnlineSvg";
 import moment from "moment";
 import {useDispatch, useSelector} from "react-redux";
-import {finishTask, rejectExecutor, selectExecutor} from "../../../../store/actions/TaskActions";
+import {
+    createRating,
+    finishTask, getCompletedTasks,
+    getRespondedTasks,
+    rejectExecutor,
+    selectExecutor
+} from "../../../../store/actions/TaskActions";
 import {useMyOrdersStyles} from "../MyOrders";
 import {resetPartReducer} from "../../../../store/reducers/TaskReducer";
 import BlueButton from "../../../UI/CustomButtons/BlueButton";
+import {choosesAvatarData} from "../../../../store/actions/ProfileDataActions";
 
 const CustomOrders = ({order, setShowDetails, status, rejectLoadBtn, setOpenToaster}) => {
     const classes = useMyOrdersStyles();
-    const [reviewField, setShowReviewField] = useState(false);
+    const [showReviewField, setShowReviewField] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
     const dispatch = useDispatch()
-    const {loadBtn, л} = useSelector(state => state.task)
+    const {loadBtn} = useSelector(state => state.task)
+    //for rating value
+    const [ratingVal, setRatingVal] = useState(0)
+    const [reviewFieldVal, setReviewFieldVal] = useState('')
+
+    const sendReview = async (id) => {
+        if(showReviewField){
+            console.log(id, 'task_id', reviewFieldVal, 'content', ratingVal, 'rating')
+            let formData = new FormData();
+            formData.append("task_id", id);
+            formData.append("rating", ratingVal);
+            formData.append("content", reviewFieldVal);
+            await dispatch(createRating(formData))
+            setOpenToaster(true)
+            //await dispatch(getCompletedTasks())
+            setTimeout(() => {
+                dispatch(resetPartReducer())
+            }, 7000)
+        }else{
+            setShowReviewField(!showReviewField)
+        }
+
+
+    }
 
     const chooseExecutor = async (task_id, execuro_id) => {
         //console.log(task_id, 'task_id', execuro_id, 'execuro_id')
@@ -35,6 +65,7 @@ const CustomOrders = ({order, setShowDetails, status, rejectLoadBtn, setOpenToas
             ]
         }))
         setOpenToaster(true)
+        await dispatch(getRespondedTasks())
         setTimeout(() => {
             dispatch(resetPartReducer())
         }, 7000)
@@ -50,6 +81,7 @@ const CustomOrders = ({order, setShowDetails, status, rejectLoadBtn, setOpenToas
             ]
         }))
         setOpenToaster(true)
+        await dispatch(getRespondedTasks())
         setTimeout(() => {
             dispatch(resetPartReducer())
         }, 7000)
@@ -107,7 +139,7 @@ const CustomOrders = ({order, setShowDetails, status, rejectLoadBtn, setOpenToas
                             <Box className={classes.wrapBox}>
                                 <Typography variant={'h6'}>Исполнитель</Typography>
                                 <Typography variant={'h5'}>
-                                    name
+                                    {order.executor_name}
                                 </Typography>
                             </Box>
                             <Box className={classes.wrapBox}>
@@ -139,33 +171,41 @@ const CustomOrders = ({order, setShowDetails, status, rejectLoadBtn, setOpenToas
                         </Box>
                         <Box className={classes.orderSubBlockSpaceBetween}>
                             <Box>
-                                {status === 'completed' && <Box style={{width: '50%'}}>
-                                    <Typography style={{whiteSpace: 'nowrap'}} variant={'h6'}>Ваш отзыв</Typography>
-                                    <Typography style={{whiteSpace: 'nowrap'}} variant={'h5'}>Я довольна</Typography>
-                                </Box>}
+                                {/*{status === 'completed' && <Box style={{width: '50%'}}>*/}
+                                {/*    <Typography style={{whiteSpace: 'nowrap'}} variant={'h6'}>Ваш отзыв</Typography>*/}
+                                {/*    <Typography style={{whiteSpace: 'nowrap'}} variant={'h5'}>Я довольна</Typography>*/}
+                                {/*</Box>}*/}
                                 {status === 'completed' && <Typography variant={'h6'}>Баллы</Typography>}
-                                {status === 'completed' && <Rating style={{color: "#FFF066"}} name="half-rating-read" defaultValue={4}
-                                                                        readOnly={status === 'completed'} precision={0.5}/>}
+                                {status === 'completed' && <Rating onChange={(e) => setRatingVal(e.target.value)} style={{color: "#FFF066"}} name="half-rating-read" precision={0.5}/>}
                                 <Box>
                                     {status === 'completed' && <Box>
-                                        {reviewField && <Box className={classes.boxInput}>
+                                        {showReviewField && <Box className={classes.boxInput}>
                                             <TextField
                                                 variant={"outlined"}
                                                 multiline
                                                 autoComplete={'off'}
                                                 rows={2}
-                                                maxRows={4}
+                                                value={reviewFieldVal}
+                                                onChange={(e) => setReviewFieldVal(e.target.value)}
                                             />
                                         </Box>}
-                                        <Button color="success" onClick={() => setShowReviewField(!reviewField)} variant="contained">
+                                        <Button color="success" onClick={() => sendReview(order?.id)} variant="contained">
                                             Оставить отзыв
                                         </Button>
+                                        {/*<BlueButton action={() => sendReview(order?.id)}*/}
+                                        {/*            backgroundColor={'#4B9A2D'}*/}
+                                        {/*            load={loadBtn}*/}
+                                        {/*            label={'Оставить отзыв'} />*/}
                                     </Box>}
-                                    {status === 'inProcess' && <BlueButton action={() => completedTask(order?.id)}
-                                                                           backgroundColor={'#4B9A2D'}
-                                                                           load={loadBtn}
-                                                                           label={'Завершить работу'}>
-                                    </BlueButton>}
+                                    {status === 'inProcess' && <Button color="success" onClick={() => completedTask(order?.id)} variant="contained">
+                                        Завершить работу
+                                    </Button>
+                                        // <BlueButton action={() => completedTask(order?.id)}
+                                        //                                    backgroundColor={'#4B9A2D'}
+                                        //                                    load={loadBtn}
+                                        //                                    label={'Завершить работу'}>
+                                    //</BlueButton>
+                                }
 
                                 </Box>
                             </Box>
@@ -205,7 +245,7 @@ const CustomOrders = ({order, setShowDetails, status, rejectLoadBtn, setOpenToas
                     {/*</Box>}*/}
                 </> :
                 <Box>
-                    {order?.click_on_tasks?.map((executor, index) => {
+                    {order?.click_on_task?.map((executor, index) => {
                             const task_starttime = moment(executor.startdate_from).toDate();
                             const task_finishtime = moment(executor.start_date_to).toDate();
                             const start_time = moment(task_starttime).format(`L`)
@@ -224,12 +264,11 @@ const CustomOrders = ({order, setShowDetails, status, rejectLoadBtn, setOpenToas
                                         </Box>
                                         <Box>
                                             <Box style={{display: 'flex', alignItems: 'center'}}>
-                                                <Typography style={{paddingRight: '5px'}} variant={'h4'}>name</Typography>
+                                                <Typography style={{paddingRight: '5px'}} variant={'h4'}>{executor?.executor_profile_name}</Typography>
                                                 <OnlineSvg />
                                             </Box>
                                             <Box className={classes.orderSubBlockSpaceAround}>
-                                                <Rating style={{color: "#FFF066"}} size={'small'} name="half-rating-read" defaultValue={4}
-                                                        readOnly precision={0.5}/>
+                                                <Rating onChange={(e) => console.log('e')} style={{color: "#FFF066"}} size={'small'} name="half-rating-read" precision={0.5}/>
                                                 <Typography variant={'h6'}>(3 отзывов)</Typography>
                                             </Box>
                                         </Box>
@@ -255,20 +294,25 @@ const CustomOrders = ({order, setShowDetails, status, rejectLoadBtn, setOpenToas
                                 <Box style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
                                     <Box style={{paddingRight: '50px', display: 'flex', alignItems: 'center'}}>
                                     <span style={{paddingRight: '10px'}}>
-                                        <BlueButton
-                                            label={'Выбрать'}
-                                            load={loadBtn}
-                                            disabledColor={'#4B9A2D'}
-                                            backgroundColor={'#4B9A2D'}
-                                            action={() => chooseExecutor(executor.task_id, executor.executor_profile_id)} />
+                                        {/*<BlueButton*/}
+                                        {/*    label={'Выбрать'}*/}
+                                        {/*    load={loadBtn}*/}
+                                        {/*    disabledColor={'#4B9A2D'}*/}
+                                        {/*    backgroundColor={'#4B9A2D'}*/}
+                                        {/*    action={() => chooseExecutor(executor.task_id, executor.executor_profile_id)} />*/}
+                                        <Button
+                                                onClick={() => chooseExecutor(executor.task_id, executor.executor_profile_id)}
+                                                variant={'contained'}>Выбрать</Button>
                                     </span>
-                                        <BlueButton
-                                            label={'Отказатся'}
-                                            load={rejectLoadBtn}
-                                            disabledColor={'#E54C51'}
-                                            backgroundColor={'#E54C51'}
-                                            action={() => reject_executor(executor.task_id, executor.executor_profile_id)} />
-                                        {/*<Button style={{backgroundColor: '#E54C51'}} variant={'contained'}>Отказатся</Button>*/}
+                                        {/*<BlueButton*/}
+                                        {/*    label={'Отказатся'}*/}
+                                        {/*    load={rejectLoadBtn}*/}
+                                        {/*    disabledColor={'#E54C51'}*/}
+                                        {/*    backgroundColor={'#E54C51'}*/}
+                                        {/*    action={() => reject_executor(executor.task_id, executor.executor_profile_id)} />*/}
+                                        <Button style={{backgroundColor: '#E54C51'}}
+                                                onClick={() => reject_executor(executor.task_id, executor.executor_profile_id)}
+                                                variant={'contained'}>Отказатся</Button>
                                     </Box>
                                     <Box>
                                         <Box style={{display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>

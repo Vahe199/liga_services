@@ -283,8 +283,13 @@ export const MyOrders = () => {
                 setNewOrders(notAppliedTasks)
                 break;
             case 1:
-                setOrders(respondedTasks)
-                setNewOrders(respondedTasks)
+                if(Array.isArray(respondedTasks)){
+                    setOrders(respondedTasks)
+                    setNewOrders(respondedTasks)
+                }else{
+                    setOrders([])
+                    setNewOrders([])
+                }
                 break;
             case 2:
                 if(Array.isArray(inProcessTasks)){

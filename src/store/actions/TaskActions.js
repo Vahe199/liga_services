@@ -85,6 +85,7 @@ export const selectExecutor = createAsyncThunk(
 export const finishTask = createAsyncThunk(
     'task/finishTask',
     async (data, thunkAPI) => {
+        debugger
         try {
             const response = await instance.post("v1/user/employer-complate-task", data)
             return response.data
@@ -132,7 +133,7 @@ export const createRating = createAsyncThunk(
             return response.data
         } catch (e) {
             console.log(e.response, 'register error')
-            return thunkAPI.rejectWithValue('Что то пошло не так')
+            return thunkAPI.rejectWithValue(e.response.message)
         }
     }
 )
