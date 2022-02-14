@@ -19,6 +19,7 @@ import Grid from "@mui/material/Grid";
 import ModalLogOut from "../../UI/modals/ModalLogOut";
 import {getProfilePageData} from "../../../store/actions/ProfileDataActions";
 import Toaster from "../../UI/toaster/Toaster";
+import {getRayonData, getRegionData} from "../../../store/actions/HeaderActions";
 
 const useAncetaStyles = makeStyles({
     root:{
@@ -52,9 +53,10 @@ export const Worksheet = () =>{
     const [editEducationBlock, setEditEducationBlock] = useState(false);
     const [openLogOutModal, setOpenLogOutModal] = useState(false);
     const [openToaster, setOpenToaster] = useState(false);
-    // useEffect(()=>{
-    //     dispatch(getProfilePageData())
-    // },[])
+    useEffect(()=>{
+        dispatch(getRegionData())
+        dispatch(getRayonData())
+    },[])
 
     return(
         <Box className={classes.root}>
@@ -85,6 +87,7 @@ export const Worksheet = () =>{
                         <DistrictsAndAddresses
                             editAddress={editAddress}
                             setEditAddress={setEditAddress}
+                            setOpenToaster={setOpenToaster}
                         />
                         <ExperienceBlock editExperienceBlock={editExperienceBlock}
                                          setOpenToaster={setOpenToaster}

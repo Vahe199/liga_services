@@ -5,9 +5,13 @@ import {useInfoCardStyles} from "../../../../../../globalStyles/InfoCardStyles";
 import CustomDivider from "../../../../../UI/customDivider/CustomDivider";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import {useSelector} from "react-redux";
 
 const DistrictsAndAddressesData = ({editAddress, setEditAddress}) => {
     const classes = useInfoCardStyles();
+    const regionsText = []
+    const {profile = {}} = useSelector(state => state.profile);
+    const {address="", region="",executor_working_regions=[]} = profile;
     return (
         <Card sx={{ boxShadow: 2 }} className={classes.root}>
             <Box
@@ -25,16 +29,22 @@ const DistrictsAndAddressesData = ({editAddress, setEditAddress}) => {
                 Регион
             </Typography>
             <Typography variant={'h6'}>
-                    Москва
+                {region}
             </Typography>
 
             <Typography variant={"h5"}>Адреса</Typography>
-            <Typography variant={'h6'}>г. Москва, Любанский проезд, подъезд 3 квартира 42</Typography>
+            <Typography variant={'h6'}>{address}</Typography>
 
             <Typography variant={"h5"}>Районы выезда к клиентам</Typography>
-            <Typography variant={'h6'}>Бабушкинский, Восточное Измайлово, Замоскворечье.....</Typography>
-
+            <div style={{display:"flex", flexWrap: 'wrap'}}>
+            {executor_working_regions?.map((item,i) =>(
+                <Typography variant={'h6'} style={{marginRight:5}}>{item?.executorwork_region}
+                    {i !== executor_working_regions?.length -1 ? "," : ""}</Typography>
+            ))}
+            </div>
         </Card>
+    // <Typography variant={'h6'} style={{marginRight:5}}>{item?.executorwork_region}
+    //     {i < 2 ? i !== executor_working_regions?.length -1 ? "," : "" : '...'}</Typography>
     );
 };
 
