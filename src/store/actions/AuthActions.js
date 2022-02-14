@@ -47,6 +47,7 @@ export const Login = createAsyncThunk(
 export const Logouts = createAsyncThunk(
     'auth/logout',
     async ( thunkAPI) => {
+        debugger
         try{
             const response= await instance.post("v1/user/logout")
              // localStorage.removeItem('token');
