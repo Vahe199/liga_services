@@ -154,7 +154,7 @@ const newSubCategories = [...category[index]?.subcategories].map((option) => ({
                                                                     <CustomInput placeholder={'Место работы'}
                                                                                  name={`executor_profile_work_experiences[${index}].working_place`}
                                                                                  value={work.working_place}
-                                                                                 handleChange={handleChange}
+                                                                                 handleChange={(val) => setFieldValue(`executor_profile_work_experiences[${index}].working_place`, val)}
                                                                     />
                                                                 </Box>
                                                                 <Box style={{width: '350px'}}>

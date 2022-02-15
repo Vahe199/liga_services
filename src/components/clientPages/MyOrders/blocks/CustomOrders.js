@@ -125,7 +125,7 @@ const CustomOrders = ({order, setShowDetails, status, rejectLoadBtn, setOpenToas
             <Box className={classes.orderSubBlockSpaceBetween}>
                 <Box className={classes.wrapBox}>
                     <Typography variant={'h4'}>{order?.title}</Typography>
-                    <Typography style={{fontSize: '20px'}} color={'#5A7287'}>от {order.price_from} руб.</Typography>
+                    {status !== 'completed' && <Typography style={{fontSize: '20px'}} color={'#5A7287'}>от {order.price_from} руб.</Typography>}
                 </Box>
                 <Box className={classes.wrapBox}>
                     <Typography variant={'h5'}> Место встречи </Typography>

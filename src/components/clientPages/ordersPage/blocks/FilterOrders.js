@@ -3,7 +3,6 @@ import Divider from "@mui/material/Divider";
 import {SelectSvg} from "../../../../assets/svg/SelectSvg";
 import {DeleteSvg} from "../../../../assets/svg/DeleteSvg";
 import Card from "@mui/material/Card";
-import {useOrderStyles} from "../../../../globalStyles/OrderStyles";
 import {FieldArray, Formik} from "formik";
 import CustomSelect from "../../../UI/selects/CustomSelect";
 import CustomInput from "../../../UI/customInput/CustomInput";
@@ -13,12 +12,21 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import FormControl from "@material-ui/core/FormControl";
 import {FormControlLabel, Radio, RadioGroup} from "@mui/material";
-
+import {useDispatch, useSelector} from "react-redux";
+import {useOrderStyles} from "../../../../globalStyles/OrderStyles";
+import {getCategories} from "../../../../store/actions/FilterOrdersActions";
 
 const FilterOrders = ({setShowFilterBlock, showFilterBlock}) => {
     const classes = useOrderStyles();
     const [showservicesBlock, setShowServicesBlock] = useState(true);
     const [value, setValue] = useState('')
+    const dispatch = useDispatch()
+    const {categories} = useSelector(state => state.filterOrders)
+
+    const getAllCategories = () => {
+        dispatch(getCategories())
+    }
+
   return (
     <Card sx={{ boxShadow: 2, backgroundColor: '#E1E3E3' }}>
       <Box className={classes.orderSubBlockSpaceBetween}>
@@ -32,15 +40,16 @@ const FilterOrders = ({setShowFilterBlock, showFilterBlock}) => {
             <Formik
                 initialValues={{
                     services: [
-                        {item: 'Создание сайтов'},
-                        {item: 'Создание сайтов'},
-                        {item: 'Создание сайтов'},
-                        {item: 'Создание сайтов'}
+                        categories
                     ],
-                    region: '', place_work: value, payment_from: '', payment_to: ''
+                    region: '',
+                    task_location: '',
+                    task_price: {
+                        price_from: '', price_to: ''
+                    }
                 }}
                 onSubmit={async (values, action) => {
-                    //console.log(values, 'values')
+                    console.log(values, 'values')
                 }}
             >
                 {({
@@ -65,13 +74,13 @@ const FilterOrders = ({setShowFilterBlock, showFilterBlock}) => {
                                                 <Typography style={{paddingRight: '5px'}}
                                                             variant={'h4'}>{item.item}</Typography>
                                                 <Box style={{cursor: 'pointer'}} onClick={() => remove(index)}>
-                                                    <DeleteSvg/>
+                                                    <DeleteSvg />
                                                 </Box>
                                             </Box> : ''
                                         )
                                     )}
                                     <Box className={classes.orderSubBlockSpaceBetween}>
-                                        <Button variant={'contained'}>
+                                        <Button onClick={getAllCategories} variant={'contained'}>
                                             Как в анкете
                                         </Button>
                                         <Button variant={'contained'}>
@@ -93,10 +102,10 @@ const FilterOrders = ({setShowFilterBlock, showFilterBlock}) => {
                         <Box style={{margin: '80px 0 40px 0'}}>
                             <Typography style={{marginBottom: '10px'}} variant={'h2'}>Место встречи</Typography>
                             <FormControl component="fieldset">
-                                <RadioGroup
-                                    aria-label="gender"
-                                    defaultValue="remotely"
-                                    name="place_work"
+                      <RadioGroup
+                               aria-label="gender"
+                               defaultValue="remotely"
+                               name="place_work"
                                 >
                                     <FormControlLabel control={<Radio classes={{root: classes.radio, checked: classes.checked}}
                                                                       style={{color: '#4B9A2D'}} size={'small'} onChange={(e) => {
