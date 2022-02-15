@@ -6,28 +6,29 @@ import {
     getNotAppliedTasks,
     getRespondedTasks, rejectExecutor, selectExecutor
 } from "../actions/TaskActions";
-
+const  initialState = {
+    error: false,
+    load: false,
+    loadBtn: false,
+    rejectLoadBtn: false,
+    successWork: false,
+    message: '',
+    completedTasks: [],
+    notAppliedTasks: [],
+    respondedTasks: [],
+    inProcessTasks: [],
+    status: 'notApplied',
+}
 const taskSlice = createSlice({
     name: "task",
-    initialState: {
-        error: false,
-        load: false,
-        loadBtn: false,
-        rejectLoadBtn: false,
-        successWork: false,
-        message: '',
-        completedTasks: [],
-        notAppliedTasks: [],
-        respondedTasks: [],
-        inProcessTasks: [],
-        status: 'notApplied',
-    },
+    initialState,
     reducers: {
         resetPartReducer: (state) => {
             state.successWork = false
             state.error = false
             state.message = ''
         },
+        resetTask: () => initialState,
     },
     extraReducers: {
         [getCompletedTasks.pending]: (state) => {
@@ -179,6 +180,6 @@ const taskSlice = createSlice({
 
 })
 
-export const {resetPartReducer} = taskSlice.actions
+export const {resetPartReducer, resetTask} = taskSlice.actions
 
 export default taskSlice.reducer

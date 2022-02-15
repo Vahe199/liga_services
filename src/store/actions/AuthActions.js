@@ -50,8 +50,9 @@ export const Logouts = createAsyncThunk(
         debugger
         try{
             const response= await instance.post("v1/user/logout")
-             // localStorage.removeItem('token');
-            localStorage.clear()
+              localStorage.removeItem('token');
+              localStorage.removeItem('applicationState');
+            // localStorage.clear()
             return response.data
         }
         catch (e) {

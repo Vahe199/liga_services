@@ -104,6 +104,12 @@ const CustomOrders = ({order, setShowDetails, status, rejectLoadBtn, setOpenToas
         }, 7000)
     }
 
+
+
+    useEffect(() => {
+        console.log(order, 'orderRender')
+    }, [order, status])
+
     return (
         <Box>
             <Box className={classes.orderSubBlockSpaceBetween}>

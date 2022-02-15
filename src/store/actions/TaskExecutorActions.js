@@ -4,6 +4,7 @@ import {instance} from "../api/api";
 export const getAllTasks = createAsyncThunk(
     'taskExecutor/getAllTasks',
     async (_, thunkAPI) => {
+        debugger
         try {
             const response = await instance.get("v1/user/show-all-tasks-to-executor")
             return response.data

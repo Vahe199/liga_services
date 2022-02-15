@@ -9,8 +9,9 @@ import {useNavigate} from "react-router-dom";
 import HeaderModal from './blocks/HeaderModal';
 import {useDispatch, useSelector} from "react-redux";
 import { Logouts } from '../../../store/actions/AuthActions';
-import {resetProfile} from "../../../store/reducers/ProfileDataReducer";
 import BlueButton from "../CustomButtons/BlueButton";
+import {resetProfile} from "../../../store/reducers/ProfileDataReducer";
+import {resetTask} from "../../../store/reducers/TaskReducer";
 
 
 const style = {
@@ -32,6 +33,7 @@ const ModalLogOut = ({open, setOpen}) => {
     const dispatch = useDispatch();
     const logOut = () => {
         dispatch(Logouts())
+        dispatch(resetTask())
         dispatch(resetProfile())
     }
     return (

@@ -247,7 +247,7 @@ export const MyOrders = () => {
     const [showForm, setShowForm] = useState(false);
 
     const {status, load, error, rejectLoadBtn, completedTasks, notAppliedTasks = [], respondedTasks, inProcessTasks, successWork, message} = useSelector(state => state.task)
-
+    console.log(inProcessTasks,"inProcessTasks")
     const [openToaster, setOpenToaster] = useState(false)
     const [title, setTitle] = useState({
         subTitle: 'Не откликнувшые заказы',
@@ -258,7 +258,7 @@ export const MyOrders = () => {
     const dispatch = useDispatch();
 
 
-
+    //vorskanyan1996@gmail.com
     useEffect(() => {
         dispatch(getNotAppliedTasks())
         //console.log(orders, 'orders', newOrders, 'newOrders')
@@ -273,8 +273,8 @@ export const MyOrders = () => {
 
 
     useEffect(() => {
-      //  console.log(status)
-    }, [status])
+        console.log(newOrders)
+    }, [status, inProcessTasks,newOrders])
 
     useEffect(() => {
         switch (title.index) {
@@ -295,6 +295,7 @@ export const MyOrders = () => {
                 if(Array.isArray(inProcessTasks)){
                     setOrders(inProcessTasks)
                     setNewOrders(inProcessTasks)
+                    console.log(orders, 'orders', newOrders, 'newOrders')
                 }else{
                     setOrders([])
                     setNewOrders([])
