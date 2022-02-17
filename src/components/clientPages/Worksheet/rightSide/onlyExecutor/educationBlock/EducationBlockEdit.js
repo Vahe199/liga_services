@@ -39,14 +39,14 @@ const EducationBlockEdit = ({editEducationBlock, setEditEducationBlock,setOpenTo
         }
     },[successWork, error])
     const initialValues = {
-        executor_educations: get(profile, "executor_educations", [{
+        executor_educations:profile.executor_educations.length > 0 ? get(profile, "executor_educations", [{
             id: "",
             education_type: "",
             education_place: ""
         }]).map(
             (education) =>
                 pick(education, ["education_type","education_place"])
-        ),
+        ):[{education_type:"",education_place:""}],
         executor_education_certificates:get(profile, "executor_education_certificates", [{id:"",certificate_base:""}]).map(
             (certificates) =>
                 pick(certificates, ["certificate_base"])
