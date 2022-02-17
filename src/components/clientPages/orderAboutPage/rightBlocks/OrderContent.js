@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Box from "@mui/material/Box";
 import {useOrderAboutStyles} from "../../../../globalStyles/OrderAboutStyles";
 import Card from "@mui/material/Card";
@@ -10,12 +10,22 @@ import Button from "@mui/material/Button";
 import OrderContentForm from "../../ordersPage/blocks/OrderContentForm";
 import Typography from "@mui/material/Typography";
 import MapYandex from '../../../UI/map/Map'
+import {useSelector} from "react-redux";
 
 
 const OrderContent = ({setShowModal, state, finsih_time, start_time, setOpenToaster}) => {
     const classes = useOrderAboutStyles();
     const [showForm, setShowForm] = useState(false);
-    console.log(state, 'state')
+    const {profile} = useSelector(state => state.profile)
+    const [yourTask, setYourTask] = useState(false)
+    useEffect(() => {
+        if(state.user_id !== profile.user_id){
+            setYourTask(true)
+        }else{
+            setYourTask(false)
+        }
+    }, [state.user_id])
+    console.log(state.user_id, profile.user_id, 'state')
     return (
         <Card>
             <Box style={{marginBottom: '20px'}} className={classes.orderSubBlockSpaceBetween2}>
@@ -47,7 +57,7 @@ const OrderContent = ({setShowModal, state, finsih_time, start_time, setOpenToas
                     </Typography>
                 </Box>}
             </Box>
-            {state?.task_location === 'remotely' && <Box>
+            {state?.task_location !== 'remotely' && <Box>
                 <MapYandex />
             </Box>}
             <CustomDivider />
@@ -65,12 +75,12 @@ const OrderContent = ({setShowModal, state, finsih_time, start_time, setOpenToas
                 {state?.task_description}
             </Typography>
             <CustomImageList imageData={state?.image_tasks} show={false} />
-            {!showForm && <Box style={{display: 'flex', justifyContent: 'center', margin: '20px 0'}}>
+            {yourTask && !showForm && <Box style={{display: 'flex', justifyContent: 'center', margin: '20px 0'}}>
                 <Button style={{width: '200px'}} onClick={() => setShowForm(true)} variant={'contained'}>
                     Откликнуться
                 </Button>
             </Box>}
-            {showForm && <OrderContentForm setOpenToaster={setOpenToaster} state={state} setShowModal={setShowModal} />}
+            {yourTask && showForm && <OrderContentForm setOpenToaster={setOpenToaster} state={state} setShowModal={setShowModal} />}
         </Card>
     )
 

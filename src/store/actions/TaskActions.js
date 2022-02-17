@@ -4,7 +4,6 @@ import {instance} from "../api/api";
 export const AddNewTask = createAsyncThunk(
     'task/addNewTask',
     async (data, thunkAPI) => {
-        debugger
         try {
             const response = await instance.post('v1/user/create-new-task', data)
             return response.data
@@ -44,7 +43,6 @@ export const getNotAppliedTasks = createAsyncThunk(
 export const getRespondedTasks = createAsyncThunk(
     'task/getRespondedTasks',
     async (_, thunkAPI) => {
-        debugger
         try {
             const response = await instance.get("v1/user/responded-executor")
             return response.data
@@ -71,7 +69,6 @@ export const getInProcessTasks = createAsyncThunk(
 export const selectExecutor = createAsyncThunk(
     'task/selectExecutor',
     async (data, thunkAPI) => {
-        debugger
         try {
             const response = await instance.post("v1/user/select-task-executor", data)
             return response.data
@@ -98,7 +95,6 @@ export const finishTask = createAsyncThunk(
 export const rejectExecutor = createAsyncThunk(
     'task/rejectExecutor',
     async (data, thunkAPI) => {
-        debugger
         try {
             const response = await instance.post("v1/user/reject-task-executor ", data)
             return response.data
@@ -112,7 +108,6 @@ export const rejectExecutor = createAsyncThunk(
 export const deleteTask = createAsyncThunk(
     'task/deleteTask',
     async (data, thunkAPI) => {
-        debugger
         try {
             const response = await instance.post(`v1/user/task/${data.id}/delete`, data.formData)
             return response.data
@@ -126,13 +121,12 @@ export const deleteTask = createAsyncThunk(
 export const createRating = createAsyncThunk(
     'task/createRating',
     async (data, thunkAPI) => {
-        debugger
         try {
             const response = await instance.post('v1/user/create-reiting', data)
             return response.data
         } catch (e) {
             console.log(e.response, 'register error')
-            return thunkAPI.rejectWithValue('Что то пошло не так')
+            return thunkAPI.rejectWithValue(e.response.message)
         }
     }
 )

@@ -28,6 +28,7 @@ export const useStyles = makeStyles({
 
 const Reviews = ({review=[]}) => {
     const classes = useStyles();
+    console.log(review)
     return (
         <>
             <MainTitle mb={'75px'}>Отзывы</MainTitle>

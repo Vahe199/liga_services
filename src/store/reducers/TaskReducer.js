@@ -1,6 +1,4 @@
 import {createSlice} from "@reduxjs/toolkit"
-import {Login} from "../actions/AuthActions";
-import {updateNotifications} from "../actions/ProfileDataActions";
 import {
     AddNewTask, createRating, deleteTask, finishTask,
     getCompletedTasks,
@@ -8,29 +6,29 @@ import {
     getNotAppliedTasks,
     getRespondedTasks, rejectExecutor, selectExecutor
 } from "../actions/TaskActions";
-import {getAllTasks} from "../actions/TaskExecutorActions";
-
+const  initialState = {
+    error: false,
+    load: false,
+    loadBtn: false,
+    rejectLoadBtn: false,
+    successWork: false,
+    message: '',
+    completedTasks: [],
+    notAppliedTasks: [],
+    respondedTasks: [],
+    inProcessTasks: [],
+    status: 'notApplied',
+}
 const taskSlice = createSlice({
     name: "task",
-    initialState: {
-        error: false,
-        load: false,
-        loadBtn: false,
-        rejectLoadBtn: false,
-        successWork: false,
-        message: '',
-        completedTasks: [],
-        notAppliedTasks: [],
-        respondedTasks: [],
-        inProcessTasks: [],
-        status: 'notApplied',
-    },
+    initialState,
     reducers: {
         resetPartReducer: (state) => {
             state.successWork = false
             state.error = false
             state.message = ''
         },
+        resetTask: () => initialState,
     },
     extraReducers: {
         [getCompletedTasks.pending]: (state) => {
@@ -105,46 +103,46 @@ const taskSlice = createSlice({
         },
         //select executor
         [selectExecutor.pending]: (state) => {
-            state.loadBtn = true
+            state.load = true
         },
         [selectExecutor.fulfilled]: (state, action) => {
-            state.loadBtn = false
+            state.load = false
             state.error = false
             state.message = 'Исполнитель успешно вибран'
             state.successWork = true
         },
         [selectExecutor.rejected]: (state, action) => {
-            state.loadBtn = false
+            state.load = false
             state.error = true
             state.message = 'Что то пошло не так'
         },
         //reject executor
         [rejectExecutor.pending]: (state) => {
-            state.rejectLoadBtn = true
+            state.load = true
         },
         [rejectExecutor.fulfilled]: (state, action) => {
-            state.rejectLoadBtn = false
+            state.load = false
             state.error = false
             state.message = 'Исполнитель успешно удален'
             state.successWork = true
         },
         [rejectExecutor.rejected]: (state, action) => {
-            state.rejectLoadBtn = false
+            state.load = false
             state.error = true
             state.message = 'Что то пошло не так'
         },
         //finish task
         [finishTask.pending]: (state) => {
-            state.loadBtn = true
+            state.load = true
         },
         [finishTask.fulfilled]: (state, action) => {
-            state.loadBtn = false
+            state.load = false
             state.error = false
             state.message = 'Вы успешно завершили'
             state.successWork = true
         },
         [finishTask.rejected]: (state, action) => {
-            state.loadBtn = false
+            state.load = false
             state.error = true
             state.message = 'Что то пошло не так'
         },
@@ -165,16 +163,16 @@ const taskSlice = createSlice({
         },
         //create rating
         [createRating.pending]: (state) => {
-            state.loadBtn = true
+            state.load = true
         },
         [createRating.fulfilled]: (state, action) => {
-            state.loadBtn = false
+            state.load = false
             state.error = false
-            state.message = action.payload.message
+            state.message = 'Все прошло успешно'
             state.successWork = true
         },
         [createRating.rejected]: (state, action) => {
-            state.loadBtn = false
+            state.load = false
             state.error = true
             state.message = action.payload.message
         },
@@ -182,6 +180,6 @@ const taskSlice = createSlice({
 
 })
 
-export const {resetPartReducer} = taskSlice.actions
+export const {resetPartReducer, resetTask} = taskSlice.actions
 
 export default taskSlice.reducer
